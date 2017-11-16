@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import appData from './dataReducer'
+import { event } from './event';
 
 const rootReducer = combineReducers({
-    appData
+  event
 })
 
 export default rootReducer;
