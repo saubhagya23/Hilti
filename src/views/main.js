@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvent } from '../actions/apiData';
+import HomeScreen from './screens/homeScreen';
+import Login from './screens/login'
 
 class Home extends Component {
 
@@ -17,10 +19,11 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Redux Examples</Text>
+                <Login/>
+                {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
                     <Text style={styles.buttonText}>Load Data</Text>
-                </TouchableHighlight>
+                </TouchableHighlight>*/}
             </View>
 
         );
@@ -29,7 +32,7 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100
+        flex:1
     },
     text: {
         textAlign: 'center'

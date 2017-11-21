@@ -31,3 +31,12 @@ export function getEventList(option={}){
   option.method = method;
   return requestAPI(URL, option).then(res => res.json());
 };
+
+export function postEventList(option={}){
+    let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    option.payload = option;
+    console.log('options--',option);
+    return requestAPI(URL, option).then(res => res.json());
+};

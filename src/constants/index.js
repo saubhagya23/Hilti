@@ -1,1 +1,2 @@
 export const EVENT_LIST = 'EVENT_LIST';
+export const EVENT_LOGIN_LIST = 'EVENT_LOGIN_LIST';

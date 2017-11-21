@@ -1,8 +1,9 @@
 let API = {
   ENDPOINT: {
-    BASE: 'https://jsonplaceholder.typicode.com/',
+    BASE: 'https://li-ppsingh:9000',
     AUTH: {
-      LOGIN: { url: 'posts/', method: 'GET' }
+      LOGIN: { url: '/api/user-details/me', method: 'GET' },
+        AUTH_LOGIN: {url: '/auth/local', method:'POST'}
     }
   }
 };

@@ -1,10 +1,17 @@
 import { StackNavigator} from "react-navigation";
 import Main from "../views/main.js";
+import HomeScreen from "../views/screens/homeScreen";
 
 const routes = {
-  Main:{
-    screen: Main
-  }
+    Main:{
+      screen: Main
+    },
+    HomeScreen:{
+      screen: HomeScreen,
+        navigationOptions:{
+          title:'Home'
+        }
+    },
 }
 
 
