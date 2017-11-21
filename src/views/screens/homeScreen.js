@@ -7,8 +7,15 @@ class HomeScreen extends Component {
     render(){
         return(
             <View style={styles.container}>
-               <PageHeader/>
-                <VideoComp/>
+                <View style={{flex:0.1}}>
+                    <PageHeader/>
+                </View>
+                <View style={{flex:0.3}}>
+                    <VideoComp/>
+                </View>
+                <View style={{flex:0.6}}>
+
+                </View>
             </View>
         );
     }
@@ -16,7 +23,8 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100
+        marginTop: 22,
+        flex: 1
     },
     text: {
         textAlign: 'center'

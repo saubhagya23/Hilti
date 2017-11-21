@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Expo from 'expo'
 
 class HomeContent extends Component {
@@ -8,7 +8,7 @@ class HomeContent extends Component {
             <View style={styles.container}>
                 <Expo.Video
                     source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-                    posterSource={require('../../assets/images/brandLogo.png')}
+                    posterSource={require('../../assets/images/xxhdpi.png')}
                     rate={1.0}
                     volume={1.0}
                     muted={false}
@@ -24,7 +24,7 @@ class HomeContent extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100
+       flex:1
     },
     text: {
         textAlign: 'center'

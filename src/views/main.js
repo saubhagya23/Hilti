@@ -19,7 +19,8 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Login/>
+                <HomeScreen/>
+                {/*<Login/>*/}
                 {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
                     <Text style={styles.buttonText}>Load Data</Text>
