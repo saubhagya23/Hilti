@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 class PageHeader extends Component {
@@ -11,37 +11,23 @@ class PageHeader extends Component {
                         source={require('../../assets/images/mdpi.png')}
                     />
                 </View>
-                <View style={styles.bellIconBtn}>
+                <View style={styles.IconBtn}>
                     <Icon
                         raised
-                        name='bell'
-                        type='font-awesome'
+                        name='notifications'
+                        type='MaterialIcons'
                         color='black'
+                        size={15}
                         onPress={() => console.log('hello bell')} />
-                </View>
-                <View style={styles.userIconBtn}>
+
                     <Icon
                         raised
                         name='user'
                         type='font-awesome'
                         color='black'
+                        size={15}
                         onPress={() => console.log('hello user')} />
                 </View>
-                {/*<View style={{marginTop:100,flex:0.3, backgroundColor:'green'}}>
-                    <Image
-                        source={require('../../assets/images/mdpi.png')}
-                    />
-                </View>
-                <View style={{marginTop:100,flex:0.5,backgroundColor:'aqua'}}>
-                </View>
-                <View style={{marginTop:100,flex:0.2, backgroundColor:'yellow'}}>
-                    <TouchableHighlight style={styles.button}>
-                        <View>
-                            <Icon name="notifications" style={styles.icon}/>
-                            <ion-icon name="notifications"></ion-icon>
-                        </View>
-                    </TouchableHighlight>
-                </View>*/}
             </View>
         );
     }
@@ -50,17 +36,21 @@ class PageHeader extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        flexDirection:'row'
+        flexDirection:'row',
+        backgroundColor:'white'
     },
     logo:{
-        flex:0.6,
-        justifyContent:'flex-start'
+        flex:1,
+        justifyContent:'flex-start',
+        marginTop:20,
+        marginRight:10,
+        marginLeft:10
     },
-    bellIconBtn: {
-        flex: 0.2,
-    },
-    userIconBtn:{
-        flex: 0.2,
+    IconBtn: {
+        flex: 1,
+        marginTop:5,
+        flexDirection:'row',
+        justifyContent:'flex-end'
     },
     text: {
         textAlign: 'center'
