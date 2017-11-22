@@ -15,7 +15,7 @@ class HomeContent extends Component {
                     resizeMode="cover"
                     shouldPlay
                     isLooping
-                    style={{ width: 300, height: 300 }}
+                    style={{flex:1}}
                 />
             </View>
         );

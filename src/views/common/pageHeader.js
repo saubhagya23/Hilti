@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 class PageHeader extends Component {
@@ -27,21 +27,6 @@ class PageHeader extends Component {
                         color='black'
                         onPress={() => console.log('hello user')} />
                 </View>
-                {/*<View style={{marginTop:100,flex:0.3, backgroundColor:'green'}}>
-                    <Image
-                        source={require('../../assets/images/mdpi.png')}
-                    />
-                </View>
-                <View style={{marginTop:100,flex:0.5,backgroundColor:'aqua'}}>
-                </View>
-                <View style={{marginTop:100,flex:0.2, backgroundColor:'yellow'}}>
-                    <TouchableHighlight style={styles.button}>
-                        <View>
-                            <Icon name="notifications" style={styles.icon}/>
-                            <ion-icon name="notifications"></ion-icon>
-                        </View>
-                    </TouchableHighlight>
-                </View>*/}
             </View>
         );
     }
@@ -50,11 +35,14 @@ class PageHeader extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        flexDirection:'row'
+        flexDirection:'row',
+        backgroundColor:'white'
     },
     logo:{
         flex:0.6,
-        justifyContent:'flex-start'
+        justifyContent:'flex-start',
+        marginTop:10,
+        marginRight:10
     },
     bellIconBtn: {
         flex: 0.2,
