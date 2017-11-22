@@ -14,11 +14,10 @@ function requestAPI(url, options = {}) {
     };
 
     if(options.method.toLowerCase() !== 'get') {
-        console.log('payload---',JSON.stringify(options.payload));
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
 
-    return fetch(url, reqBody);
+    return fetch(url, reqBody).then(res=> res.json());
 
   } catch (error) {
 
@@ -36,9 +35,6 @@ export function getEventList(option={}){
 export function postEventList(option={}){
     let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
     let URL = `${API_BASE + url}`;
-    let employeeData = {email:option.email,password:option.password};
     option.method = method;
-    option.payload = employeeData;
-    console.log('options--',option);
     return requestAPI(URL, option);
 };

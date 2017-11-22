@@ -13,7 +13,7 @@ export function event (state = initialState, action) {
           return Object.assign({}, state, eventList);
         }
         case EVENT_LOGIN_LIST: {
-            console.log('action.payload--',action.payload);
+            console.log('action.payload--',action.payload,action);
             let eventLoginList = action.payload;
             return Object.assign({}, state, eventLoginList);
         }

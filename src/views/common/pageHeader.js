@@ -11,20 +11,21 @@ class PageHeader extends Component {
                         source={require('../../assets/images/mdpi.png')}
                     />
                 </View>
-                <View style={styles.bellIconBtn}>
+                <View style={styles.IconBtn}>
                     <Icon
                         raised
-                        name='bell'
-                        type='font-awesome'
+                        name='notifications'
+                        type='MaterialIcons'
                         color='black'
+                        size={15}
                         onPress={() => console.log('hello bell')} />
-                </View>
-                <View style={styles.userIconBtn}>
+
                     <Icon
                         raised
                         name='user'
                         type='font-awesome'
                         color='black'
+                        size={15}
                         onPress={() => console.log('hello user')} />
                 </View>
             </View>
@@ -39,16 +40,17 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     logo:{
-        flex:0.6,
+        flex:1,
         justifyContent:'flex-start',
-        marginTop:10,
-        marginRight:10
+        marginTop:20,
+        marginRight:10,
+        marginLeft:10
     },
-    bellIconBtn: {
-        flex: 0.2,
-    },
-    userIconBtn:{
-        flex: 0.2,
+    IconBtn: {
+        flex: 1,
+        marginTop:5,
+        flexDirection:'row',
+        justifyContent:'flex-end'
     },
     text: {
         textAlign: 'center'

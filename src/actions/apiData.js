@@ -17,11 +17,16 @@ export function postEvent(empLoginInfo) {
     console.log('data in actions--',empLoginInfo);
     return function (dispatch) {
         return postEventList(empLoginInfo).then(function (response) {
+          console.log('response', response)
             dispatch({
                 type: EVENT_LIST,
                 payload: response
             });
             return response;
+        }, function(err){
+          console.log(' error', err)
+        }).catch(function(err){
+          console.log('catch error', err)
         });
     };
 }

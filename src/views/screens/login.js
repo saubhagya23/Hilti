@@ -26,12 +26,14 @@ class Login extends Component {
             email: this.state.empId,
             password: this.state.empCode
         }
-        console.log('data being send--',empLoginInfo);
         const { postEvent } = this.props;
-        let APILOGINCALL = postEvent(empLoginInfo).then(eventLoginList => console.log('eventLoginList sucess', eventLoginList));
+        let APILOGINCALL = postEvent({payload:empLoginInfo}).then(eventLoginList => {if(eventLoginList.token){
+            this.props.props.navigation.navigate('HomeScreen',{});
+        }});
     }
 
     render() {
+        console.log('props in login---',this.props);
         return (
             <KeyboardAvoidingView
                 style={styles.container}
