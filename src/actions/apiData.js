@@ -14,6 +14,7 @@ export function getEvent() {
 }
 
 export function postEvent(empLoginInfo) {
+    console.log('data in actions--',empLoginInfo);
     return function (dispatch) {
         return postEventList(empLoginInfo).then(function (response) {
             dispatch({

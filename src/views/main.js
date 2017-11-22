@@ -8,7 +8,7 @@ import Login from './screens/login'
 
 class Home extends Component {
 
-    componentDidMount(){
+    componentWillMount(){
         const { getEvent } = this.props;
             let APICALL = getEvent().then(eventList => console.log('eventList sucess', eventList));
 
@@ -19,8 +19,8 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <HomeScreen/>
-                {/*<Login/>*/}
+                {/*<HomeScreen/>*/}
+                <Login/>
                 {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
                     <Text style={styles.buttonText}>Load Data</Text>
