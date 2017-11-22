@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight,TouchableOpacity } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 
 class HomeScreen extends Component {
     render(){
+        console.log("props are",this.props);
         return(
             <View style={styles.container}>
                 <View style={{flex:0.1}}>
@@ -14,7 +15,10 @@ class HomeScreen extends Component {
                     <VideoComp/>
                 </View>
                 <View style={{flex:0.6}}>
-
+                    <TouchableOpacity onPress={() =>
+                        this.props.props.navigation.navigate('TravelNavigation', {})}>
+                        <Text>Travel</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );

@@ -17,9 +17,10 @@ class Home extends Component {
 
 
     render() {
+        console.log("props are :::",this.props);
         return (
             <View style={styles.container}>
-                <HomeScreen/>
+                <HomeScreen props={this.props}/>
                 {/*<Login/>*/}
                 {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
