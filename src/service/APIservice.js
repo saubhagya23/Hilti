@@ -17,7 +17,7 @@ function requestAPI(url, options = {}) {
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
 
-    return fetch(url, reqBody);
+    return fetch(url, reqBody).then(res=> res.json());
 
   } catch (error) {
 

@@ -16,6 +16,7 @@ export function getEvent() {
 export function postEvent(empLoginInfo) {
     return function (dispatch) {
         return postEventList(empLoginInfo).then(function (response) {
+          console.log('response', response)
             dispatch({
                 type: EVENT_LIST,
                 payload: response
