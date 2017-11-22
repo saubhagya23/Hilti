@@ -27,7 +27,7 @@ class Login extends Component {
             password: this.state.empCode
         }
         const { postEvent } = this.props;
-        let APILOGINCALL = postEvent(empLoginInfo).then(eventLoginList => console.log('eventLoginList sucess', eventLoginList));
+        let APILOGINCALL = postEvent({payload:empLoginInfo}).then(eventLoginList => console.log('eventLoginList sucess', eventLoginList));
     }
 
     render() {
@@ -47,7 +47,7 @@ class Login extends Component {
                     <View style={{backgroundColor:'red', width:280, height:80, marginTop:20}}>
                         <Text style={{fontSize:15, paddingTop:20 , color:"white"}}>EMAIL ID</Text>
                         <TextInput
-                            style={{height: 40, borderWidth: 1 ,color:'white', placeholderTextColor:'white', borderColor:'red', width: 280}}
+                            style={{height: 40, borderWidth: 1 ,color:'white', borderColor:'red', width: 280}}
                             onChangeText={(empId) => this.setState({empId})}
                             value={this.state.empId}
                             onFocus={() => {this.setState({empId:''})}}
@@ -56,7 +56,7 @@ class Login extends Component {
                     <View style={{backgroundColor:'red', width:280, height:80, marginTop:10}}>
                         <Text style={{fontSize:15, paddingTop:20 , color:"white"}}>PASSWORD</Text>
                         <TextInput
-                            style={{height: 40, borderWidth: 1,color:'white' , placeholderTextColor:'white', borderColor:'red', width: 280}}
+                            style={{height: 40, borderWidth: 1,color:'white', borderColor:'red', width: 280}}
                             onChangeText={(empCode) => this.setState({empCode})}
                             value={this.state.empCode}
                             onFocus={() => {this.setState({empCode:''})}}

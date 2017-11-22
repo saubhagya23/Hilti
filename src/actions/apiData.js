@@ -21,6 +21,10 @@ export function postEvent(empLoginInfo) {
                 payload: response
             });
             return response;
+        }, function(err){
+          console.log(' error', err)
+        }).catch(function(err){
+          console.log('catch error', err)
         });
     };
 }
