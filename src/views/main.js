@@ -37,27 +37,17 @@ class Home extends Component {
         return (
             <View style={{flex:1}}>
                 {loader?
-                    <View>
-                        <ActivityIndicator color='red' size='large'/>
+                    <View style={{alignItems:'center',justifyContent:'center',flex:1,marginTop:70}}>
+                        <ActivityIndicator color='red' size='large' style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 80}}/>
                     </View>:
                     <View style={styles.container}>
                         {token?
                             <HomeScreen/>:
                             <Login props={this.props}/>
                         }
-                        {/*<HomeScreen/>*/}
-
-                        {/*<Text style={styles.text}>Redux Examples</Text>
-                    <TouchableHighlight style={styles.button}>
-                        <Text style={styles.buttonText}>Load Data</Text>
-                    </TouchableHighlight>*/}
                     </View>
-
-
                 }
-
-             </View>
-
+            </View>
         );
     }
 }

@@ -6,7 +6,7 @@ import HomeNavContainer from '../common/HomeNavContainer'
 
 class HomeScreen extends Component {
     render(){
-        console.log('token is -----',this.props.navigation.state.params.userToken);
+        //console.log('token is -----',this.props.navigation.state.params.userToken);
         return(
             <View style={styles.container}>
                 <View style={{flex:0.1}}>
