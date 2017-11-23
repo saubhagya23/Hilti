@@ -46,12 +46,12 @@ class Login extends Component {
                         source={require('../../assets/images/xhdpi.png')}
                     />
 
-                    <Text style={{fontSize:28, marginTop:40, color:'black'}}>Sign In</Text>
+                    <Text style={styles.signin}>Sign In</Text>
                     <View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:20}}>
                         {/*<Text style={{fontSize:15, paddingTop:20 , color:"white"}}>EMAIL ID</Text>*/}
                         <TextInput
                             autoCapitalize={'none'}
-                            style={{flex:1, height: 50, borderWidth: 1 ,color:'black', borderColor:'#efeeec', width: 280, padding:15}}
+                            style={styles.textInput}
                             onChangeText={(empId) => this.setState({empId})}
                             value={this.state.empId}
                             onFocus={() => {this.setState({empId:''})}}
@@ -60,7 +60,7 @@ class Login extends Component {
                     <View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:25}}>
                         {/*<Text style={{fontSize:15, paddingTop:20 , color:"white"}}>PASSWORD</Text>*/}
                         <TextInput
-                            style={{flex:1, height: 50, borderWidth: 1,color:'black', borderColor:'#efeeec', width: 280, padding:10}}
+                            style={styles.textInput}
                             onChangeText={(empCode) => this.setState({empCode})}
                             value={this.state.empCode}
                             onFocus={() => {this.setState({empCode:''})}}
@@ -97,7 +97,18 @@ const styles = StyleSheet.create({
         margin: 20
     },
     signin: {
-        fontSize: 60
+        fontSize:28,
+        marginTop:40,
+        color:'black'
+    },
+    textInput:{
+        flex:1,
+        height: 50,
+        borderWidth: 1
+        ,color:'black',
+        borderColor:'#efeeec',
+        width: 280,
+        padding:15
     },
     button:{
         width: 280,

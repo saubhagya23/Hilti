@@ -1,9 +1,10 @@
 import {getEventList, postEventList} from '../service/APIservice';
-import { EVENT_LIST } from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST } from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
     return getEventList().then(function (response) {
+        console.log('response--',response);
       dispatch({
         type: EVENT_LIST,
         payload: response
@@ -19,7 +20,7 @@ export function postEvent(empLoginInfo) {
         return postEventList(empLoginInfo).then(function (response) {
           console.log('response', response)
             dispatch({
-                type: EVENT_LIST,
+                type: EVENT_LOGIN_LIST,
                 payload: response
             });
             return response;
