@@ -7,13 +7,31 @@ export default class HomeNavContainer extends Component {
     }
 
     render(){
+        let conDirection = '',conHeight, conWidth = 0;
+        if(this.props.direction){
+            conDirection = this.props.direction;
+            conHeight = 100;
+            conWidth = 340;
+        }
+        else{
+            conDirection = 'column';
+            conHeight = 100;
+            conWidth = 100;
+        }
         console.log('props  in home nav con--',this.props.imgSrc);
-        let imgPath = require(this.props.imgSrc);
+        //let imgPath = require(this.props.imgSrc);
         return(
-            <View style={styles.container}>
+            <View style={{height:conHeight,
+                width:conWidth,
+                borderWidth:1,
+                borderColor:'black',
+                backgroundColor:'aqua',
+                marginTop:20,
+                flexDirection:conDirection
+            }}>
                 <Image
                     style={styles.img}
-                    source={imgPath}
+                    source={require("../../assets/images/mdpi.png")}
                     resizeMode='stretch'
                 />
                 <View style={styles.titleContainer}>

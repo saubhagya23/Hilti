@@ -21,6 +21,7 @@ class HomeScreen extends Component {
                     <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Agenda'/>
                     <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Stay Overview'/>
                     <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Attraction Corner'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' direction='row' titleText='Organisational Information'/>
                 </View>
             </View>
         );
