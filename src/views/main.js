@@ -3,14 +3,14 @@ import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getEvent } from '../actions/apiData';
-import HomeScreen from './screens/homeScreen';
+
 import Login from './screens/login'
 
 class Home extends Component {
 
     componentDidMount(){
         const { getEvent } = this.props;
-            let APICALL = getEvent().then(eventList => console.log('eventList sucess', eventList));
+        //let APICALL = getEvent().then(eventList => console.log('eventList sucess', eventList));
 
     }
 
@@ -19,8 +19,8 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <HomeScreen/>
-                {/*<Login/>*/}
+
+                <Login props={this.props}/>
                 {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
                     <Text style={styles.buttonText}>Load Data</Text>

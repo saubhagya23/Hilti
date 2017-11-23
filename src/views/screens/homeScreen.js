@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
+import HomeNavContainer from '../common/HomeNavContainer'
 
 class HomeScreen extends Component {
     render(){
@@ -14,7 +15,7 @@ class HomeScreen extends Component {
                     <VideoComp/>
                 </View>
                 <View style={{flex:0.6}}>
-
+                    <HomeNavContainer/>
                 </View>
             </View>
         );
