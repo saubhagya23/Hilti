@@ -15,7 +15,7 @@ class HomeScreen extends Component {
                     <VideoComp/>
                 </View>
                 <View style={{flex:0.6}}>
-                    <HomeNavContainer/>
+                    <HomeNavContainer src={require("../../assets/images/mdpi.png")} />
                 </View>
             </View>
         );

@@ -8,12 +8,15 @@ export default class HomeNavContainer extends Component {
 
     render(){
         console.log('props  in home nav con--',this.props);
+        let scr = this.props.src;
         return(
             <View style={styles.container}>
-                <View style={styles.imgContainer}>
+                <View style={{flex:1}}>
                     <Image
-                        style={styles.img}
-                        source={require('../../assets/images/mdpi.png')}
+                        height={100}
+                        width={100}
+                        style={{width:100, height:100}}
+                        source={scr}
                     />
                 </View>
                 <View style={styles.titleContainer}>
