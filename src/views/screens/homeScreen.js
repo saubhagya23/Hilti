@@ -14,8 +14,13 @@ class HomeScreen extends Component {
                 <View style={{flex:0.3}}>
                     <VideoComp/>
                 </View>
-                <View style={{flex:0.6}}>
-                    <HomeNavContainer/>
+                <View style={{flex:0.6,alignItems:'center',justifyContent:'space-around',flexDirection:'row',flexWrap:'wrap'}}>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Travel'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Venue'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Dress Code'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Agenda'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Stay Overview'/>
+                    <HomeNavContainer imgSrc='../../assets/images/mdpi.png' titleText='Attraction Corner'/>
                 </View>
             </View>
         );

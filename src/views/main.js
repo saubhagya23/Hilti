@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { getEvent } from '../actions/apiData';
 
 import Login from './screens/login'
+import HomeScreen from './screens/homeScreen'
 
 class Home extends Component {
 
@@ -19,8 +20,8 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-
-                <Login props={this.props}/>
+                <HomeScreen/>
+                {/*<Login props={this.props}/>*/}
                 {/*<Text style={styles.text}>Redux Examples</Text>
                 <TouchableHighlight style={styles.button}>
                     <Text style={styles.buttonText}>Load Data</Text>
