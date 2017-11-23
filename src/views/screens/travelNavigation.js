@@ -14,51 +14,48 @@ class TravelNavigation extends Component {
                 </View>
 
                 <View style={styles.navigation}>
-                    <View style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
-                        <TouchableOpacity>
-                            <Text style={styles.links}>MY ARRIVAL</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
+                        <Text style={styles.links}>MY ARRIVAL</Text>
                         <Icon
+                            style={styles.icons}
                             raised
                             name='navigate-next'
                             type='MaterialIcons'
                             color='red'
                             size={15}
-                            onPress={() => console.log('hello bell')}
+                            onPress={()=>this.props.navigation.navigate('Arrivals',{})}
                         />
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={styles.horizontalLine}/>
 
-                    <View style={styles.navigationOption}  onPress={()=>this.props.navigation.navigate('Departure',{})}>
-                        <TouchableOpacity>
-                            <Text style={styles.links}>MY DEPARTURE</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.navigationOption}  onPress={()=>this.props.navigation.navigate('Departure',{})}>
+                        <Text style={styles.links}>MY DEPARTURE</Text>
                         <Icon
+                            style={styles.icons}
                             raised
                             name='navigate-next'
                             type='MaterialIcons'
                             color='red'
                             size={15}
-                            onPress={() => console.log('hello bell')}
+                            onPress={()=>this.props.navigation.navigate('Departure',{})}
                         />
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={styles.horizontalLine}/>
 
-                    <View style={styles.navigationOption} >
-                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
-                            <Text style={styles.links}>TRAVEL OVERVIEW</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
+                        <Text style={styles.links}>TRAVEL OVERVIEW</Text>
                         <Icon
+                            style={styles.icons}
                             raised
                             name='navigate-next'
                             type='MaterialIcons'
                             color='red'
                             size={15}
-                            onPress={() => console.log('hello bell')}
+                            onPress={()=>this.props.navigation.navigate('TravelOverview',{})}
                         />
-                    </View>
+                    </TouchableOpacity>
 
                 </View>
             </View>
@@ -90,6 +87,9 @@ const styles = StyleSheet.create({
         fontSize:17,
         marginTop:20,
         marginLeft:12
+    },
+    icons:{
+        backgroundColor:'white'
     }
 });
 

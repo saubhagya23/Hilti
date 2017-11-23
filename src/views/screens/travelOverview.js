@@ -16,7 +16,7 @@ class TravelOverview extends Component {
                         style={styles.downloader}
                         source={require('../../assets/images/excelDownloader.png')}
                     />
-                    <Text style={styles.headerText}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
+                    <Text style={styles.headerText} onPress={() => console.log('start downloading file')}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
                     <Text style={styles.title}>TOUR OVERVIEW</Text>
                     <Text style={styles.paragraph}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</Text>
                 </View>
