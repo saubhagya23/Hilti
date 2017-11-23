@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import { StyleSheet, Text, View, Image ,TouchableOpacity} from 'react-native';
+import { FileSystem } from 'expo';
 import PageHeader from '../common/pageHeader'
+
 import BackTravel from './backTravel'
-import { getFile } from '../../actions/apiData';
 
 class TravelOverview extends Component {
 
     downloadFile = () => {
-        const { getFile } = this.props;
-        getFile().then(data=>console.log("data got in component is :",data))
-    };
+          FileSystem.downloadAsync(
+            'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
+            FileSystem.documentDirectory + 'Travel_Overview.xlsx'
+          )
+            .then(({ uri }) => {
+              console.log('Finished downloading to ', uri);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+
 
     render(){
-        console.log("props in travelOverview",this.props);
         return(
             <View style={styles.container}>
 
@@ -31,10 +37,9 @@ class TravelOverview extends Component {
                         style={styles.downloader}
                         source={require('../../assets/images/excel_icon.png')}
                     />
-                    <Text style={styles.headerText}
-                          onPress={this.downloadFile}>
-                        DOWNLOAD COMPLETE EXCEL SHEET
-                    </Text>
+                    <TouchableOpacity onPress={this.downloadFile}>
+                        <Text style={styles.headerText}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
+                    </TouchableOpacity>
                     <Text style={styles.title}>TOUR OVERVIEW</Text>
                     <Text style={styles.paragraph}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</Text>
                 </View>
@@ -80,16 +85,7 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapDispatchToProps(dispatch){
-    return {
-        dispatch,
-        ...bindActionCreators({
-                getFile,
-            },
-            dispatch
-        ),
-    };
-}
 
 
-export default connect(null, mapDispatchToProps)(TravelOverview)
+
+export default TravelOverview;

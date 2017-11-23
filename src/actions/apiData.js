@@ -25,15 +25,3 @@ export function postEvent(empLoginInfo) {
     };
 }
 
-export function getFile() {
-    return function (dispatch) {
-        return getExcelFile().then(function (response) {
-            console.log("response for getFileStream is :",response);
-            dispatch({
-                type: EVENT_LIST,
-                payload: response
-            });
-            return response;
-        });
-    };
-}
