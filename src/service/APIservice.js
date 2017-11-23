@@ -17,7 +17,7 @@ function requestAPI(url, options = {}) {
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
 
-    return fetch(url, reqBody);
+    return fetch(url, reqBody).then(()=>res.json())
 
   } catch (error) {
 
@@ -29,7 +29,7 @@ export function getEventList(option={}){
   let { url , method } = API.ENDPOINT.AUTH.LOGIN;
   let URL = `${API_BASE + url}`;
   option.method = method;
-  return requestAPI(URL, option).then(res => res.json());
+  return requestAPI(URL, option)
 };
 
 export function postEventList(option={}){
@@ -38,12 +38,6 @@ export function postEventList(option={}){
     option.method = method;
     option.payload = option;
     console.log('options--',option);
-    return requestAPI(URL, option).then(res => res.json());
+    return requestAPI(URL, option)
 };
 
-export function getExcelFile(option={}){
-    let { url , method } = API.ENDPOINT.DOWNLOAD.EXCEL;
-    let URL = `${API_BASE + url}`;
-    option.method = method;
-    return requestAPI(URL, option).then(res=>res)
-};

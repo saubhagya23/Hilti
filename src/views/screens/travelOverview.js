@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import { FileSystem } from 'expo';
 import PageHeader from '../common/pageHeader'
-import { getFile } from '../../actions/apiData';
+
 
 class TravelOverview extends Component {
 
     downloadFile = () => {
-        const { getFile } = this.props;
-        getFile().then(data=>console.log("data got in component is :",data))
-    }
+          FileSystem.downloadAsync(
+            'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
+            FileSystem.documentDirectory + 'Travel_Overview.xlsx'
+          )
+            .then(({ uri }) => {
+              console.log('Finished downloading to ', uri);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+
 
     render(){
         return(
@@ -77,16 +84,7 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapDispatchToProps(dispatch){
-    return {
-        dispatch,
-        ...bindActionCreators({
-                getFile,
-            },
-            dispatch
-        ),
-    };
-}
 
 
-export default connect(null, mapDispatchToProps)(TravelOverview)
+
+export default TravelOverview;
