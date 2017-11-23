@@ -17,7 +17,7 @@ class TravelNavigation extends Component {
                     <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
                         <Text style={styles.links}>MY ARRIVAL</Text>
                         <Icon
-                            style={styles.icons}
+                            style={{backgroundColor:'transparent'}}
                             raised
                             name='navigate-next'
                             type='MaterialIcons'
@@ -66,7 +66,8 @@ class TravelNavigation extends Component {
 const styles = StyleSheet.create({
     container: {
         marginTop: 22,
-        flex: 1
+        flex: 1,
+        backgroundColor:'white'
     },
     horizontalLine: {
         borderBottomColor: 'lightgray',
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     navigation:{
+        marginTop:20,
         flex:1,
         backgroundColor:'white'
     },
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
         marginLeft:12
     },
     icons:{
-        backgroundColor:'white'
+        borderRadius:0
     }
 });
 

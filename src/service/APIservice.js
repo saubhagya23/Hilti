@@ -40,3 +40,10 @@ export function postEventList(option={}){
     console.log('options--',option);
     return requestAPI(URL, option).then(res => res.json());
 };
+
+export function getExcelFile(option={}){
+    let { url , method } = API.ENDPOINT.DOWNLOAD.EXCEL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option).then(res=>res)
+};
