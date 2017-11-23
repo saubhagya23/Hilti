@@ -55,6 +55,7 @@ class Login extends Component {
                     <View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:20}}>
                         {/*<Text style={{fontSize:15, paddingTop:20 , color:"white"}}>EMAIL ID</Text>*/}
                         <TextInput
+                            autoCapitalize={'none'}
                             style={styles.textInput}
                             onChangeText={(empId) => this.setState({empId})}
                             value={this.state.empId}

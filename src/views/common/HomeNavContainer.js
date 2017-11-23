@@ -19,7 +19,7 @@ export default class HomeNavContainer extends Component {
             conWidth = 100;
         }
         console.log('props  in home nav con--',this.props.imgSrc);
-        //let imgPath = require(this.props.imgSrc);
+        let imgPath = this.props.imgSrc;
         return(
             <TouchableOpacity
                 style={{height:conHeight,
@@ -34,7 +34,7 @@ export default class HomeNavContainer extends Component {
             >
                 <Image
                     style={styles.img}
-                    source={require("../../assets/images/mdpi.png")}
+                    source={imgPath}
                     resizeMode='stretch'
                 />
                 <View style={styles.titleContainer}>
