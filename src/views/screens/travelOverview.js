@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import PageHeader from '../common/pageHeader'
+import BackTravel from './backTravel'
 import { getFile } from '../../actions/apiData';
 
 class TravelOverview extends Component {
@@ -11,14 +12,16 @@ class TravelOverview extends Component {
     downloadFile = () => {
         const { getFile } = this.props;
         getFile().then(data=>console.log("data got in component is :",data))
-    }
+    };
 
     render(){
+        console.log("props in travelOverview",this.props);
         return(
             <View style={styles.container}>
 
                 <View style={{flex:0.2}}>
                     <PageHeader/>
+                    <BackTravel props={this.props}/>
                 </View>
 
                 <View style={styles.horizontalLine}/>
