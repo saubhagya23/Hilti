@@ -4,6 +4,7 @@ import { Constants } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postEvent } from '../../actions/apiData';
+import { asyncPost } from '../../utils/asyncStore'
 
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
@@ -27,8 +28,12 @@ class Login extends Component {
             password: this.state.empCode
         }
         const { postEvent } = this.props;
-        let APILOGINCALL = postEvent({payload:empLoginInfo}).then(eventLoginList => {if(eventLoginList.token){
-            this.props.props.navigation.navigate('HomeScreen',{});
+        let APILOGINCALL = postEvent({payload:empLoginInfo}).then(eventLoginList => {
+            console.log('value1---',eventLoginList);
+            if(eventLoginList.token){
+                console.log('value2---',eventLoginList);
+                asyncPost('token', eventLoginList.token);
+                this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
         }});
     }
 
@@ -54,6 +59,7 @@ class Login extends Component {
                             onChangeText={(empId) => this.setState({empId})}
                             value={this.state.empId}
                             onFocus={() => {this.setState({empId:''})}}
+                            underlineColorAndroid='transparent'
                         />
                     </View>
                     <View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:25}}>
@@ -63,6 +69,7 @@ class Login extends Component {
                             onChangeText={(empCode) => this.setState({empCode})}
                             value={this.state.empCode}
                             onFocus={() => {this.setState({empCode:''})}}
+                            underlineColorAndroid='transparent'
                         />
                     </View>
                     <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
@@ -103,8 +110,8 @@ const styles = StyleSheet.create({
     textInput:{
         flex:1,
         height: 50,
-        borderWidth: 1
-        ,color:'black',
+        borderWidth: 1,
+        color:'black',
         borderColor:'#efeeec',
         width: 280,
         padding:15
