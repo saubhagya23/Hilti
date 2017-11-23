@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
 export default class HomeNavContainer extends Component {
     constructor(){
@@ -21,14 +21,17 @@ export default class HomeNavContainer extends Component {
         console.log('props  in home nav con--',this.props.imgSrc);
         //let imgPath = require(this.props.imgSrc);
         return(
-            <View style={{height:conHeight,
-                width:conWidth,
-                borderWidth:1,
-                borderColor:'black',
-                backgroundColor:'aqua',
-                marginTop:20,
-                flexDirection:conDirection
-            }}>
+            <TouchableOpacity
+                style={{height:conHeight,
+                        width:conWidth,
+                        borderWidth:1,
+                        borderColor:'black',
+                        backgroundColor:'aqua',
+                        marginTop:20,
+                        flexDirection:conDirection
+                        }}
+                onPress={() => console.log('travelling!!!')}
+            >
                 <Image
                     style={styles.img}
                     source={require("../../assets/images/mdpi.png")}
@@ -37,7 +40,7 @@ export default class HomeNavContainer extends Component {
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>{this.props.titleText}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 }
