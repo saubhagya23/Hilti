@@ -19,7 +19,7 @@ class HomeScreen extends Component {
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Travel' homeNavProps={this.props}/>
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Venue' homeNavProps={this.props}/>
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Dress Code' homeNavProps={this.props}/>
-                    <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Agenda' homeNavProps={this.props}/>
+                    <HomeNavContainer navigationPage='Agenda' imgSrc={require('../../assets/images/mdpi.png')} titleText='Agenda' homeNavProps={this.props}/>
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Stay Overview' homeNavProps={this.props}/>
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} titleText='Attraction Corner' homeNavProps={this.props}/>
                     <HomeNavContainer navigationPage='TravelNavigation' imgSrc={require('../../assets/images/mdpi.png')} direction='row' titleText='Organisational Information' homeNavProps={this.props}/>

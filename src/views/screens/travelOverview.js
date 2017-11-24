@@ -26,8 +26,12 @@ class TravelOverview extends Component {
             <View style={styles.container}>
 
                 <View style={{flex:0.2}}>
-                    <PageHeader/>
-                    <BackTravel props={this.props}/>
+                    <View style={{flex:0.6}}>
+                        <PageHeader/>
+                    </View>
+                    <View style={{flex:0.4}}>
+                        <BackTravel parentPage='Travel Overview' props={this.props}/>
+                    </View>
                 </View>
 
                 <View style={styles.horizontalLine}/>
