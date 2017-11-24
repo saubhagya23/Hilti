@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 
-class PageHeader extends Component {
+class PageHeaderCross extends Component {
     render(){
         return(
             <View style={styles.container}>
@@ -11,17 +11,12 @@ class PageHeader extends Component {
                         source={require('../../assets/images/mdpi.png')}
                     />
                 </View>
-                <View style={styles.IconBtn}>
+                <TouchableOpacity style={styles.IconBtn}>
                     <Icon
-                        name='bell'
+                        name='times'
                         size={20}
-                        onPress={() => console.log('hello bell')} />
-
-                    <Icon
-                        name='user-circle-o'
-                        size={20}
-                        onPress={() => console.log('hello user')} />
-                </View>
+                        onPress={()=>this.props.props.navigation.goBack()} />
+                </TouchableOpacity>
             </View>
         );
     }
@@ -41,11 +36,11 @@ const styles = StyleSheet.create({
         marginLeft:10
     },
     IconBtn: {
-        flex: 0.3,
+        flex: 1,
         marginTop:20,
-        marginLeft:5,
+        marginRight:10,
         flexDirection:'row',
-        justifyContent:'space-around'
+        justifyContent:'flex-end'
     },
     text: {
         textAlign: 'center'
@@ -66,4 +61,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PageHeader;
+export default PageHeaderCross;

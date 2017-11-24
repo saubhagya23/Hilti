@@ -6,7 +6,7 @@ import HomeNavContainer from '../common/HomeNavContainer'
 
 class HomeScreen extends Component {
     render(){
-        //console.log('token is -----',this.props.navigation.state.params.userToken);
+        console.log('token is -----',this.props);
         return(
             <View style={styles.container}>
                 <View style={{flex:0.1}}>
@@ -16,13 +16,13 @@ class HomeScreen extends Component {
                     <VideoComp/>
                 </View>
                 <View style={{flex:0.6,alignItems:'center',justifyContent:'space-around',flexDirection:'row',flexWrap:'wrap'}}>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Travel'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Venue'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Dress Code'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Agenda'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Stay Overview'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Attraction Corner'/>
-                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} direction='row' titleText='Organisational Information'/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Travel' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Venue' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Dress Code' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Agenda' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Stay Overview' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} titleText='Attraction Corner' homeNavProps={this.props.props}/>
+                    <HomeNavContainer imgSrc={require('../../assets/images/mdpi.png')} direction='row' titleText='Organisational Information' homeNavProps={this.props.props}/>
                 </View>
             </View>
         );

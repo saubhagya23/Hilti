@@ -42,7 +42,7 @@ class Home extends Component {
                     </View>:
                     <View style={styles.container}>
                         {token?
-                            <HomeScreen/>:
+                            <HomeScreen props={this.props}/>:
                             <Login props={this.props}/>
                         }
                     </View>

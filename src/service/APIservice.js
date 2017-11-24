@@ -29,12 +29,13 @@ export function getEventList(option={}){
   let { url , method } = API.ENDPOINT.AUTH.LOGIN;
   let URL = `${API_BASE + url}`;
   option.method = method;
-  return requestAPI(URL, option).then(res => res.json());
+  return requestAPI(URL, option)
 };
 
 export function postEventList(option={}){
     let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
     let URL = `${API_BASE + url}`;
     option.method = method;
+    console.log('options--',option);
     return requestAPI(URL, option);
 };

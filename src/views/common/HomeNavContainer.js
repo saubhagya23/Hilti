@@ -7,6 +7,7 @@ export default class HomeNavContainer extends Component {
     }
 
     render(){
+        console.log('props in home nav con----',this.props);
         let conDirection = '',conHeight, conWidth = 0;
         if(this.props.direction){
             conDirection = this.props.direction;
@@ -18,7 +19,6 @@ export default class HomeNavContainer extends Component {
             conHeight = 100;
             conWidth = 100;
         }
-        console.log('props  in home nav con--',this.props.imgSrc);
         let imgPath = this.props.imgSrc;
         return(
             <TouchableOpacity
@@ -30,7 +30,7 @@ export default class HomeNavContainer extends Component {
                         marginTop:20,
                         flexDirection:conDirection
                         }}
-                onPress={() => console.log('travelling!!!')}
+                onPress={() => this.props.homeNavProps.navigation.navigate('TravelNavigation',{})}
             >
                 <Image
                     style={styles.img}

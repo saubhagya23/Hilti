@@ -11,12 +11,12 @@ const routes = {
     HomeScreen:{
       screen: HomeScreen
     },
-    /*TravelNavigation:{
+    TravelNavigation:{
         screen: TravelNavigation
     },
     TravelOverview:{
         screen:TravelOverview,
-    }*/
+    }
 }
 
 
