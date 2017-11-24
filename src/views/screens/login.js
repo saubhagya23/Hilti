@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardA
 import { Constants } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { NavigationActions } from "react-navigation";
 import { postEvent } from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore'
 
@@ -28,12 +29,19 @@ class Login extends Component {
             password: this.state.empCode
         }
         const { postEvent } = this.props;
-        let APILOGINCALL = postEvent({payload:empLoginInfo}).then(eventLoginList => {
-            console.log('value1---',eventLoginList);
+        postEvent({payload:empLoginInfo}).then(eventLoginList => {
             if(eventLoginList.token){
-                console.log('value2---',eventLoginList);
                 asyncPost('token', eventLoginList.token);
-                this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
+                console.log('this', this.props)
+                //this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
+              const resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({ routeName: 'HomeScreen' })
+                ]
+              })
+              this.props.props.navigation.dispatch(resetAction);
+
         }});
     }
 
