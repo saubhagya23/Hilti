@@ -1,4 +1,4 @@
-import { StackNavigator} from "react-navigation";
+import { StackNavigator } from "react-navigation";
 import Main from "../views/main.js";
 import HomeScreen from "../views/screens/homeScreen";
 import TravelNavigation from "../views/screens/travelNavigation"

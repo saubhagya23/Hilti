@@ -10,3 +10,8 @@ export const asyncPost = (key,value) => {
     console.log('setting async');
     AsyncStorage.setItem(key, value);
 }
+
+export const asyncRemove = (key,value) => {
+  console.log('remove storage');
+  AsyncStorage.removeItem(key);
+}
