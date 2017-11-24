@@ -24,7 +24,7 @@ class Home extends Component {
         // console.log('props....####',this.props.eventLoginList);
         asyncGet('token').then((value) => {
             console.log('####',value);
-            if(value !== ''){
+            if(value){
                 const resetAction = NavigationActions.reset({
                     index: 0,
                     actions: [

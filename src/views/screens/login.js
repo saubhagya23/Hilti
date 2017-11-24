@@ -32,7 +32,6 @@ class Login extends Component {
         postEvent({payload:empLoginInfo}).then(eventLoginList => {
             if(eventLoginList.token){
                 asyncPost('token', eventLoginList.token);
-                console.log('this', this.props)
                 //this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
               const resetAction = NavigationActions.reset({
                 index: 0,
@@ -40,7 +39,7 @@ class Login extends Component {
                   NavigationActions.navigate({ routeName: 'HomeScreen' })
                 ]
               })
-              this.props.props.navigation.dispatch(resetAction);
+              this.props.navigation.dispatch(resetAction);
 
         }});
     }
