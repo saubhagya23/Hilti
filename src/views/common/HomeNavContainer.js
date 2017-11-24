@@ -20,6 +20,7 @@ export default class HomeNavContainer extends Component {
             conWidth = 100;
         }
         let imgPath = this.props.imgSrc;
+        let navigationPage = this.props.navigationPage;
         return(
             <TouchableOpacity
                 style={{height:conHeight,
@@ -30,7 +31,7 @@ export default class HomeNavContainer extends Component {
                         marginTop:20,
                         flexDirection:conDirection
                         }}
-                onPress={() => this.props.homeNavProps.navigation.navigate('TravelNavigation',{})}
+                onPress={() => this.props.homeNavProps.navigation.navigate(`${navigationPage}`,{})}
             >
                 <Image
                     style={styles.img}
