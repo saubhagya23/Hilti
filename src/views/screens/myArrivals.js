@@ -1,33 +1,22 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
-import { FileSystem } from 'expo';
-import PageHeader from '../common/pageHeader'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import PageHeader from '../common/pageHeader'
 import BackTravel from './backTravel'
 
-class TravelOverview extends Component {
-
-    downloadFile = () => {
-          FileSystem.downloadAsync(
-            'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
-            FileSystem.documentDirectory + 'Travel_Overview.xlsx'
-          )
-            .then(({ uri,status }) => {
-              console.log('Finished downloading to ', uri,status);
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        }
+class MyArrivals extends Component {
 
 
     render(){
+        console.log("welcome to my arrivals")
         return(
             <View style={styles.container}>
 
                 <View style={{flex:0.2}}>
                     <PageHeader/>
-                    <BackTravel props={this.props} text={"Travel Overview"}/>
+                    <BackTravel props={this.props} text={"My Arrival"}/>
                 </View>
 
                 <View style={styles.horizontalLine}/>
@@ -37,7 +26,7 @@ class TravelOverview extends Component {
                         style={styles.downloader}
                         source={require('../../assets/images/excel_icon.png')}
                     />
-                    <TouchableOpacity onPress={this.downloadFile}>
+                    <TouchableOpacity onPress={()=>console.log("download file")}>
                         <Text style={styles.headerText}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
                     </TouchableOpacity>
                     <Text style={styles.title}>TOUR OVERVIEW</Text>
@@ -61,7 +50,7 @@ const styles = StyleSheet.create({
 
     },
     headerText:{
-        color:'red',
+        color:'blue',
         marginTop:20,
         fontWeight:'bold'
     },
@@ -89,4 +78,4 @@ const styles = StyleSheet.create({
 
 
 
-export default TravelOverview;
+export default MyArrivals;

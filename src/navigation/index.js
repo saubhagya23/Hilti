@@ -3,6 +3,7 @@ import Main from "../views/main.js";
 import HomeScreen from "../views/screens/homeScreen";
 import TravelNavigation from "../views/screens/travelNavigation"
 import TravelOverview from '../views/screens/travelOverview'
+import MyArrivals from '../views/screens/myArrivals'
 
 const routes = {
     Main:{
@@ -16,6 +17,9 @@ const routes = {
     },
     TravelOverview:{
         screen:TravelOverview,
+    },
+    MyArrivals:{
+        screen:MyArrivals
     }
 }
 

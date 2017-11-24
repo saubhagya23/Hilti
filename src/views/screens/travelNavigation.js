@@ -21,7 +21,7 @@ class TravelNavigation extends Component {
                             name='chevron-right'
                             color='red'
                             size={15}
-                            onPress={()=>this.props.navigation.navigate('Arrivals',{})}
+                            onPress={()=>this.props.navigation.navigate('MyArrivals',{})}
                         />
                     </TouchableOpacity>
 

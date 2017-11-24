@@ -11,7 +11,7 @@ class BackTravel extends Component {
                     name="angle-left"
                     size={20}
                 />
-                <Text style={styles.text}>Back | Travel Overview</Text>
+                <Text style={styles.text}>Back | {this.props.text}</Text>
             </TouchableOpacity>
         );
     }
@@ -19,7 +19,7 @@ class BackTravel extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex:0.5,
         marginTop:10,
         flexDirection:'row',
         backgroundColor:'white'
