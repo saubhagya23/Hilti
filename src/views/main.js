@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { NavigationActions } from "react-navigation";
 import { getEvent } from '../actions/apiData';
 
 import Login from './screens/login'
@@ -12,19 +13,37 @@ class Home extends Component {
     constructor(){
         super();
 
-        this.state = {
+        /*this.state = {
 
             token:'',
             loader:true,
-        }
+        }*/
     }
 
     componentWillMount(){
         // console.log('props....####',this.props.eventLoginList);
         asyncGet('token').then((value) => {
             console.log('####',value);
-            this.setState({token: value, loader:false })})
-        const { getEvent } = this.props;
+            if(value !== ''){
+                const resetAction = NavigationActions.reset({
+                    index: 0,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'HomeScreen' })
+                    ]
+                })
+                this.props.navigation.dispatch(resetAction);
+            }
+            else{
+                const resetAction = NavigationActions.reset({
+                    index: 0,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'Login' })
+                    ]
+                })
+                this.props.navigation.dispatch(resetAction);
+            }
+        })
+        //const { getEvent } = this.props;
         //let APICALL = getEvent().then(eventList => console.log('eventList sucess', eventList));
 
     }
@@ -32,21 +51,11 @@ class Home extends Component {
 
     render() {
         //console.log('props....',this.props, this.props.eventLoginList);
-        const { loader, token} = this.state;
-        console.log('states-----',this.state);
         return (
             <View style={{flex:1}}>
-                {loader?
-                    <View style={{alignItems:'center',justifyContent:'center',flex:1,marginTop:70}}>
-                        <ActivityIndicator color='red' size='large' style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 80}}/>
-                    </View>:
-                    <View style={styles.container}>
-                        {token?
-                            <HomeScreen props={this.props}/>:
-                            <Login props={this.props}/>
-                        }
-                    </View>
-                }
+                <View style={{alignItems:'center',justifyContent:'center',flex:1,marginTop:70}}>
+                    <ActivityIndicator color='red' size='large' style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 80}}/>
+                </View>
             </View>
         );
     }
