@@ -1,4 +1,4 @@
-import {getEventList, postEventList,getExcelFile} from '../service/APIservice';
+import {getEventList, postEventList} from '../service/APIservice';
 import { EVENT_LIST } from '../constants'
 
 export function getEvent() {

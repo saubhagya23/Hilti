@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image,TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 
 class PageHeaderCross extends Component {
@@ -11,12 +11,12 @@ class PageHeaderCross extends Component {
                         source={require('../../assets/images/mdpi.png')}
                     />
                 </View>
-                <View style={styles.IconBtn}>
+                <TouchableOpacity style={styles.IconBtn}>
                     <Icon
                         name='times'
                         size={20}
                         onPress={()=>this.props.props.navigation.goBack()} />
-                </View>
+                </TouchableOpacity>
             </View>
         );
     }
