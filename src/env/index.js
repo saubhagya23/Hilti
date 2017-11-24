@@ -5,9 +5,10 @@ let API = {
           LOGIN: {url: '/api/user-details/me', method: 'GET'},
           AUTH_LOGIN: {url: '/auth/local', method: 'POST'}
       },
-      DOWNLOAD: {
-          EXCEL: {url: `/api/documents/download/Travel Overview.xlsx`, method: 'GET'} //download for excel file TravelOverview.xlsx
-      }
+      ARRIVAL: {
+          DETAIL: {url: `/api/arrivals/detail/88210`, method: 'GET'} //get arrival details for code:88210
+      },
+
   }
 };
 export default Object.assign({}, API);

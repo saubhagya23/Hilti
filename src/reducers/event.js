@@ -1,7 +1,9 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST } from '../constants'
+import {ARRIVAL_LIST} from "../constants/index";
 const initialState = {
     eventList: [],
-    eventListLoginInfo:{}
+    eventListLoginInfo:{},
+    arrivalList:[]
 }
 
 
@@ -14,6 +16,10 @@ export function event (state = initialState, action) {
         case EVENT_LOGIN_LIST: {
             let eventLoginList = action.payload;
             return Object.assign({}, state, eventLoginList);
+        }
+        case ARRIVAL_LIST:{
+            let arrivalList = action.payload;
+            return Object.assign({}, state, {arrivalList});
         }
         default:
             return state;

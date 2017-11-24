@@ -17,7 +17,7 @@ function requestAPI(url, options = {}) {
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
 
-    return fetch(url, reqBody).then(()=>res.json())
+    return fetch(url, reqBody).then((res)=>res.json())
 
   } catch (error) {
 
@@ -41,3 +41,9 @@ export function postEventList(option={}){
     return requestAPI(URL, option)
 };
 
+export function getArrivalList(option={}) {
+    let { url , method } = API.ENDPOINT.ARRIVAL.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}

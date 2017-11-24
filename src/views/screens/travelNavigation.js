@@ -14,7 +14,7 @@ class TravelNavigation extends Component {
                 </View>
 
                 <View style={styles.navigation}>
-                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
+                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('MyArrivals',{})}>
                         <Text style={styles.links}>MY ARRIVAL</Text>
                         <Icon
                             style={styles.icons}
