@@ -1,22 +1,60 @@
 import React, {Component} from 'react';
-import { StyleSheet, View } from 'react-native';
-import Expo from 'expo'
+import { StyleSheet, View, Image, Text } from 'react-native';
+import Expo, { Font } from 'expo'
 
 class HomeContent extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            fontLoaded:false
+        }
+    }
+
+    async componentWillMount(){
+        await Font.loadAsync({
+            'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
+            'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
+        });
+        this.setState({
+            fontLoaded:true
+        })
+    }
+
     render(){
+        /*var {height,width} = Dimensions.get('window');
+        console.log("$$$$$$$$",height,width);*/
         return(
             <View style={styles.container}>
-                <Expo.Video
-                    source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-                    posterSource={require('../../assets/images/xxhdpi.png')}
-                    rate={1.0}
-                    volume={1.0}
-                    muted={false}
-                    resizeMode="cover"
-                    shouldPlay
-                    isLooping
-                    style={{flex:1}}
-                />
+                {this.state.fontLoaded?
+                    <View style={{flex:1}}>
+                        <Image
+                            style={{flex:1,position:'relative'}}
+                            source={require('../../assets/images/homeVideoImg/homeVideoImgmdpi.png')}
+                        />
+                        <Image
+                            style={{position:'absolute',width:229,height:179.5}}
+                            source={require('../../assets/images/shape_imh/shape_imh.png')}
+                        />
+                        <Image
+                            style={{position:'absolute',marginTop:22.5,marginLeft:19}}
+                            source={require('../../assets/images/logo/logo_mdpi.png')}
+                        />
+                        <Text style={{position:'absolute',width:141.5, height:26.5, marginTop:57.5,marginLeft:19,color:'#dd2127',fontSize:11,fontFamily:'hilti-roman'}}>
+                            WELCOME MESSAGE BY GM
+                        </Text>
+                        <Text style={{position:'absolute',width:131.5, height:19, marginTop:95,marginLeft:18.5,color:'#7c294e',fontSize:7,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
+                            We welcome you to be a part of our annual meet.
+                        </Text>
+                        <Text style={{position:'absolute',width:48.5, height:5.5, marginTop:126.5,marginLeft:19,color:'#000000',fontSize:5, fontFamily:'hilti-bold'}}>
+                            Watch Video
+                        </Text>
+                        <Image
+                            style={{position:'absolute',marginTop:124.5,marginLeft:72,width:10,height:10}}
+                            source={require('../../assets/images/playIcon/play_icon_hdpi.png')}
+                        />
+                    </View>:null
+                }
             </View>
         );
     }

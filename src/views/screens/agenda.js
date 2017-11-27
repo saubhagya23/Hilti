@@ -57,7 +57,7 @@ class Agenda extends Component{
                     <Text style={{color:'grey',fontSize:10}}>(Please refer your respective detailed agenda)</Text>
                     <View style={{flexDirection:'row'}}>
                         <Icon
-                            style={{color:'grey'}}
+                            style={{color:'grey',marginTop:2}}
                             name='clock'
                             size={12}
                             onPress={()=>this.props.props.navigation.goBack()} />
@@ -65,12 +65,12 @@ class Agenda extends Component{
                         <Text style={{color:'grey',fontSize:10,marginLeft:3}}>- 9 Hr</Text>
                     </View>
                     <Text style={{color:'black',fontSize:12}}>PARTICIPANTS :</Text>
-                    <Text style={{color:'grey',fontSize:12}}>Sales</Text>
-                    <Text style={{color:'grey',fontSize:12}}>Sale</Text>
-                    <Text style={{color:'grey',fontSize:12}}>Sales</Text>
-                    <Text style={{color:'grey',fontSize:12}}>Key</Text>
-                    <Text style={{color:'grey',fontSize:12}}>E & I</Text>
-                    <Text style={{color:'grey',fontSize:12}}>Marketing</Text>
+                    <Text style={{color:'grey',fontSize:12}}>Sales(Mainstream-N/C)</Text>
+                    <Text style={{color:'grey',fontSize:12}}>Sales(MainStream-W/S)</Text>
+                    <Text style={{color:'grey',fontSize:12}}>Sales-E&I</Text>
+                    <Text style={{color:'grey',fontSize:12}}>Key Accounts & Engineering</Text>
+                    <Text style={{color:'grey',fontSize:12}}>E&I(Technical)</Text>
+                    <Text style={{color:'grey',fontSize:12}}>Marketing-Trade, PLS & Strategic Marketing Team</Text>
                 </View>
                 <View style={{flex:0.2,backgroundColor:'white',marginTop:5,marginRight:5,marginLeft:5,paddingLeft:10}}>
                     <Text style={{color:'black',fontWeight:'bold',fontSize:15}}>Functional Meetings</Text>
@@ -78,7 +78,7 @@ class Agenda extends Component{
                     <Text style={{color:'black',fontSize:12}}>Finance, HR, Marketing-GCC, Operations, Professional Service, Supply Chain</Text>
                     <View style={{flexDirection:'row'}}>
                         <Icon
-                            style={{color:'grey'}}
+                            style={{color:'grey',marginTop:2}}
                             name='clock'
                             size={12}
                             onPress={()=>this.props.props.navigation.goBack()} />
@@ -96,7 +96,7 @@ class Agenda extends Component{
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'aqua'
+        backgroundColor:'#f5f3ee'
     },
     agendaMainImg: {
         flex:1,

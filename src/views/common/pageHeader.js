@@ -8,7 +8,7 @@ class PageHeader extends Component {
             <View style={styles.container}>
                 <View style={styles.logo}>
                     <Image
-                        source={require('../../assets/images/mdpi.png')}
+                        source={require('../../assets/images/logo/logo_mdpi.png')}
                     />
                 </View>
                 <View style={styles.IconBtn}>
@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     logo:{
         flex:1,
         justifyContent:'flex-start',
-        marginTop:20,
+        marginTop:10,
         marginRight:10,
         marginLeft:10
     },
     IconBtn: {
         flex: 0.3,
-        marginTop:20,
+        marginTop:10,
         marginLeft:5,
         flexDirection:'row',
         justifyContent:'space-around'
