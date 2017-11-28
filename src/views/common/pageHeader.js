@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start',
         marginTop:10,
         marginRight:10,
-        marginLeft:10
+        marginLeft:19.5
     },
     IconBtn: {
         flex: 0.3,

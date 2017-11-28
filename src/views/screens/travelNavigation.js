@@ -1,57 +1,104 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import PageHeaderCross from '../common/pageHeaderCross'
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import { Font } from 'expo'
+//import Icon  from 'react-native-vector-icons/FontAwesome'
 
 class TravelNavigation extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            fontLoaded:false
+        }
+    }
+
+    async componentWillMount(){
+        await Font.loadAsync({
+            'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
+            'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
+        });
+        this.setState({
+            fontLoaded:true
+        })
+    }
+
     render(){
         console.log("inside Travel overview :",this.props);
         return(
             <View style={styles.container}>
+                {this.state.fontLoaded?
+                    <View style={{flex:1}}>
+                        <View style={{width:360,height:50}}>
+                            <PageHeaderCross props={this.props}/>
+                        </View>
 
-                <View style={{flex:0.1}}>
-                    <PageHeaderCross props={this.props}/>
-                </View>
+                        <View style={styles.navigation}>
+                            <TouchableOpacity
+                                style={{
+                                    flexDirection: 'row',
+                                    height: 64.5,
+                                    width:360
+                                }}
+                                onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
+                                <Text style={{color:'#dd2127',
+                                    fontSize:16,
+                                    height:17.5,
+                                    marginTop:21.5,
+                                    marginLeft:19,
+                                    fontFamily:'hilti-roman'}}>MY ARRIVAL</Text>
 
-                <View style={styles.navigation}>
-                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
-                        <Text style={styles.links}>MY ARRIVAL</Text>
-                        <Icon
-                            style={styles.icons}
-                            name='chevron-right'
-                            color='red'
-                            size={15}
-                            onPress={()=>this.props.navigation.navigate('Arrivals',{})}
-                        />
-                    </TouchableOpacity>
+                                <Image
+                                    style={{marginTop:28,marginLeft:5.5}}
+                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
+                                />
+                            </TouchableOpacity>
 
-                    <View style={styles.horizontalLine}/>
+                            <View style={{width:335,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
 
-                    <TouchableOpacity style={styles.navigationOption}  onPress={()=>this.props.navigation.navigate('Departure',{})}>
-                        <Text style={styles.links}>MY DEPARTURE</Text>
-                        <Icon
-                            style={styles.icons}
-                            name='chevron-right'
-                            color='red'
-                            size={15}
-                            onPress={()=>this.props.navigation.navigate('Departure',{})}
-                        />
-                    </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    height:63.5,
+                                    width:360,
+                                    flexDirection:'row'
+                                }}
+                                onPress={()=>this.props.navigation.navigate('Departure',{})}>
+                                <Text style={{color:'#dd2127',
+                                    fontSize:16,
+                                    height:17.5,
+                                    marginTop:21.5,
+                                    marginLeft:19,
+                                    fontFamily:'hilti-roman'}}>MY DEPARTURE</Text>
+                                <Image
+                                    style={{marginTop:27,marginLeft:4.5,width:8,height:12}}
+                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
+                                />
+                            </TouchableOpacity>
 
-                    <View style={styles.horizontalLine}/>
+                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
 
-                    <TouchableOpacity style={styles.navigationOption} onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
-                        <Text style={styles.links}>TRAVEL OVERVIEW</Text>
-                        <Icon
-                            style={styles.icons}
-                            name='chevron-right'
-                            color='red'
-                            size={15}
-                            onPress={()=>this.props.navigation.navigate('TravelOverview',{})}
-                        />
-                    </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    height:64.5,
+                                    width:360,
+                                    flexDirection:'row'
+                                }}
+                                onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
+                                <Text style={{color:'#dd2127',
+                                    fontSize:16,
+                                    height:17.5,
+                                    marginTop:19.5,
+                                    marginLeft:18.5,
+                                    fontFamily:'hilti-roman'}}>TRAVEL OVERVIEW</Text>
+                                <Image
+                                    style={{marginTop:25.5,marginLeft:5.5}}
+                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
+                                />
+                            </TouchableOpacity>
 
-                </View>
+                        </View>
+                    </View>:null
+                }
             </View>
         );
     }
@@ -71,18 +118,19 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     navigation:{
-        marginTop:20,
-        flex:1,
-        backgroundColor:'white'
+        height:199,
+        width:360,
+        backgroundColor:'#dfd6c9'
     },
     navigationOption:{
-        flexDirection:'row'
+        flexDirection:'row',
+        height:64.5
     },
     links:{
         color:'red',
         fontSize:17,
-        marginTop:20,
-        marginLeft:12,
+        marginTop:27.5,
+        marginLeft:19,
         fontWeight:'bold'
     },
     icons:{

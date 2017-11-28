@@ -51,7 +51,7 @@ class Login extends Component {
                   NavigationActions.navigate({ routeName: 'HomeScreen' })
                 ]
               })
-              this.props.props.navigation.dispatch(resetAction);
+              this.props.navigation.dispatch(resetAction);
 
         }});
     }
