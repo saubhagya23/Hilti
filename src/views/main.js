@@ -7,7 +7,7 @@ import { getEvent } from '../actions/apiData';
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
-import { asyncGet } from '../utils/asyncStore'
+import { asyncGet, asyncRemove } from '../utils/asyncStore'
 
 class Home extends Component {
     constructor(){
@@ -22,9 +22,10 @@ class Home extends Component {
 
     componentWillMount(){
         // console.log('props....####',this.props.eventLoginList);
+        //asyncRemove('token');
         asyncGet('token').then((value) => {
             console.log('####',value);
-            if(value !== ''){
+            if(value !== null){
                 const resetAction = NavigationActions.reset({
                     index: 0,
                     actions: [

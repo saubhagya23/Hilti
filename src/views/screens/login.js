@@ -68,40 +68,41 @@ class Login extends Component {
                         <View style={styles.container1}>
 
                             <Image
-                                style={{height:179.5, width:360, position:'relative'}}
+                                style={{height:179.5, width:360, marginTop:20, position:'relative'}}
                                 source={require('../../assets/images/loginMainImg/loginMainImg_mdpi.png')}
                             />
 
                             <Image
-                                style={{position:'absolute',width:219,height:179.5}}
+                                style={{position:'absolute',width:219,height:179.5, marginTop:20}}
                                 source={require('../../assets/images/shape_imh/shape_imh.png')}
                             />
 
                             <Image
-                                style={{position:'absolute',marginTop:18.5,marginLeft:18.5}}
-                                source={require('../../assets/images/logo/logo_mdpi.png')}
+                                style={{position:'absolute',marginTop:38.5,marginLeft:18.5}}
+                                source={require('../../assets/images/logo/logo_hdpi.png')}
                             />
 
-                            <Text style={{marginTop:67, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
+                            <Text style={{position:'absolute', marginTop:86.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
 
-                            <View style={{marginTop:51.5,height:9.5, flexDirection:'row'}}>
+                            <View style={{marginTop:45.5,height:15.5, flexDirection:'row'}}>
                                 <Image
-                                    style={{marginLeft:32.5,width:14, height:9.5}}
+                                    style={{marginLeft:32.5,width:14, height:9.5, marginTop:4}}
                                     source={require('../../assets/images/email_icon/email_icon_mdpi.png')}
                                 />
 
-                                <Text style={{marginTop:52.5,marginLeft:10.5,width:50.5,height:8.5,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Email ID</Text>
+                                <Text style={{marginLeft:10.5, width:50.5, height:15, color:'#000000', fontFamily:'hilti-bold', fontSize:12}}>Email ID</Text>
                             </View>
 
                             <TextInput
                                 autoCapitalize={'none'}
                                 style={{height: 43,
                                     borderWidth: 1,
-                                    color:'#f5f3ee',
+                                    color:'#b0b0ab',
                                     borderColor:'#dddddd',
+                                    backgroundColor:'#f5f3ee',
                                     width: 294,
                                     paddingLeft:15.5,
-                                    paddingTop:16,
+                                    paddingTop:0,
                                     marginLeft:32.5,
                                     marginTop:15,
                                     fontFamily:'hilti-roman',
@@ -119,7 +120,7 @@ class Login extends Component {
                                     source={require('../../assets/images/emp_icon/emp_icon_mdpi.png')}
                                 />
 
-                                <Text style={{marginTop:3,marginLeft:13.5,width:50.5,height:8.5,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Employee Code</Text>
+                                <Text style={{marginLeft:13.5,width:96.5,height:15,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Employee Code</Text>
                             </View>
 
 
@@ -127,11 +128,12 @@ class Login extends Component {
                                 autoCapitalize={'none'}
                                 style={{height: 43,
                                     borderWidth: 1,
-                                    color:'#f5f3ee',
+                                    color:'#b0b0ab',
                                     borderColor:'#dddddd',
+                                    backgroundColor:'#f5f3ee',
                                     width: 294,
                                     paddingLeft:15.5,
-                                    paddingTop:16,
+                                    paddingTop:0,
                                     marginLeft:32.5,
                                     marginTop:15,
                                     fontFamily:'hilti-roman',
@@ -142,54 +144,9 @@ class Login extends Component {
                                 onFocus={() => {this.setState({empCode:''})}}
                                 underlineColorAndroid='transparent'
                             />
-
-
-                            {/*<View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:20}}>
-                                <Text style={{fontSize:15, paddingTop:20 , color:"white"}}>EMAIL ID</Text>
-                                <TextInput
-                                    autoCapitalize={'none'}
-                                    style={{height: 43,
-                                        borderWidth: 1,
-                                        color:'#f5f3ee',
-                                        borderColor:'#dddddd',
-                                        width: 294,
-                                        paddingLeft:15.5,
-                                        paddingTop:16,
-                                        marginLeft:32.5,
-                                        marginTop:15,
-                                        fontFamily:'hilti-roman',
-                                        fontSize:12
-                                    }}
-                                    onChangeText={(empId) => this.setState({empId})}
-                                    value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:''})}}
-                                    underlineColorAndroid='transparent'
-                                />
-                            </View>
-                            <View style={{backgroundColor:'#f5f5ee', width:280, height:50, marginTop:25}}>
-                                <Text style={{fontSize:15, paddingTop:20 , color:"white"}}>PASSWORD</Text>
-                                <TextInput
-                                    style={{height: 43,
-                                        borderWidth: 1,
-                                        color:'#f5f3ee',
-                                        borderColor:'#dddddd',
-                                        width: 294,
-                                        paddingLeft:14.5,
-                                        paddingTop:19,
-                                        marginLeft:32.5,
-                                        marginTop:13.5,
-                                        fontFamily:'hilti-roman',
-                                        fontSize:12
-                                    }}
-                                    onChangeText={(empCode) => this.setState({empCode})}
-                                    value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:''})}}
-                                    underlineColorAndroid='transparent'
-                                />
-                            </View>*/}
                             <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
                                 <View>
-                                    <Text style={{color:'red',fontSize:15, fontWeight:'bold',  padding:10}}>SIGN IN</Text>
+                                    <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', marginLeft:116.5, marginTop:8.5, width:62, height:17 }}>SIGN IN</Text>
                                 </View>
                             </TouchableHighlight>
                         </View>
@@ -203,16 +160,16 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        /*alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
+        paddingTop: Constants.statusBarHeight,*/
         backgroundColor: 'white',
     },
     container1: {
         flex: 1,
-        alignItems: 'center',
+        /*alignItems: 'center',*/
         /*justifyContent: 'center',*/
-        paddingTop: Constants.statusBarHeight,
+        /*paddingTop: Constants.statusBarHeight,*/
         backgroundColor: 'white',
     },
     title: {
@@ -235,14 +192,13 @@ const styles = StyleSheet.create({
         marginTop:15
     },
     button:{
-        width: 280,
-        height:50,
-        alignItems:'center',
-        paddingTop:5,
+        width: 293,
+        height:41,
         backgroundColor:'white',
-        borderColor:'red',
+        borderColor:'#dd2127',
         borderWidth:1,
-        marginTop:50
+        marginTop:36,
+        marginLeft:33
     }
     /*paragraph: {
       margin: 24,
