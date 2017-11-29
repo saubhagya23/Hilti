@@ -6,6 +6,7 @@ import TravelNavigation from "../views/screens/travelNavigation"
 import AgendaNavigation from "../views/screens/agendaNavigation"
 import TravelOverview from '../views/screens/travelOverview'
 import AgendaDay1 from "../views/screens/agendaDay1"
+import MyArrivals from "../views/screens/MyArrivals"
 
 const routes = {
     Main:{
@@ -20,12 +21,16 @@ const routes = {
     TravelNavigation:{
         screen: TravelNavigation
     },
-    AgendaNavigation:{
-        screen: AgendaNavigation
-    },
     TravelOverview:{
         screen:TravelOverview,
     },
+    MyArrivals:{
+        screen:MyArrivals,
+    },
+    AgendaNavigation:{
+        screen: AgendaNavigation
+    },
+
     AgendaDay1:{
         screen: AgendaDay1
     }

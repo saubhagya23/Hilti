@@ -40,7 +40,7 @@ class TravelNavigation extends Component {
                                     height: 64.5,
                                     width:360
                                 }}
-                                onPress={()=>this.props.navigation.navigate('Arrivals',{})}>
+                                onPress={()=>this.props.navigation.navigate('MyArrivals',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
                                     height:17.5,
