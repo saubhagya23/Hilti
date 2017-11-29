@@ -65,9 +65,9 @@ class AgendaDay1 extends Component{
                                     Participants : MO India Team (Functional Meetings)
                                 </Text>
 
-                                <View style={{backgroundColor:'#dd2127',height:63,width:63.5,position:'absolute',zIndex:1,marginTop:153,marginLeft:8.5}}>
-                                    <Text style={{marginLeft:9,width:43,height:41,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>28</Text>
-                                    <Text style={{width:33,height:16,marginLeft:14.5,marginTop:3.5,marginBottom:10,fontFamily:'hilti-roman',fontSize:15,color:'#ffffff'}}>JAN</Text>
+                                <View style={{backgroundColor:'#dd2127',height:70,width:63.5,position:'absolute',zIndex:1,marginTop:153,marginLeft:8.5,padding:5,alignItems:'center'}}>
+                                    <Text style={{flex:2,textAlign:'center',width:43,lineHeight:35,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>28</Text>
+                                    <Text style={{flex:1,textAlign:'center',width:33,marginTop:3.5,fontFamily:'hilti-roman',fontSize:15,color:'#ffffff'}}>JAN</Text>
                                 </View>
 
                                 <View style={{height:74,width:360,marginTop:168.5,backgroundColor:'#ffffff',position:'absolute'}}>
@@ -98,7 +98,7 @@ class AgendaDay1 extends Component{
                                     <Text style={{marginLeft:11,marginTop:16.5,height:12.5,fontSize:10,fontFamily:'hilti-bold',color:'#000000'}}>
                                         Trade Application Demo Session
                                     </Text>
-                                    <Text style={{marginLeft:12,marginTop:3.5,height:9,fontSize:7,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                    <Text style={{marginLeft:12,marginTop:3.5,height:11,fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                         (Please refer your respective detailed agenda)
                                     </Text>
 
@@ -107,34 +107,34 @@ class AgendaDay1 extends Component{
                                             style={{marginLeft:13,marginTop:5,width:7.5,height:7.5,opacity:0.6}}
                                             source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
                                         />
-                                        <Text style={{marginLeft:4.5,marginTop:4.5,height:7.5,fontSize:6.8,fontFamily:'hilti-roman',color:'#000000'}}>
+                                        <Text style={{marginLeft:4.5,marginTop:2.5,height:10,fontSize:8,fontFamily:'hilti-roman',color:'#000000'}}>
                                             9:00 - 18:00,
                                         </Text>
-                                        <Text style={{marginLeft:3.5,marginTop:4.5,height:7.5,fontSize:6.8,fontFamily:'hilti-roman',color:'#888888'}}>
+                                        <Text style={{marginLeft:3.5,marginTop:2.5,height:10,fontSize:8,fontFamily:'hilti-roman',color:'#888888'}}>
                                             9 Hr
                                         </Text>
                                     </View>
 
-                                    <Text style={{marginLeft:12,marginTop:10.5,height:8.5,fontSize:7,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
+                                    <Text style={{marginLeft:12,marginTop:8.5,height:11.5,fontSize:9,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
                                         Participants :
                                     </Text>
-                                    <View style={{width:185.5,height:82.5,marginLeft:12,marginTop:7}}>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                    <View style={{width:215.5,height:80.5,marginLeft:12,marginTop:5}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             Sales (Mainstream – N/C)
                                         </Text>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             Sales (Mainstream – W/S)
                                         </Text>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             Sales – E&I
                                         </Text>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             Key Accounts & Engineering
                                         </Text>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             E&I (Technical),
                                         </Text>
-                                        <Text style={{fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                        <Text style={{fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                             Marketing – Trade, PLS & Strategic Marketing Team
                                         </Text>
                                     </View>
@@ -144,11 +144,11 @@ class AgendaDay1 extends Component{
                                     <Text style={{marginLeft:11.5,marginTop:16.5,height:13,fontSize:10,fontFamily:'hilti-bold',color:'#000000'}}>
                                         Functional Meetings
                                     </Text>
-                                    <Text style={{marginLeft:12,marginTop:3.5,height:9,fontSize:7,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                    <Text style={{marginLeft:12,marginTop:3.5,height:11,fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
                                         (Please refer your respective detailed agenda)
                                     </Text>
 
-                                    <Text style={{marginLeft:12,marginTop:7,width:232,height:20.5,fontSize:8,fontFamily:'hilti-roman',lineHeight:12,color:'#000000',opacity:0.8}}>
+                                    <Text style={{marginLeft:12,marginTop:7,width:262,height:21.5,fontSize:9,fontFamily:'hilti-roman',lineHeight:12,color:'#000000',opacity:0.8,}}>
                                         Finance, HR, Marketing-GCC, Operations, Professional Service, Supply Chain
                                     </Text>
 
@@ -157,19 +157,19 @@ class AgendaDay1 extends Component{
                                             style={{marginLeft:13,marginTop:9,width:7.5,height:7.5,opacity:0.6}}
                                             source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
                                         />
-                                        <Text style={{marginLeft:5.5,marginTop:8.5,height:7.5,fontSize:6.8,fontFamily:'hilti-roman',color:'#000000'}}>
+                                        <Text style={{marginLeft:5.5,marginTop:6.5,height:10,fontSize:8,fontFamily:'hilti-roman',color:'#000000'}}>
                                             9:00 - 18:00,
                                         </Text>
-                                        <Text style={{marginLeft:3.5,marginTop:8.5,height:7.5,fontSize:6.8,fontFamily:'hilti-roman',color:'#888888'}}>
+                                        <Text style={{marginLeft:3.5,marginTop:6.5,height:10,fontSize:8,fontFamily:'hilti-roman',color:'#888888'}}>
                                             9 Hr
                                         </Text>
                                     </View>
 
-                                    <Text style={{marginLeft:12,marginTop:11.5,height:8.5,fontSize:7,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
+                                    <Text style={{marginLeft:12,marginTop:9.5,height:11.5,fontSize:9,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
                                         Participants :
                                     </Text>
 
-                                    <Text style={{marginLeft:11.5,marginTop:3,fontSize:8,fontFamily:'hilti-roman',color:'#000000',opacity:0.6,lineHeight:15}}>
+                                    <Text style={{marginLeft:11.5,marginTop:3,fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.6,lineHeight:15}}>
                                         All respective team members.
                                     </Text>
                                 </View>
@@ -184,6 +184,7 @@ class AgendaDay1 extends Component{
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        marginTop:10,
         backgroundColor:'#f5f3ee'
     },
     agendaMainImg: {
