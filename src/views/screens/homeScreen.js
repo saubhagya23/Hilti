@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
@@ -74,7 +74,7 @@ class HomeScreen extends Component {
                     <HomeNavContainer
                         conHeight={136.5}
                         conWidth={111}
-                        navigationPage='TravelNavigation'
+                        navigationPage='AgendaNavigation'
                         imgSrc={require('../../assets/images/agenda/agenda_mdpi.png')}
                         imgHeight={102.5}
                         imgWidth={111}
