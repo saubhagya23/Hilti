@@ -29,7 +29,7 @@ class VenueNavigation extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <View style={{width:360,height:50}}>
+                        <View style={{height:50}}>
                             <PageHeaderCross props={this.props}/>
                         </View>
 
@@ -38,7 +38,7 @@ class VenueNavigation extends Component {
                                 style={{
                                     flexDirection: 'row',
                                     height: 64.5,
-                                    width:360
+
                                 }}
                                 onPress={()=>this.props.navigation.navigate('VenueRoadMap',{})}>
                                 <Text style={{color:'#dd2127',
@@ -59,7 +59,7 @@ class VenueNavigation extends Component {
                             <TouchableOpacity
                                 style={{
                                     height:63.5,
-                                    width:360,
+
                                     flexDirection:'row'
                                 }}
                                 onPress={()=>this.props.navigation.navigate('Venue',{})}>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     navigation:{
         height:134,
-        width:360,
+
         backgroundColor:'#dfd6c9'
     },
     navigationOption:{

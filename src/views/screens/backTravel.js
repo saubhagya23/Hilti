@@ -11,7 +11,7 @@ class BackTravel extends Component {
                     name="angle-left"
                     size={20}
                 />
-                <Text style={styles.text}>Back | {this.props.parentPage}</Text>
+                <Text style={styles.text}>Back {this.props.parentPage? ('/' + this.props.parentPage): null}</Text>
             </TouchableOpacity>
         );
     }
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     icons:{
-        marginLeft:15
+        marginLeft:15,
+        marginTop: -2,
     },
     text:{
         marginLeft:10

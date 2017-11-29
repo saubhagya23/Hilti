@@ -29,7 +29,7 @@ class TravelNavigation extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <View style={{width:360,height:50}}>
+                        <View style={{height:50}}>
                             <PageHeaderCross props={this.props}/>
                         </View>
 
@@ -38,7 +38,7 @@ class TravelNavigation extends Component {
                                 style={{
                                     flexDirection: 'row',
                                     height: 64.5,
-                                    width:360
+
                                 }}
                                 onPress={()=>this.props.navigation.navigate('MyArrivals',{})}>
                                 <Text style={{color:'#dd2127',
@@ -54,12 +54,14 @@ class TravelNavigation extends Component {
                                 />
                             </TouchableOpacity>
 
-                            <View style={{width:335,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
+                            <View style={{height:0.5}}>
+                                <View style={{height:0.5,marginLeft:12,marginRight:12,backgroundColor:'#000000',opacity:0.2}}></View>
+                            </View>
 
                             <TouchableOpacity
                                 style={{
                                     height:63.5,
-                                    width:360,
+
                                     flexDirection:'row'
                                 }}
                                 onPress={()=>this.props.navigation.navigate('MyDeparture',{})}>
@@ -75,12 +77,13 @@ class TravelNavigation extends Component {
                                 />
                             </TouchableOpacity>
 
-                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
+                            <View style={{height:0.5}}>
+                                <View style={{height:0.5,marginLeft:12,marginRight:12,backgroundColor:'#000000',opacity:0.2}}></View>
+                            </View>
 
                             <TouchableOpacity
                                 style={{
                                     height:64.5,
-                                    width:360,
                                     flexDirection:'row'
                                 }}
                                 onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
@@ -119,7 +122,6 @@ const styles = StyleSheet.create({
     },
     navigation:{
         height:199,
-        width:360,
         backgroundColor:'#dfd6c9'
     },
     navigationOption:{

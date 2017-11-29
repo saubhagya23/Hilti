@@ -68,7 +68,7 @@ class Login extends Component {
                         <View style={styles.container1}>
 
                             <Image
-                                style={{height:179.5, width:360, marginTop:20, position:'relative'}}
+                                style={{height:179.5, marginTop:20, position:'relative'}}
                                 source={require('../../assets/images/loginMainImg/loginMainImg_mdpi.png')}
                             />
 

@@ -5,7 +5,7 @@ import HomeScreen from "../views/screens/homeScreen";
 import TravelNavigation from "../views/screens/travelNavigation"
 import AgendaNavigation from "../views/screens/agendaNavigation"
 import TravelOverview from '../views/screens/travelOverview'
-import AgendaDay1 from "../views/screens/agendaDay1"
+import AgendaDay1 from "../views/screens/agendaDay"
 import MyArrivals from "../views/screens/myArrivals"
 import MyDeparture from '../views/screens/myDeparture'
 import VenueNavigation from '../views/screens/venueNavigation'

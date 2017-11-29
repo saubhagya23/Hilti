@@ -3,13 +3,10 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { Font } from 'expo'
 
 export default class HomeNavContainer extends Component {
-    constructor(){
-        super();
-
-        this.state = {
-            fontLoaded:false
-        }
+    state = {
+      fontLoaded:false
     }
+
 
     async componentWillMount(){
         await Font.loadAsync({
@@ -22,87 +19,42 @@ export default class HomeNavContainer extends Component {
     }
 
     render(){
-        console.log('props in home nav con----',this.props);
-        let conDirection = '',conHeight, conWidth = 0;
-        if(this.props.direction){
-            conDirection = this.props.direction;
-            conHeight = this.props.conHeight;
-            conWidth = this.props.conWidth;
-            conMarLeft = this.props.conMarLeft||0;
-
-            imgHeight=this.props.imgHeight;
-            imgWidth=this.props.imgWidth;
-            imgMarLeft=this.props.imgMarLeft||0;
-            imgMarTop=this.props.imgMarTop||0;
-
-            titleConHeight=this.props.titleConHeight;
-            titleConWidth=this.props.titleConWidth;
-            titleConMarLeft=this.props.titleConMarLeft||0;
-
-            titleHeight=this.props.titleHeight;
-            titleWidth=this.props.titleWidth;
-            titleMarLeft=this.props.titleMarLeft;
-            titleMarTop=this.props.titleMarTop;
-        }
-        else{
-            conDirection = 'column';
-            conHeight = this.props.conHeight;
-            conWidth = this.props.conWidth;
-            conMarLeft = this.props.conMarLeft||0;
-
-            imgHeight=this.props.imgHeight;
-            imgWidth=this.props.imgWidth;
-            imgMarLeft=this.props.imgMarLeft||0;
-            imgMarTop=this.props.imgMarTop||0;
-
-            titleConHeight=this.props.titleConHeight;
-            titleConWidth=this.props.titleConWidth;
-            titleConMarLeft=this.props.titleConMarLeft||0;
-
-            titleHeight=this.props.titleHeight;
-            titleWidth=this.props.titleWidth;
-            titleMarLeft=this.props.titleMarLeft;
-            titleMarTop=this.props.titleMarTop;
-        }
-        let imgPath = this.props.imgSrc;
-        let navigationPage = this.props.navigationPage;
+        const { imgSrc, navigationPage, titleText} = this.props;
         return(
             <View style={{flex:1}}>
                 {this.state.fontLoaded?
                     <TouchableOpacity
-                        style={{height:conHeight,
-                            width:conWidth,
-                            marginLeft:conMarLeft,
+                        style={{flex:1,
                             backgroundColor:'white',
-                            flexDirection:conDirection
+                            marginLeft:7,
+                            marginRight:7,
+                            marginBottom:15,
                         }}
                         onPress={() => this.props.homeNavProps.navigation.navigate(`${navigationPage}`,{})}
                     >
                         <Image
-                            style={{width:imgWidth,
-                                height:imgHeight,
-                                marginLeft:imgMarLeft,
-                                marginTop:imgMarTop,
-                                backgroundColor:'white',
-                                alignSelf:'center'}}
-                            source={imgPath}
+                            style={{
+                              backgroundColor:'white',
+                              width:null,
+                              height:null,
+                              flex:1,
+                                }}
+                            source={imgSrc}
                             resizeMode='stretch'
                         />
-                        <View style={{width:titleConWidth,
-                            height:titleConHeight,
-                            marginLeft:titleConMarLeft
+                        <View style={{
+                            height:35,
+                            justifyContent:'center'
                             }}>
                             <Text
-                                style={{height:titleHeight,
-                                    width:titleWidth,
-                                    marginTop:titleMarTop,
-                                    marginLeft:titleMarLeft,
+                                style={{
                                     color:'#dd2127',
                                     fontFamily:'hilti-roman',
                                     fontSize:10,
-                                    letterSpacing:0.5
+                                    letterSpacing:0.5,
+                                    textAlign:'center'
                                 }}>
-                                {this.props.titleText}</Text>
+                                {titleText}</Text>
                         </View>
                     </TouchableOpacity>:null
                 }

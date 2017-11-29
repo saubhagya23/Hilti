@@ -29,7 +29,7 @@ class AgendaNavigation extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <View style={{width:360,height:50}}>
+                        <View style={{height:50}}>
                             <PageHeaderCross props={this.props}/>
                         </View>
 
@@ -38,7 +38,7 @@ class AgendaNavigation extends Component {
                                 style={{
                                     flexDirection: 'row',
                                     height: 64.5,
-                                    width:360
+
                                 }}
                                 onPress={()=>this.props.navigation.navigate('AgendaDay1',{})}>
                                 <Text style={{color:'#dd2127',
@@ -59,7 +59,7 @@ class AgendaNavigation extends Component {
                             <TouchableOpacity
                                 style={{
                                     height:63.5,
-                                    width:360,
+
                                     flexDirection:'row'
                                 }}
                                 onPress={()=>this.props.navigation.navigate('AgendaDay2',{})}>
@@ -80,7 +80,7 @@ class AgendaNavigation extends Component {
                             <TouchableOpacity
                                 style={{
                                     height:64.5,
-                                    width:360,
+
                                     flexDirection:'row'
                                 }}
                                 onPress={()=>this.props.navigation.navigate('AgendaDay3',{})}>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     },
     navigation:{
         height:199,
-        width:360,
+
         backgroundColor:'#dfd6c9'
     },
     navigationOption:{

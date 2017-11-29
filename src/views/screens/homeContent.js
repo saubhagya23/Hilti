@@ -3,12 +3,9 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import Expo, { Font } from 'expo'
 
 class HomeContent extends Component {
-    constructor(){
-        super();
 
-        this.state = {
-            fontLoaded:false
-        }
+    state = {
+        fontLoaded:false
     }
 
     async componentWillMount(){
@@ -22,14 +19,13 @@ class HomeContent extends Component {
     }
 
     render(){
-        /*var {height,width} = Dimensions.get('window');
-        console.log("$$$$$$$$",height,width);*/
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <Image
-                            style={{flex:1,position:'relative'}}
+                            style={{flex:1, width: null, height: null}}
+                            resizeMode={'cover'}
                             source={require('../../assets/images/homeVideoImg/homeVideoImgmdpi.png')}
                         />
                         <Image
