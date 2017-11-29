@@ -39,3 +39,10 @@ export function postEventList(option={}){
     console.log('options--',option);
     return requestAPI(URL, option);
 };
+
+export function getArrivalList(option={}) {
+    let { url , method } = API.ENDPOINT.ARRIVAL.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}

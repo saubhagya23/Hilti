@@ -4,7 +4,7 @@ import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
 //import Icon  from 'react-native-vector-icons/FontAwesome'
 
-class TravelNavigation extends Component {
+class VenueNavigation extends Component {
     constructor(){
         super();
 
@@ -40,16 +40,16 @@ class TravelNavigation extends Component {
                                     height: 64.5,
                                     width:360
                                 }}
-                                onPress={()=>this.props.navigation.navigate('MyArrivals',{})}>
+                                onPress={()=>this.props.navigation.navigate('VenueRoadMap',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
-                                    height:17.5,
-                                    marginTop:21.5,
+                                    height:20.5,
+                                    marginTop:20.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>MY ARRIVAL</Text>
+                                    fontFamily:'hilti-roman'}}>Venue Road Map</Text>
 
                                 <Image
-                                    style={{marginTop:28,marginLeft:5.5}}
+                                    style={{marginTop:28,marginLeft:4.5}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
                                 />
                             </TouchableOpacity>
@@ -62,36 +62,15 @@ class TravelNavigation extends Component {
                                     width:360,
                                     flexDirection:'row'
                                 }}
-                                onPress={()=>this.props.navigation.navigate('MyDeparture',{})}>
+                                onPress={()=>this.props.navigation.navigate('Venue',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
-                                    height:17.5,
+                                    height:20.5,
                                     marginTop:21.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>MY DEPARTURE</Text>
+                                    fontFamily:'hilti-roman'}}>Navigation To Hotel</Text>
                                 <Image
                                     style={{marginTop:27,marginLeft:4.5,width:8,height:12}}
-                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
-                            </TouchableOpacity>
-
-                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
-
-                            <TouchableOpacity
-                                style={{
-                                    height:64.5,
-                                    width:360,
-                                    flexDirection:'row'
-                                }}
-                                onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
-                                <Text style={{color:'#dd2127',
-                                    fontSize:16,
-                                    height:17.5,
-                                    marginTop:19.5,
-                                    marginLeft:18.5,
-                                    fontFamily:'hilti-roman'}}>TRAVEL OVERVIEW</Text>
-                                <Image
-                                    style={{marginTop:25.5,marginLeft:5.5}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
                                 />
                             </TouchableOpacity>
@@ -118,7 +97,7 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     navigation:{
-        height:199,
+        height:134,
         width:360,
         backgroundColor:'#dfd6c9'
     },
@@ -139,4 +118,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TravelNavigation;
+export default VenueNavigation;

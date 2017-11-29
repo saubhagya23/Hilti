@@ -26,7 +26,7 @@ class PageHeaderNotif extends Component {
         return(
             <View style={{height:80}}>
                 {this.state.fontLoaded?
-                    <View style={{flex:1}}>
+                    <View style={{flex:1,shadowColor:'#000000',shadowOffset:{width:0,height:5},shadowRadius:3,shadowOpacity:5}}>
                         <View style={styles.container}>
                             <Image
                                 style={{marginTop:20,marginLeft:19.5}}

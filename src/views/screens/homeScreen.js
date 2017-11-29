@@ -38,7 +38,7 @@ class HomeScreen extends Component {
                         conHeight={137.5}
                         conWidth={111}
                         conMarLeft={5}
-                        navigationPage='TravelNavigation'
+                        navigationPage='VenueNavigation'
                         imgSrc={require('../../assets/images/venue/venue_mdpi.png')}
                         imgHeight={103.5}
                         imgWidth={111}

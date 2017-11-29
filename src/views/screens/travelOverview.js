@@ -8,6 +8,7 @@ import BackTravel from './backTravel'
 class TravelOverview extends Component {
 
     downloadFile = () => {
+        console.log('*************************',FileSystem.documentDirectory);
           FileSystem.downloadAsync(
             'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
             FileSystem.documentDirectory + 'Travel_Overview.xlsx'
