@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Image, Linking } from 'react-native';
-import Icon  from 'react-native-vector-icons/EvilIcons'
+//import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
 import { Font } from 'expo'
+import Icon  from 'react-native-vector-icons/MaterialIcons'
 
 class Venue extends Component {
     constructor(){
@@ -77,11 +78,12 @@ class Venue extends Component {
 
                         <TouchableHighlight style={{marginLeft:87,marginTop:33.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.findViaGMap()}}>
                             <View style={{flexDirection:'row'}}>
-                                <Image
-                                    style={{width:9.5,height:13}}
-                                    source={require('../../assets/images/map_icon/map_icon_hdpi.png')}
-                                />
-                                <Text style={{marginLeft:9.5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                <Icon
+                                    style={{color:'#dd2127'}}
+                                    name='location-on'
+                                    size={15}
+                                    onPress={() => {/*start video*/}} />
+                                <Text style={{marginLeft:7.5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                     FIND ON GOOGLE MAP
                                 </Text>
                             </View>

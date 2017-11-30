@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
-//import Icon  from 'react-native-vector-icons/FontAwesome'
+import Icon  from 'react-native-vector-icons/Entypo'
 
 class AgendaNavigation extends Component {
     constructor(){
@@ -46,12 +46,17 @@ class AgendaNavigation extends Component {
                                     height:20.5,
                                     marginTop:20.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>Day 1</Text>
+                                    fontFamily:'hilti-roman'}}>Pre Kick-Off</Text>
 
-                                <Image
+                                {/*<Image
                                     style={{marginTop:28,marginLeft:4.5}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
+                                />*/}
+                                <Icon
+                                    style={{color:'#7c294e',marginTop:22,marginLeft:1.5}}
+                                    name='chevron-right'
+                                    size={20}
+                                    onPress={() => {}} />
                             </TouchableOpacity>
 
                             <View style={{width:335,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
@@ -62,17 +67,48 @@ class AgendaNavigation extends Component {
 
                                     flexDirection:'row'
                                 }}
-                                onPress={()=>this.props.navigation.navigate('AgendaDay2',{})}>
+                                onPress={()=>this.props.navigation.navigate('AgendaDay1',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
                                     height:20.5,
                                     marginTop:21.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>Day 2</Text>
-                                <Image
+                                    fontFamily:'hilti-roman'}}>Day 1</Text>
+                                {/*<Image
                                     style={{marginTop:27,marginLeft:4.5,width:8,height:12}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
+                                />*/}
+                                <Icon
+                                    style={{color:'#7c294e',marginTop:23,marginLeft:1.5}}
+                                    name='chevron-right'
+                                    size={20}
+                                    onPress={() => {}} />
+                            </TouchableOpacity>
+
+                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
+
+                            <TouchableOpacity
+                                style={{
+                                    height:64.5,
+
+                                    flexDirection:'row'
+                                }}
+                                onPress={()=>this.props.navigation.navigate('AgendaDay2',{})}>
+                                <Text style={{color:'#dd2127',
+                                    fontSize:16,
+                                    height:20.5,
+                                    marginTop:19.5,
+                                    marginLeft:18.5,
+                                    fontFamily:'hilti-roman'}}>Day 2</Text>
+                                {/*<Image
+                                    style={{marginTop:25.5,marginLeft:4.5}}
+                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
+                                />*/}
+                                <Icon
+                                    style={{color:'#7c294e',marginTop:21,marginLeft:1.5}}
+                                    name='chevron-right'
+                                    size={20}
+                                    onPress={() => {}} />
                             </TouchableOpacity>
 
                             <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
@@ -90,10 +126,15 @@ class AgendaNavigation extends Component {
                                     marginTop:19.5,
                                     marginLeft:18.5,
                                     fontFamily:'hilti-roman'}}>Day 3</Text>
-                                <Image
+                                {/*<Image
                                     style={{marginTop:25.5,marginLeft:4.5}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
+                                />*/}
+                                <Icon
+                                    style={{color:'#7c294e',marginTop:21,marginLeft:1.5}}
+                                    name='chevron-right'
+                                    size={20}
+                                    onPress={() => {}} />
                             </TouchableOpacity>
 
                         </View>
@@ -118,7 +159,7 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     navigation:{
-        height:199,
+        height:264,
 
         backgroundColor:'#dfd6c9'
     },
