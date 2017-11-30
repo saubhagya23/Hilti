@@ -73,7 +73,7 @@ class HomeScreen extends Component {
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
-                            titleText='ORGANISATIONAL INFORMATION'
+                            titleText='ORG INFO'
                             homeNavProps={this.props}/>
 
                         {/*post comment nav container*/}
