@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import Expo, { Font } from 'expo'
+import { Font } from 'expo'
+import Icon  from 'react-native-vector-icons/FontAwesome'
 
 class HomeContent extends Component {
 
@@ -26,11 +27,7 @@ class HomeContent extends Component {
                         <Image
                             style={{flex:1, width: null, height: null}}
                             resizeMode={'cover'}
-                            source={require('../../assets/images/homeVideoImg/homeVideoImgmdpi.png')}
-                        />
-                        <Image
-                            style={{position:'absolute',width:229,height:179.5}}
-                            source={require('../../assets/images/shape_imh/shape_imh.png')}
+                            source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
                         />
                         <Image
                             style={{position:'absolute',marginTop:22.5,marginLeft:19}}
@@ -45,10 +42,18 @@ class HomeContent extends Component {
                         <Text style={{position:'absolute',width:48.5, height:9, marginTop:126.5,marginLeft:19,color:'#000000',fontSize:8, fontFamily:'hilti-bold'}}>
                             Watch Video
                         </Text>
-                        <Image
+                        {/*<Image
                             style={{position:'absolute',marginTop:128.5,marginLeft:72,width:10,height:10}}
                             source={require('../../assets/images/playIcon/play_icon.png')}
-                        />
+                        />*/}
+
+                        <View style={{position:'absolute',marginTop:128.5,marginLeft:72}}>
+                            <Icon
+                                style={{color:'#dd2127'}}
+                                name='play-circle-o'
+                                size={10}
+                                onPress={() => {/*start video*/}} />
+                        </View>
                     </View>:null
                 }
             </View>
