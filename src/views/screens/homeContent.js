@@ -29,17 +29,17 @@ class HomeContent extends Component {
                             resizeMode={'cover'}
                             source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
                         />
-                        <Image
+                        {/*<Image
                             style={{position:'absolute',marginTop:22.5,marginLeft:19}}
                             source={require('../../assets/images/logo/logo_mdpi.png')}
-                        />
-                        <Text style={{position:'absolute',width:141.5, height:31.5, marginTop:57.5,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
+                        />*/}
+                        <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
                             WELCOME MESSAGE BY GM
                         </Text>
-                        <Text style={{position:'absolute',width:131.5, height:24, marginTop:95,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
+                        <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
                             We welcome you to be a part of our annual meet.
                         </Text>
-                        <Text style={{position:'absolute',width:48.5, height:9, marginTop:126.5,marginLeft:19,color:'#000000',fontSize:8, fontFamily:'hilti-bold'}}>
+                        <Text style={{position:'absolute', marginTop:111.5,marginLeft:19,color:'#000000',fontSize:9, fontFamily:'hilti-bold'}}>
                             Watch Video
                         </Text>
                         {/*<Image
@@ -47,7 +47,7 @@ class HomeContent extends Component {
                             source={require('../../assets/images/playIcon/play_icon.png')}
                         />*/}
 
-                        <View style={{position:'absolute',marginTop:128.5,marginLeft:72}}>
+                        <View style={{position:'absolute',marginTop:113.5,marginLeft:75}}>
                             <Icon
                                 style={{color:'#dd2127'}}
                                 name='play-circle-o'

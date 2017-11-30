@@ -47,19 +47,21 @@ class PageHeaderNotif extends Component {
                                     onPress={()=>this.props.props.navigation.goBack()} />
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity
-                            style={{height:26.5,
-                                flexDirection:'row',
-                                backgroundColor:'white'}}
-                            onPress={()=>this.props.props.navigation.goBack()}>
-                            <Icon
-                                style={{marginLeft:19.5}}
-                                name="angle-left"
-                                size={20}
-                            />
-                            <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back | </Text>
+                        <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>
+                            <TouchableOpacity
+                                style={{height:26.5,
+                                    flexDirection:'row',
+                                    backgroundColor:'white'}}
+                                onPress={()=>this.props.props.navigation.goBack()}>
+                                <Icon
+                                    style={{marginLeft:19.5}}
+                                    name="angle-left"
+                                    size={20}
+                                />
+                                <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back | </Text>
+                            </TouchableOpacity>
                             <Text style={{color:'#dd2127',fontFamily:'hilti-roman'}}>{this.props.parentPage}</Text>
-                        </TouchableOpacity>
+                        </View>
                     </View>:null
                 }
 

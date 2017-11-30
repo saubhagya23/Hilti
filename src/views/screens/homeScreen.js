@@ -73,21 +73,21 @@ class HomeScreen extends Component {
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
-                            titleText='ORG INFO'
+                            titleText='ORG. INFORMATION'
                             homeNavProps={this.props}/>
 
                         {/*post comment nav container*/}
                         <HomeNavContainer
                             navigationPage='VenueNavigation'
-                            imgSrc={require('../../assets/images/venue/venue_mdpi.png')}
-                            titleText='POST COMMENTS'
+                            imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
+                            titleText='NEED ASSISTANCE'
                             homeNavProps={this.props}/>
 
                         {/*assistance nav container*/}
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
-                            imgSrc={require('../../assets/images/dress_code/dress_code_mdpi.png')}
-                            titleText='ASSISTANCE'
+                            imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
+                            titleText='POST YOUR COMMENTS'
                             homeNavProps={this.props}/>
                     </View>
                 </ScrollView>
