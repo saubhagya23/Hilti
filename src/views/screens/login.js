@@ -19,8 +19,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            empId: 'abc@hilti.com',
-            empCode: 'Employee Code',
+            empId: 'xyz.abc@hilti.com',
+            empCode: 'employee code',
             fontLoaded:false
         };
     }
