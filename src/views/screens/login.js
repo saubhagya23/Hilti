@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
 import { postEvent } from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
+import Icon  from 'react-native-vector-icons/FontAwesome'
 
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
@@ -19,7 +20,7 @@ class Login extends Component {
         super(props);
         this.state = {
             empId: 'abc@hilti.com',
-            empCode: 'Hilti2018',
+            empCode: 'Employee Code',
             fontLoaded:false
         };
     }
@@ -66,18 +67,13 @@ class Login extends Component {
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <View style={styles.container1}>
-                            <View style={{height:190}}>
+                            <View style={{height:215.5}}>
                             <Image
                                 style={{marginTop:20, position:'relative', width:null, height:null, flex:1}}
                                 resizeMode={'cover'}
-                                source={require('../../assets/images/loginMainImg/loginMainImg_mdpi.png')}
+                                source={require('../../assets/images/loginMainImg/loginMainImg_hdpi.png')}
                             />
                             </View>
-
-                            <Image
-                                style={{position:'absolute',width:219,height:179.5, marginTop:20, top:-8}}
-                                source={require('../../assets/images/shape_imh/shape_imh.png')}
-                            />
 
                             <Image
                                 style={{position:'absolute',marginTop:38.5,marginLeft:18.5}}
@@ -87,19 +83,20 @@ class Login extends Component {
                             <Text style={{position:'absolute', marginTop:86.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
                             <View style={{marginLeft:30, marginRight:30}}>
                                 <View style={{marginTop:45.5,height:15.5, flexDirection:'row'}}>
-                                    <Image
-                                        style={{width:14, height:9.5, marginTop:4}}
-                                        source={require('../../assets/images/email_icon/email_icon_mdpi.png')}
-                                    />
+                                    <Icon
+                                        name='envelope'
+                                        size={15}
+                                        onPress={() => {}} />
 
-                                    <Text style={{marginLeft:10.5, width:50.5, height:15, color:'#000000', fontFamily:'hilti-bold', fontSize:12}}>Email ID</Text>
+                                    <Text style={{marginLeft:10.5, height:15, color:'#000000', fontFamily:'hilti-bold', fontSize:12}}>Email ID</Text>
                                 </View>
 
                                 <TextInput
                                     autoCapitalize={'none'}
                                     style={{height: 43,
                                         borderWidth: 1,
-                                        color:'#b0b0ab',
+                                        color:'#000000',
+                                        opacity:0.6,
                                         borderColor:'#dddddd',
                                         backgroundColor:'#f5f3ee',
                                         paddingLeft:15.5,
@@ -115,12 +112,12 @@ class Login extends Component {
                                 />
 
                                 <View style={{marginTop:28,height:15.5, flexDirection:'row'}}>
-                                    <Image
-                                        style={{width:11, height:15.5}}
-                                        source={require('../../assets/images/emp_icon/emp_icon_mdpi.png')}
-                                    />
+                                    <Icon
+                                        name='user'
+                                        size={20}
+                                        onPress={() => {}} />
 
-                                    <Text style={{marginLeft:13.5,width:96.5,height:15,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Employee Code</Text>
+                                    <Text style={{marginLeft:13.5, height:15,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Password</Text>
                                 </View>
 
 
@@ -128,7 +125,8 @@ class Login extends Component {
                                     autoCapitalize={'none'}
                                     style={{height: 43,
                                         borderWidth: 1,
-                                        color:'#b0b0ab',
+                                        color:'#000000',
+                                        opacity:0.6,
                                         borderColor:'#dddddd',
                                         backgroundColor:'#f5f3ee',
                                         paddingLeft:15.5,
