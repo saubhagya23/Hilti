@@ -22,7 +22,7 @@ class Home extends Component {
 
     componentWillMount(){
         // console.log('props....####',this.props.eventLoginList);
-        //asyncRemove('token');
+        asyncRemove('token');
         asyncGet('token').then((value) => {
             console.log('####',value);
             if(value !== null){

@@ -93,7 +93,7 @@ class MyArrivals extends Component {
                         <Text style={styles.text}>Ticket download</Text>
                     </View>
                     <View style={styles.detailParent}>
-                        <View style={styles.detail}>
+                        <View style={[styles.detail, styles.noBorder]}>
                             <View>
                                 <Text style={styles.heading}>Pickup Point</Text>
                                 <Text>{details.PickUpPoint||'N/A'}</Text>
@@ -110,7 +110,7 @@ class MyArrivals extends Component {
                         <Text style={styles.text}>Ticket download</Text>
                     </View>
                     <View style={styles.detailParent}>
-                        <View style={styles.detail}>
+                        <View style={[styles.detail, styles.noBorder]}>
                             <View>
                                 <Text style={styles.heading}>Name</Text>
                                 <Text>{details.MyTravelChampionName||'N/A'}</Text>

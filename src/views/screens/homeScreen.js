@@ -66,6 +66,7 @@ class HomeScreen extends Component {
                         navigationPage='TravelNavigation'
                         imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
                         titleText='ORGANISATIONAL INFORMATION'
+
                         homeNavProps={this.props}/>
                 </View>
             </View>
