@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, ImageBackground } from 'react-native';
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/FontAwesome'
 
@@ -24,11 +24,11 @@ class HomeContent extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <Image
+                        <ImageBackground
                             style={{flex:1, width: null, height: null}}
                             resizeMode={'cover'}
                             source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
-                        />
+                        >
                         {/*<Image
                             style={{position:'absolute',marginTop:22.5,marginLeft:19}}
                             source={require('../../assets/images/logo/logo_mdpi.png')}
@@ -54,6 +54,7 @@ class HomeContent extends Component {
                                 size={10}
                                 onPress={() => {/*start video*/}} />
                         </View>
+                        </ImageBackground>
                     </View>:null
                 }
             </View>

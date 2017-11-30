@@ -86,6 +86,12 @@ class Venue extends Component {
                                 </Text>
                             </View>
                         </TouchableHighlight>
+
+                        <TouchableHighlight style={{marginLeft:87,marginTop:25.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.props.navigation.navigate('VenueLayout')}}>
+                            <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                VIEW VENUE LAYOUT
+                            </Text>
+                        </TouchableHighlight>
                     </View>:null
                 }
             </View>

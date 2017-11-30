@@ -5,7 +5,7 @@ import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
 import { Font } from 'expo'
 
-class VenueRoadMap extends Component{
+class VenueLayout extends Component{
     constructor(){
         super();
 
@@ -44,7 +44,7 @@ class VenueRoadMap extends Component{
             <View style={styles.container}>
                 {this.state.fontLoaded ?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='VENUE ROAD MAP'/>
+                        <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT'/>
                         <Image
                             style={{height:249.5}}
                             source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.png')}
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default VenueRoadMap;
+export default VenueLayout;

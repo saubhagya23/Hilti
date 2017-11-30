@@ -10,7 +10,7 @@ import MyArrivals from "../views/screens/myArrivals"
 import MyDeparture from '../views/screens/myDeparture'
 import VenueNavigation from '../views/screens/venueNavigation'
 import Venue from '../views/screens/venue'
-import VenueRoadMap from '../views/screens/venueRoadMap'
+import VenueLayout from '../views/screens/venueLayout'
 
 const routes = {
     Main:{
@@ -46,8 +46,8 @@ const routes = {
     Venue:{
         screen:Venue
     },
-    VenueRoadMap:{
-        screen: VenueRoadMap
+    VenueLayout:{
+        screen: VenueLayout
     }
 }
 

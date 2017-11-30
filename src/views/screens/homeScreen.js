@@ -27,7 +27,7 @@ class HomeScreen extends Component {
 
                         {/*venue nav container*/}
                         <HomeNavContainer
-                            navigationPage='VenueNavigation'
+                            navigationPage='Venue'
                             imgSrc={require('../../assets/images/venue/venue_mdpi.png')}
                             titleText='VENUE'
                             homeNavProps={this.props}/>
