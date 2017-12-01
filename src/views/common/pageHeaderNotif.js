@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
@@ -24,8 +24,11 @@ class PageHeaderNotif extends Component {
     }
 
     render(){
+        var {height, width} = Dimensions.get('window');
+        console.log(height, width);
+
         const shadowOpt = {
-            width:360,
+            width:width,
             height:80,
             color:"#000",
             border:1,
@@ -38,7 +41,7 @@ class PageHeaderNotif extends Component {
         return(
             <BoxShadow setting={shadowOpt}>
                 <View style={{position:"relative",
-                    width: 360,
+                    width: width,
                     height: 80,
                     backgroundColor: "#fff",
                     borderRadius:3,
@@ -78,7 +81,7 @@ class PageHeaderNotif extends Component {
                                             name="angle-left"
                                             size={20}
                                         />
-                                        <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back  |  </Text>
+                                        <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back   |   </Text>
                                     </TouchableOpacity>
                                     <Text style={{color:'#dd2127',fontFamily:'hilti-roman'}}>{this.props.parentPage}</Text>
                                 </View>

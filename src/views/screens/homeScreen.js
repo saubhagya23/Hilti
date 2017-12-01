@@ -34,7 +34,7 @@ class HomeScreen extends Component {
 
                         {/*dress-code nav container*/}
                         <HomeNavContainer
-                            navigationPage='TravelNavigation'
+                            navigationPage='DressCodeNavigation'
                             imgSrc={require('../../assets/images/dress_code/dress_code_mdpi.png')}
                             titleText='DRESS CODE'
                             homeNavProps={this.props}/>

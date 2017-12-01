@@ -4,7 +4,7 @@ import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/Entypo'
 
-class TravelNavigation extends Component {
+class DressCodeNavigation extends Component {
     constructor(){
         super();
 
@@ -40,13 +40,12 @@ class TravelNavigation extends Component {
                                     height: 64.5,
 
                                 }}
-                                onPress={()=>this.props.navigation.navigate('MyArrivals',{})}>
+                                onPress={()=>this.props.navigation.navigate('DressCodeDay',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
-                                    height:17.5,
                                     marginTop:21.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>MY ARRIVAL</Text>
+                                    fontFamily:'hilti-roman'}}>DAY 1</Text>
 
                                 {/*<Image
                                     style={{marginTop:28,marginLeft:5.5}}
@@ -69,13 +68,12 @@ class TravelNavigation extends Component {
 
                                     flexDirection:'row'
                                 }}
-                                onPress={()=>this.props.navigation.navigate('MyDeparture',{})}>
+                                onPress={()=>this.props.navigation.navigate('DressCodeDay',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
-                                    height:17.5,
                                     marginTop:21.5,
                                     marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>MY DEPARTURE</Text>
+                                    fontFamily:'hilti-roman'}}>DAY 2</Text>
                                 {/*<Image
                                     style={{marginTop:27,marginLeft:4.5,width:8,height:12}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
@@ -96,13 +94,12 @@ class TravelNavigation extends Component {
                                     height:64.5,
                                     flexDirection:'row'
                                 }}
-                                onPress={()=>this.props.navigation.navigate('TravelOverview',{})}>
+                                onPress={()=>this.props.navigation.navigate('DressCodeDay',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
-                                    height:17.5,
                                     marginTop:19.5,
                                     marginLeft:18.5,
-                                    fontFamily:'hilti-roman'}}>TRAVEL OVERVIEW</Text>
+                                    fontFamily:'hilti-roman'}}>DAY 3</Text>
                                 {/*<Image
                                     style={{marginTop:25.5,marginLeft:5.5}}
                                     source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
@@ -156,4 +153,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TravelNavigation;
+export default DressCodeNavigation;

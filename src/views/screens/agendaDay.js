@@ -38,10 +38,7 @@ class AgendaDay extends Component{
                                     source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.png')}
                                     resizeMode={'cover'}
                                 />
-                                <Image
-                                    style={{position:'absolute',width:214,height:168.5}}
-                                    source={require('../../assets/images/shape_imh/shape_imh.png')}
-                                />
+
                                 <Text
                                     style={{position:'absolute',
                                         marginTop:20.5,

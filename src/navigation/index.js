@@ -11,6 +11,8 @@ import MyDeparture from '../views/screens/myDeparture'
 import VenueNavigation from '../views/screens/venueNavigation'
 import Venue from '../views/screens/venue'
 import VenueLayout from '../views/screens/venueLayout'
+import DressCodeNavigation from '../views/screens/dressCodeNavigation'
+import DressCodeDay from '../views/screens/dressCodeDay'
 
 const routes = {
     Main:{
@@ -48,6 +50,12 @@ const routes = {
     },
     VenueLayout:{
         screen: VenueLayout
+    },
+    DressCodeNavigation: {
+        screen: DressCodeNavigation
+    },
+    DressCodeDay: {
+        screen: DressCodeDay
     }
 }
 

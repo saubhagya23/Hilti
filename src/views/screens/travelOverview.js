@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { FileSystem } from 'expo';
-import PageHeader from '../common/pageHeader'
+import PageHeaderNotif from '../common/pageHeaderNotif'
 
 import BackTravel from './backTravel'
 
@@ -27,16 +27,8 @@ class TravelOverview extends Component {
             <View style={styles.container}>
 
                 <View style={{flex:0.2}}>
-                    <View style={{flex:0.6}}>
-                        <PageHeader/>
-                    </View>
-                    <View style={{flex:0.4}}>
-                        <BackTravel parentPage='Travel Overview' props={this.props}/>
-                    </View>
+                    <PageHeaderNotif props={this.props} parentPage='TRAVEL OVERVIEW'/>
                 </View>
-
-                <View style={styles.horizontalLine}/>
-
                 <View style={styles.bodyContainer}>
                     <Image
                         style={styles.downloader}
