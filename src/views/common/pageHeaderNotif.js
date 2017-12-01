@@ -32,7 +32,7 @@ class PageHeaderNotif extends Component {
             radius:0,
             opacity:0.2,
             x:0,
-            y:3,
+            y:1,
             style:{marginVertical:1}
         }
         return(
@@ -78,7 +78,7 @@ class PageHeaderNotif extends Component {
                                             name="angle-left"
                                             size={20}
                                         />
-                                        <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back | </Text>
+                                        <Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back  |  </Text>
                                     </TouchableOpacity>
                                     <Text style={{color:'#dd2127',fontFamily:'hilti-roman'}}>{this.props.parentPage}</Text>
                                 </View>

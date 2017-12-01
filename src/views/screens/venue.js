@@ -53,12 +53,12 @@ class Venue extends Component {
                                 source={require('../../assets/images/venueMainImg/banner_img_mdpi.png')}
                             />
 
-                            <Image
+                            {/*<Image
                                 style={{position:'absolute',marginTop:22,marginLeft:19.5,width:63.5,height:15.5}}
                                 source={require('../../assets/images/logo/logo_mdpi.png')}
-                            />
+                            />*/}
 
-                            <Text style={{position:'absolute',marginLeft:19,marginTop:52,width:148,height:48.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:148,height:48.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                 THE LEELA AMBIENCE CONVENTION HOTEL, EAST DELHI
                             </Text>
                         </View>
