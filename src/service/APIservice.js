@@ -46,3 +46,10 @@ export function getArrivalList(option={}) {
     option.method = method;
     return requestAPI(URL, option)
 }
+
+export function getDepartureList(option={}) {
+    let { url , method } = API.ENDPOINT.DEPARTURE.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}

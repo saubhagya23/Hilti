@@ -8,6 +8,9 @@ let API = {
         ARRIVAL: {
             DETAIL: {url: `/api/arrivals/detail/88210`, method: 'GET'} //get arrival details for code:88210
         },
+        DEPARTURE: {
+            DETAIL: {url: `/api/departures/detail/88210`,method:'GET'}//departure details for code:88210
+        }
 
     }
 };
