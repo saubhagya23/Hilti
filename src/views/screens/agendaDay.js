@@ -78,10 +78,16 @@ class AgendaDay extends Component{
                                              <Text style={{marginTop:11.5,height:17.5,color:'#d2051e',fontSize:15,fontFamily:'hilti-roman'}}>LEELA AMBIENCE, DELHI</Text>
 
                                              <View style={{flexDirection:'row'}}>
-                                                 <Image
+                                                 {/*<Image
                                                    style={{marginTop:6,width:6.5,height:9.5}}
                                                    source={require('../../assets/images/location_icon/location_icon_mdpi.png')}
-                                                 />
+                                                 />*/}
+
+                                                 <Icon
+                                                     style={{marginTop:6}}
+                                                     name='location'
+                                                     size={15}
+                                                     onPress={() => {}} />
                                                  <View style={{marginLeft:4.5,marginTop:4,height:21.5,width:168}}>
                                                      <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,lineHeight:13}}>
                                                          8, NH148A, Ambience Island,Nathupur, Sector-24, Gurugram, Haryana</Text>
@@ -109,10 +115,16 @@ class AgendaDay extends Component{
                                     </Text>
 
                                     <View style={{flexDirection:'row'}}>
-                                        <Image
+                                        {/*<Image
                                             style={{marginTop:5,width:10,opacity:0.6}}
                                             source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
-                                        />
+                                        />*/}
+
+                                        <Icon
+                                            style={{marginTop:5}}
+                                            name='clock'
+                                            size={15}
+                                            onPress={() => {}} />
                                         <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
                                             9:00 - 18:00,
                                         </Text>
@@ -159,10 +171,16 @@ class AgendaDay extends Component{
                                     </Text>
 
                                     <View style={{flexDirection:'row'}}>
-                                        <Image
+                                        {/*<Image
                                             style={{marginTop:9,width:10,height:10,opacity:0.6}}
                                             source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
-                                        />
+                                        />*/}
+
+                                        <Icon
+                                            style={{marginTop:9}}
+                                            name='clock'
+                                            size={15}
+                                            onPress={() => {}} />
                                         <Text style={{marginTop:6.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
                                             9:00 - 18:00,
                                         </Text>
