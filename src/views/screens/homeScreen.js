@@ -13,7 +13,7 @@ class HomeScreen extends Component {
                 <View style={{height:38}}>
                     <PageHeader/>
                 </View>
-                <View style={{height:179.5}}>
+                <View style={{height:179.5,marginTop:2}}>
                     <VideoComp/>
                 </View>
                 <ScrollView>

@@ -1,28 +1,50 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import Icon  from 'react-native-vector-icons/FontAwesome';
+import {BoxShadow} from 'react-native-shadow';
 
 class PageHeader extends Component {
     render(){
+        const shadowOpt = {
+            width:360,
+            height:38,
+            color:"#000",
+            border:1,
+            radius:0,
+            opacity:0.2,
+            x:0,
+            y:1,
+            style:{marginVertical:1}
+        }
         return(
-            <View style={styles.container}>
-                <View style={styles.logo}>
-                    <Image
-                        source={require('../../assets/images/logo/logo_mdpi.png')}
-                    />
-                </View>
-                <View style={styles.IconBtn}>
-                    <Icon
-                        name='bell'
-                        size={20}
-                        onPress={() => console.log('hello bell')} />
+            <BoxShadow setting={shadowOpt}>
+                <View style={{position:"relative",
+                    width: 360,
+                    height: 38,
+                    backgroundColor: "#fff",
+                    borderRadius:0,
+                    overflow:"hidden"
+                }}>
+                    <View style={styles.container}>
+                        <View style={styles.logo}>
+                            <Image
+                                source={require('../../assets/images/logo/logo_mdpi.png')}
+                            />
+                        </View>
+                        <View style={styles.IconBtn}>
+                            <Icon
+                                name='bell'
+                                size={20}
+                                onPress={() => console.log('hello bell')} />
 
-                    <Icon
-                        name='user-circle-o'
-                        size={20}
-                        onPress={() => console.log('hello user')} />
+                            <Icon
+                                name='user-circle-o'
+                                size={20}
+                                onPress={() => console.log('hello user')} />
+                        </View>
+                    </View>
                 </View>
-            </View>
+            </BoxShadow>
         );
     }
 }
