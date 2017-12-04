@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Dimensions } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {BoxShadow} from 'react-native-shadow';
 
 class PageHeader extends Component {
     render(){
+        var {height, width} = Dimensions.get('window');
+        console.log(height, width);
         const shadowOpt = {
-            width:360,
+            width:width,
             height:38,
             color:"#000",
             border:1,
@@ -19,7 +21,7 @@ class PageHeader extends Component {
         return(
             <BoxShadow setting={shadowOpt}>
                 <View style={{position:"relative",
-                    width: 360,
+                    width: width,
                     height: 38,
                     backgroundColor: "#fff",
                     borderRadius:0,
