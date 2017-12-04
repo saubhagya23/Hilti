@@ -76,14 +76,14 @@ class HomeScreen extends Component {
                             titleText='ORG. INFORMATION'
                             homeNavProps={this.props}/>
 
-                        {/*post comment nav container*/}
+                        {/*assistance nav container*/}
                         <HomeNavContainer
-                            navigationPage='VenueNavigation'
+                            navigationPage='DosDonts'
                             imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
                             titleText='NEED ASSISTANCE'
                             homeNavProps={this.props}/>
 
-                        {/*assistance nav container*/}
+                        {/*post comment nav container*/}
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
