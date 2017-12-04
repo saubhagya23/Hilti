@@ -17,6 +17,7 @@ import StayNavigation from '../views/screens/stayNavigation'
 import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
 import DosDonts from '../views/screens/dosDonts'
 import Faqs from '../views/screens/faqs'
+import MyStay from '../views/screens/myStay'
 
 const routes = {
     Main:{
@@ -64,6 +65,9 @@ const routes = {
     StayNavigation: {
         screen: StayNavigation
     },
+    MyStay:{
+        screen: MyStay
+    },
     OrgInfoNavigation: {
         screen: OrgInfoNavigation
     },
@@ -73,6 +77,7 @@ const routes = {
     Faqs: {
         screen: Faqs
     }
+
 }
 
 
