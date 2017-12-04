@@ -99,10 +99,10 @@ class MyStay extends Component {
 
                                 <View >
                                     {
-                                        details && details.Important_To_Remember ?
+                                        details && details.ImportantToRemember ?
                                             <View style={{flexDirection:'row',justifyContent:'space-around',flexWrap:'wrap'}}>
                                                 {
-                                                    details.Important_To_Remember.map((data,index)=>(
+                                                    details.ImportantToRemember.map((data,index)=>(
                                                         <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                                 name="circle"
