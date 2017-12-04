@@ -78,10 +78,10 @@ class MyStay extends Component {
                                 <View >
                                     {
                                         details && details.Inclusions ?
-                                            <View style={{flexDirection:'row',justifyContent:'space-around',flexWrap:'wrap'}}>
+                                            <View style={{flexDirection:'row',flexWrap:'wrap'}}>
                                                 {
                                                     details.Inclusions.map((data,index)=>(
-                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
+                                                        <View style={{width:100, height:40, marginTop:5g,marginLeft:50.5,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                              name="circle"
                                                              style={{color:'#dd2127'}}
@@ -100,10 +100,10 @@ class MyStay extends Component {
                                 <View >
                                     {
                                         details && details.ImportantToRemember ?
-                                            <View style={{flexDirection:'row',justifyContent:'space-around',flexWrap:'wrap'}}>
+                                            <View style={{flexDirection:'row',flexWrap:'wrap',marginBottom:15}}>
                                                 {
                                                     details.ImportantToRemember.map((data,index)=>(
-                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
+                                                        <View style={{width:100, height:40, marginTop:5,marginLeft:50.5,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                                 name="circle"
                                                                 style={{color:'#dd2127'}}
