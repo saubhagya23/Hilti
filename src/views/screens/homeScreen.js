@@ -49,7 +49,7 @@ class HomeScreen extends Component {
 
                         {/*stay overview nav container*/}
                         <HomeNavContainer
-                            navigationPage='TravelNavigation'
+                            navigationPage='StayNavigation'
                             imgSrc={require('../../assets/images/stay/stay_mdpi.png')}
                             titleText='STAY OVERVIEW'
                             homeNavProps={this.props} />
@@ -71,7 +71,7 @@ class HomeScreen extends Component {
                         homeNavProps={this.props}/>*/}
 
                         <HomeNavContainer
-                            navigationPage='TravelNavigation'
+                            navigationPage='OrgInfoNavigation'
                             imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
                             titleText='ORG. INFORMATION'
                             homeNavProps={this.props}/>
