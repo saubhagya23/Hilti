@@ -24,7 +24,6 @@ class VenueNavigation extends Component {
     }
 
     render(){
-        console.log("inside Travel overview :",this.props);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?

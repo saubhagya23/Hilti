@@ -10,6 +10,9 @@ let API = {
         },
         DEPARTURE: {
             DETAIL: {url: `/api/departures/detail/88210`,method:'GET'}//departure details for code:88210
+        },
+        STAY: {
+            DETAIL:{url: `/api/user-details/stay/88210`,method:'GET'} // get stay details for code 88210
         }
 
     }
