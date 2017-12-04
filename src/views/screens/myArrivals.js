@@ -113,8 +113,7 @@ class MyArrivals extends Component {
                                     }}>
                                     <View style={{flex:1.5}}>
                                         <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Flight/Train No.</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.FlightTrainNumber||'N/A'}</Text>
-                                    </View>
+                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.FlightTrainNumber||'N/A'}</Text></View>
                                     <View style={{flex:1}}>
                                         <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>PNR No.</Text>
                                         <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.PNRNo||'N/A'}</Text>

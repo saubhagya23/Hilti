@@ -15,6 +15,8 @@ import DressCodeNavigation from '../views/screens/dressCodeNavigation'
 import DressCodeDay from '../views/screens/dressCodeDay'
 import StayNavigation from '../views/screens/stayNavigation'
 import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
+import DosDonts from '../views/screens/dosDonts'
+import Faqs from '../views/screens/faqs'
 
 const routes = {
     Main:{
@@ -64,6 +66,12 @@ const routes = {
     },
     OrgInfoNavigation: {
         screen: OrgInfoNavigation
+    },
+    DosDonts: {
+        screen: DosDonts
+    },
+    Faqs: {
+        screen: Faqs
     }
 }
 
