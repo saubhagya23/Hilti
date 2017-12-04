@@ -13,6 +13,8 @@ import Venue from '../views/screens/venue'
 import VenueLayout from '../views/screens/venueLayout'
 import DressCodeNavigation from '../views/screens/dressCodeNavigation'
 import DressCodeDay from '../views/screens/dressCodeDay'
+import StayNavigation from '../views/screens/stayNavigation'
+import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
 
 const routes = {
     Main:{
@@ -56,6 +58,12 @@ const routes = {
     },
     DressCodeDay: {
         screen: DressCodeDay
+    },
+    StayNavigation: {
+        screen: StayNavigation
+    },
+    OrgInfoNavigation: {
+        screen: OrgInfoNavigation
     }
 }
 
