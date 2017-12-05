@@ -10,6 +10,9 @@ let API = {
         },
         DEPARTURE: {
             DETAIL: {url: `/api/departures/detail/88210`,method:'GET'}//departure details for code:88210
+        },
+        USER: {
+            UPLOAD_ID_PROOF: {url:'/api/user-ids/upload',method: 'POST'}
         }
 
     }

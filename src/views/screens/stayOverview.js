@@ -4,7 +4,7 @@ import { FileSystem } from 'expo';
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import { Font } from 'expo'
 
-class travelOverview extends Component {
+class stayOverview extends Component {
     constructor(){
         super();
 
@@ -26,8 +26,8 @@ class travelOverview extends Component {
     downloadFile = () => {
         console.log('*************************',FileSystem.documentDirectory);
         FileSystem.downloadAsync(
-            'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
-            FileSystem.documentDirectory + 'Travel_Overview.xlsx'
+            'http://13.68.114.98:9000/api/documents/download/Stay_Overview.xlsx',
+            FileSystem.documentDirectory + 'Stay_Overview.xlsx'
         )
             .then(({ uri }) => {
                 console.log('Finished downloading to ', uri);
@@ -42,7 +42,7 @@ class travelOverview extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='TRAVEL OVERVIEW'/>
+                        <PageHeaderNotif props={this.props} parentPage='STAY OVERVIEW'/>
 
                         <View style={{height:331,justifyContent:'center',alignItems:'center'}}>
                             <Image
@@ -56,7 +56,7 @@ class travelOverview extends Component {
                                 <Text style={{fontSize:15,fontFamily:'hilti-roman',color:'#dd2127'}}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
                             </TouchableOpacity>
                             <Text style={{marginTop:35,fontSize:22,fontFamily:'hilti-bold',color:'#000000'}}>
-                                TRAVEL OVERVIEW
+                                STAY OVERVIEW
                             </Text>
                             <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 7 Jan, 2017</Text>
                         </View>
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default travelOverview;
+export default stayOverview;

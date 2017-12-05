@@ -18,6 +18,8 @@ import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
 import DosDonts from '../views/screens/dosDonts'
 import Faqs from '../views/screens/faqs'
 import MyStay from '../views/screens/myStay'
+import SubmitId from '../views/screens/submitId'
+import StayOverview from '../views/screens/stayOverview'
 
 const routes = {
     Main:{
@@ -67,6 +69,12 @@ const routes = {
     },
     MyStay:{
         screen: MyStay
+    },
+    SubmitId: {
+        screen: SubmitId
+    },
+    StayOverview: {
+        screen: StayOverview
     },
     OrgInfoNavigation: {
         screen: OrgInfoNavigation
