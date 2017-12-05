@@ -1,17 +1,25 @@
 import API from '../env'
 const API_BASE = API.ENDPOINT.BASE;
+import { asyncGet } from '../utils/asyncStore'
 
-function requestAPI(url, options = {}) {
-  try {
-    let headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    };
+async function requestAPI(url, options = {}) {
 
-    let reqBody = {
+
+      let headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      };
+
+      let token = await asyncGet('token');
+      if(token){
+          console.log("token is:",token)
+          headers.Authorization = `Bearer ${token}`
+      }
+
+      let reqBody = {
       method: options.method || "POST",
       headers: headers
-    };
+      };
 
     if(options.method.toLowerCase() !== 'get') {
       reqBody['body'] = JSON.stringify(options.payload || {})
@@ -19,9 +27,7 @@ function requestAPI(url, options = {}) {
 
     return fetch(url, reqBody).then(res=> res.json());
 
-  } catch (error) {
 
-  }
 };
 
 
@@ -49,6 +55,13 @@ export function getArrivalList(option={}) {
 
 export function getDepartureList(option={}) {
     let { url , method } = API.ENDPOINT.DEPARTURE.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function getStayList(option={}) {
+    let { url , method } = API.ENDPOINT.STAY.DETAIL;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option)

@@ -13,6 +13,9 @@ let API = {
         },
         USER: {
             UPLOAD_ID_PROOF: {url:'/api/user-ids/upload',method: 'POST'}
+        },
+        STAY: {
+            DETAIL:{url: `/api/user-details/stay/88210`,method:'GET'} // get stay details for code 88210
         }
 
     }

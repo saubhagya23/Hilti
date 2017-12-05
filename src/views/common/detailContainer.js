@@ -17,12 +17,12 @@ export default class DetailsContainer extends Component{
             }}>
                 <View style={{flex:1}}>
                     <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>{this.props.leftHeading}</Text>
-                    <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{this.props.leftData}</Text>
+                    <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{this.props.leftData}</Text>
                 </View>
 
                 <View style={{flex:1}}>
                     <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>{this.props.rightHeading}</Text>
-                    <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{this.props.rightData}</Text>
+                    <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{this.props.rightData}</Text>
                 </View>
             </View>
         )

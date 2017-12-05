@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList, uploadIdProofEventList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,UPLOAD_ID_PROOF_LIST } from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList, uploadIdProofEventList,getStayList} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,UPLOAD_ID_PROOF_LIST,STAY_LIST } from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -30,7 +30,6 @@ export function postEvent(empLoginInfo) {
 }
 
 export function getArrivals() {
-    console.log("get arrivals called");
     return function (dispatch) {
         return getArrivalList().then(function (response) {
             dispatch({
@@ -40,6 +39,18 @@ export function getArrivals() {
             return response;
         });
     };
+}
+
+export function getStay() {
+    return function (dispatch) {
+        return getStayList().then(function (response) {
+            dispatch({
+                type: STAY_LIST,
+                payload: response
+            });
+            return response;
+        })
+    }
 }
 
 export function getDepartures() {
