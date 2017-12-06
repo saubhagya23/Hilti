@@ -20,6 +20,7 @@ import Faqs from '../views/screens/faqs'
 import MyStay from '../views/screens/myStay'
 import SubmitId from '../views/screens/submitId'
 import StayOverview from '../views/screens/stayOverview'
+import NavigationContainer from '../views/common/navigationContainer'
 
 const routes = {
     Main:{
@@ -84,6 +85,9 @@ const routes = {
     },
     Faqs: {
         screen: Faqs
+    },
+    NavigationContainer: {
+        screen: NavigationContainer
     }
 
 }

@@ -4,8 +4,9 @@ import { asyncGet } from '../utils/asyncStore'
 
 async function requestAPI(url, options = {}) {
 
+    console.log('options are in request api-----',options);
 
-      let headers = {
+      let headers = options.headers||{
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       };
@@ -22,7 +23,8 @@ async function requestAPI(url, options = {}) {
       };
 
     if(options.method.toLowerCase() !== 'get') {
-      reqBody['body'] = JSON.stringify(options.payload || {})
+      //reqBody['body'] = JSON.stringify(options.payload || {})
+        reqBody['body'] = options.payload;
     }
 
     return fetch(url, reqBody).then(res=> res.json());

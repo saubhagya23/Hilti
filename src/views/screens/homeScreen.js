@@ -42,7 +42,7 @@ class HomeScreen extends Component {
                     <View style={{height:136.5, marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
                         {/*agenda nav container*/}
                         <HomeNavContainer
-                            navigationPage='AgendaNavigation'
+                            navigationPage='NavigationContainer'
                             imgSrc={require('../../assets/images/agenda/agenda_mdpi.png')}
                             titleText='AGENDA'
                             homeNavProps={this.props} />

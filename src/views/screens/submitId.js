@@ -19,7 +19,8 @@ class SubmitId extends Component {
             imgFrontLoaded:false,
             imgBackLoaded:false,
             imgUrl:'',
-            imgtype:''
+            imgtype:'',
+            imgData:{}
         }
     }
 
@@ -54,6 +55,7 @@ class SubmitId extends Component {
                 this.setState({
                     imgFrontLoaded:true,
                     imgUrl:result.uri,
+                    imgData:result,
                     imgtype:type
                 })
             }
@@ -61,9 +63,12 @@ class SubmitId extends Component {
                 this.setState({
                     imgBackLoaded:true,
                     imgUrl:result.uri,
+                    imgData:result,
                     imgtype:type
                 })
             }
+
+            //this.handleImagePicked(result);
 
 
             /*let uploadObj = {
@@ -74,34 +79,77 @@ class SubmitId extends Component {
 
             console.log('upload obj is----',uploadObj);*/
 
-            if (!result.cancelled) {
+            /*if (!result.cancelled) {
                 this.setState({ imgUrl: result.uri });
-            }
+            }*/
         }
     };
 
-    uploadImage = () => {
+    uploadImage = (uri) => {
         console.log('image upload fn called..');
         if(this.state.value === ''|| this.state.type === ''){
             ToastAndroid.showWithGravity('Please select the type and images.', ToastAndroid.SHORT, ToastAndroid.CENTER);
         }
         else{
-            /*let uploadObj = new FormData();
+            let uriParts = uri.split('.');
+            let fileType = uriParts[uriParts.length - 1];
+
+            let uploadObj = new FormData();
+            uploadObj.append('file', {
+                uri,
+                name: `photo.${fileType}`,
+                type: `image/${fileType}`,
+            });
             uploadObj.append('id',this.state.value);
             uploadObj.append('type',this.state.imgtype);
-            uploadObj.append('file',this.state.imgUrl);*/
-            let uploadObj = {
+            /*let uploadObj = {
                 id:this.state.value,
                 type:this.state.imgtype,
                 file:this.state.imgUrl
-            }
+            }*/
+
 
             console.log('upload obj is----',uploadObj);
 
+            let header = {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
+                //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTFkMDQxNTRkYTA2YTZiOTZhMTNlODEiLCJzdWIiOiJhYmhpc2hlay5qYWluQGhpbHRpLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTEyMDM2NTMxLCJleHAiOjE1MTQxOTY1MzF9.yjfM45pq_GjbNyFkbeFq3WM8zip8z1tpvHsQ0a-gKpY'
+            }
+
+            let options = {
+                method: 'POST',
+                body: uploadObj,
+                headers: header
+            }
+
             const { uploadIdProofEvent } = this.props;
-            uploadIdProofEvent({payload:uploadObj})
+            return uploadIdProofEvent({payload:uploadObj,headers:header})
+            //return fetch('http://13.68.114.98:9000/api/user-ids/upload',options);
         }
-    }
+    };
+
+    handleImagePicked = async () => {
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+        let uploadResponse, uploadResult;
+        let result = this.state.imgData;
+        try {
+            //this.setState({ uploading: true });
+
+            if (!result.cancelled) {
+                uploadResponse = await this.uploadImage(result.uri);
+                /*uploadResult = await uploadResponse.json();
+                this.setState({ imgUrl: uploadResult.location });*/
+            }
+        } catch (e) {
+            console.log({ uploadResponse });
+            console.log({ uploadResult });
+            console.log({ e });
+            alert('Upload failed, sorry :(');
+        } finally {
+            this.setState({ uploading: false });
+        }
+    };
 
     render(){
         let imageUrl = `uri:'${this.state.imgUrl}'`;
@@ -187,8 +235,8 @@ class SubmitId extends Component {
                                                     />*/}
                                                     {this.state.imgFrontLoaded?
                                                         <Image
-                                                            style={{resizeMode:'stretch'}}
-                                                            source={{uri:this.state.imgUrl}}
+                                                            style={{width:50,height:50}}
+                                                            source={{isStatic:true, uri:this.state.imgUrl}}
                                                         />:
                                                         <Image
                                                             style={{resizeMode:'stretch'}}
@@ -226,7 +274,7 @@ class SubmitId extends Component {
                                     <TouchableOpacity
                                         style={{flex:0.1,marginTop:5}}
 
-                                        onPress={() => {this.uploadImage()}}
+                                        onPress={() => {this.handleImagePicked()}}
                                     >
                                         <Text style={{color:'#dd2127',fontFamily:'hilti-roman',fontSize:13}}>UPLOAD FILE</Text>
 

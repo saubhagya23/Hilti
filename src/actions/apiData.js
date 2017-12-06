@@ -67,6 +67,7 @@ export function getDepartures() {
 }
 
 export function uploadIdProofEvent(uploadObj) {
+    console.log('event object upload',uploadObj);
     return function (dispatch) {
         return uploadIdProofEventList(uploadObj).then(function (response) {
             dispatch({
