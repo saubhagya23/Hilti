@@ -1,5 +1,5 @@
 import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL } from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -75,4 +75,15 @@ export function getVideo() {
             return response;
         });
     };
+}
+
+export function setUserDetail(userInfo) {
+    return function (dispatch) {
+        dispatch({
+            type:USER_DETAIL,
+            payload:userInfo
+        });
+        return;
+    }
+
 }

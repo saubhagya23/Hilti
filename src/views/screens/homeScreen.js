@@ -8,11 +8,10 @@ import {asyncGet} from "../../utils/asyncStore";
 
 class HomeScreen extends Component {
     render(){
-        //console.log('props in homescreen is -----',this.props);
         return(
             <View style={styles.container}>
                 <View style={{height:38}}>
-                    <PageHeader navigation={this.props.navigation}/>
+                    <PageHeader navigation={this.props.navigation} showBell={true} showUser={true}/>
                 </View>
                 <View style={{height:179.5,marginTop:2}}>
                     <VideoComp/>

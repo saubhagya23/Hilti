@@ -31,8 +31,8 @@ class MyDeparture extends Component {
 
     componentDidMount(){
         const { getDepartures } = this.props;
-        // getDepartures(this.props.eventLoginList.userDetail.Code);
-        getDepartures({param:88210});
+        let detail = JSON.parse(this.props.userDetail);
+        getDepartures({param:detail.Code});
     }
 
     render(){
@@ -298,7 +298,8 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         departureList: state.event.departureList,
-        eventLoginList:state.event.eventLoginList
+        eventLoginList:state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

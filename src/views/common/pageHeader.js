@@ -1,16 +1,33 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Dimensions ,Text ,TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {BoxShadow} from 'react-native-shadow';
+import { Font } from 'expo'
 
 class PageHeader extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            fontLoaded:false
+        }
+    }
+
+    async componentWillMount(){
+        await Font.loadAsync({
+            'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
+            'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
+        });
+        this.setState({
+            fontLoaded:true
+        })
+    }
+
     render(){
-        console.log("props in pageHeader are :",this.props);
         var {height, width} = Dimensions.get('window');
-        console.log(height, width);
         const shadowOpt = {
             width:width,
-            height:38,
+            flex:1,
             color:"#000",
             border:1,
             radius:0,
@@ -35,15 +52,20 @@ class PageHeader extends Component {
                             />
                         </View>
                         <View style={styles.IconBtn}>
-                            <Icon
-                                name='bell'
-                                size={20}
-                                onPress={() => console.log('hello bell')} />
-
-                            <Icon
-                                name='user-circle-o'
-                                size={20}
-                                onPress={()=>this.props.navigation.navigate('Profile',{})} />
+                            {
+                                this.props.showBell ?
+                                    <Icon
+                                        name='bell'
+                                        size={20}
+                                        onPress={() => console.log('hello bell')} />:null
+                            }
+                            {
+                                this.props.showUser ?
+                                    <Icon
+                                        name='user-circle-o'
+                                        size={20}
+                                        onPress={()=>this.props.navigation.navigate('Profile',{})} />:null
+                            }
                         </View>
                     </View>
                 </View>

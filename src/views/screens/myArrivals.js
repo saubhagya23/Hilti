@@ -32,8 +32,8 @@ class MyArrivals extends Component {
 
     componentDidMount(){
         const { getArrivals } = this.props;
-        getArrivals({param:88210});
-        // getArrivals()
+        let detail = JSON.parse(this.props.userDetail);
+        getArrivals({param:detail.Code});
     }
 
     render(){
@@ -238,7 +238,8 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         arrivalList: state.event.arrivalList,
-        eventLoginList: state.event.eventLoginList
+        eventLoginList: state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

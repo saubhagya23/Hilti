@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View ,Text } from 'react-native';
 import { Font } from 'expo'
-
+import { connect } from 'react-redux';
 import PageHeaderNotif from '../common/pageHeaderNotif'
 
 class Profile extends Component {
@@ -9,7 +9,8 @@ class Profile extends Component {
         super();
 
         this.state = {
-            fontLoaded:false
+            fontLoaded:false,
+            userDetail:{}
         }
     }
 
@@ -20,10 +21,11 @@ class Profile extends Component {
         });
         this.setState({
             fontLoaded:true
-        })
+        });
     }
 
     render() {
+        let detail = JSON.parse(this.props.userDetail);
         return (
             <View style={styles.container}>
                 {
@@ -35,13 +37,13 @@ class Profile extends Component {
                             </View>
                             <View style={{marginLeft:20,marginTop:20}}>
                                 <Text>Name</Text>
-                                <Text style={{color:'lightgrey'}}>Puja</Text>
+                                <Text style={{color:'lightgrey'}}>{detail.Name}</Text>
                                 <Text style={{marginTop:10}}>Email Id</Text>
-                                <Text style={{color:'lightgrey'}}>puja.goyal@tothenew.com</Text>
+                                <Text style={{color:'lightgrey'}}>{detail.EmailId}</Text>
                                 <Text style={{marginTop:10}}>Team</Text>
-                                <Text style={{color:'lightgrey'}}>abc</Text>
+                                <Text style={{color:'lightgrey'}}>{detail.TeamSplit}</Text>
                                 <Text style={{marginTop:10}}>Code</Text>
-                                <Text style={{color:'lightgrey'}}>89351</Text>
+                                <Text style={{color:'lightgrey'}}>{detail.Code}</Text>
                             </View>
                         </View>
                         :null
@@ -58,4 +60,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Profile
+function mapStateToProps (state) {
+    return {
+        userDetail:state.event.userDetail
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Profile)
+

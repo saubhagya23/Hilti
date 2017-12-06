@@ -4,7 +4,7 @@ import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { postEvent } from '../../actions/apiData';
+import { postEvent ,setUserDetail} from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 
@@ -39,27 +39,28 @@ class Login extends Component {
         let empLoginInfo = {
             email: this.state.empId,
             password: this.state.empCode
-        }
+        };
         const { postEvent } = this.props;
         postEvent({payload:empLoginInfo}).then(eventLoginList => {
             if(eventLoginList.token){
                 asyncPost('token', eventLoginList.token);
-                // asyncPost('userDetail',eventLoginList.userDetail);
-                console.log('this', this.props)
-                //this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
+                asyncPost('userDetail',JSON.stringify(eventLoginList.userDetail));
+
+                const { setUserDetail } = this.props;
+                this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
+
               const resetAction = NavigationActions.reset({
                 index: 0,
                 actions: [
                   NavigationActions.navigate({ routeName: 'HomeScreen' })
                 ]
-              })
+              });
               this.props.navigation.dispatch(resetAction);
 
         }});
     }
 
     render() {
-        console.log('props in login---',this.props);
         return (
             <KeyboardAvoidingView
                 style={styles.container}
@@ -216,6 +217,7 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 postEvent,
+                setUserDetail
             },
             dispatch
         ),

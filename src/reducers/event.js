@@ -1,12 +1,13 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL} from "../constants/index";
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL} from "../constants/index";
 const initialState = {
     // eventList: [],
     eventLoginList:{},
     arrivalList:[],
     departureList:[],
     stayList:[],
-    video:{}
+    video:{},
+    userDetail:{}
 };
 
 export function event (state = initialState, action) {
@@ -16,7 +17,6 @@ export function event (state = initialState, action) {
             return Object.assign({}, state, eventList);
         }*/
         case EVENT_LOGIN_LIST: {
-            console.log("inside reducer of login...",action.payload);
             let eventLoginList = action.payload;
             return Object.assign({}, state, eventLoginList);
         }
@@ -35,6 +35,10 @@ export function event (state = initialState, action) {
         case VIDEO_URL:{
             let video = action.payload;
             return Object.assign({},state,{video})
+        }
+        case USER_DETAIL:{
+            let userDetail = action.payload;
+            return Object.assign({}, state, {userDetail});
         }
         default:
             return state;

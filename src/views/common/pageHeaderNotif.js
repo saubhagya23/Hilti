@@ -25,8 +25,6 @@ class PageHeaderNotif extends Component {
 
     render(){
         var {height, width} = Dimensions.get('window');
-        console.log(height, width);
-
         const shadowOpt = {
             width:width,
             height:80,

@@ -29,8 +29,8 @@ class MyStay extends Component {
 
     componentDidMount(){
         const { getStay } = this.props;
-        console.log("props in mystay:",this.props.eventLoginList);
-        getStay({param:88210});
+        let detail = JSON.parse(this.props.userDetail);
+        getStay({param:detail.Code});
     }
 
     render(){
@@ -174,7 +174,8 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         stayList: state.event.stayList,
-        eventLoginList:state.event.eventLoginList
+        eventLoginList:state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

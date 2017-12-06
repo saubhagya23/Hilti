@@ -34,10 +34,6 @@ class PageHeaderCross extends Component {
                             />
                         </View>
                         <TouchableOpacity style={styles.IconBtn} onPress={()=>this.props.props.navigation.goBack()}>
-                            {/*<Image
-                        source={require('../../assets/images/cancel_icon/cancel_mdpi.png')}
-                    />*/}
-
                             <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                                 <Icon
                                     style={{color:'#000000'}}
@@ -47,7 +43,6 @@ class PageHeaderCross extends Component {
 
                                 <Text style={{marginLeft:6,color:'#000000',fontFamily:'hilti-bold'}}>BACK</Text>
                             </View>
-                            {/*<Text style={{marginLeft:8,color:'#000000',fontFamily:'hilti-roman'}}>Back</Text>*/}
                         </TouchableOpacity>
                     </View>:null
                 }
