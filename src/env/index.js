@@ -13,6 +13,9 @@ let API = {
         },
         STAY: {
             DETAIL:{url: `/api/user-details/stay/88210`,method:'GET'} // get stay details for code 88210
+        },
+        VIDEO:{
+            DETAIL:{url:`/api/documents/welcome-video`,method:'GET'} // get vide url
         }
 
     }

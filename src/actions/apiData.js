@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST } from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL } from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -54,11 +54,22 @@ export function getStay() {
 }
 
 export function getDepartures() {
-    console.log("get arrivals called");
     return function (dispatch) {
         return getDepartureList().then(function (response) {
             dispatch({
                 type: DEPARTURE_LIST,
+                payload: response
+            });
+            return response;
+        });
+    };
+}
+
+export function getVideo() {
+    return function (dispatch) {
+        return getVideoUrl().then(function (response) {
+            dispatch({
+                type: VIDEO_URL,
                 payload: response
             });
             return response;

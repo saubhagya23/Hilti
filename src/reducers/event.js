@@ -1,11 +1,12 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST} from "../constants/index";
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL} from "../constants/index";
 const initialState = {
     eventList: [],
     eventListLoginInfo:{},
     arrivalList:[],
     departureList:[],
-    stayList:[]
+    stayList:[],
+    video:{}
 }
 
 
@@ -32,6 +33,10 @@ export function event (state = initialState, action) {
         case STAY_LIST:{
             let stayList = action.payload;
             return Object.assign({},state,{stayList})
+        }
+        case VIDEO_URL:{
+            let video = action.payload;
+            return Object.assign({},state,{video})
         }
         default:
             return state;

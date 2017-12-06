@@ -12,7 +12,6 @@ async function requestAPI(url, options = {}) {
 
       let token = await asyncGet('token');
       if(token){
-          console.log("token is:",token)
           headers.Authorization = `Bearer ${token}`
       }
 
@@ -42,7 +41,6 @@ export function postEventList(option={}){
     let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
     let URL = `${API_BASE + url}`;
     option.method = method;
-    console.log('options--',option);
     return requestAPI(URL, option);
 };
 
@@ -62,6 +60,13 @@ export function getDepartureList(option={}) {
 
 export function getStayList(option={}) {
     let { url , method } = API.ENDPOINT.STAY.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function getVideoUrl(option={}) {
+    let { url , method } = API.ENDPOINT.VIDEO.DETAIL;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option)
