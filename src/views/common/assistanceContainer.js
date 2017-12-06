@@ -53,8 +53,9 @@ export default class assistanceContainer extends Component {
                     <View style={{flex:1}}>
                         {CheckBoxes}
                         <TouchableHighlight style={styles.button} onPress= { () => {this.submit()}}>
-                            <View>
-                                <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', marginTop:8.5, textAlign:'center' }}>SEND EMAIL</Text>
+                            <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+                                <Image style={{marginRight:9}} source={require('../../assets/images/send_email/send_email_mpdi.png')} />
+                                <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', textAlign:'center' }}>SEND EMAIL</Text>
                             </View>
                         </TouchableHighlight>
                     </View>
