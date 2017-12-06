@@ -14,7 +14,8 @@ class HomeContent extends Component {
     state = {
         fontLoaded:false,
         showVideo:false,
-        url:''
+        url:'',
+        status:true
     };
 
     async componentWillMount(){
@@ -47,6 +48,12 @@ class HomeContent extends Component {
         }
     };
 
+    pause=()=>{
+        this.setState({
+            status:!this.state.status
+        })
+    };
+
     render(){
         return(
             <View style={styles.container}>
@@ -54,6 +61,7 @@ class HomeContent extends Component {
                     <View style={{flex:1}}>
                         {
                             this.state.showVideo ?
+                                <View style={{flex:1}}>
                                 <Expo.Video
                                     source={{ uri: `https://hiltistorage.blob.core.windows.net/hilti-documents/Welcome-video_AlimHirani.mp4` }}
                                     posterSource={require('../../assets/images/brandLogo.png')}
@@ -61,10 +69,17 @@ class HomeContent extends Component {
                                     volume={1.0}
                                     muted={false}
                                     resizeMode="cover"
-                                    shouldPlay
+                                    shouldPlay={this.state.status}
                                     isLooping
                                     style={{ flex:1 }}
                                 />
+                                    {
+                                        this.state.status ?
+                                            <Icon name="pause" onPress={this.pause}/>:
+                                            <Icon name="play" onPress={this.pause}/>
+                                    }
+
+                                </View>
                                 :
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
