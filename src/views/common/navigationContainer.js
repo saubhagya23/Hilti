@@ -24,7 +24,7 @@ class NavigationContainer extends Component {
     }
 
     render(){
-        let dummyArr = [{name:'abc',nav:'AgendaDay1'},{name:'def',nav:'AgendaDay1'},{name:'ghi',nav:'AgendaDay1'}];
+        // let dummyArr = [{name:'abc',nav:'AgendaDay1'},{name:'def',nav:'AgendaDay1'},{name:'ghi',nav:'AgendaDay1'}];
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -34,7 +34,7 @@ class NavigationContainer extends Component {
                         </View>
 
                         <View style={styles.navigation}>
-                            {dummyArr.map((link,index) => {
+                            {this.props.navData.map((link,index) => {
                                 return (
                                     <View style={{height:65}} key={index}>
                                         <TouchableOpacity

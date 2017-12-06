@@ -78,7 +78,7 @@ class HomeScreen extends Component {
 
                         {/*assistance nav container*/}
                         <HomeNavContainer
-                            navigationPage='DosDonts'
+                            navigationPage='AssistanceNavigation'
                             imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
                             titleText='NEED ASSISTANCE'
                             homeNavProps={this.props}/>
