@@ -3,32 +3,27 @@ const API_BASE = API.ENDPOINT.BASE;
 import { asyncGet } from '../utils/asyncStore'
 
 async function requestAPI(url, options = {}) {
-
-
-      let headers = {
+    let headers = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       };
 
-      let token = await asyncGet('token');
-      if(token){
-          headers.Authorization = `Bearer ${token}`
-      }
+    let token = await asyncGet('token');
+    if(token){
+        headers.Authorization = `Bearer ${token}`
+    }
 
-      let reqBody = {
+    let reqBody = {
       method: options.method || "POST",
       headers: headers
-      };
+    };
 
     if(options.method.toLowerCase() !== 'get') {
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
 
     return fetch(url, reqBody).then(res=> res.json());
-
-
 };
-
 
 export function getEventList(option={}){
   let { url , method } = API.ENDPOINT.AUTH.LOGIN;
@@ -46,21 +41,21 @@ export function postEventList(option={}){
 
 export function getArrivalList(option={}) {
     let { url , method } = API.ENDPOINT.ARRIVAL.DETAIL;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url + option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }
 
 export function getDepartureList(option={}) {
     let { url , method } = API.ENDPOINT.DEPARTURE.DETAIL;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url + option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }
 
 export function getStayList(option={}) {
     let { url , method } = API.ENDPOINT.STAY.DETAIL;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url + option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }

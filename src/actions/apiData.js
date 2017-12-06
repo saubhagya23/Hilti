@@ -29,9 +29,9 @@ export function postEvent(empLoginInfo) {
     };
 }
 
-export function getArrivals() {
+export function getArrivals(data) {
     return function (dispatch) {
-        return getArrivalList().then(function (response) {
+        return getArrivalList(data).then(function (response) {
             dispatch({
                 type: ARRIVAL_LIST,
                 payload: response
@@ -41,9 +41,9 @@ export function getArrivals() {
     };
 }
 
-export function getStay() {
+export function getStay(data) {
     return function (dispatch) {
-        return getStayList().then(function (response) {
+        return getStayList(data).then(function (response) {
             dispatch({
                 type: STAY_LIST,
                 payload: response
@@ -53,9 +53,9 @@ export function getStay() {
     }
 }
 
-export function getDepartures() {
+export function getDepartures(data) {
     return function (dispatch) {
-        return getDepartureList().then(function (response) {
+        return getDepartureList(data).then(function (response) {
             dispatch({
                 type: DEPARTURE_LIST,
                 payload: response

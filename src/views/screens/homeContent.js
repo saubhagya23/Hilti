@@ -30,11 +30,15 @@ class HomeContent extends Component {
     playVideo = async() => {
         let videoUrl = await asyncGet('video');
         if(videoUrl){
+            console.log("video in store")
             this.setState({
                 url:videoUrl,
                 showVideo:true
+            },()=>{
+                console.log("state is :",this.state.url)
             })
         }else {
+            console.log("no video in store");
             const {getVideo} = this.props;
              await getVideo();
                 if(this.props.video && this.props.video.videoUrl){
@@ -42,6 +46,8 @@ class HomeContent extends Component {
                     this.setState({
                         url:this.props.video.videoUrl,
                         showVideo:true
+                    },()=>{
+                        console.log("state is :",this.state.url);
                     })
                 }
         }
@@ -54,17 +60,17 @@ class HomeContent extends Component {
                     <View style={{flex:1}}>
                         {
                             this.state.showVideo ?
-                                    <Expo.Video
-                                        source={{ uri: `${this.state.url}` }}
-                                        posterSource={require('../../assets/images/brandLogo.png')}
-                                        rate={1.0}
-                                        volume={1.0}
-                                        muted={false}
-                                        resizeMode="cover"
-                                        shouldPlay
-                                        isLooping={false}
-                                        style={{ flex:1 }}
-                                    />
+                                <Expo.Video
+                                    source={{ uri: `${this.state.url}` }}
+                                    posterSource={require('../../assets/images/brandLogo.png')}
+                                    rate={1.0}
+                                    volume={1.0}
+                                    muted={false}
+                                    resizeMode="cover"
+                                    shouldPlay
+                                    isLooping
+                                    style={{ flex:1 }}
+                                />
                                 :
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}

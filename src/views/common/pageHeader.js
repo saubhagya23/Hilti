@@ -5,6 +5,7 @@ import {BoxShadow} from 'react-native-shadow';
 
 class PageHeader extends Component {
     render(){
+        console.log("props in pageHeader are :",this.props);
         var {height, width} = Dimensions.get('window');
         console.log(height, width);
         const shadowOpt = {
@@ -42,7 +43,7 @@ class PageHeader extends Component {
                             <Icon
                                 name='user-circle-o'
                                 size={20}
-                                onPress={() => console.log('hello user')} />
+                                onPress={()=>this.props.navigation.navigate('Profile',{})} />
                         </View>
                     </View>
                 </View>

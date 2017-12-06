@@ -44,6 +44,7 @@ class Login extends Component {
         postEvent({payload:empLoginInfo}).then(eventLoginList => {
             if(eventLoginList.token){
                 asyncPost('token', eventLoginList.token);
+                // asyncPost('userDetail',eventLoginList.userDetail);
                 console.log('this', this.props)
                 //this.props.props.navigation.navigate('HomeScreen',{userToken:eventLoginList.token});
               const resetAction = NavigationActions.reset({

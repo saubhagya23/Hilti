@@ -4,6 +4,7 @@ import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
 import StandaloneNav from '../common/StandaloneNav'
+import {asyncGet} from "../../utils/asyncStore";
 
 class HomeScreen extends Component {
     render(){
@@ -11,7 +12,7 @@ class HomeScreen extends Component {
         return(
             <View style={styles.container}>
                 <View style={{height:38}}>
-                    <PageHeader/>
+                    <PageHeader navigation={this.props.navigation}/>
                 </View>
                 <View style={{height:179.5,marginTop:2}}>
                     <VideoComp/>

@@ -18,6 +18,7 @@ import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
 import DosDonts from '../views/screens/dosDonts'
 import Faqs from '../views/screens/faqs'
 import MyStay from '../views/screens/myStay'
+import Profile from '../views/screens/profile'
 
 const routes = {
     Main:{
@@ -76,6 +77,9 @@ const routes = {
     },
     Faqs: {
         screen: Faqs
+    },
+    Profile:{
+        screen: Profile
     }
 
 }

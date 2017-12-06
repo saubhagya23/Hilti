@@ -9,7 +9,6 @@ import FeatherIcon  from 'react-native-vector-icons/Feather'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import { Font } from 'expo'
 import DetailContainer from '../common/detailContainer'
-import BackTravel from './backTravel'
 import { getArrivals } from '../../actions/apiData';
 
 class MyArrivals extends Component {
@@ -33,13 +32,12 @@ class MyArrivals extends Component {
 
     componentDidMount(){
         const { getArrivals } = this.props;
-        getArrivals();
+        getArrivals({param:88210});
+        // getArrivals()
     }
 
     render(){
-        console.log("this.props in my_arrival",this.props.arrivalList);
         let details={...this.props.arrivalList[0]};
-        console.log("details:",details);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -239,7 +237,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        arrivalList: state.event.arrivalList
+        arrivalList: state.event.arrivalList,
+        eventLoginList: state.event.eventLoginList
     }
 }
 
