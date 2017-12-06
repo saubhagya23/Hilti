@@ -39,7 +39,7 @@ class StayNavigation extends Component {
                                     height: 64.5,
 
                                 }}
-                                onPress={()=>this.props.navigation.navigate('SubmitID',{})}>
+                                onPress={()=>this.props.navigation.navigate('SubmitId',{})}>
                                 <Text style={{color:'#dd2127',
                                     fontSize:16,
                                     marginTop:21.5,

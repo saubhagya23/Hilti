@@ -1,4 +1,4 @@
-import { EVENT_LIST, EVENT_LOGIN_LIST } from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST} from '../constants'
 import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL} from "../constants/index";
 const initialState = {
     // eventList: [],
@@ -6,9 +6,11 @@ const initialState = {
     arrivalList:[],
     departureList:[],
     stayList:[],
+    uploadIdProofEvent:{},
     video:{},
     userDetail:{}
-};
+}
+
 
 export function event (state = initialState, action) {
     switch (action.type) {
@@ -39,6 +41,11 @@ export function event (state = initialState, action) {
         case USER_DETAIL:{
             let userDetail = action.payload;
             return Object.assign({}, state, {userDetail});
+        }
+        case UPLOAD_ID_PROOF_LIST: {
+            console.log('action.payload--',action.payload,action);
+            let uploadIdProofEvent = action.payload;
+            return Object.assign({}, state, uploadIdProofEvent);
         }
         default:
             return state;

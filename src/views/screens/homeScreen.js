@@ -42,7 +42,7 @@ class HomeScreen extends Component {
                     <View style={{height:136.5, marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
                         {/*agenda nav container*/}
                         <HomeNavContainer
-                            navigationPage='AgendaNavigation'
+                            navigationPage='NavigationContainer'
                             imgSrc={require('../../assets/images/agenda/agenda_mdpi.png')}
                             titleText='AGENDA'
                             homeNavProps={this.props} />
@@ -78,7 +78,7 @@ class HomeScreen extends Component {
 
                         {/*assistance nav container*/}
                         <HomeNavContainer
-                            navigationPage='DosDonts'
+                            navigationPage='AssistanceNavigation'
                             imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
                             titleText='NEED ASSISTANCE'
                             homeNavProps={this.props}/>

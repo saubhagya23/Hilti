@@ -11,6 +11,9 @@ let API = {
         DEPARTURE: {
             DETAIL: {url: `/api/departures/detail/`,method:'GET'}//departure details for code:88210
         },
+        USER: {
+            UPLOAD_ID_PROOF: {url:'/api/user-ids/upload',method: 'POST'}
+        },
         STAY: {
             DETAIL:{url: `/api/user-details/stay/`,method:'GET'} // get stay details for code 88210
         },

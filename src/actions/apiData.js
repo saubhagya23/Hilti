@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL} from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -86,4 +86,22 @@ export function setUserDetail(userInfo) {
         return;
     }
 
+}
+
+export function uploadIdProofEvent(uploadObj) {
+    console.log('event object upload',uploadObj);
+    return function (dispatch) {
+        return uploadIdProofEventList(uploadObj).then(function (response) {
+            dispatch({
+                type: UPLOAD_ID_PROOF_LIST,
+                payload: response
+            });
+            console.log('response of upload------>>>>>',response);
+            return response;
+        }, function(err){
+            console.log(' error', err)
+        }).catch(function(err){
+            console.log('catch error', err)
+        });
+    };
 }

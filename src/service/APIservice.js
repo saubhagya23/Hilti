@@ -66,3 +66,11 @@ export function getVideoUrl(option={}) {
     option.method = method;
     return requestAPI(URL, option)
 }
+
+export function uploadIdProofEventList(option={}){
+    let { url , method } = API.ENDPOINT.USER.UPLOAD_ID_PROOF;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    console.log('options--',option);
+    return requestAPI(URL, option);
+};
