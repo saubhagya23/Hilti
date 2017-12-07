@@ -49,6 +49,8 @@ class HomeContent extends Component {
         }
     };
 
+
+
     render(){
         return(
             <View style={styles.container}>
@@ -58,12 +60,13 @@ class HomeContent extends Component {
                             this.state.showVideo ?
                                 <View style={{flex:1}}>
                                     <Expo.Video
-                                        source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                                        ref={this.props._handleVideoRef}
+                                        source={{ uri: `${this.state.url}` }}
                                         rate={1.0}
                                         volume={1.0}
                                         muted={false}
                                         resizeMode="cover"
-                                        shouldPlay={this.props.videoPlay}
+                                        shouldPlay={true}
                                         isLooping
                                         useNativeControls={true}
                                         style={{flex:1}}

@@ -8,14 +8,21 @@ import StandaloneNav from '../common/StandaloneNav'
 class HomeScreen extends Component {
 
     state = {
-        videoPlay:true
+        videoPlay:true,
+        playbackObject : null
+    };
+
+
+    _handleVideoRef = component => {
+        this.setState({
+            playbackObject:component
+        });
     };
 
     pauseVideo = () => {
-        console.log("pausing video******",this.state.videoPlay);
-            this.setState({videoPlay:false})
+        if(this.state.playbackObject !== null)
+        this.state.playbackObject.pauseAsync();
     };
-
 
     render(){
         return(
@@ -24,7 +31,7 @@ class HomeScreen extends Component {
                     <PageHeader navigation={this.props.navigation} showBell={true} showUser={true} pauseVideo={this.pauseVideo}/>
                 </View>
                 <View style={{height:179.5,marginTop:2}}>
-                    <VideoComp videoPlay={this.state.videoPlay}/>
+                    <VideoComp videoPlay={this.state.videoPlay} _handleVideoRef={this._handleVideoRef}/>
                 </View>
                 <ScrollView>
                     <View style={{height:137.5,marginLeft:7,marginRight:7, marginTop:16.5,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
