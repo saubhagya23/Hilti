@@ -11,12 +11,15 @@ import { getVideo } from '../../actions/apiData';
 
 class HomeContent extends Component {
 
-    state = {
-        fontLoaded:false,
-        showVideo:false,
-        url:'',
-        status:true
-    };
+    constructor(props){
+        super(props)
+        this.state = {
+            fontLoaded:false,
+            showVideo:false,
+            url:'',
+            status:true
+        };
+    }
 
     async componentWillMount(){
         await Font.loadAsync({
@@ -48,11 +51,6 @@ class HomeContent extends Component {
         }
     };
 
-    pause=()=>{
-        this.setState({
-            status:!this.state.status
-        })
-    };
 
     render(){
         return(
@@ -62,6 +60,7 @@ class HomeContent extends Component {
                         {
                             this.state.showVideo ?
                                 <View style={{flex:1}}>
+                                    <TouchableOpacity onPress={this.props.videoControl}  style={{flex:1,backgroundColor:"#dd2127"}}>
                                 <Expo.Video
                                     source={{ uri: `https://hiltistorage.blob.core.windows.net/hilti-documents/Welcome-video_AlimHirani.mp4` }}
                                     posterSource={require('../../assets/images/brandLogo.png')}
@@ -69,17 +68,13 @@ class HomeContent extends Component {
                                     volume={1.0}
                                     muted={false}
                                     resizeMode="cover"
-                                    shouldPlay={this.state.status}
+                                    shouldPlay={this.props.videoPlay}
                                     isLooping
                                     style={{ flex:1 }}
                                 />
-                                    {
-                                        this.state.status ?
-                                            <Icon name="pause" onPress={this.pause}/>:
-                                            <Icon name="play" onPress={this.pause}/>
-                                    }
-
+                                    </TouchableOpacity>
                                 </View>
+
                                 :
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
