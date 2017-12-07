@@ -57,14 +57,21 @@ class PageHeader extends Component {
                                     <Icon
                                         name='bell'
                                         size={20}
-                                        onPress={() => console.log('hello bell')} />:null
+                                        onPress={() => {
+                                            this.props.pauseVideo();
+                                            console.log('hello bell')
+                                        }} />:null
                             }
                             {
                                 this.props.showUser ?
                                     <Icon
                                         name='user-circle-o'
                                         size={20}
-                                        onPress={()=>this.props.navigation.navigate('Profile',{})} />:null
+                                        onPress={()=> {
+                                            this.props.pauseVideo();
+                                            this.props.navigation.navigate('Profile',{})
+                                        }}
+                                    />:null
                             }
                         </View>
                     </View>
