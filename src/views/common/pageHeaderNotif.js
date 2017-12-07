@@ -35,7 +35,7 @@ class PageHeaderNotif extends Component {
             x:0,
             y:1,
             style:{marginVertical:1}
-        };
+        }
         return(
             <BoxShadow setting={shadowOpt}>
                 <View style={{position:"relative",
@@ -65,9 +65,7 @@ class PageHeaderNotif extends Component {
                                         <Icon
                                             name='user-circle-o'
                                             size={20}
-                                            onPress={()=>{
-                                                this.props.navigation.navigate('Profile',{})
-                                            }} />
+                                            onPress={()=>this.props.navigation.navigate('Profile',{})}/>
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>

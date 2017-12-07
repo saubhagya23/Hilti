@@ -5,7 +5,7 @@ import { Font } from 'expo'
 export default class HomeNavContainer extends Component {
     state = {
       fontLoaded:false
-    }
+    };
 
 
     async componentWillMount(){

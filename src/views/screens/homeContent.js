@@ -5,7 +5,6 @@ import Expo from 'expo'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
-
 import { asyncPost,asyncGet } from '../../utils/asyncStore';
 import { getVideo } from '../../actions/apiData';
 
@@ -16,8 +15,7 @@ class HomeContent extends Component {
         this.state = {
             fontLoaded:false,
             showVideo:false,
-            url:'',
-            status:true
+            url:''
         };
     }
 
@@ -51,7 +49,6 @@ class HomeContent extends Component {
         }
     };
 
-
     render(){
         return(
             <View style={styles.container}>
@@ -60,22 +57,18 @@ class HomeContent extends Component {
                         {
                             this.state.showVideo ?
                                 <View style={{flex:1}}>
-                                    <TouchableOpacity onPress={this.props.videoControl}  style={{flex:1,backgroundColor:"#dd2127"}}>
-                                <Expo.Video
-                                    source={{ uri: `https://hiltistorage.blob.core.windows.net/hilti-documents/Welcome-video_AlimHirani.mp4` }}
-                                    posterSource={require('../../assets/images/brandLogo.png')}
-                                    rate={1.0}
-                                    volume={1.0}
-                                    muted={false}
-                                    resizeMode="cover"
-                                    shouldPlay={this.props.videoPlay}
-                                    isLooping
-                                    style={{ flex:1 }}
-                                    orientation="portrait"
-                                />
-                                    </TouchableOpacity>
+                                    <Expo.Video
+                                        source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                                        rate={1.0}
+                                        volume={1.0}
+                                        muted={false}
+                                        resizeMode="cover"
+                                        shouldPlay={this.props.videoPlay}
+                                        isLooping
+                                        useNativeControls={true}
+                                        style={{flex:1}}
+                                    />
                                 </View>
-
                                 :
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}

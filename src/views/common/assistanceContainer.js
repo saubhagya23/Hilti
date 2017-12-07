@@ -1,23 +1,9 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image, Text, Linking, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
-import Icon  from 'react-native-vector-icons/FontAwesome';
 import Checkbox from './Checkbox';
 
-
-
 export default class assistanceContainer extends Component {
-    submit = (url) => {
-        /*Submit handler*/
-        console.log("url to open is :",url);
-        Linking.canOpenURL(url).then(supported => {
-            if (supported) {
-                Linking.openURL(url);
-            } else {
-                console.log('Don\'t know how to open URI: ' + url);
-            }
-        });
-    };
 
     constructor(){
         super();
@@ -36,9 +22,19 @@ export default class assistanceContainer extends Component {
         })
     }
 
+    submit = (url) => {
+        Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+                Linking.openURL(url);
+            } else {
+                console.log('Don\'t know how to open URI: ' + url);
+            }
+        });
+    };
+
     render() {
         const mailId = 'pooja19goyal@gmail.com';
-        const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={false} content={item} key={i} /> )
+        const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={false} content={item} key={i} /> );
         return (
             this.state.fontLoaded?
             <View style={styles.Container}>
@@ -60,7 +56,7 @@ export default class assistanceContainer extends Component {
                     </View>
                     <View style={{flex:1}}>
                         {CheckBoxes}
-                        <TouchableHighlight style={styles.button} onPress= { () => {this.submit(`mailto:${mailId}?subject=${this.props.assistanceData.title}&body=example`)}}>
+                        <TouchableHighlight style={styles.button} onPress= { () => {this.submit(`mailto:${mailId}?subject=${this.props.assistanceData.title}`)}}>
                             <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                                 <Image style={{marginRight:9}} source={require('../../assets/images/send_email/send_email_mpdi.png')} />
                                 <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', textAlign:'center' }}>SEND EMAIL</Text>

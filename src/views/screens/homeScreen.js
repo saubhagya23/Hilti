@@ -4,7 +4,6 @@ import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
 import StandaloneNav from '../common/StandaloneNav'
-import {asyncGet} from "../../utils/asyncStore";
 
 class HomeScreen extends Component {
 
@@ -12,16 +11,9 @@ class HomeScreen extends Component {
         videoPlay:true
     };
 
-    videoControl = () => {
-        this.setState({
-           videoPlay:!this.state.videoPlay
-        })
-    };
-
     pauseVideo = () => {
-        if(this.state.videoPlay!==false){
+        console.log("pausing video******",this.state.videoPlay);
             this.setState({videoPlay:false})
-        }
     };
 
 
@@ -32,7 +24,7 @@ class HomeScreen extends Component {
                     <PageHeader navigation={this.props.navigation} showBell={true} showUser={true} pauseVideo={this.pauseVideo}/>
                 </View>
                 <View style={{height:179.5,marginTop:2}}>
-                    <VideoComp videoPlay={this.state.videoPlay} videoControl={this.videoControl}/>
+                    <VideoComp videoPlay={this.state.videoPlay}/>
                 </View>
                 <ScrollView>
                     <View style={{height:137.5,marginLeft:7,marginRight:7, marginTop:16.5,backgroundColor:'#f5f3ee',flexDirection:'row'}}>

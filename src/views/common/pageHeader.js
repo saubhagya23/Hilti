@@ -86,10 +86,6 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         backgroundColor:'white',
-        /*shadowColor:'blue',
-        shadowOpacity:0.8,
-        shadowRadius:2,
-        shadowOffset:{height:1,width:360}*/
     },
     logo:{
         flex:1,
