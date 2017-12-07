@@ -41,8 +41,9 @@ export default class CheckBox extends Component {
 }
 const styles = StyleSheet.create({
     checkbox: {
-        marginBottom:21.5,
+        marginBottom:11.5,
         flexDirection: 'row',
+        paddingVertical: 5
     },
     checkboxText: {
         flex: 1,
