@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList, uploadIdProofEventList,getStayList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,UPLOAD_ID_PROOF_LIST,STAY_LIST } from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList, uploadIdProofEventList,getStayList, getdownloadIdProofEventList, deletedownloadIdProofEventList} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,UPLOAD_ID_PROOF_LIST,STAY_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -80,6 +80,32 @@ export function uploadIdProofEvent(uploadObj) {
             console.log(' error', err)
         }).catch(function(err){
             console.log('catch error', err)
+        });
+    };
+}
+
+export function getdownloadIdProofEvent() {
+    console.log('image type is--------------');
+    return function (dispatch) {
+        return getdownloadIdProofEventList().then(function (response) {
+            dispatch({
+                type: DOWNLOAD_ID_PROOF_LIST,
+                payload: response
+            });
+            return response;
+        });
+    };
+}
+
+export function deletedownloadIdProofEvent() {
+    console.log('deleting started ------------');
+    return function (dispatch) {
+        return deletedownloadIdProofEventList().then(function (response) {
+            dispatch({
+                type: DELETE_ID_PROOF_LIST,
+                payload: response
+            });
+            return response;
         });
     };
 }
