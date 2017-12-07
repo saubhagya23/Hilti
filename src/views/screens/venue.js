@@ -45,7 +45,7 @@ class Venue extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='VENUE'/>
+                        <PageHeaderNotif props={this.props} parentPage='VENUE' navigation={this.props.navigation}/>
 
                         <View style={{height:184.5}}>
                             <Image

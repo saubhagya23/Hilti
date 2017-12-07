@@ -29,7 +29,7 @@ class DressCodeDay extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='Day1'/>
+                        <PageHeaderNotif props={this.props} parentPage='Day1' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View style={{height:133.5}}>
                                 <ImageBackground

@@ -71,6 +71,7 @@ class HomeContent extends Component {
                                     shouldPlay={this.props.videoPlay}
                                     isLooping
                                     style={{ flex:1 }}
+                                    orientation="portrait"
                                 />
                                     </TouchableOpacity>
                                 </View>

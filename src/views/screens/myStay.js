@@ -39,7 +39,7 @@ class MyStay extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='MY STAY'/>
+                        <PageHeaderNotif props={this.props} parentPage='MY STAY' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View
                                 style={{height:39.5,

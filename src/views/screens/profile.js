@@ -31,7 +31,7 @@ class Profile extends Component {
                 {
                     this.state.fontLoaded?
                         <View style={{flex:1}}>
-                            <PageHeaderNotif props={this.props} parentPage='Profile'/>
+                            <PageHeaderNotif props={this.props} parentPage='Profile' navigation={this.props.navigation}/>
                             <View style={{backgroundColor:'grey',height:150}}>
 
                             </View>

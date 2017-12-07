@@ -18,7 +18,7 @@ class hotelAssistance extends Component {
         return ( 
             <View style={styles.container}>
             <View style={{flex:1}}>
-                <PageHeaderNotif props={this.props} parentPage={data.title}/>
+                <PageHeaderNotif props={this.props} parentPage={data.title} navigation={this.props.navigation}/>
                 <ScrollView>
                     <AssistanceContainer assistanceData={data} />
                 </ScrollView>

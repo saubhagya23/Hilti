@@ -25,31 +25,31 @@ export default class DosDonts extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded ?
                     <View style={{flex: 1}}>
-                        <PageHeaderNotif props={this.props} parentPage={`FAQs`}/>
+                        <PageHeaderNotif props={this.props} parentPage={`FAQs`} navigation={this.props.navigation}/>
                         <View style={{backgroundColor:'#f5f3ee'}}>
                             <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>FAQ HILTI INDIA - KICK OFF 2017</Text>
-                            <View style={{backgroundColor:'#ffffff',height:363,marginTop:16}}>
+                            <View style={{backgroundColor:'#ffffff',marginTop:16}}>
                                 <ScrollView>
                                     <View style={{flexDirection:'row'}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#f5f3ee',marginLeft:19.5,marginTop:28}}
                                         name='circle'
                                         size={10}
                                     />
-                                    <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>I want to make some changes in my teavel plan,whom to contact?</Text>
+                                    <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10,marginRight:20}}>I want to make some changes in my teavel plan,whom to contact?</Text>
                                     </View>
-                                    <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
+                                    <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:10}}>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </Text>
                                     <View style={{flexDirection:'row'}}>
                                         <Icon
-                                            style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                            style={{color:'#f5f3ee',marginLeft:19.5,marginTop:28}}
                                             name='circle'
                                             size={10}
                                         />
-                                        <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>When will be my check-in at the hotel?</Text>
+                                        <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10}}>When will be my check-in at the hotel?</Text>
                                     </View>
-                                    <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
+                                    <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginBottom:10}}>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </Text>
                                 </ScrollView>

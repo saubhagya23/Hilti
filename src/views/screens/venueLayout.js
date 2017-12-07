@@ -44,7 +44,7 @@ class VenueLayout extends Component{
             <View style={styles.container}>
                 {this.state.fontLoaded ?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT'/>
+                        <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
                         <Image
                             style={{height:249.5}}
                             source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.png')}

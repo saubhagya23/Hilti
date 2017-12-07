@@ -42,7 +42,7 @@ class MyArrivals extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='MY ARRIVAL'/>
+                        <PageHeaderNotif props={this.props} parentPage='MY ARRIVAL' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View
                                 style={{height:39.5,

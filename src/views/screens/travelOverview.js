@@ -42,7 +42,7 @@ class travelOverview extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='TRAVEL OVERVIEW'/>
+                        <PageHeaderNotif props={this.props} parentPage='TRAVEL OVERVIEW' navigation={this.props.navigation}/>
 
                         <View style={{height:331,justifyContent:'center',alignItems:'center'}}>
                             <Image

@@ -159,7 +159,7 @@ class SubmitId extends Component {
                 {
                     this.state.fontLoaded?
                         <View style={{flex:1}}>
-                            <PageHeaderNotif props={this.props} parentPage='Submit Your ID'/>
+                            <PageHeaderNotif props={this.props} parentPage='Submit Your ID' navigation={this.props.navigation}/>
                                 <Text style={{marginTop:25,marginLeft:20.5,fontSize:12,color:'#dd2127',fontFamily:'hilti-roman'}}>
                                     EXPRESS CHECK-IN
                                 </Text>
