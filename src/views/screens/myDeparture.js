@@ -8,7 +8,6 @@ import FeatherIcon  from 'react-native-vector-icons/Feather'
 
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import { Font } from 'expo'
-import BackTravel from './backTravel'
 import { getDepartures } from '../../actions/apiData';
 
 class MyDeparture extends Component {
@@ -32,18 +31,17 @@ class MyDeparture extends Component {
 
     componentDidMount(){
         const { getDepartures } = this.props;
-        getDepartures();
+        let detail = JSON.parse(this.props.userDetail);
+        getDepartures({param:detail.Code});
     }
 
     render(){
-        console.log("this.props in my_arrival",this.props.departureList);
         let details={...this.props.departureList[0]};
-        console.log("details:",details);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='MY DEPARTURE'/>
+                        <PageHeaderNotif props={this.props} parentPage='MY DEPARTURE' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View
                                 style={{height:39.5,
@@ -245,110 +243,6 @@ class MyDeparture extends Component {
                         </ScrollView>
                     </View>:null
                 }
-
-                {/*<ScrollView>
-                    <View style={styles.bodyContainer}>
-                    <View style={styles.header}>
-                        <Text style={styles.text}>Arrival Details</Text>
-                        <Text style={styles.text}>Ticket download</Text>
-                    </View>
-                    <View style={styles.detailParent}>
-                        <View style={styles.detail}>
-                            <View>
-                                <Text style={styles.heading}>From</Text>
-                                <Text>{details.From||'N/A'}</Text>
-                            </View>
-                            <Icon
-                                style={styles.icon}
-                                name='arrow-right'
-                                size={10}
-                            />
-                            <View>
-                                <Text style={styles.heading}>To</Text>
-                                <Text>{details.To||'N/A'}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.detail}>
-                            <View>
-                                <Text style={styles.heading}>Flight/Train No.</Text>
-                                <Text>{details.FlightTrainNumber||'N/A'}</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.heading}>PNR No.</Text>
-                                <Text>{details.PNRNo||'N/A'}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.detail}>
-                            <View>
-                                <Text style={styles.heading}>Dep Date & Time</Text>
-                                <Text>{details.DepartureDate||'N/A'}</Text>
-                                <Text>{details.DepartureTime||'N/A'}</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.heading}>Arrival Date & Time</Text>
-                                <Text>{details.ArrivalDate||'N/A'}</Text>
-                                <Text>{details.ArrivalTime||'N/A'}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.detail}>
-                            <View>
-                                <Text style={styles.heading}>Arrival Terminal</Text>
-                                <Text>{details.ArrivalAtTerminalStation||'N/A'}</Text>
-                            </View>
-                        </View>
-                        <View style={[styles.detail, styles.noBorder]}>
-                            <View>
-                                <Text style={styles.heading}>My Champion Name</Text>
-                                <Text>{details.MyTravelChampionName||'N/A'}</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.heading}>Champion No.</Text>
-                                <Text>{details.MyTravelChampionContactNumber||'N/A'}</Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={styles.header}>
-                        <Text style={styles.text}>My Transfer Details</Text>
-                        <Text style={styles.text}>Ticket download</Text>
-                    </View>
-                    <View style={styles.detailParent}>
-                        <View style={[styles.detail, styles.noBorder]}>
-                            <View>
-                                <Text style={styles.heading}>Pickup Point</Text>
-                                <Text>{details.PickUpPoint||'N/A'}</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.heading}>Cab/Coach No.</Text>
-                                <Text>{details.CoachCabNo||'N/A'}</Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={styles.header}>
-                        <Text style={styles.text}>My Champion Details</Text>
-                        <Text style={styles.text}>Ticket download</Text>
-                    </View>
-                    <View style={styles.detailParent}>
-                        <View style={[styles.detail, styles.noBorder]}>
-                            <View>
-                                <Text style={styles.heading}>Name</Text>
-                                <Text>{details.MyTravelChampionName||'N/A'}</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.heading}>Mobile No.</Text>
-                                <Text>{details.MyTravelChampionContactNumber||'N/A'}</Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={styles.header}>
-                        <Text style={styles.text}>Bus/Cab Departure Time Details</Text>
-                        <Text style={styles.text}>Ticket download</Text>
-                    </View>
-
-                </View>
-                </ScrollView>*/}
             </View>
         );
     }
@@ -403,7 +297,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        departureList: state.event.departureList
+        departureList: state.event.departureList,
+        eventLoginList:state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

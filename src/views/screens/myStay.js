@@ -29,18 +29,17 @@ class MyStay extends Component {
 
     componentDidMount(){
         const { getStay } = this.props;
-        getStay();
+        let detail = JSON.parse(this.props.userDetail);
+        getStay({param:detail.Code});
     }
 
     render(){
-        console.log("this.props in my_arrival",this.props.stayList);
         let details={...this.props.stayList};
-        console.log("details:",details);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='MY STAY'/>
+                        <PageHeaderNotif props={this.props} parentPage='MY STAY' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View
                                 style={{height:39.5,
@@ -174,7 +173,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        stayList: state.event.stayList
+        stayList: state.event.stayList,
+        eventLoginList:state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

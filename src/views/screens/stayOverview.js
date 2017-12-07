@@ -42,7 +42,7 @@ class stayOverview extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='STAY OVERVIEW'/>
+                        <PageHeaderNotif props={this.props} parentPage='STAY OVERVIEW' navigation={this.props.navigation}/>
 
                         <View style={{height:331,justifyContent:'center',alignItems:'center'}}>
                             <Image

@@ -6,15 +6,32 @@ import HomeNavContainer from '../common/HomeNavContainer'
 import StandaloneNav from '../common/StandaloneNav'
 
 class HomeScreen extends Component {
+
+    state = {
+        videoPlay:true,
+        playbackObject : null
+    };
+
+
+    _handleVideoRef = component => {
+        this.setState({
+            playbackObject:component
+        });
+    };
+
+    pauseVideo = () => {
+        if(this.state.playbackObject !== null)
+        this.state.playbackObject.pauseAsync();
+    };
+
     render(){
-        //console.log('props in homescreen is -----',this.props);
         return(
             <View style={styles.container}>
                 <View style={{height:38}}>
-                    <PageHeader/>
+                    <PageHeader navigation={this.props.navigation} showBell={true} showUser={true} pauseVideo={this.pauseVideo}/>
                 </View>
                 <View style={{height:179.5,marginTop:2}}>
-                    <VideoComp/>
+                    <VideoComp videoPlay={this.state.videoPlay} _handleVideoRef={this._handleVideoRef}/>
                 </View>
                 <ScrollView>
                     <View style={{height:137.5,marginLeft:7,marginRight:7, marginTop:16.5,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
@@ -23,43 +40,55 @@ class HomeScreen extends Component {
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/travelers/travelers_mdpi.png')}
                             titleText='TRAVEL'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*venue nav container*/}
                         <HomeNavContainer
                             navigationPage='Venue'
                             imgSrc={require('../../assets/images/venue/venue_mdpi.png')}
                             titleText='VENUE'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*dress-code nav container*/}
                         <HomeNavContainer
                             navigationPage='DressCodeNavigation'
                             imgSrc={require('../../assets/images/dress_code/dress_code_mdpi.png')}
                             titleText='DRESS CODE'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
                     </View>
                     <View style={{height:136.5, marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
                         {/*agenda nav container*/}
                         <HomeNavContainer
-                            navigationPage='NavigationContainer'
+                            navigationPage='AgendaNavigation'
                             imgSrc={require('../../assets/images/agenda/agenda_mdpi.png')}
                             titleText='AGENDA'
-                            homeNavProps={this.props} />
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*stay overview nav container*/}
                         <HomeNavContainer
                             navigationPage='StayNavigation'
                             imgSrc={require('../../assets/images/stay/stay_mdpi.png')}
                             titleText='STAY OVERVIEW'
-                            homeNavProps={this.props} />
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*experience corner nav container*/}
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/exp-corner/experience_corner_mdpi.png')}
                             titleText='EXPERIENCE CORNER'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
                     </View>
                     <View style={{height:136.5,marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
                         {/*organisational information nav container*/}
@@ -74,21 +103,27 @@ class HomeScreen extends Component {
                             navigationPage='OrgInfoNavigation'
                             imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
                             titleText='ORG. INFORMATION'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*assistance nav container*/}
                         <HomeNavContainer
-                            navigationPage='DosDonts'
+                            navigationPage='AssistanceNavigation'
                             imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
                             titleText='NEED ASSISTANCE'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
 
                         {/*post comment nav container*/}
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
                             imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
                             titleText='POST YOUR COMMENTS'
-                            homeNavProps={this.props}/>
+                            homeNavProps={this.props}
+                            pauseVideo={this.pauseVideo}
+                        />
                     </View>
                 </ScrollView>
             </View>

@@ -6,7 +6,6 @@ export default class DetailsContainer extends Component{
         super(props)
     }
     render(){
-        console.log("props in details are :",this.props)
         return(
             <View style={{height:67,
                 flexDirection:'row',

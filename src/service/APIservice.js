@@ -11,16 +11,15 @@ async function requestAPI(url, options = {}) {
           'Content-Type': 'application/json'
       };
 
-      let token = await asyncGet('token');
-      if(token){
-          console.log("token is:",token)
-          headers.Authorization = `Bearer ${token}`
-      }
+    let token = await asyncGet('token');
+    if(token){
+        headers.Authorization = `Bearer ${token}`
+    }
 
-      let reqBody = {
+    let reqBody = {
       method: options.method || "POST",
       headers: headers
-      };
+    };
 
     if(options.method.toLowerCase() !== 'get') {
         if(options.headers){
@@ -33,10 +32,7 @@ async function requestAPI(url, options = {}) {
     }
 
     return fetch(url, reqBody).then(res=> res.json());
-
-
 };
-
 
 export function getEventList(option={}){
   let { url , method } = API.ENDPOINT.AUTH.LOGIN;
@@ -49,26 +45,32 @@ export function postEventList(option={}){
     let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
     let URL = `${API_BASE + url}`;
     option.method = method;
-    console.log('options--',option);
     return requestAPI(URL, option);
 };
 
 export function getArrivalList(option={}) {
     let { url , method } = API.ENDPOINT.ARRIVAL.DETAIL;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url + option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }
 
 export function getDepartureList(option={}) {
     let { url , method } = API.ENDPOINT.DEPARTURE.DETAIL;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url + option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }
 
 export function getStayList(option={}) {
     let { url , method } = API.ENDPOINT.STAY.DETAIL;
+    let URL = `${API_BASE + url + option.param}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function getVideoUrl(option={}) {
+    let { url , method } = API.ENDPOINT.VIDEO.DETAIL;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option)

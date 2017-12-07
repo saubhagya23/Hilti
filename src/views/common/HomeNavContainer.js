@@ -5,7 +5,7 @@ import { Font } from 'expo'
 export default class HomeNavContainer extends Component {
     state = {
       fontLoaded:false
-    }
+    };
 
 
     async componentWillMount(){
@@ -30,7 +30,10 @@ export default class HomeNavContainer extends Component {
                             marginRight:7,
                             marginBottom:15,
                         }}
-                        onPress={() => this.props.homeNavProps.navigation.navigate(`${navigationPage}`,{})}
+                        onPress={() => {
+                            this.props.pauseVideo();
+                            this.props.homeNavProps.navigation.navigate(`${navigationPage}`,{})
+                        }}
                     >
                         <Image
                             style={{

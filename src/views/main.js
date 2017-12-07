@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { getEvent } from '../actions/apiData';
+import { getEvent,setUserDetail } from '../actions/apiData';
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
@@ -21,17 +21,19 @@ class Home extends Component {
     }
 
     componentWillMount(){
-        // console.log('props....####',this.props.eventLoginList);
         //asyncRemove('token');
         asyncGet('token').then((value) => {
-            console.log('####',value);
             if(value !== null){
+                asyncGet('userDetail').then((detail) => {
+                    const { setUserDetail } = this.props;
+                    this.props.setUserDetail(detail);
+                });
                 const resetAction = NavigationActions.reset({
                     index: 0,
                     actions: [
                         NavigationActions.navigate({ routeName: 'HomeScreen' })
                     ]
-                })
+                });
                 this.props.navigation.dispatch(resetAction);
             }
             else{
@@ -44,14 +46,11 @@ class Home extends Component {
                 this.props.navigation.dispatch(resetAction);
             }
         })
-        //const { getEvent } = this.props;
-        //let APICALL = getEvent().then(eventList => console.log('eventList sucess', eventList));
 
     }
 
 
     render() {
-        //console.log('props....',this.props, this.props.eventLoginList);
         return (
             <View style={{flex:1}}>
                 <View style={{alignItems:'center',justifyContent:'center',flex:1,marginTop:70}}>
@@ -92,7 +91,8 @@ function mapDispatchToProps(dispatch){
   return {
     dispatch,
     ...bindActionCreators({
-        getEvent,
+            getEvent,
+            setUserDetail
       },
       dispatch
     ),

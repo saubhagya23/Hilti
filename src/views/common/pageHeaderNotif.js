@@ -25,8 +25,6 @@ class PageHeaderNotif extends Component {
 
     render(){
         var {height, width} = Dimensions.get('window');
-        console.log(height, width);
-
         const shadowOpt = {
             width:width,
             height:80,
@@ -60,14 +58,14 @@ class PageHeaderNotif extends Component {
                                         <Icon
                                             name='bell'
                                             size={20}
-                                            onPress={()=>this.props.props.navigation.goBack()} />
+                                            onPress={()=>console.log("bell clicked")} />
                                     </TouchableOpacity>
 
                                     <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
                                             name='user-circle-o'
                                             size={20}
-                                            onPress={()=>this.props.props.navigation.goBack()} />
+                                            onPress={()=>this.props.navigation.navigate('Profile',{})}/>
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>

@@ -9,7 +9,6 @@ import FeatherIcon  from 'react-native-vector-icons/Feather'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import { Font } from 'expo'
 import DetailContainer from '../common/detailContainer'
-import BackTravel from './backTravel'
 import { getArrivals } from '../../actions/apiData';
 
 class MyArrivals extends Component {
@@ -33,18 +32,17 @@ class MyArrivals extends Component {
 
     componentDidMount(){
         const { getArrivals } = this.props;
-        getArrivals();
+        let detail = JSON.parse(this.props.userDetail);
+        getArrivals({param:detail.Code});
     }
 
     render(){
-        console.log("this.props in my_arrival",this.props.arrivalList);
         let details={...this.props.arrivalList[0]};
-        console.log("details:",details);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='MY ARRIVAL'/>
+                        <PageHeaderNotif props={this.props} parentPage='MY ARRIVAL' navigation={this.props.navigation}/>
                         <ScrollView>
                             <View
                                 style={{height:39.5,
@@ -239,7 +237,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        arrivalList: state.event.arrivalList
+        arrivalList: state.event.arrivalList,
+        eventLoginList: state.event.eventLoginList,
+        userDetail:state.event.userDetail
     }
 }
 

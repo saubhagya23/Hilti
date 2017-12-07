@@ -1,26 +1,26 @@
-import { EVENT_LIST, EVENT_LOGIN_LIST,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST} from "../constants/index";
+import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL} from "../constants/index";
 const initialState = {
-    eventList: [],
-    eventListLoginInfo:{},
+    // eventList: [],
+    eventLoginList:{},
     arrivalList:[],
     departureList:[],
     stayList:[],
     uploadIdProofEvent:{},
     downloadIdProofEvent:[],
-    deleteIdProofEvent:[]
+    deleteIdProofEvent:[],
+    video:{},
+    userDetail:{}
 }
 
 
 export function event (state = initialState, action) {
     switch (action.type) {
-        case EVENT_LIST: {
-            console.log('action.payload-get-',action.payload);
-          let eventList = action.payload;
-          return Object.assign({}, state, eventList);
-        }
+        /*case EVENT_LIST: {
+            let eventList = action.payload;
+            return Object.assign({}, state, eventList);
+        }*/
         case EVENT_LOGIN_LIST: {
-            console.log('action.payload--',action.payload,action);
             let eventLoginList = action.payload;
             return Object.assign({}, state, eventLoginList);
         }
@@ -35,6 +35,14 @@ export function event (state = initialState, action) {
         case STAY_LIST:{
             let stayList = action.payload;
             return Object.assign({},state,{stayList})
+        }
+        case VIDEO_URL:{
+            let video = action.payload;
+            return Object.assign({},state,{video})
+        }
+        case USER_DETAIL:{
+            let userDetail = action.payload;
+            return Object.assign({}, state, {userDetail});
         }
         case UPLOAD_ID_PROOF_LIST: {
             console.log('action.payload--',action.payload,action);

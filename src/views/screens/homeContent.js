@@ -1,12 +1,22 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground,TouchableOpacity } from 'react-native';
 import { Font } from 'expo'
+import Expo from 'expo'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
+import { asyncPost,asyncGet } from '../../utils/asyncStore';
+import { getVideo } from '../../actions/apiData';
 
 class HomeContent extends Component {
 
-    state = {
-        fontLoaded:false
+    constructor(props){
+        super(props)
+        this.state = {
+            fontLoaded:false,
+            showVideo:false,
+            url:''
+        };
     }
 
     async componentWillMount(){
@@ -19,42 +29,76 @@ class HomeContent extends Component {
         })
     }
 
+    playVideo = async() => {
+        let videoUrl = await asyncGet('video');
+        if(videoUrl){
+            this.setState({
+                url:videoUrl,
+                showVideo:true
+            })
+        }else {
+            const {getVideo} = this.props;
+             await getVideo();
+                if(this.props.video && this.props.video.videoUrl){
+                    await asyncPost('video', this.props.video.videoUrl);
+                    this.setState({
+                        url:this.props.video.videoUrl,
+                        showVideo:true
+                    })
+                }
+        }
+    };
+
+
+
     render(){
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <ImageBackground
-                            style={{flex:1, width: null, height: null}}
-                            resizeMode={'cover'}
-                            source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
-                        >
-                        {/*<Image
-                            style={{position:'absolute',marginTop:22.5,marginLeft:19}}
-                            source={require('../../assets/images/logo/logo_mdpi.png')}
-                        />*/}
-                        <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
-                            WELCOME MESSAGE BY GM
-                        </Text>
-                        <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
-                            We welcome you to be a part of our annual meet.
-                        </Text>
-                        <Text style={{position:'absolute', marginTop:111.5,marginLeft:19,color:'#000000',fontSize:9, fontFamily:'hilti-bold'}}>
-                            Watch Video
-                        </Text>
-                        {/*<Image
-                            style={{position:'absolute',marginTop:128.5,marginLeft:72,width:10,height:10}}
-                            source={require('../../assets/images/playIcon/play_icon.png')}
-                        />*/}
+                        {
+                            this.state.showVideo ?
+                                <View style={{flex:1}}>
+                                    <Expo.Video
+                                        ref={this.props._handleVideoRef}
+                                        source={{ uri: `${this.state.url}` }}
+                                        rate={1.0}
+                                        volume={1.0}
+                                        muted={false}
+                                        resizeMode="cover"
+                                        shouldPlay={true}
+                                        isLooping
+                                        useNativeControls={true}
+                                        style={{flex:1}}
+                                    />
+                                </View>
+                                :
+                                <ImageBackground
+                                    style={{flex:1, width: null, height: null}}
+                                    resizeMode={'cover'}
+                                    source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
+                                >
+                                    <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
+                                        WELCOME MESSAGE BY GM
+                                    </Text>
+                                    <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
+                                        We welcome you to be a part of our annual meet.
+                                    </Text>
 
-                        <View style={{position:'absolute',marginTop:113.5,marginLeft:75}}>
-                            <Icon
-                                style={{color:'#dd2127'}}
-                                name='play-circle-o'
-                                size={10}
-                                onPress={() => {/*start video*/}} />
-                        </View>
-                        </ImageBackground>
+                                    <TouchableOpacity style={{position:'absolute',marginTop:111.5,marginLeft:19,flexDirection:'row'}} onPress={this.playVideo}>
+                                    <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
+                                        Watch Video
+                                    </Text>
+                                    <View style={{marginLeft:5}}>
+                                        <Icon
+                                            style={{color:'#dd2127'}}
+                                            name='play-circle-o'
+                                            size={10}
+                                             />
+                                    </View>
+                                    </TouchableOpacity>
+                                </ImageBackground>
+                        }
                     </View>:null
                 }
             </View>
@@ -81,4 +125,21 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomeContent;
+function mapStateToProps (state) {
+    return {
+        video: state.event.video
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+                getVideo,
+            },
+            dispatch
+        ),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContent)

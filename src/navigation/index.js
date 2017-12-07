@@ -18,9 +18,13 @@ import OrgInfoNavigation from '../views/screens/orgInfoNavigation'
 import DosDonts from '../views/screens/dosDonts'
 import Faqs from '../views/screens/faqs'
 import MyStay from '../views/screens/myStay'
+import Profile from '../views/screens/profile'
 import SubmitId from '../views/screens/submitId'
 import StayOverview from '../views/screens/stayOverview'
 import NavigationContainer from '../views/common/navigationContainer'
+import AssistanceNavigation from '../views/screens/assistanceNavigation'
+import TravelAssistance from '../views/screens/travelAssistance'
+import HotelAssistance from '../views/screens/hotelAssistance'
 
 const routes = {
     Main:{
@@ -86,8 +90,17 @@ const routes = {
     Faqs: {
         screen: Faqs
     },
-    NavigationContainer: {
-        screen: NavigationContainer
+    Profile:{
+        screen: Profile
+    },
+    AssistanceNavigation: {
+        screen: AssistanceNavigation
+    },
+    TravelAssistance: {
+        screen: TravelAssistance
+    },
+    HotelAssistance: {
+        screen: HotelAssistance
     }
 
 }

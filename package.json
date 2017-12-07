@@ -19,10 +19,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/videoplayer": "^0.1.13",
     "expo": "^22.0.2",
     "isomorphic-fetch": "^2.2.1",
-    "radio-button-react-native": "^1.1.6",
     "lodash": "^4.17.4",
+    "radio-button-react-native": "^1.1.6",
     "react": "16.0.0-beta.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.0.tar.gz",
     "react-native-elements": "^0.18.2",

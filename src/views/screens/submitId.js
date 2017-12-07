@@ -42,6 +42,8 @@ class SubmitId extends Component {
     }
 
     componentDidMount(){
+        /*const { deletedownloadIdProofEvent } = this.props;
+        deletedownloadIdProofEvent();*/
         const { getdownloadIdProofEvent } = this.props;
         getdownloadIdProofEvent();
         /*let downloadedImageArray = this.props.downloadIdProofEvent;
@@ -94,7 +96,7 @@ class SubmitId extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('Data------------------------->>>>>>>>>>>>>>>>>>>>',nextProps.downloadIdProofEvent.length);
+       console.log('Data------------------------->>>>>>>>>>>>>>>>>>>>',nextProps.downloadIdProofEvent.length);
         if(nextProps.downloadIdProofEvent.length !== 0){
             //console.log('Data--------------Found----------->>>>>>>>>>>>>>>>>>>>');
             let downloadedImageArray = nextProps.downloadIdProofEvent;
@@ -114,6 +116,9 @@ class SubmitId extends Component {
                         }, (() => {
                             console.log('Hello3');
                         }))
+                    }
+                    else{
+                        console.log('data found for back img-----');
                     }
                 }
                 else{
@@ -291,7 +296,7 @@ class SubmitId extends Component {
         }
     };
 
-    uploadImage = (uri) => {
+    uploadImage = (imageStatus,uri) => {
         console.log('image upload fn called..');
         if((this.state.value === ''|| this.state.imgFrontType === '')
             ||(this.state.value === ''|| this.state.imgBackType === '')){
@@ -308,11 +313,11 @@ class SubmitId extends Component {
                 type: `image/${fileType}`,
             });
             uploadObj.append('id',this.state.value);
-            if(this.state.imgBackType !== ''){
-                uploadObj.append('type',this.state.imgBackType);
+            if(imageStatus === 'front'){
+                uploadObj.append('type',this.state.imgFrontType);
             }
             else{
-                uploadObj.append('type',this.state.imgFrontType);
+                uploadObj.append('type',this.state.imgBackType);
             }
             /*let uploadObj = {
                 id:this.state.value,
@@ -363,7 +368,6 @@ class SubmitId extends Component {
         }
         else{
             let uploadResponse, result, resultFront, resultBack, uploadFrontResponse, uploadBackResponse;
-            this.setState({btnText:'DELETE'});
             if(this.state.imgFrontLoaded === true && this.state.imgBackLoaded === true){
                 //console.log('both images picked---');
                 resultFront  = this.state.imgFrontData;
@@ -372,10 +376,11 @@ class SubmitId extends Component {
                 try {
                     if (!resultFront.cancelled && !resultBack.cancelled) {
                         //console.log('both images not cancelled---');
-                        uploadFrontResponse = await this.uploadImage(resultFront.uri);
+                        uploadFrontResponse = await this.uploadImage('front',resultFront.uri);
                         //console.log('both images not cancelled-11111--');
-                        uploadBackResponse = await this.uploadImage(resultBack.uri);
+                        uploadBackResponse = await this.uploadImage('back',resultBack.uri);
                         //console.log('both images not cancelled-22222--');
+                        this.setState({btnText:'DELETE'});
                     }
                 } catch (e) {
                     console.log('Front--',{ uploadFrontResponse });
@@ -453,7 +458,7 @@ class SubmitId extends Component {
                 {
                     this.state.fontLoaded?
                         <View style={{flex:1}}>
-                            <PageHeaderNotif props={this.props} parentPage='Submit Your ID'/>
+                            <PageHeaderNotif props={this.props} parentPage='Submit Your ID' navigation={this.props.navigation}/>
                                 <Text style={{marginTop:25,marginLeft:20.5,fontSize:12,color:'#dd2127',fontFamily:'hilti-roman'}}>
                                     EXPRESS CHECK-IN
                                 </Text>
