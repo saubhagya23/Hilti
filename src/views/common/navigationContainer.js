@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
 import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/Entypo'
@@ -23,8 +23,18 @@ class NavigationContainer extends Component {
         })
     }
 
+    sendMail = (url) => {
+        Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+                Linking.openURL(url);
+            } else {
+                console.log('Don\'t know how to open URI: ' + url);
+            }
+        });
+    }
+
     render(){
-        // let dummyArr = [{name:'abc',nav:'AgendaDay1'},{name:'def',nav:'AgendaDay1'},{name:'ghi',nav:'AgendaDay1'}];
+        const mailId = 'pooja19goyal@gmail.com';
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -37,31 +47,49 @@ class NavigationContainer extends Component {
                             {this.props.navData.map((link,index) => {
                                 return (
                                     <View style={{height:65}} key={index}>
-                                        <TouchableOpacity
-                                            style={{
-                                                flexDirection: 'row',
-                                                height: 64.5,
+                                        {
+                                            link.name === "I would like to share"?
+                                                <TouchableOpacity
+                                                    style={{
+                                                        flexDirection: 'row',
+                                                        height: 64.5,
 
-                                            }}
-                                            onPress={()=>this.props.navigation.navigate(link.nav,{})}>
-                                            <Text style={{color:'#dd2127',
-                                                fontSize:16,
-                                                height:20.5,
-                                                marginTop:20.5,
-                                                marginLeft:19,
-                                                fontFamily:'hilti-roman'}}>{link.name}</Text>
+                                                    }}
+                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject=${link.name}`)}>
+                                                    <Text style={{color:'#dd2127',
+                                                        fontSize:16,
+                                                        height:20.5,
+                                                        marginTop:20.5,
+                                                        marginLeft:19,
+                                                        fontFamily:'hilti-roman'}}>{link.name}</Text>
+                                                    <Icon
+                                                        style={{color:'#7c294e',marginTop:22,marginLeft:1.5}}
+                                                        name='chevron-right'
+                                                        size={20}
+                                                        onPress={() => {}} />
+                                                </TouchableOpacity>
+                                                :
+                                                <TouchableOpacity
+                                                    style={{
+                                                        flexDirection: 'row',
+                                                        height: 64.5,
 
-                                            {/*<Image
-                                    style={{marginTop:28,marginLeft:4.5}}
-                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />*/}
-                                            <Icon
-                                                style={{color:'#7c294e',marginTop:22,marginLeft:1.5}}
-                                                name='chevron-right'
-                                                size={20}
-                                                onPress={() => {}} />
-                                        </TouchableOpacity>
+                                                    }}
+                                                    onPress={()=>this.props.navigation.navigate(link.nav,{})}>
+                                                    <Text style={{color:'#dd2127',
+                                                        fontSize:16,
+                                                        height:20.5,
+                                                        marginTop:20.5,
+                                                        marginLeft:19,
+                                                        fontFamily:'hilti-roman'}}>{link.name}</Text>
+                                                    <Icon
+                                                        style={{color:'#7c294e',marginTop:22,marginLeft:1.5}}
+                                                        name='chevron-right'
+                                                        size={20}
+                                                        onPress={() => {}} />
+                                                </TouchableOpacity>
 
+                                        }
                                         <View style={{width:335,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
 
                                     </View>
