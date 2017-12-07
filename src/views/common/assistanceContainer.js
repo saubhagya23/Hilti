@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Image, Text, Linking, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import Checkbox from './Checkbox';
@@ -7,15 +7,22 @@ import Checkbox from './Checkbox';
 
 
 export default class assistanceContainer extends Component {
-    submit = () => {
+    submit = (url) => {
         /*Submit handler*/
-        alert('submit');
-    }
+        console.log("url to open is :",url);
+        Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+                Linking.openURL(url);
+            } else {
+                console.log('Don\'t know how to open URI: ' + url);
+            }
+        });
+    };
 
     constructor(){
         super();
         this.state = {
-            fontLoaded:false,          
+            fontLoaded:false,
         }
     }
 
@@ -30,14 +37,15 @@ export default class assistanceContainer extends Component {
     }
 
     render() {
-        const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={false} content={item} key={i} /> )        
+        const mailId = 'pooja19goyal@gmail.com';
+        const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={false} content={item} key={i} /> )
         return (
             this.state.fontLoaded?
             <View style={styles.Container}>
                     <View style={styles.queryContainer} >
-                        <Text 
+                        <Text
                             style={{
-                                fontSize:22, 
+                                fontSize:22,
                                 fontFamily:'hilti-roman'
                                 }}>
                                 {this.props.assistanceData.title}</Text>
@@ -47,12 +55,12 @@ export default class assistanceContainer extends Component {
                                 fontFamily:'hilti-roman',
                                 marginTop: 18,
                                 }}>
-                                {this.props.assistanceData.desc} 
+                                {this.props.assistanceData.desc}
                         </Text>
                     </View>
                     <View style={{flex:1}}>
                         {CheckBoxes}
-                        <TouchableHighlight style={styles.button} onPress= { () => {this.submit()}}>
+                        <TouchableHighlight style={styles.button} onPress= { () => {this.submit(`mailto:${mailId}?subject=${this.props.assistanceData.title}&body=example`)}}>
                             <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                                 <Image style={{marginRight:9}} source={require('../../assets/images/send_email/send_email_mpdi.png')} />
                                 <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', textAlign:'center' }}>SEND EMAIL</Text>
@@ -77,10 +85,10 @@ const styles = StyleSheet.create({
     },
     checkboxText: {
         flex: 1,
-        fontSize:14, 
+        fontSize:14,
         fontFamily:'hilti-roman',
         flexWrap: 'wrap',
-    },  
+    },
     button:{
         height:41,
         width:194.5,

@@ -36,7 +36,7 @@ class Venue extends Component {
     }
 
     findViaGMap = () => {
-        var url = 'geo:' + '28.6621,77.3021'
+        var url = 'geo:' + '28.6621,77.3021';
         this.openExternalApp(url);
     }
 
