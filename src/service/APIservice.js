@@ -86,7 +86,7 @@ export function uploadIdProofEventList(option={}){
 
 export function getdownloadIdProofEventList(option={}) {
     let { url , method } = API.ENDPOINT.USER.DOWNLOAD_ID_PROOF;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url+ option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }
@@ -94,7 +94,7 @@ export function getdownloadIdProofEventList(option={}) {
 export function deletedownloadIdProofEventList(option={}) {
     console.log('delete service---');
     let { url , method } = API.ENDPOINT.USER.DELETE_ID_PROOF;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url+ option.param}`;
     option.method = method;
     return requestAPI(URL, option)
 }

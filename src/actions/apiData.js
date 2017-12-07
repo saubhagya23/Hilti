@@ -106,10 +106,10 @@ export function uploadIdProofEvent(uploadObj) {
     };
 }
 
-export function getdownloadIdProofEvent() {
+export function getdownloadIdProofEvent(data) {
     console.log('image type is--------------');
     return function (dispatch) {
-        return getdownloadIdProofEventList().then(function (response) {
+        return getdownloadIdProofEventList(data).then(function (response) {
             dispatch({
                 type: DOWNLOAD_ID_PROOF_LIST,
                 payload: response
@@ -119,10 +119,10 @@ export function getdownloadIdProofEvent() {
     };
 }
 
-export function deletedownloadIdProofEvent() {
+export function deletedownloadIdProofEvent(data) {
     console.log('deleting started ------------');
     return function (dispatch) {
-        return deletedownloadIdProofEventList().then(function (response) {
+        return deletedownloadIdProofEventList(data).then(function (response) {
             dispatch({
                 type: DELETE_ID_PROOF_LIST,
                 payload: response

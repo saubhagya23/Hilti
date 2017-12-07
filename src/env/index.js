@@ -13,8 +13,8 @@ let API = {
         },
         USER: {
             UPLOAD_ID_PROOF: {url:'/api/user-ids/upload',method: 'POST'},
-            DOWNLOAD_ID_PROOF: {url:'/api/user-ids/89351', method: 'GET'},
-            DELETE_ID_PROOF: {url:'/api/user-ids/delete/89351',method: 'GET'}
+            DOWNLOAD_ID_PROOF: {url:'/api/user-ids/', method: 'GET'},
+            DELETE_ID_PROOF: {url:'/api/user-ids/delete/',method: 'GET'}
         },
         STAY: {
             DETAIL:{url: `/api/user-details/stay/`,method:'GET'} // get stay details for code 88210

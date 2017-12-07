@@ -44,8 +44,9 @@ class SubmitId extends Component {
     componentDidMount(){
         /*const { deletedownloadIdProofEvent } = this.props;
         deletedownloadIdProofEvent();*/
+        let detail = JSON.parse(this.props.userDetail);
         const { getdownloadIdProofEvent } = this.props;
-        getdownloadIdProofEvent();
+        getdownloadIdProofEvent({param:detail.Code});
         /*let downloadedImageArray = this.props.downloadIdProofEvent;
         console.log('downloaded data....CDM....',downloadedImageArray);
         if(downloadedImageArray.length !== 0) {
@@ -352,8 +353,9 @@ class SubmitId extends Component {
     handleImagePicked = async () => {
         if(this.state.btnText === 'DELETE'){
             console.log('delete clicked');
+            let detail = JSON.parse(this.props.userDetail);
             const { deletedownloadIdProofEvent } = this.props;
-            deletedownloadIdProofEvent();
+            deletedownloadIdProofEvent({param:detail.Code});
             this.setState({
                 value:'',
                 imgFrontLoaded:false,
@@ -596,7 +598,9 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         uploadIdProofEvent: state.event.uploadIdProofEvent,
-        downloadIdProofEvent: state.event.downloadIdProofEvent
+        downloadIdProofEvent: state.event.downloadIdProofEvent,
+        eventLoginList: state.event.eventLoginList,
+        userDetail:state.event.userDetail
 
     }
 }
