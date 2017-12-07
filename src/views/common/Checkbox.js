@@ -9,8 +9,7 @@ export default class CheckBox extends Component {
     constructor(props){
         super(props);
         this.state = {
-            fontLoaded:false,            
-            check: this.props.checked,            
+            fontLoaded:false,    
         }
     }
 
@@ -24,14 +23,17 @@ export default class CheckBox extends Component {
         })
     }
 
+    handleChange=()=>{
+        this.props.selecteHandler(this.props.idx);
+    }
+    
     render() {
-        
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
         return (
             this.state.fontLoaded?
-                <TouchableOpacity style={styles.checkbox} onPress={()=>this.setState({check: !this.state.check})}>
-                    {this.state.check?checked:unchecked}
+                <TouchableOpacity style={styles.checkbox} onPress={()=>this.handleChange()}>
+                    {this.props.check?checked:unchecked}
                     <Text style={styles.checkboxText}>{this.props.content}</Text>
                 </TouchableOpacity>:null
         )

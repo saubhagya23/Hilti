@@ -9,13 +9,19 @@ import Checkbox from './Checkbox';
 export default class assistanceContainer extends Component {
     submit = () => {
         /*Submit handler*/
-        alert('submit');
+        let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
+        alert('Selected: '+selectedItem);
+    }
+    selectedItems = (index) => {
+        let newob  = {[index]:true};
+        this.setState({checked: newob})
     }
 
     constructor(){
         super();
         this.state = {
-            fontLoaded:false,          
+            fontLoaded:false, 
+            checked: {},        
         }
     }
 
@@ -30,7 +36,9 @@ export default class assistanceContainer extends Component {
     }
 
     render() {
-        const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={false} content={item} key={i} /> )        
+       
+        const CheckBoxes = this.props.assistanceData.select.map((item,i)=><Checkbox check={this.state.checked[i]?true:false} selecteHandler={this.selectedItems} content={item} key={i} idx={i}/>)        
+        // const CheckBoxes = this.props.assistanceData.select.map((item,i)=> <Checkbox checked={this.selectedItems} content={item} key={i} idx={i}/> )        
         return (
             this.state.fontLoaded?
             <View style={styles.Container}>
