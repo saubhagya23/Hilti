@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator,AppState } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { getEvent,setUserDetail, readAllNotification } from '../actions/apiData';
+import { getEvent,setUserDetail, readAllNotification, getNotificationCount } from '../actions/apiData';
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
 import { asyncGet, asyncRemove } from '../utils/asyncStore'
 import {Notifications} from 'expo';
+import NotificationBell from './common/notificationBell'
 
 class Home extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
-        /*this.state = {
-
-            token:'',
-            loader:true,
-        }*/
+        this.state = {
+            appState: AppState.currentState,
+            notificationCount: this.props.notificationCount
+            // token:'',
+            // loader:true,
+        }
     }
 
     componentWillMount(){
@@ -52,9 +54,21 @@ class Home extends Component {
     }
 
     _handleListner= (notification) => {
-        this.props.readAllNotification().then((resp)=>{
-            this.props.navigation.navigate('Notifications',{})
-        })
+        console.log(this.state.appState,'sahkanshksd');
+        if(this.state.appState != 'active') {
+            this.props.readAllNotification().then((resp)=>{
+                this.props.navigation.navigate('Notifications',{})
+            })
+        }
+        else {
+            this.getNotificationAsync().then((data) => {
+                this.setState({ notificationCount : data });
+            })
+        }
+        
+    }
+    async getNotificationAsync() { 
+        return this.props.getNotificationCount();
     }
 
 
@@ -90,8 +104,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-      eventList: state.event.eventList,
-        eventLoginList:state.event.eventLoginList
+        eventList: state.event.eventList,
+        eventLoginList:state.event.eventLoginList,
+        notificationCount: state.event.notificationCount
     }
 }
 
@@ -101,7 +116,8 @@ function mapDispatchToProps(dispatch){
     ...bindActionCreators({
             getEvent,
             setUserDetail,
-            readAllNotification
+            readAllNotification,
+            getNotificationCount
       },
       dispatch
     ),

@@ -26,7 +26,7 @@ class notificationBell extends Component {
     }
 
     bellIconClick() { 
-        this.props.pauseVideo();
+        // this.props.pauseVideo();
         this.props.readAllNotification().then((resp)=>{
             this.props.navigation.navigate('Notifications',{})
         })
