@@ -54,7 +54,6 @@ class Home extends Component {
     }
 
     _handleListner= (notification) => {
-        console.log(this.state.appState,'sahkanshksd');
         if(this.state.appState != 'active') {
             this.props.readAllNotification().then((resp)=>{
                 this.props.navigation.navigate('Notifications',{})
