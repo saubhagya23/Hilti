@@ -35,6 +35,8 @@ class HomeContent extends Component {
             this.setState({
                 url:videoUrl,
                 showVideo:true
+            },()=>{
+                console.log("url is :",this.state.url)
             })
         }else {
             const {getVideo} = this.props;

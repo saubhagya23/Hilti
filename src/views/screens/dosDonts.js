@@ -33,7 +33,7 @@ export default class DosDonts extends Component {
                                 <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -43,7 +43,7 @@ export default class DosDonts extends Component {
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -53,7 +53,7 @@ export default class DosDonts extends Component {
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -63,7 +63,7 @@ export default class DosDonts extends Component {
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -74,7 +74,7 @@ export default class DosDonts extends Component {
                                 <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Don't</Text>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -84,7 +84,7 @@ export default class DosDonts extends Component {
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
                                         size={10}
                                     />
@@ -98,7 +98,7 @@ export default class DosDonts extends Component {
                                     <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
                                     <View style={{flexDirection:'row',marginRight:27.5}}>
                                         <Icon
-                                            style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                            style={{color:'#000000',marginLeft:21,marginTop:32}}
                                             name='circle'
                                             size={10}
                                         />
@@ -108,7 +108,7 @@ export default class DosDonts extends Component {
                                     </View>
                                     <View style={{flexDirection:'row',marginRight:27.5}}>
                                         <Icon
-                                            style={{color:'#f5f3ee',marginLeft:21,marginTop:28}}
+                                            style={{color:'#000000',marginLeft:21,marginTop:32}}
                                             name='circle'
                                             size={10}
                                         />
@@ -129,7 +129,6 @@ export default class DosDonts extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        marginTop:10,
         backgroundColor:'#f5f3ee'
     },
 })

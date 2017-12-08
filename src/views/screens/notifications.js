@@ -109,7 +109,6 @@ class Notifications extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 22,
         flex: 1,
         backgroundColor:'#ffffff'
     },

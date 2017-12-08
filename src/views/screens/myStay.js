@@ -70,7 +70,10 @@ class MyStay extends Component {
 
                                 <DetailContainer leftHeading={'Room Partner'} rightHeading={'Room No.'} leftData={details.RoomPartner||'N/A'} rightData={'Will be allocated at time of check-in'} />
 
-                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
+                                <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8,paddingLeft:40, paddingRight:17}}>Team</Text>
+                                <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000',paddingLeft:40, paddingRight:17}}>{details.Team}</Text>
+
+                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35,marginTop:10}}/>
 
                                 <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:48,marginTop:21.5}}>Inclusions</Text>
 
@@ -126,7 +129,6 @@ class MyStay extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 22,
         flex: 1,
         backgroundColor:'#f5f3ee'
     },
