@@ -4,8 +4,6 @@ import { asyncGet } from '../utils/asyncStore'
 
 async function requestAPI(url, options = {}) {
 
-    console.log('options are in request api-----',options);
-
       let headers = options.headers||{
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -105,3 +103,32 @@ export function deletedownloadIdProofEventList(option={}) {
     return requestAPI(URL, option)
 }
 
+
+export function getNotifCount(option={}) {
+    let { url , method } = API.ENDPOINT.NOTIFICATION.NOTIFICATION_COUNT;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function getAllNotif(option={}) {
+    let { url , method } = API.ENDPOINT.NOTIFICATION.GET_NOTIFICATION;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function readAllNotif(option={}) {
+    let { url , method } = API.ENDPOINT.NOTIFICATION.READ_NOTIFICATION;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function deleteNotif(option={}) {
+    console.log('deleteNotif---');
+    let { url , method } = API.ENDPOINT.NOTIFICATION.DELETE_NOTIFICATION;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}

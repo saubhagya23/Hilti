@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'rea
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
+import NotificationBell from './notificationBell';
 
 class PageHeaderNotif extends Component {
     constructor(){
@@ -53,14 +54,9 @@ class PageHeaderNotif extends Component {
                                         style={{marginTop:20,marginLeft:19.5}}
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
-
-                                    <TouchableOpacity style={{marginLeft:175.5, marginTop:19.5, marginRight:24}} onPress={()=>this.props.props.navigation.goBack()}>
-                                        <Icon
-                                            name='bell'
-                                            size={20}
-                                            onPress={()=>console.log("bell clicked")} />
-                                    </TouchableOpacity>
-
+                                    <View style={{marginLeft:175.5, marginTop:19.5, marginRight:24}}>
+                                        <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
+                                    </View>
                                     <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
                                             name='user-circle-o'

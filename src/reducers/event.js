@@ -1,5 +1,5 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL} from "../constants/index";
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF} from "../constants/index";
 const initialState = {
     // eventList: [],
     eventLoginList:{},
@@ -10,9 +10,10 @@ const initialState = {
     downloadIdProofEvent:[],
     deleteIdProofEvent:[],
     video:{},
-    userDetail:{}
+    userDetail:{},
+    notificationCount: {},
+    allNotifications: {},
 }
-
 
 export function event (state = initialState, action) {
     switch (action.type) {
@@ -43,6 +44,14 @@ export function event (state = initialState, action) {
         case USER_DETAIL:{
             let userDetail = action.payload;
             return Object.assign({}, state, {userDetail});
+        }
+        case NOTIF_COUNT:{
+            let notificationCount = action.payload;
+            return Object.assign({}, state, {notificationCount});
+        }
+        case GET_NOTIF: {
+            let allNotifications = action.payload;
+            return Object.assign({}, state, {allNotifications});
         }
         case UPLOAD_ID_PROOF_LIST: {
             console.log('action.payload--',action.payload,action);

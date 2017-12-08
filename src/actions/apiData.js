@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN } from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF } from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -146,4 +146,37 @@ export function postUserNotificationToken (data) {
           console.log('notification catch error', err)
         })
     }
+}
+export function getNotificationCount(data) {
+    return function (dispatch) {
+        return getNotifCount(data).then(function (response) {
+            dispatch({
+                type: NOTIF_COUNT,
+                payload: response
+            });
+            return response;
+        });
+    };
+}
+export function getAllNotification(data) {
+    return function (dispatch) {
+        return getAllNotif(data).then(function (response) {
+            dispatch({
+                type: GET_NOTIF,
+                payload: response
+            });
+            return response;
+        });
+    };
+}
+export function readAllNotification(data) {
+    return function (dispatch) {
+        return readAllNotif(data).then(function (response) {
+            dispatch({
+                type: GET_NOTIF,
+                payload: response
+            });
+            return response;
+        });
+    };
 }

@@ -23,9 +23,12 @@ let API = {
             DETAIL:{url:`/api/documents/welcome-video`,method:'GET'} // get vide url
         },
         NOTIFICATION : {
-            POST_TOKEN: {url: '/api/device-tokens/',method: 'PUT'}//set notification token for each user
+            POST_TOKEN: {url: '/api/device-tokens/',method: 'PUT'},//set notification token for each user
+            NOTIFICATION_COUNT: {url: '/api/notifications/unread',method: 'GET'},
+            GET_NOTIFICATION: {url: '/api/notifications',method: 'GET'},
+            READ_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
+            DELETE_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
         }
-
     }
 };
 export default Object.assign({}, API);

@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { getEvent,setUserDetail } from '../actions/apiData';
+import { getEvent,setUserDetail, readAllNotification } from '../actions/apiData';
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
 import { asyncGet, asyncRemove } from '../utils/asyncStore'
+import {Notifications} from 'expo';
 
 class Home extends Component {
     constructor(){
@@ -35,6 +36,7 @@ class Home extends Component {
                     ]
                 });
                 this.props.navigation.dispatch(resetAction);
+                Notifications.addListener(this._handleListner);
             }
             else{
                 const resetAction = NavigationActions.reset({
@@ -47,6 +49,12 @@ class Home extends Component {
             }
         })
 
+    }
+
+    _handleListner= (notification) => {
+        this.props.readAllNotification().then((resp)=>{
+            this.props.navigation.navigate('Notifications',{})
+        })
     }
 
 
@@ -92,7 +100,8 @@ function mapDispatchToProps(dispatch){
     dispatch,
     ...bindActionCreators({
             getEvent,
-            setUserDetail
+            setUserDetail,
+            readAllNotification
       },
       dispatch
     ),

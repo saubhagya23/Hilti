@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import { StyleSheet, View, Image, Dimensions ,Text ,TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {BoxShadow} from 'react-native-shadow';
-import { Font } from 'expo'
+import { Font } from 'expo';
+import { getNotificationCount } from '../../actions/apiData';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import NotificationBell from './notificationBell';
 
 class PageHeader extends Component {
     constructor(){
@@ -13,7 +17,7 @@ class PageHeader extends Component {
         }
     }
 
-    async componentWillMount(){
+    async componentWillMount() {
         await Font.loadAsync({
             'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
             'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
@@ -53,14 +57,9 @@ class PageHeader extends Component {
                         </View>
                         <View style={styles.IconBtn}>
                             {
-                                this.props.showBell ?
-                                    <Icon
-                                        name='bell'
-                                        size={20}
-                                        onPress={() => {
-                                            this.props.pauseVideo();
-                                            console.log('hello bell')
-                                        }} />:null
+                                this.props.showBell ?(
+                                    <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
+                                ):null
                             }
                             {
                                 this.props.showUser ?
@@ -117,7 +116,42 @@ const styles = StyleSheet.create({
     icon: {
         height: 25,
         width: 40
+    },
+    notifBadge: {
+        position: 'absolute',
+        color: '#fff',
+        backgroundColor: 'red',
+        borderRadius: 8,
+        height: 16,
+        width: 16,
+        zIndex:15,
+        padding: 1,
+        fontSize: 9,
+        textAlign: 'center',
+        left: 5,
+        top: -5,
+    },
+    notification: {
+        position: 'relative',
     }
 });
 
-export default PageHeader;
+
+function mapStateToProps (state) {
+    return {
+        notificationCount: state.event.notificationCount
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+                getNotificationCount
+            },
+            dispatch
+        ),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageHeader)
