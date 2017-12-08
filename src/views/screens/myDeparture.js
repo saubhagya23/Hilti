@@ -9,6 +9,7 @@ import FeatherIcon  from 'react-native-vector-icons/Feather'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import { Font } from 'expo'
 import { getDepartures } from '../../actions/apiData';
+import DetailContainer from '../common/detailContainer'
 
 class MyDeparture extends Component {
     constructor(){
@@ -79,82 +80,22 @@ class MyDeparture extends Component {
                                 </TouchableOpacity>
                             </View>
                             <View style={{height:332.5,backgroundColor:'#ffffff'}}>
-                                <View
-                                    style={{height:64.5,
-                                        flexDirection:'row',
-                                        justifyContent:'space-between',
-                                        alignItems:'center',
-                                        paddingLeft:40,
-                                        paddingRight:17,
-                                    }}>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>From</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.From||'N/A'}</Text>
-                                    </View>
-                                    <FeatherIcon
-                                        style={{flex:0.5,color:'#000000',opacity:0.8}}
-                                        name='arrow-right'
-                                        size={20}
-                                    />
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>To</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.To||'N/A'}</Text>
-                                    </View>
-                                </View>
-                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
-                                <View style={{height:67,
-                                    flexDirection:'row',
-                                    justifyContent:'space-between',
-                                    alignItems:'center',
-                                    paddingLeft:40,
-                                    paddingRight:17,
-                                }}>
-                                    <View style={{flex:1.5}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Flight/Train No.</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.FlightTrainNumber||'N/A'}</Text>
-                                    </View>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>PNR No.</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.PNRNo||'N/A'}</Text>
-                                    </View>
-                                </View>
-                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
-                                <View style={{height:69,
-                                    flexDirection:'row',
-                                    justifyContent:'space-between',
-                                    alignItems:'center',
-                                    paddingLeft:40,
-                                    paddingRight:17,
-                                }}>
-                                    <View style={{flex:1.5}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Dep Date & Time</Text>
-                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.DepartureDate} `||'N/A'}</Text>
-                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.DepartureTime} `||'N/A'}</Text>
-                                    </View>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Departure Terminal</Text>
-                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.ArrivalAtTerminalStation||'N/A'}</Text>
-                                    </View>
-                                </View>
+                                <DetailContainer leftHeading={'From'} rightHeading={'To'} leftData={details.From||'N/A'} rightData={details.To||'N/A'} />
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
-                                <View style={{height:67,
-                                    flexDirection:'row',
-                                    justifyContent:'space-between',
-                                    alignItems:'center',
-                                    paddingLeft:40,
-                                    paddingRight:17,
-                                }}>
-                                    <View style={{flex:1.5}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>My Champion Name</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.MyTravelChampionName||'N/A'}</Text>
-                                    </View>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Champion No.</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.MyTravelChampionContactNumber||'N/A'}</Text>
-                                    </View>
-                                </View>
+
+                                <DetailContainer leftHeading={'Flight/Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+
+                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
+
+                                <DetailContainer leftHeading={'Dep Date & Time'} rightHeading={'Departure Terminal'} leftData={`${details.DepartureDate} ${details.DepartureTime}`||'N/A'} rightData={details.DepartureFromTerminalStation||'N/A'} />
+
+                                <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
+
+                                <DetailContainer leftHeading={'My Champion Name'} rightHeading={'Champion No.'} leftData={details.MyTravelChampionName||'N/A'} rightData={details.MyTravelChampionContactNumber||'N/A'} />
+
                             </View>
+
                             <View
                                 style={{height:40.5,
                                     flexDirection:'row',
@@ -178,40 +119,15 @@ class MyDeparture extends Component {
                                 </View>
                             </View>
                             <View style={{height:235.5,backgroundColor:'#ffffff'}}>
-                                <View style={{height:67,
-                                    flexDirection:'row',
-                                    justifyContent:'space-between',
-                                    alignItems:'center',
-                                    paddingLeft:40,
-                                    paddingRight:17,
-                                }}>
-                                    <View style={{flex:1.5}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Pickup Point</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.PickUpPoint||'N/A'}</Text>
-                                    </View>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Cab/Coach No.</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CoachCabNo||'N/A'}</Text>
-                                    </View>
-                                </View>
+
+                                <DetailContainer leftHeading={'Pickup Point'} rightHeading={'Cab/Coach No.'} leftData={details.PickUpPoint||'N/A'} rightData={details.CoachCabNo||'N/A'} />
+
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
-                                <View style={{height:67,
-                                    flexDirection:'row',
-                                    justifyContent:'space-between',
-                                    alignItems:'center',
-                                    paddingLeft:40,
-                                    paddingRight:17,
-                                }}>
-                                    <View style={{flex:1.5}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>My Champion Name</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.MyTravelChampionName||'N/A'}</Text>
-                                    </View>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Champion No.</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.MyTravelChampionContactNumber||'N/A'}</Text>
-                                    </View>
-                                </View>
+
+                                <DetailContainer leftHeading={'My Champion Name'} rightHeading={'Champion No.'} leftData={details.MyTravelChampionName||'N/A'} rightData={details.MyTravelChampionContactNumber||'N/A'} />
+
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
+
                                 <View style={{height:67,
                                     alignItems:'center',
                                     paddingTop:18,
