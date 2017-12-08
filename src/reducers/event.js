@@ -1,4 +1,4 @@
-import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST} from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
 import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL} from "../constants/index";
 const initialState = {
     // eventList: [],
@@ -7,6 +7,8 @@ const initialState = {
     departureList:[],
     stayList:[],
     uploadIdProofEvent:{},
+    downloadIdProofEvent:[],
+    deleteIdProofEvent:[],
     video:{},
     userDetail:{}
 }
@@ -46,6 +48,17 @@ export function event (state = initialState, action) {
             console.log('action.payload--',action.payload,action);
             let uploadIdProofEvent = action.payload;
             return Object.assign({}, state, uploadIdProofEvent);
+        }
+        case DOWNLOAD_ID_PROOF_LIST: {
+            console.log('action.payload-download--*********--',action.payload,action);
+            let downloadIdProofEvent = action.payload;
+            console.log('data set---->>>---->>',downloadIdProofEvent);
+            return Object.assign({}, state, {downloadIdProofEvent});
+        }
+        case DELETE_ID_PROOF_LIST: {
+            console.log('data deleted----',action.payload);
+            let downloadIdProofEvent = [];
+            return Object.assign({},state,{downloadIdProofEvent});
         }
         default:
             return state;

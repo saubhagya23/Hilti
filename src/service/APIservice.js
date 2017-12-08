@@ -3,7 +3,10 @@ const API_BASE = API.ENDPOINT.BASE;
 import { asyncGet } from '../utils/asyncStore'
 
 async function requestAPI(url, options = {}) {
-    let headers = {
+
+    console.log('options are in request api-----',options);
+
+      let headers = options.headers||{
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       };
@@ -19,7 +22,13 @@ async function requestAPI(url, options = {}) {
     };
 
     if(options.method.toLowerCase() !== 'get') {
-      reqBody['body'] = JSON.stringify(options.payload || {})
+        if(options.headers){
+            reqBody['body'] = options.payload
+        }
+        else{
+            reqBody['body'] = JSON.stringify(options.payload || {})
+        }
+
     }
 
     return fetch(url, reqBody).then(res=> res.json());
@@ -74,3 +83,18 @@ export function uploadIdProofEventList(option={}){
     console.log('options--',option);
     return requestAPI(URL, option);
 };
+
+export function getdownloadIdProofEventList(option={}) {
+    let { url , method } = API.ENDPOINT.USER.DOWNLOAD_ID_PROOF;
+    let URL = `${API_BASE + url+ option.param}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function deletedownloadIdProofEventList(option={}) {
+    console.log('delete service---');
+    let { url , method } = API.ENDPOINT.USER.DELETE_ID_PROOF;
+    let URL = `${API_BASE + url+ option.param}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
