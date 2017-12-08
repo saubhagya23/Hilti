@@ -58,14 +58,14 @@ class PageHeaderNotif extends Component {
                                         <Icon
                                             name='bell'
                                             size={20}
-                                            onPress={()=>console.log("bell clicked")} />
+                                            onPress={()=>this.props.props.navigation.goBack()} />
                                     </TouchableOpacity>
 
                                     <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
                                             name='user-circle-o'
                                             size={20}
-                                            onPress={()=>this.props.navigation.navigate('Profile',{})}/>
+                                            onPress={()=>this.props.props.navigation.goBack()} />
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>

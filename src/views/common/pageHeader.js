@@ -35,7 +35,7 @@ class PageHeader extends Component {
             x:0,
             y:1,
             style:{marginVertical:1}
-        }
+        };
         return(
             <BoxShadow setting={shadowOpt}>
                 <View style={{position:"relative",
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         backgroundColor:'white',
+
     },
     logo:{
         flex:1,
