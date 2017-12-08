@@ -4,9 +4,10 @@ import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { postEvent ,setUserDetail} from '../../actions/apiData';
+import { postEvent ,setUserDetail, postUserNotificationToken} from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import Icon  from 'react-native-vector-icons/FontAwesome';
+import {Permissions, Notifications} from 'expo';
 
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
@@ -56,8 +57,35 @@ class Login extends Component {
                 ]
               });
               this.props.navigation.dispatch(resetAction);
+            }
+            return eventLoginList.userDetail
+        }).then((detail) => {
+            userCode = detail.Code;
+            notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
+            .then((data)=>{
+                console.log(data.token,'response from login')
+                asyncPost('notifToken', data.token);
+            });
+        });
+    }
 
-        }});
+    async registerForPushNotificationsAsync(userCode) { 
+        const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {          
+            const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+            return;
+        } console.log(finalStatus,'permission');
+        let token = await Notifications.getExpoPushTokenAsync();
+        let options = {
+            payload: { token: token },
+            params: userCode
+        }
+        const { postUserNotificationToken } = this.props;
+        return postUserNotificationToken(options)
     }
 
     render() {
@@ -217,7 +245,8 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 postEvent,
-                setUserDetail
+                setUserDetail,
+                postUserNotificationToken
             },
             dispatch
         ),

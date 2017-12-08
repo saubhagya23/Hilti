@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST} from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,postNotificationToken} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST,NOTIFICATION_TOKEN} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -102,6 +102,22 @@ export function uploadIdProofEvent(uploadObj) {
             console.log(' error', err)
         }).catch(function(err){
             console.log('catch error', err)
+        });
+    };
+}
+
+export function postUserNotificationToken (data) {
+    return function (dispatch) {
+        return postNotificationToken(data).then(function (response) {
+            dispatch({
+                type: NOTIFICATION_TOKEN,
+                payload: response
+            });
+            return response;
+        }, function(err){
+          console.log('notification error', err)
+        }).catch(function(err){
+          console.log('notification catch error', err)
         });
     };
 }

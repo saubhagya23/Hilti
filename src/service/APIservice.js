@@ -21,8 +21,7 @@ async function requestAPI(url, options = {}) {
     if(options.method.toLowerCase() !== 'get') {
       reqBody['body'] = JSON.stringify(options.payload || {})
     }
-
-    return fetch(url, reqBody).then(res=> res.json());
+    return fetch(url, reqBody).then(res => res.json())
 };
 
 export function getEventList(option={}){
@@ -72,5 +71,12 @@ export function uploadIdProofEventList(option={}){
     let URL = `${API_BASE + url}`;
     option.method = method;
     console.log('options--',option);
+    return requestAPI(URL, option);
+};
+
+export function postNotificationToken(option={}){
+    let { url , method } = API.ENDPOINT.NOTIFICATION.POST_TOKEN;
+    let URL = `${API_BASE + url +option.params}`;
+    option.method = method;
     return requestAPI(URL, option);
 };

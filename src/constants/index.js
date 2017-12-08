@@ -6,3 +6,4 @@ export const STAY_LIST = 'STAY_LIST';
 export const VIDEO_URL = 'VIDEO_URL';
 export const USER_DETAIL = 'USER_DETAIL';
 export const UPLOAD_ID_PROOF_LIST = 'UPLOAD_ID_PROOF_LIST';
+export const NOTIFICATION_TOKEN = 'NOTIFICATION_TOKEN';
