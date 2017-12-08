@@ -128,28 +128,15 @@ class MyDeparture extends Component {
                                 }}>
                                     <View style={{flex:1.5}}>
                                         <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Dep Date & Time</Text>
-                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.DepartureDate} ${details.DepartureTime}`||'N/A'}</Text>
+                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.DepartureDate} `||'N/A'}</Text>
+                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.DepartureTime} `||'N/A'}</Text>
                                     </View>
                                     <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Arrival Date & Time</Text>
-                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{`${details.ArrivalDate} ${details.ArrivalTime}`||'N/A'}</Text>
+                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Departure Terminal</Text>
+                                        <Text style={{width:80,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.ArrivalAtTerminalStation||'N/A'}</Text>
                                     </View>
                                 </View>
-                                <View
-                                    style={{
-                                        height:35,
-                                        flexDirection:'row',
-                                        justifyContent:'space-between',
-                                        alignItems:'center',
-                                        paddingLeft:40,
-                                        paddingRight:17,
-                                        paddingBottom:20
-                                    }}>
-                                    <View style={{flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Arrival Terminal</Text>
-                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.ArrivalAtTerminalStation||'N/A'}</Text>
-                                    </View>
-                                </View>
+
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
                                 <View style={{height:67,
                                     flexDirection:'row',
@@ -186,7 +173,7 @@ class MyDeparture extends Component {
                                         size={17}
                                     />
                                     <Text style={{marginLeft:7,fontSize:11,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                        TRANSFER FROM AIRPORT/STATION TO HOTEL DETAILS
+                                        TRANSFER FROM HOTEL TO AIRPORT/STATION DETAILS
                                     </Text>
                                 </View>
                             </View>

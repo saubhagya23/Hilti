@@ -21,7 +21,9 @@ class Login extends Component {
         this.state = {
             empId: 'xyz.abc@hilti.com',
             empCode: 'employee code',
-            fontLoaded:false
+            fontLoaded:false,
+            err:false,
+            errText:''
         };
     }
 
@@ -36,6 +38,14 @@ class Login extends Component {
     }
 
     login = () => {
+        if(this.state.empId==='xyz.abc@hilti.com' || this.state.empCode === 'employee code' || this.state.empId === '' || this.state.empCode === ''){
+            this.setState(
+                {
+                    err:true,
+                    errText:'Fields cannot be empty'
+                })
+        }
+        else{
         let empLoginInfo = {
             email: this.state.empId,
             password: this.state.empCode
@@ -56,9 +66,15 @@ class Login extends Component {
                 ]
               });
               this.props.navigation.dispatch(resetAction);
-
-        }});
-    }
+            }else{
+                this.setState(
+                    {
+                        err:true,
+                        errText:'Invalid emailId or password'
+                    })
+            }});
+        }
+    };
 
     render() {
         return (
@@ -84,6 +100,10 @@ class Login extends Component {
 
                             <Text style={{position:'absolute', marginTop:86.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
                             <View style={{marginLeft:30, marginRight:30}}>
+                                {
+                                    this.state.err ?
+                                        <Text style={{color:'#dd2127',alignSelf:'center'}}>{this.state.errText}</Text>:null
+                                }
                                 <View style={{marginTop:45.5,height:15.5, flexDirection:'row'}}>
                                     <Icon
                                         name='envelope'
@@ -107,9 +127,9 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empId) => this.setState({empId})}
+                                    onChangeText={(empId) => this.setState({empId:empId.toLowerCase(),err:false})}
                                     value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:''})}}
+                                    onFocus={() => {this.setState({empId:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
 
@@ -137,9 +157,10 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empCode) => this.setState({empCode})}
+                                    secureTextEntry={true}
+                                    onChangeText={(empCode) => this.setState({empCode:empCode})}
                                     value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:''})}}
+                                    onFocus={() => {this.setState({empCode:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
@@ -149,6 +170,7 @@ class Login extends Component {
                                 </TouchableHighlight>
                             </View>
                         </View>
+
                     </View>:null
                 }
             </KeyboardAvoidingView>
