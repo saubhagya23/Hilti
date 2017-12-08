@@ -4,9 +4,10 @@ import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { postEvent ,setUserDetail} from '../../actions/apiData';
+import { postEvent ,setUserDetail, postUserNotificationToken} from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import Icon  from 'react-native-vector-icons/FontAwesome';
+import {Permissions, Notifications} from 'expo';
 
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
@@ -38,43 +39,73 @@ class Login extends Component {
     }
 
     login = () => {
-        if(this.state.empId==='xyz.abc@hilti.com' || this.state.empCode === 'employee code' || this.state.empId === '' || this.state.empCode === ''){
+        if (this.state.empId === 'xyz.abc@hilti.com' || this.state.empCode === 'employee code' || this.state.empId === '' || this.state.empCode === '') {
             this.setState(
                 {
-                    err:true,
-                    errText:'Fields cannot be empty'
+                    err: true,
+                    errText: 'Fields cannot be empty'
                 })
         }
-        else{
-        let empLoginInfo = {
-            email: this.state.empId,
-            password: this.state.empCode
-        };
-        const { postEvent } = this.props;
-        postEvent({payload:empLoginInfo}).then(eventLoginList => {
-            if(eventLoginList.token){
-                asyncPost('token', eventLoginList.token);
-                asyncPost('userDetail',JSON.stringify(eventLoginList.userDetail));
+        else {
+            let empLoginInfo = {
+                email: this.state.empId,
+                password: this.state.empCode
+            };
+            const {postEvent} = this.props;
+            postEvent({payload: empLoginInfo}).then(eventLoginList => {
+                if (eventLoginList.token) {
+                    asyncPost('token', eventLoginList.token);
+                    asyncPost('userDetail', JSON.stringify(eventLoginList.userDetail));
 
-                const { setUserDetail } = this.props;
-                this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
+                    const {setUserDetail} = this.props;
+                    this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
 
-              const resetAction = NavigationActions.reset({
-                index: 0,
-                actions: [
-                  NavigationActions.navigate({ routeName: 'HomeScreen' })
-                ]
-              });
-              this.props.navigation.dispatch(resetAction);
-            }else{
-                this.setState(
-                    {
-                        err:true,
-                        errText:'Invalid emailId or password'
-                    })
-            }});
+                    const resetAction = NavigationActions.reset({
+                        index: 0,
+                        actions: [
+                            NavigationActions.navigate({routeName: 'HomeScreen'})
+                        ]
+                    });
+                    this.props.navigation.dispatch(resetAction);
+                } else {
+                    this.setState(
+                        {
+                            err: true,
+                            errText: 'Invalid emailId or password'
+                        })
+                }
+                return eventLoginList.userDetail
+
+
+            }).then((detail) => {
+                userCode = detail.Code;
+                notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
+                    .then((data) => {
+                        console.log(data.token, 'response from login')
+                        asyncPost('notifToken', data.token);
+                    });
+            });
         }
-    };
+    }
+
+    async registerForPushNotificationsAsync(userCode) {
+        const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+            const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+            return;
+        } console.log(finalStatus,'permission');
+        let token = await Notifications.getExpoPushTokenAsync();
+        let options = {
+            payload: { token: token },
+            params: userCode
+        }
+        const { postUserNotificationToken } = this.props;
+        return postUserNotificationToken(options)
+    }
 
     render() {
         return (
@@ -170,7 +201,6 @@ class Login extends Component {
                                 </TouchableHighlight>
                             </View>
                         </View>
-
                     </View>:null
                 }
             </KeyboardAvoidingView>
@@ -239,7 +269,8 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 postEvent,
-                setUserDetail
+                setUserDetail,
+                postUserNotificationToken
             },
             dispatch
         ),

@@ -21,6 +21,9 @@ let API = {
         },
         VIDEO:{
             DETAIL:{url:`/api/documents/welcome-video`,method:'GET'} // get vide url
+        },
+        NOTIFICATION : {
+            POST_TOKEN: {url: '/api/device-tokens/',method: 'PUT'}//set notification token for each user
         }
 
     }

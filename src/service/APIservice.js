@@ -30,8 +30,7 @@ async function requestAPI(url, options = {}) {
         }
 
     }
-
-    return fetch(url, reqBody).then(res=> res.json());
+    return fetch(url, reqBody).then(res => res.json())
 };
 
 export function getEventList(option={}){
@@ -84,6 +83,13 @@ export function uploadIdProofEventList(option={}){
     return requestAPI(URL, option);
 };
 
+export function postNotificationToken(option={}){
+    let { url , method } = API.ENDPOINT.NOTIFICATION.POST_TOKEN;
+    let URL = `${API_BASE + url +option.params}`;
+    option.method = method;
+    return requestAPI(URL, option);
+};
+
 export function getdownloadIdProofEventList(option={}) {
     let { url , method } = API.ENDPOINT.USER.DOWNLOAD_ID_PROOF;
     let URL = `${API_BASE + url+ option.param}`;
@@ -98,3 +104,4 @@ export function deletedownloadIdProofEventList(option={}) {
     option.method = method;
     return requestAPI(URL, option)
 }
+
