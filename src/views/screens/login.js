@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+    import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
-import { Constants, Font } from 'expo';
+import { Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
 import { postEvent ,setUserDetail} from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import Icon  from 'react-native-vector-icons/FontAwesome';
+//import { KeyboardAwareView } from 'react-native-keyboard-aware-view'
 
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
