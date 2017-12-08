@@ -88,24 +88,6 @@ class Login extends Component {
         }
     }
 
-    async registerForPushNotificationsAsync(userCode) {
-        const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-        let finalStatus = existingStatus;
-        if (existingStatus !== 'granted') {
-            const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-            finalStatus = status;
-        }
-        if (finalStatus !== 'granted') {
-            return;
-        } console.log(finalStatus,'permission');
-        let token = await Notifications.getExpoPushTokenAsync();
-        let options = {
-            payload: { token: token },
-            params: userCode
-        }
-        const { postUserNotificationToken } = this.props;
-        return postUserNotificationToken(options)
-    }
 
     render() {
         return (
@@ -158,9 +140,9 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empId) => this.setState({empId:empId.toLowerCase(),err:false})}
+                                    onChangeText={(empId) => this.setState({empId})}
                                     value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:'',err:false})}}
+                                    onFocus={() => {this.setState({empId:''})}}
                                     underlineColorAndroid='transparent'
                                 />
 
@@ -188,10 +170,9 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    secureTextEntry={true}
-                                    onChangeText={(empCode) => this.setState({empCode:empCode})}
+                                    onChangeText={(empCode) => this.setState({empCode})}
                                     value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:'',err:false})}}
+                                    onFocus={() => {this.setState({empCode:''})}}
                                     underlineColorAndroid='transparent'
                                 />
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
@@ -269,8 +250,7 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 postEvent,
-                setUserDetail,
-                postUserNotificationToken
+                setUserDetail
             },
             dispatch
         ),
