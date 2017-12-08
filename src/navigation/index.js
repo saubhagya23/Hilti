@@ -25,6 +25,7 @@ import NavigationContainer from '../views/common/navigationContainer'
 import AssistanceNavigation from '../views/screens/assistanceNavigation'
 import TravelAssistance from '../views/screens/travelAssistance'
 import HotelAssistance from '../views/screens/hotelAssistance'
+import Notifications from '../views/screens/notifications'
 
 const routes = {
     Main:{
@@ -101,6 +102,9 @@ const routes = {
     },
     HotelAssistance: {
         screen: HotelAssistance
+    },
+    Notifications: {
+        screen: Notifications
     }
 
 }
