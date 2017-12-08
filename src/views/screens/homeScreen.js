@@ -83,7 +83,7 @@ class HomeScreen extends Component {
 
                         {/*experience corner nav container*/}
                         <HomeNavContainer
-                            navigationPage='TravelNavigation'
+                            navigationPage='ComingSoon'
                             imgSrc={require('../../assets/images/exp-corner/experience_corner_mdpi.png')}
                             titleText='EXPERIENCE CORNER'
                             homeNavProps={this.props}

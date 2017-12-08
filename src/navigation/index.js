@@ -25,6 +25,7 @@ import NavigationContainer from '../views/common/navigationContainer'
 import AssistanceNavigation from '../views/screens/assistanceNavigation'
 import TravelAssistance from '../views/screens/travelAssistance'
 import HotelAssistance from '../views/screens/hotelAssistance'
+import ComingSoon from '../views/common/comingSoon'
 
 const routes = {
     Main:{
@@ -101,9 +102,11 @@ const routes = {
     },
     HotelAssistance: {
         screen: HotelAssistance
+    },
+    ComingSoon: {
+        screen: ComingSoon
     }
-
-}
+};
 
 
 export default StackNavigator(routes,{
