@@ -88,6 +88,24 @@ class Login extends Component {
         }
     }
 
+    async registerForPushNotificationsAsync(userCode) {
+        const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+            const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+            return;
+        } console.log(finalStatus,'permission');
+        let token = await Notifications.getExpoPushTokenAsync();
+        let options = {
+            payload: { token: token },
+            params: userCode
+        }
+        const { postUserNotificationToken } = this.props;
+        return postUserNotificationToken(options)
+    }
 
     render() {
         return (
@@ -99,11 +117,11 @@ class Login extends Component {
                     <View style={{flex:1}}>
                         <View style={styles.container1}>
                             <View style={{height:215.5}}>
-                            <Image
-                                style={{marginTop:20, position:'relative', width:null, height:null, flex:1}}
-                                resizeMode={'cover'}
-                                source={require('../../assets/images/loginMainImg/loginMainImg_hdpi.png')}
-                            />
+                                <Image
+                                    style={{marginTop:20, position:'relative', width:null, height:null, flex:1}}
+                                    resizeMode={'cover'}
+                                    source={require('../../assets/images/loginMainImg/loginMainImg_hdpi.png')}
+                                />
                             </View>
 
                             <Image
@@ -140,9 +158,9 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empId) => this.setState({empId})}
+                                    onChangeText={(empId) => this.setState({empId:empId.toLowerCase(),err:false})}
                                     value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:''})}}
+                                    onFocus={() => {this.setState({empId:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
 
@@ -170,9 +188,10 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empCode) => this.setState({empCode})}
+                                    secureTextEntry={true}
+                                    onChangeText={(empCode) => this.setState({empCode:empCode})}
                                     value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:''})}}
+                                    onFocus={() => {this.setState({empCode:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
@@ -250,7 +269,8 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 postEvent,
-                setUserDetail
+                setUserDetail,
+                postUserNotificationToken
             },
             dispatch
         ),
