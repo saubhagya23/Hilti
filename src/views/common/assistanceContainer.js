@@ -7,19 +7,26 @@ import Checkbox from './Checkbox';
 export default class assistanceContainer extends Component {
     submit = (url) => {
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
-        let urlSub = url +`?subject=${selectedItem}`;
-        Linking.canOpenURL(urlSub).then(supported => {
-            if (supported) {
-                Linking.openURL(urlSub);
-            } else {
-                console.log('Don\'t know how to open URI: ' + url);
-            }
-        });
+        if(selectedItem) {
+            let urlSub = url + `?subject=${selectedItem}`;
+            Linking.canOpenURL(urlSub).then(supported => {
+                if (supported) {
+                    Linking.openURL(urlSub);
+                } else {
+                    console.log('Don\'t know how to open URI: ' + url);
+                }
+            });
+        }else{
+            this.setState({
+                err:true,
+                errText:'Please select a query to be send'
+            })
+        }
     };
 
     selectedItems = (index) => {
         let newob  = {[index]:true};
-        this.setState({checked: newob})
+        this.setState({checked: newob,err:false,errText:''})
     };
 
     constructor(){
@@ -27,6 +34,8 @@ export default class assistanceContainer extends Component {
         this.state = {
             fontLoaded:false,
             checked: {},
+            err:false,
+            errText:''
         }
     }
 
@@ -71,6 +80,10 @@ export default class assistanceContainer extends Component {
                             </View>
                         </TouchableHighlight>
                     </View>
+                {
+                    this.state.err ?
+                        <Text style={{color:'#dd2127',alignSelf:'center',marginTop:15}}>{this.state.errText}</Text>:null
+                }
             </View>:null
         )
     }

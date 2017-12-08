@@ -32,7 +32,7 @@ export default class DosDonts extends Component {
                                 <ScrollView>
                                     <View style={{flexDirection:'row'}}>
                                     <Icon
-                                        style={{color:'#f5f3ee',marginLeft:19.5,marginTop:28}}
+                                        style={{color:'#000000',marginLeft:19.5,marginTop:25}}
                                         name='circle'
                                         size={10}
                                     />
@@ -43,7 +43,7 @@ export default class DosDonts extends Component {
                                     </Text>
                                     <View style={{flexDirection:'row'}}>
                                         <Icon
-                                            style={{color:'#f5f3ee',marginLeft:19.5,marginTop:28}}
+                                            style={{color:'#000000',marginLeft:19.5,marginTop:25}}
                                             name='circle'
                                             size={10}
                                         />
@@ -65,7 +65,6 @@ export default class DosDonts extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        marginTop:10,
         backgroundColor:'#f5f3ee'
     },
 })

@@ -4,7 +4,8 @@ import { Font } from 'expo'
 import { connect } from 'react-redux';
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import Icon  from 'react-native-vector-icons/FontAwesome';
-import { asyncRemove } from '../../utils/asyncStore'
+import PageHeaderLogout from "../common/pageHeaderLogout";
+
 
 class Profile extends Component {
     constructor(){
@@ -27,7 +28,7 @@ class Profile extends Component {
     }
 
     render() {
-        let detail;
+        let detail = {};
         if(this.props.userDetail){
             detail = this.props.userDetail;
         }
@@ -42,48 +43,38 @@ class Profile extends Component {
                     this.state.fontLoaded?
                         <View style={{flex:1}}>
 
-                            <PageHeaderNotif props={this.props} parentPage='Profile' navigation={this.props.navigation}/>
+                            <PageHeaderLogout props={this.props} parentPage='Profile' navigation={this.props.navigation}/>
 
                             <View style={{marginLeft:20,marginTop:20}}>
-
-                                <TouchableOpacity style={{backgroundColor:"red",width:100}}
-                                    onPress={()=>{
-                                    asyncRemove('token');
-                                    asyncRemove('userDetail');
-                                    this.props.navigation.navigate('Login',{})
-                                }}>
-                                    <Text>LOGOUT</Text>
-                                </TouchableOpacity>
-
                                 <View style={{flexDirection:"row",marginTop:10}}>
-                                    <Icon name='user'/>
+                                    <Icon style={{marginTop:4}} name='user'/>
                                     <Text style={{marginLeft:10}}>Name</Text>
                                 </View>
-                                <Text style={{color:'lightgrey',marginLeft:20}}>{detail.Name}</Text>
+                                <Text style={{color:'grey',marginLeft:20}}>{detail.Name}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
-                                    <Icon name="envelope"/>
+                                    <Icon style={{marginTop:4}} name="envelope"/>
                                     <Text style={{marginLeft:10}}>Email Id</Text>
                                 </View>
-                                <Text style={{color:'lightgrey',marginLeft:20}}>{detail.EmailId}</Text>
+                                <Text style={{color:'grey',marginLeft:20}}>{detail.EmailId}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
-                                    <Icon name="group"/>
+                                    <Icon style={{marginTop:4}} name="group"/>
                                     <Text style={{marginLeft:10}}>Team</Text>
                                 </View>
-                                <Text style={{color:'lightgrey',marginLeft:20}}>{detail.Team}</Text>
+                                <Text style={{color:'grey',marginLeft:20}}>{detail.Team}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
-                                    <Icon name="id-card"/>
+                                    <Icon style={{marginTop:4}} name="id-card"/>
                                     <Text style={{marginLeft:10}}>Code</Text>
                                 </View>
-                                <Text style={{color:'lightgrey',marginLeft:20}}>{detail.Code}</Text>
+                                <Text style={{color:'grey',marginLeft:22}}>{detail.Code}</Text>
 
                             </View>
 
                             <View
                                 style={{
-                                    marginTop:10,
+                                    marginTop:15,
                                     borderBottomColor: 'black',
                                     borderBottomWidth: 1,
                                 }}
@@ -99,7 +90,6 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 22,
         flex: 1
     }
 });

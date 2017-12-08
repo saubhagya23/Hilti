@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,7 +8,7 @@ import { postEvent ,setUserDetail, postUserNotificationToken} from '../../action
 import { asyncPost } from '../../utils/asyncStore';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {Permissions, Notifications} from 'expo';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // You can import from local files
 /*import AssetExample from './components/AssetExample';
 import Header from './components/Header';*/
@@ -22,7 +22,9 @@ class Login extends Component {
         this.state = {
             empId: 'xyz.abc@hilti.com',
             empCode: 'employee code',
-            fontLoaded:false
+            fontLoaded:false,
+            err:false,
+            errText:''
         };
     }
 
@@ -37,42 +39,59 @@ class Login extends Component {
     }
 
     login = () => {
-        let empLoginInfo = {
-            email: this.state.empId,
-            password: this.state.empCode
-        };
-        const { postEvent } = this.props;
-        postEvent({payload:empLoginInfo}).then(eventLoginList => {
-            if(eventLoginList.token){
-                asyncPost('token', eventLoginList.token);
-                asyncPost('userDetail',JSON.stringify(eventLoginList.userDetail));
+        if (this.state.empId === 'xyz.abc@hilti.com' || this.state.empCode === 'employee code' || this.state.empId === '' || this.state.empCode === '') {
+            this.setState(
+                {
+                    err: true,
+                    errText: 'Fields cannot be empty'
+                })
+        }
+        else {
+            let empLoginInfo = {
+                email: this.state.empId,
+                password: this.state.empCode
+            };
+            const {postEvent} = this.props;
+            postEvent({payload: empLoginInfo}).then(eventLoginList => {
+                if (eventLoginList.token) {
+                    asyncPost('token', eventLoginList.token);
+                    asyncPost('userDetail', JSON.stringify(eventLoginList.userDetail));
 
-                const { setUserDetail } = this.props;
-                this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
+                    const {setUserDetail} = this.props;
+                    this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
 
-              const resetAction = NavigationActions.reset({
-                index: 0,
-                actions: [
-                  NavigationActions.navigate({ routeName: 'HomeScreen' })
-                ]
-              });
-              this.props.navigation.dispatch(resetAction);
-            }
-            return eventLoginList.userDetail
-        }).then((detail) => {
-            userCode = detail.Code;
-            notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
-            .then((data)=>{
-                console.log(data.token,'response from login')
-                asyncPost('notifToken', data.token);
+                    const resetAction = NavigationActions.reset({
+                        index: 0,
+                        actions: [
+                            NavigationActions.navigate({routeName: 'HomeScreen'})
+                        ]
+                    });
+                    this.props.navigation.dispatch(resetAction);
+                } else {
+                    this.setState(
+                        {
+                            err: true,
+                            errText: 'Invalid emailId or password'
+                        })
+                }
+                return eventLoginList.userDetail
+
+
+            }).then((detail) => {
+                userCode = detail.Code;
+                notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
+                    .then((data) => {
+                        console.log(data.token, 'response from login')
+                        asyncPost('notifToken', data.token);
+                    });
             });
-        });
+        }
     }
 
-    async registerForPushNotificationsAsync(userCode) { 
+    async registerForPushNotificationsAsync(userCode) {
         const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
         let finalStatus = existingStatus;
-        if (existingStatus !== 'granted') {          
+        if (existingStatus !== 'granted') {
             const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
             finalStatus = status;
         }
@@ -90,16 +109,16 @@ class Login extends Component {
 
     render() {
         return (
-            <KeyboardAvoidingView
+            <KeyboardAwareScrollView
                 style={styles.container}
-                behavior="padding"
+                // behavior="padding"
             >
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <View style={styles.container1}>
                             <View style={{height:215.5}}>
                             <Image
-                                style={{marginTop:20, position:'relative', width:null, height:null, flex:1}}
+                                style={{position:'relative', width:null, height:null, flex:1}}
                                 resizeMode={'cover'}
                                 source={require('../../assets/images/loginMainImg/loginMainImg_hdpi.png')}
                             />
@@ -112,6 +131,10 @@ class Login extends Component {
 
                             <Text style={{position:'absolute', marginTop:86.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
                             <View style={{marginLeft:30, marginRight:30}}>
+                                {
+                                    this.state.err ?
+                                        <Text style={{color:'#dd2127',alignSelf:'center'}}>{this.state.errText}</Text>:null
+                                }
                                 <View style={{marginTop:45.5,height:15.5, flexDirection:'row'}}>
                                     <Icon
                                         name='envelope'
@@ -135,9 +158,9 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empId) => this.setState({empId})}
+                                    onChangeText={(empId) => this.setState({empId:empId.toLowerCase(),err:false})}
                                     value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:''})}}
+                                    onFocus={() => {this.setState({empId:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
 
@@ -165,9 +188,10 @@ class Login extends Component {
                                         fontFamily:'hilti-roman',
                                         fontSize:12
                                     }}
-                                    onChangeText={(empCode) => this.setState({empCode})}
+                                    secureTextEntry={true}
+                                    onChangeText={(empCode) => this.setState({empCode:empCode})}
                                     value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:''})}}
+                                    onFocus={() => {this.setState({empCode:'',err:false})}}
                                     underlineColorAndroid='transparent'
                                 />
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
@@ -179,7 +203,7 @@ class Login extends Component {
                         </View>
                     </View>:null
                 }
-            </KeyboardAvoidingView>
+            </KeyboardAwareScrollView>
         );
     }
 }
