@@ -13,3 +13,5 @@ export const NOTIF_COUNT = 'NOTIF_COUNT';
 export const GET_NOTIF = 'GET_NOTIF';
 export const READ_NOTIF = 'READ_NOTIF';
 export const DELETE_NOTIF = 'DELETE_NOTIF';
+export const ARRIVAL_TICKET = 'ARRIVAL_TICKET';
+export const DEPARTURE_TICKET = 'DEPARTURE_TICKET';

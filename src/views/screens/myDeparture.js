@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView, ToastAndroid } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
@@ -7,8 +7,8 @@ import MaterialComIcon  from 'react-native-vector-icons/MaterialCommunityIcons'
 import FeatherIcon  from 'react-native-vector-icons/Feather'
 
 import PageHeaderNotif from '../common/pageHeaderNotif'
-import { Font } from 'expo'
-import { getDepartures } from '../../actions/apiData';
+import { Font, WebBrowser } from 'expo'
+import { getDepartures, getDepartureTicket } from '../../actions/apiData';
 import DetailContainer from '../common/detailContainer'
 
 class MyDeparture extends Component {
@@ -31,9 +31,29 @@ class MyDeparture extends Component {
     }
 
     componentDidMount(){
-        const { getDepartures } = this.props;
+        const { getDepartures, getDepartureTicket } = this.props;
         let detail = JSON.parse(this.props.userDetail);
         getDepartures({param:detail.Code});
+        getDepartureTicket();
+    }
+
+    downloadDepTicket = () => {
+        let userTicketUrl = this.props.departureTicket.url;
+        if(userTicketUrl !== ''){
+            WebBrowser.openBrowserAsync(userTicketUrl)
+                .then((resp) => {
+                    console.log("Finished", resp);
+                })
+                .catch(error => {
+                    ToastAndroid.showWithGravity('Download Unsuccessful.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+                    alert.error(error);
+                });
+        }
+        else{
+            ToastAndroid.showWithGravity('Ticket not available yet.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+
+        }
+
     }
 
     render(){
@@ -69,7 +89,7 @@ class MyDeparture extends Component {
                                         justifyContent:'flex-end'
                                     }}
 
-                                    onPress={() => {}}
+                                    onPress={() => {this.downloadDepTicket()}}
                                 >
                                     <FeatherIcon
                                         style={{color:'#dd2127'}}
@@ -200,6 +220,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         departureList: state.event.departureList,
+        departureTicket: state.event.departureTicket,
         eventLoginList:state.event.eventLoginList,
         userDetail:state.event.userDetail
     }
@@ -210,6 +231,7 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 getDepartures,
+                getDepartureTicket
             },
             dispatch
         ),
