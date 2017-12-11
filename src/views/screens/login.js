@@ -87,7 +87,7 @@ class Login extends Component {
                     });
             });
         }
-    }
+    };
 
     async registerForPushNotificationsAsync(userCode) {
         const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
