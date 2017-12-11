@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, Dimensions} from 'react-native';
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
+import  moment from 'moment'
 
-
+const {height, width} = Dimensions.get('window');
 class Notification extends Component {
     constructor(){
         super();
@@ -23,75 +24,75 @@ class Notification extends Component {
     }
 
     render(){
-        var {height, width} = Dimensions.get('window');
-        const boxHeight = (typeof(this.props.notification.data)!='undefined') ? 256:80;
-        const shadowOpt = {
-            width:width-16,
-            height:boxHeight,
-            color:"#000",
-            borderBottom:1,
-            radius:1,
-            opacity:0.2,
-            x:0,
-            y:2,
-            style:{marginVertical:1}
-        }
         return(
                 <View>
                 {  
                     this.state.fontLoaded  ? (
-                    <BoxShadow setting={shadowOpt}>
-                        <View
-                            style={{position:"relative",
-                                width: width-16,
-                                height:boxHeight,
-                                backgroundColor: "#fff",
-                                borderRadius:1,
-                                overflow:"hidden",
-                                justifyContent:'flex-start'
-                            }}
-                        >
-                            
-                            {(typeof(this.props.notification.data)!='undefined') ? (
-                                <View style={{flex: 1}}>
-                                    <Text style={{alignSelf:'flex-start',marginTop:16,flex:0.1,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                        <View style={styles.container}>
+                            <View style={{flexDirection:'row',marginBottom:10}}>
+                                <Text style={{
+                                        alignSelf:'flex-start',
+                                        marginTop:16,
+                                        flex:1,
+                                        fontSize:14,
+                                        fontFamily:'hilti-roman',
+                                        color:'#dd2127'}}>
                                     {this.props.notification.title}
-                                    </Text>
-                                    <Image style={{flex:0.7}} source={{uri:this.props.notification.data.url}}/> 
-                                    <View style={{justifyContent:'center',alignItems:'flex-start',flex:0.2}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000'}}>
-                                            {this.props.notification.body}
-                                        </Text>
-                                    </View>
+                                </Text>
+                                <Text style={{
+                                    flexShrink:1,
+                                    alignSelf: 'flex-end',
+                                    fontSize: 9,
+                                    color: '#5b5b5b',
+                                    textAlign:'right'
+                                }}>{moment(this.props.notification.timestamp).fromNow()}</Text>
+
+                            </View>
+                                
+
+                                {(typeof(this.props.notification.data)!='undefined') ?
+                                <View style={{flex:1,height:250,width:width}}>
+                                    <Image 
+                                    style={{flex:1, height: undefined, width: undefined}}
+                                    resizeMode='contain' source={{uri:this.props.notification.data.url}}/> 
                                 </View>
-                            ): (
-                                <View style={{flex: 1}}>                                
-                                    <Text style={{alignSelf:'flex-start',marginTop:16,flex:1,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                    {this.props.notification.title}
-                                    </Text>
-                                    <View style={{justifyContent:'center',alignItems:'flex-start',flex:1}}>
-                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000'}}>
-                                            {this.props.notification.body}
+                                :null}
+
+                                <View style={{
+                                    alignItems:'flex-start',
+                                    flex:1}}>
+                                    <Text style={{
+                                        textAlign: 'left',
+                                        fontFamily:'hilti-roman',
+                                        fontSize:10,
+                                        color:'#000000',
+                                        marginVertical:10}}>
+                                        {this.props.notification.body}
                                         </Text>
-                                    </View>
-                                </View>
-                            )
-                            }
-                            
-                            
-                        </View>
-                        </BoxShadow>):null
+                                </View> 
+                                <View style={styles.horizontalLine}></View>  
+                        </View>):null
                 }
                 </View>
         );
     }
 }
 
-// const styles = StyleSheet.create({
-//     container: {
-//         marginTop: 22,
-//         flex: 1,
-//         backgroundColor:'#ffffff'
-//     },
-// });
+const styles = StyleSheet.create({
+    container: {
+        width: width-20,
+        flexShrink:1,
+        backgroundColor: "#fff",
+        borderRadius:1,
+        overflow:"hidden",
+        justifyContent:'center',
+        paddingHorizontal: 10,
+    },
+    horizontalLine: {
+        height: 2,
+        width: width-20,
+        backgroundColor: '#d6d6d6' ,
+        paddingHorizontal: 10,
+    }
+});
 export default Notification;

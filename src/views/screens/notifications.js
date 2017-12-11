@@ -27,7 +27,7 @@ class Notifications extends Component {
         return this.props.getAllNotification();
     }
 
-    render(){
+    render() {
         const notifArray = this.props.allNotifications;
         return(
             
