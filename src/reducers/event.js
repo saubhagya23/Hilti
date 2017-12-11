@@ -1,5 +1,6 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF} from "../constants/index";
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF ,READ_NOTIF} from "../constants/index";
+
 const initialState = {
     // eventList: [],
     eventLoginList:{},
@@ -62,6 +63,10 @@ export function event (state = initialState, action) {
         case GET_NOTIF: {
             let allNotifications = action.payload;
             return Object.assign({}, state, {allNotifications});
+        }
+        case READ_NOTIF: {
+            let notificationCount = {count: 0};
+            return Object.assign({}, state, {notificationCount});
         }
         case UPLOAD_ID_PROOF_LIST: {
             console.log('action.payload--',action.payload,action);

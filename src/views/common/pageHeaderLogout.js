@@ -4,6 +4,7 @@ import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
 import { asyncRemove } from '../../utils/asyncStore'
+import NotificationBell from './notificationBell';
 import { NavigationActions } from "react-navigation";
 
 class PageHeaderLogout extends Component {
@@ -55,15 +56,12 @@ class PageHeaderLogout extends Component {
                                         style={{marginTop:20,marginLeft:19.5}}
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
-
-                                    <TouchableOpacity style={{marginLeft:175.5, marginTop:19.5, marginRight:24}} onPress={()=>this.props.props.navigation.goBack()}>
-                                        <Icon
-                                            name='bell'
-                                            size={20}
-                                            onPress={()=>this.props.props.navigation.goBack()} />
+                                    <TouchableOpacity style={{paddingVertical:5,marginLeft:165.5, marginTop:14.5, marginRight:24}} onPress={()=>this.props.props.navigation.goBack()}>
+                                        <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>{
+
+                                    <TouchableOpacity style={{paddingRight:5,marginTop:19, marginRight:10}} onPress={()=>{
                                         asyncRemove('token');
                                         asyncRemove('userDetail');
                                         const resetAction = NavigationActions.reset({
