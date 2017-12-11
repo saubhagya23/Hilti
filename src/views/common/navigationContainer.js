@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native'
 import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/Entypo'
+import { connect } from 'react-redux'
 
 class NavigationContainer extends Component {
     constructor(){
@@ -34,7 +35,7 @@ class NavigationContainer extends Component {
     }
 
     render(){
-        const mailId = 'pooja19goyal@gmail.com';
+        const mailId = 'TeamAnnualKickOff.IN@hilti.com';
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -55,7 +56,7 @@ class NavigationContainer extends Component {
                                                         height: 64.5,
 
                                                     }}
-                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject=${link.name}`)}>
+                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject= - Kick off 2018 - ${link.name} - ${JSON.parse( this.props.userDetail).Name}`)}>
                                                     <Text style={{color:'#dd2127',
                                                         fontSize:16,
                                                         height:20.5,
@@ -96,82 +97,6 @@ class NavigationContainer extends Component {
                                 )
                             })}
 
-                            {/*<TouchableOpacity
-                                style={{
-                                    height:63.5,
-
-                                    flexDirection:'row'
-                                }}
-                                onPress={()=>this.props.navigation.navigate('AgendaDay1',{})}>
-                                <Text style={{color:'#dd2127',
-                                    fontSize:16,
-                                    height:20.5,
-                                    marginTop:21.5,
-                                    marginLeft:19,
-                                    fontFamily:'hilti-roman'}}>Day 1</Text>
-                                <Image
-                                    style={{marginTop:27,marginLeft:4.5,width:8,height:12}}
-                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
-                                <Icon
-                                    style={{color:'#7c294e',marginTop:23,marginLeft:1.5}}
-                                    name='chevron-right'
-                                    size={20}
-                                    onPress={() => {}} />
-                            </TouchableOpacity>
-
-                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
-
-                            <TouchableOpacity
-                                style={{
-                                    height:64.5,
-
-                                    flexDirection:'row'
-                                }}
-                                onPress={()=>this.props.navigation.navigate('AgendaDay2',{})}>
-                                <Text style={{color:'#dd2127',
-                                    fontSize:16,
-                                    height:20.5,
-                                    marginTop:19.5,
-                                    marginLeft:18.5,
-                                    fontFamily:'hilti-roman'}}>Day 2</Text>
-                                <Image
-                                    style={{marginTop:25.5,marginLeft:4.5}}
-                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
-                                <Icon
-                                    style={{color:'#7c294e',marginTop:21,marginLeft:1.5}}
-                                    name='chevron-right'
-                                    size={20}
-                                    onPress={() => {}} />
-                            </TouchableOpacity>
-
-                            <View style={{width:335,height:0.5, marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
-
-                            <TouchableOpacity
-                                style={{
-                                    height:64.5,
-
-                                    flexDirection:'row'
-                                }}
-                                onPress={()=>this.props.navigation.navigate('AgendaDay3',{})}>
-                                <Text style={{color:'#dd2127',
-                                    fontSize:16,
-                                    height:20.5,
-                                    marginTop:19.5,
-                                    marginLeft:18.5,
-                                    fontFamily:'hilti-roman'}}>Day 3</Text>
-                                <Image
-                                    style={{marginTop:25.5,marginLeft:4.5}}
-                                    source={require('../../assets/images/arrow_icon/arrow_mdpi.png')}
-                                />
-                                <Icon
-                                    style={{color:'#7c294e',marginTop:21,marginLeft:1.5}}
-                                    name='chevron-right'
-                                    size={20}
-                                    onPress={() => {}} />
-                            </TouchableOpacity>*/}
-
                         </View>
                     </View>:null
                 }
@@ -211,7 +136,12 @@ const styles = StyleSheet.create({
         marginTop:24,
         marginLeft:10
     }
-})
+});
 
-export default NavigationContainer;
+function mapStateToProps (state) {
+    return {
+        userDetail:state.event.userDetail
+    }
+}
 
+export default connect(mapStateToProps, null)(NavigationContainer)

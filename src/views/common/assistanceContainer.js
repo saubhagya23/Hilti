@@ -3,12 +3,13 @@ import { StyleSheet, View, Image, Text, Linking, TouchableHighlight } from 'reac
 import { Font } from 'expo';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import Checkbox from './Checkbox';
+import { connect } from 'react-redux';
 
-export default class assistanceContainer extends Component {
+class assistanceContainer extends Component {
     submit = (url) => {
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
-            let urlSub = url + `?subject=${selectedItem}`;
+            let urlSub = url + `?subject= - Kick off  2018 - ${selectedItem} - ${JSON.parse( this.props.userDetail).Name}`;
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
                     Linking.openURL(urlSub);
@@ -50,7 +51,7 @@ export default class assistanceContainer extends Component {
     }
 
     render() {
-        const mailId = 'pooja19goyal@gmail.com';
+        const mailId = 'TeamAnnualKickOff.IN@hilti.com';
         const CheckBoxes = this.props.assistanceData.select.map((item,i)=><Checkbox check={this.state.checked[i]?true:false} selecteHandler={this.selectedItems} content={item} key={i} idx={i}/>)
         return (
             this.state.fontLoaded?
@@ -116,3 +117,11 @@ const styles = StyleSheet.create({
         marginTop:12,
     }
 });
+
+function mapStateToProps (state) {
+    return {
+        userDetail:state.event.userDetail
+    }
+}
+
+export default connect(mapStateToProps, null)(assistanceContainer)
