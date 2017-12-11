@@ -25,6 +25,7 @@ class SubmitId extends Component {
             imgFrontData:{},
             imgBackData:{},
             btnText:'UPLOAD FILE',
+            errText:''
         }
     }
 
@@ -42,9 +43,9 @@ class SubmitId extends Component {
     }
 
     componentDidMount(){
-        /*const { deletedownloadIdProofEvent } = this.props;
-        deletedownloadIdProofEvent();*/
         let detail = JSON.parse(this.props.userDetail);
+        /*const { deletedownloadIdProofEvent } = this.props;
+        deletedownloadIdProofEvent({param:detail.Code});*/
         const { getdownloadIdProofEvent } = this.props;
         getdownloadIdProofEvent({param:detail.Code});
         /*let downloadedImageArray = this.props.downloadIdProofEvent;
@@ -98,21 +99,24 @@ class SubmitId extends Component {
 
     componentWillReceiveProps(nextProps){
        console.log('Data------------------------->>>>>>>>>>>>>>>>>>>>',nextProps.downloadIdProofEvent.length);
-        if(nextProps.downloadIdProofEvent.length !== 0){
-            //console.log('Data--------------Found----------->>>>>>>>>>>>>>>>>>>>');
-            let downloadedImageArray = nextProps.downloadIdProofEvent;
-            //console.log('downloaded data...CWRP.....',downloadedImageArray);
-            if(downloadedImageArray.length !== 0) {
-                //console.log('Abcdef....');
+        if(nextProps.downloadIdProofEvent && nextProps.downloadIdProofEvent.length){
+            console.log('h1');
+            let downloadedImageArray = nextProps.downloadIdProofEvent || [];
+            console.log('h2');
+            if(downloadedImageArray && downloadedImageArray.length !== 0) {
+                console.log('h3');
+                let initialDownloadObject = downloadedImageArray[0] || {};
+                let secondDownloadObject = downloadedImageArray[1] || {};
+                console.log('h4');
                 if (downloadedImageArray.length === 1) {
-                    //console.log('Hello1');
-                    if (downloadedImageArray[0].type === 'front') {
-                        //console.log('Hello2',downloadedImageArray[0].idType);
+                    console.log('h5');
+                    if (initialDownloadObject && initialDownloadObject.type === 'front') {
+                        console.log('h6');
                         this.setState({
-                            imgFrontType: downloadedImageArray[0].type,
+                            imgFrontType: initialDownloadObject.type,
                             imgFrontLoaded: true,
-                            imgFrontUrl: downloadedImageArray[0].url,
-                            value: downloadedImageArray[0].idType,
+                            imgFrontUrl: initialDownloadObject.url,
+                            value: initialDownloadObject.idType,
                             btnText: 'DELETE'
                         }, (() => {
                             console.log('Hello3');
@@ -124,27 +128,27 @@ class SubmitId extends Component {
                 }
                 else{
                     //console.log('Abcdefghi......');
-                    if (downloadedImageArray[0].type === 'front'){
+                    if (initialDownloadObject && initialDownloadObject.type === 'front'){
                         this.setState({
-                            value: downloadedImageArray[0].idType,
+                            value: initialDownloadObject.idType,
                             imgFrontLoaded: true,
-                            imgFrontUrl: downloadedImageArray[0].url,
-                            imgFrontType: downloadedImageArray[0].type,
+                            imgFrontUrl: initialDownloadObject.url,
+                            imgFrontType: initialDownloadObject.type,
                             imgBackLoaded: true,
-                            imgBackUrl: downloadedImageArray[1].url,
-                            imgBackType: downloadedImageArray[1].type,
+                            imgBackUrl: secondDownloadObject.url,
+                            imgBackType: secondDownloadObject.type,
                             btnText: 'DELETE'
                         })
                     }
                     else {
                         this.setState({
-                            value: downloadedImageArray[0].idType,
+                            value: initialDownloadObject.idType,
                             imgBackLoaded: true,
-                            imgBackUrl: downloadedImageArray[0].url,
-                            imgBackType: downloadedImageArray[0].type,
+                            imgBackUrl: initialDownloadObject.url,
+                            imgBackType: initialDownloadObject.type,
                             imgFrontLoaded: true,
-                            imgFrontUrl: downloadedImageArray[1].url,
-                            imgFrontType: downloadedImageArray[1].type,
+                            imgFrontUrl: secondDownloadObject.url,
+                            imgFrontType: secondDownloadObject.type,
                             btnText: 'DELETE'
                         })
                     }
@@ -158,22 +162,22 @@ class SubmitId extends Component {
 
     handleOnPress(value){
         console.log('value is******',value);
-        this.setState({
-            value:value,
-            /*imgFrontLoaded:false,
-            imgBackLoaded:false,
-            imgFrontUrl:'',
-            imgBackUrl:'',
-            imgFrontType:'',
-            imgBackType:'',
-            imgData:{},
-            btnText:'UPLOAD FILE'*/
-        })
+        if(this.state.errText !== ''){
+            this.setState({
+                errText:'',
+                value:value,
+            })
+        }else{
+            this.setState({
+                value:value,
+            })
+        }
     }
 
     pickImage = async (type) => {
         if(this.state.value === ''){
-            ToastAndroid.showWithGravity('Please select a type of ID proof', ToastAndroid.SHORT, ToastAndroid.CENTER);
+            //ToastAndroid.showWithGravity('Please select a type of ID proof', ToastAndroid.SHORT, ToastAndroid.CENTER);
+            this.setState({errText:'Please select a type of ID proof'})
         }
         else{
             console.log('type=====',type);
@@ -189,18 +193,38 @@ class SubmitId extends Component {
                 resultFront = await ImagePicker.launchImageLibraryAsync({
                     allowsEditing: true,
                 });
-                this.setState({
-                    imgFrontLoaded:true,
-                    imgFrontUrl:resultFront.uri,
-                    imgFrontData:resultFront,
-                    imgFrontType:type,
-                    // btnText:'DELETE'
-                })
+                if(this.state.errText !== ''){
+                    this.setState({
+                        imgFrontLoaded:true,
+                        imgFrontUrl:resultFront.uri,
+                        imgFrontData:resultFront,
+                        imgFrontType:type,
+                        errText:''
+                        // btnText:'DELETE'
+                    })
+                }
+                else{
+                    this.setState({
+                        imgFrontLoaded:true,
+                        imgFrontUrl:resultFront.uri,
+                        imgFrontData:resultFront,
+                        imgFrontType:type,
+                        errText:''
+                        // btnText:'DELETE'
+                    })
+                }
+
             }
             else{
                 /*resultBack = await ImagePicker.launchImageLibraryAsync({
                     allowsEditing: true,
                 });*/
+                if(this.state.imgFrontType!=='front'){
+                    this.setState({
+                        errText:'First select front image'
+                    })
+                }
+                else{
                 resultBack = await ImagePicker.launchImageLibraryAsync({
                     allowsEditing: true,
                 });
@@ -209,8 +233,9 @@ class SubmitId extends Component {
                     imgBackUrl:resultBack.uri,
                     imgBackData:resultBack,
                     imgBackType:type,
+                    errText:''
                     // btnText:'DELETE'
-                })
+                })}
             }
             /*let result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
@@ -232,17 +257,19 @@ class SubmitId extends Component {
                 }
             }
             else{
-                if(resultBack.cancelled){
-                    this.setState({
-                        imgFrontLoaded:false,
-                        imgBackLoaded:false,
-                        imgFrontUrl:'',
-                        imgBackUrl:'',
-                        imgFrontType:'',
-                        imgBackType:'',
-                        imgFrontData:{},
-                        imgBackData:{},
-                    })
+                if(this.state.imgFrontType!=='front'){
+                    if(resultBack && resultBack.cancelled){
+                        this.setState({
+                            imgFrontLoaded:false,
+                            imgBackLoaded:false,
+                            imgFrontUrl:'',
+                            imgBackUrl:'',
+                            imgFrontType:'',
+                            imgBackType:'',
+                            imgFrontData:{},
+                            imgBackData:{},
+                        })
+                    }
                 }
             }
 
@@ -299,9 +326,18 @@ class SubmitId extends Component {
 
     uploadImage = (imageStatus,uri) => {
         console.log('image upload fn called..');
-        if((this.state.value === ''|| this.state.imgFrontType === '')
-            ||(this.state.value === ''|| this.state.imgBackType === '')){
-            ToastAndroid.showWithGravity('Please select the type and images.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        console.log('states####',this.state.value,this.state.imgFrontType,uri);
+        if((this.state.value === ''|| this.state.imgFrontType === '')){
+            //ToastAndroid.showWithGravity('Please select the type and images.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+            this.setState({
+                errText:'Please select the type and images',
+                value:'',
+                imgBackLoaded:false,
+                imgBackType:'',
+                imgBackUrl:'',
+                imgBackData:{},
+                btnText:'UPLOAD FILE'
+            })
         }
         else{
             let uriParts = uri.split('.');
@@ -327,7 +363,7 @@ class SubmitId extends Component {
             }*/
 
 
-            //console.log('upload obj is----',uploadObj);
+            console.log('upload obj is----',uploadObj);
 
             let header = {
                 'Accept': 'application/json',
@@ -364,8 +400,10 @@ class SubmitId extends Component {
                 imgBackUrl:'',
                 imgFrontType:'',
                 imgBackType:'',
-                imgData:{},
-                btnText:'UPLOAD FILE'
+                imgFrontData:{},
+                imgBackData:{},
+                btnText:'UPLOAD FILE',
+                errText:'Image(s) deleted.'
             })
         }
         else{
@@ -389,42 +427,52 @@ class SubmitId extends Component {
                     console.log({ e });
                     console.log('Back--',{ uploadBackResponse });
                     console.log({ e });
-                    alert('Upload failed, sorry :(');
+                    this.setState({errText:'Upload failed, sorry :('})
+                    //alert('Upload failed, sorry :(');
                 } finally {
                     //this.setState({ uploading: false });
                     // console.log('upload complete--!!')
                 }
             }
             else if(this.state.imgFrontLoaded === true && this.state.imgBackLoaded === false){
-                //console.log('front image---');
+                console.log('front image---',this.state.imgFrontData);
                 result = this.state.imgFrontData;
                 try {
+                    console.log('uri got===',result.uri)
                     if (!result.cancelled) {
-                        uploadResponse = await this.uploadImage(result.uri);
+                        console.log('uri got==2==',result.uri)
+                        uploadResponse = await this.uploadImage('front',result.uri);
+                        this.setState({btnText:'DELETE'});
                     }
                 } catch (e) {
                     console.log('Front--',{ uploadResponse });
                     console.log({ e });
-                    alert('Upload failed, sorry :(');
+                    this.setState({errText:'Upload failed, sorry :('})
+                    //alert('Upload failed, sorry :(');
                 } finally {
                     //this.setState({ uploading: false });
                     // console.log('upload complete--!!')
                 }
             }
             else{
-                result = this.state.imgBackData;
+                this.setState({
+                    errText:'Please select the type and image(s).'
+                })
+                /*result = this.state.imgBackData;
                 try {
                     if (!result.cancelled) {
                         uploadResponse = await this.uploadImage(result.uri);
+                        this.setState({btnText:'DELETE'});
                     }
                 } catch (e) {
                     console.log('Back--',{ uploadResponse });
                     console.log({ e });
-                    alert('Upload failed, sorry :(');
+                    this.setState({errText:'Upload failed, sorry :('})
+                    //alert('Upload failed, sorry :(');
                 } finally {
                     //this.setState({ uploading: false });
                     // console.log('upload complete--!!')
-                }
+                }*/
             }
         }
         //console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
@@ -471,7 +519,7 @@ class SubmitId extends Component {
 
                             <View style={{marginTop:22,height:465.5,backgroundColor:'#ffffff'}}>
                                 <View style={{marginTop:27.5,justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
-                                    <View style={{flexDirection:'row'}}>
+                                    <TouchableOpacity style={{flexDirection:'row'}} onPress={this.handleOnPress.bind(this)}>
                                         <RadioButton
                                             currentValue={this.state.value}
                                             value={'Voter ID'}
@@ -482,9 +530,9 @@ class SubmitId extends Component {
                                         >
                                             <Text style={{marginLeft:4,fontSize:10,color:'#000000',fontFamily:'hilti-bold'}}>Voter ID</Text>
                                         </RadioButton>
-                                    </View>
+                                    </TouchableOpacity>
 
-                                    <View style={{marginLeft:10,flexDirection:'row'}}>
+                                    <TouchableOpacity style={{marginLeft:10,flexDirection:'row'}} onPress={this.handleOnPress.bind(this)}>
                                         <RadioButton
                                             currentValue={this.state.value}
                                             value={'Adhaar Card'}
@@ -494,9 +542,9 @@ class SubmitId extends Component {
                                             onPress={this.handleOnPress.bind(this)}>
                                             <Text style={{marginLeft:4,fontSize:10,color:'#000000',fontFamily:'hilti-bold'}}>Adhaar Card</Text>
                                         </RadioButton>
-                                    </View>
+                                    </TouchableOpacity>
 
-                                    <View style={{marginLeft:10,flexDirection:'row'}}>
+                                    <TouchableOpacity style={{marginLeft:10,flexDirection:'row'}} onPress={this.handleOnPress.bind(this)}>
                                         <RadioButton
                                             currentValue={this.state.value}
                                             value={'Driving License'}
@@ -506,9 +554,9 @@ class SubmitId extends Component {
                                             onPress={this.handleOnPress.bind(this)}>
                                             <Text style={{marginLeft:4,fontSize:10,color:'#000000',fontFamily:'hilti-bold'}}>Driving License</Text>
                                         </RadioButton>
-                                    </View>
+                                    </TouchableOpacity>
 
-                                    <View style={{marginLeft:10,flexDirection:'row'}}>
+                                    <TouchableOpacity style={{marginLeft:10,flexDirection:'row'}} onPress={this.handleOnPress.bind(this)}>
                                         <RadioButton
                                             currentValue={this.state.value}
                                             value={'Passport'}
@@ -518,7 +566,7 @@ class SubmitId extends Component {
                                             onPress={this.handleOnPress.bind(this)}>
                                             <Text style={{marginLeft:4,fontSize:10,color:'#000000',fontFamily:'hilti-bold'}}>Passport</Text>
                                         </RadioButton>
-                                    </View>
+                                    </TouchableOpacity>
                                 </View>
 
                                 <View style={{marginTop:24.5,height:179.5,justifyContent:'center',alignItems:'center'}}>
@@ -579,7 +627,10 @@ class SubmitId extends Component {
                                 </View>
 
                                 <Text style={{flex:0.3,alignSelf:'center',marginTop:5,color:'#000000',opacity:0.6,fontFamily:'hilti-roman',fontSize:9,width:220}}>You will receive your room sharing details upon uploading the ID proof</Text>
-
+                                {
+                                    this.state.errText ?
+                                        <Text style={{alignSelf:'center',color:'#dd2127',fontFamily:'hilti-roman',fontSize:13}}>{this.state.errText}</Text>:null
+                                }
                             </View>
                         </View>:null
                 }

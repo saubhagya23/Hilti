@@ -28,7 +28,7 @@ class Profile extends Component {
     }
 
     render() {
-        let detail;
+        let detail = {};
         if(this.props.userDetail){
             detail = this.props.userDetail;
         }
@@ -90,7 +90,6 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 22,
         flex: 1
     }
 });
