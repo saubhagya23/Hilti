@@ -52,9 +52,23 @@ export function getArrivalList(option={}) {
     return requestAPI(URL, option)
 }
 
+export function getArrivalTicketList(option={}) {
+    let { url , method } = API.ENDPOINT.ARRIVAL.TICKET;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
 export function getDepartureList(option={}) {
     let { url , method } = API.ENDPOINT.DEPARTURE.DETAIL;
     let URL = `${API_BASE + url + option.param}`;
+    option.method = method;
+    return requestAPI(URL, option)
+}
+
+export function getDepartureTicektList(option={}) {
+    let { url , method } = API.ENDPOINT.DEPARTURE.TICKET;
+    let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option)
 }

@@ -115,7 +115,7 @@ class SubmitId extends Component {
                         this.setState({
                             imgFrontType: initialDownloadObject.type,
                             imgFrontLoaded: true,
-                            imgFrontUrl: initialDownloadObject.url,
+                            imgFrontUrl: initialDownloadObject.url+'?random_number='+new Date().getTime(),
                             value: initialDownloadObject.idType,
                             btnText: 'DELETE'
                         }, (() => {
@@ -132,10 +132,10 @@ class SubmitId extends Component {
                         this.setState({
                             value: initialDownloadObject.idType,
                             imgFrontLoaded: true,
-                            imgFrontUrl: initialDownloadObject.url,
+                            imgFrontUrl: initialDownloadObject.url+'?random_number='+new Date().getTime(),
                             imgFrontType: initialDownloadObject.type,
                             imgBackLoaded: true,
-                            imgBackUrl: secondDownloadObject.url,
+                            imgBackUrl: secondDownloadObject.url+'?random_number='+new Date().getTime(),
                             imgBackType: secondDownloadObject.type,
                             btnText: 'DELETE'
                         })
@@ -144,10 +144,10 @@ class SubmitId extends Component {
                         this.setState({
                             value: initialDownloadObject.idType,
                             imgBackLoaded: true,
-                            imgBackUrl: initialDownloadObject.url,
+                            imgBackUrl: initialDownloadObject.url+'?random_number='+new Date().getTime(),
                             imgBackType: initialDownloadObject.type,
                             imgFrontLoaded: true,
-                            imgFrontUrl: secondDownloadObject.url,
+                            imgFrontUrl: secondDownloadObject.url+'?random_number='+new Date().getTime(),
                             imgFrontType: secondDownloadObject.type,
                             btnText: 'DELETE'
                         })

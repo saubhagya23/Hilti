@@ -7,7 +7,7 @@ class DressCodeNavigation extends Component {
                         {name: 'DAY 1',nav:'DressCodeDay'},
                         {name: 'DAY 2',nav:'DressCodeDay'},
                         {name: 'DAY 3',nav:'DressCodeDay'},
-                    ]
+                    ];
         return(            
             <NavigationContainer navigation={this.props.navigation}
                      navData={data}/>                   
