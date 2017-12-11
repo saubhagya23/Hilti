@@ -24,9 +24,10 @@ class Notification extends Component {
 
     render(){
         var {height, width} = Dimensions.get('window');
+        const boxHeight = (typeof(this.props.notification.data)!='undefined') ? 256:80;
         const shadowOpt = {
             width:width-16,
-            height:256,
+            height:boxHeight,
             color:"#000",
             borderBottom:1,
             radius:1,
@@ -43,27 +44,43 @@ class Notification extends Component {
                         <View
                             style={{position:"relative",
                                 width: width-16,
-                                height: 256,
+                                height:boxHeight,
                                 backgroundColor: "#fff",
                                 borderRadius:1,
                                 overflow:"hidden",
                                 justifyContent:'flex-start'
                             }}
                         >
-                            <Text style={{alignSelf:'flex-start',marginTop:16,flex:0.1,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                {this.props.notification.title}
-                            </Text>
-                            {/* <Image
-                                style={{flex:0.7}}
-                                source={{uri:''}}
-                            /> */}
-                            <View style={{justifyContent:'center',alignItems:'flex-start',flex:0.2}}>
-                                <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000'}}>
-                                    {this.props.notification.body}
-                                </Text>
-                            </View>
+                            
+                            {(typeof(this.props.notification.data)!='undefined') ? (
+                                <View style={{flex: 1}}>
+                                    <Text style={{alignSelf:'flex-start',marginTop:16,flex:0.1,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                    {this.props.notification.title}
+                                    </Text>
+                                    <Image style={{flex:0.7}} source={{uri:this.props.notification.data.url}}/> 
+                                    <View style={{justifyContent:'center',alignItems:'flex-start',flex:0.2}}>
+                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000'}}>
+                                            {this.props.notification.body}
+                                        </Text>
+                                    </View>
+                                </View>
+                            ): (
+                                <View style={{flex: 1}}>                                
+                                    <Text style={{alignSelf:'flex-start',marginTop:16,flex:1,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                    {this.props.notification.title}
+                                    </Text>
+                                    <View style={{justifyContent:'center',alignItems:'flex-start',flex:1}}>
+                                        <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000'}}>
+                                            {this.props.notification.body}
+                                        </Text>
+                                    </View>
+                                </View>
+                            )
+                            }
+                            
+                            
                         </View>
-                        </BoxShadow>):<Text>hi</Text>
+                        </BoxShadow>):null
                 }
                 </View>
         );

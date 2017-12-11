@@ -3,10 +3,9 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'rea
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
-import { asyncRemove } from '../../utils/asyncStore'
 import NotificationBell from './notificationBell';
 
-class PageHeaderLogout extends Component {
+class notificationHeader extends Component {
     constructor(){
         super();
 
@@ -55,20 +54,15 @@ class PageHeaderLogout extends Component {
                                         style={{marginTop:20,marginLeft:19.5}}
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
-                                    <TouchableOpacity style={{paddingVertical:5,marginLeft:165.5, marginTop:14.5, marginRight:24}} onPress={()=>this.props.props.navigation.goBack()}>
-                                        <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
-                                    </TouchableOpacity>
 
-                                    <TouchableOpacity style={{paddingRight:5,marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
+                                    <View style={{marginLeft:185.5, marginTop:19.5, marginRight:24}}>
+                                        {/* <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} /> */}
+                                    </View>
+                                    <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
-                                            name="sign-out"
+                                            name='user-circle-o'
                                             size={20}
-                                            onPress={()=>{
-                                                asyncRemove('token');
-                                                asyncRemove('userDetail');
-                                                this.props.navigation.navigate('Login',{})
-                                            }}
-                                        />
+                                            onPress={()=>this.props.navigation.navigate('Profile',{})} />
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>
@@ -102,6 +96,7 @@ const styles = StyleSheet.create({
         height:53.5,
         flexDirection:'row',
         backgroundColor:'white',
+
     },
     logo:{
         flex:1,
@@ -136,4 +131,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PageHeaderLogout;
+export default notificationHeader;

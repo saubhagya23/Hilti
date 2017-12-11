@@ -54,17 +54,9 @@ class Home extends Component {
     }
 
     _handleListner= (notification) => {
-        if(this.state.appState != 'active') {
-            this.props.readAllNotification().then((resp)=>{
-                this.props.navigation.navigate('Notifications',{})
-            })
-        }
-        else {
-            this.getNotificationAsync().then((data) => {
-                this.setState({ notificationCount : data });
-            })
-        }
-        
+        this.getNotificationAsync().then((data) => {
+            this.setState({ notificationCount : data });
+        })     
     }
     async getNotificationAsync() { 
         return this.props.getNotificationCount();

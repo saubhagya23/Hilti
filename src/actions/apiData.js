@@ -173,7 +173,7 @@ export function readAllNotification(data) {
     return function (dispatch) {
         return readAllNotif(data).then(function (response) {
             dispatch({
-                type: GET_NOTIF,
+                type: READ_NOTIF,
                 payload: response
             });
             return response;

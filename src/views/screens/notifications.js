@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, ActivityIndicator} from 'react-native';
-import PageHeaderNotif from '../common/pageHeaderNotif';
-import { getAllNotification } from '../../actions/apiData';
+import PageHeaderNotif from '../common/notificationHeader';
+import { getAllNotification, readAllNotification} from '../../actions/apiData';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Notification from '../common/notification';
@@ -14,15 +14,16 @@ class Notifications extends Component {
             notificationRecieved:false,
         }
     }
-
-    async componentWillMount(){
+    
+    componentWillMount(){
         this.getAllNotificationAsync()
         .then((notifications)=>{
-            this.setState({notificationRecieved: true})
+            this.setState({notificationRecieved: true},()=> {
+                this.props.readAllNotification();
+            })
         })
     }
-
-    async getAllNotificationAsync() { 
+   getAllNotificationAsync() { 
         return this.props.getAllNotification();
     }
 
@@ -34,7 +35,7 @@ class Notifications extends Component {
              <View style={{flex:1}}>
                      <PageHeaderNotif props={this.props} parentPage='NOTIFICATIONS' navigation={this.props.navigation}/>      
                      {    
-                         this.state.notificationRecieved ?
+                        this.state.notificationRecieved ?
                              <ScrollView contentContainerStyle={{ justifyContent:'center',alignItems:'center'}}>
                                  {notifArray.map((notification,index) => 
                                  <Notification key = {index} notification={notification}/>
@@ -65,6 +66,7 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 getAllNotification,
+                readAllNotification
             },
             dispatch
         ),

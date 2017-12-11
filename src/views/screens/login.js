@@ -77,13 +77,14 @@ class Login extends Component {
                 return eventLoginList.userDetail
 
 
-            }).then((detail) => {
-                userCode = detail.Code;
-                notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
+            }).then((detail) => { 
+                if(typeof(detail) != 'undefined'){
+                    userCode = detail.Code;
+                    notificationRegisterResponse = this.registerForPushNotificationsAsync(userCode)
                     .then((data) => {
-                        console.log(data.token, 'response from login')
                         asyncPost('notifToken', data.token);
                     });
+                }               
             });
         }
     }

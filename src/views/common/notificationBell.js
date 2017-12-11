@@ -17,7 +17,7 @@ class notificationBell extends Component {
     async componentWillMount() {
         this.getNotificationAsync()
         .then((data)=>{
-            // alert(data.count+'hi');
+            // alert(data.count);
         });
     }
 
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     },
     notification: {
         position: 'relative',
+        paddingHorizontal: 5,
     }
 });
 
