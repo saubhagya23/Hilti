@@ -21,10 +21,11 @@ class Login extends Component {
         super(props);
         this.state = {
             empId: 'xyz.abc@hilti.com',
-            empCode: 'employee code',
+            empCode: '',
             fontLoaded:false,
             err:false,
-            errText:''
+            errText:'',
+            showPaswd:false
         };
     }
 
@@ -86,7 +87,7 @@ class Login extends Component {
                     });
             });
         }
-    }
+    };
 
     async registerForPushNotificationsAsync(userCode) {
         const {existingStatus} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
@@ -172,28 +173,50 @@ class Login extends Component {
 
                                     <Text style={{marginLeft:13.5, height:15,color:'#000000',fontFamily:'hilti-bold',fontSize:12, letterSpacing:0.6}}>Password</Text>
                                 </View>
+                                {
+                                    this.state.showPaswd ?
+                                        <TextInput
+                                            autoCapitalize={'none'}
+                                            style={{height: 43,
+                                                borderWidth: 1,
+                                                color:'#000000',
+                                                opacity:0.6,
+                                                borderColor:'#dddddd',
+                                                backgroundColor:'#f5f3ee',
+                                                paddingLeft:15.5,
+                                                paddingTop:0,
+                                                marginTop:15,
+                                                fontFamily:'hilti-roman',
+                                                fontSize:12
+                                            }}
+                                            secureTextEntry={true}
+                                            onChangeText={(empCode) => this.setState({empCode:empCode})}
+                                            value={ this.state.empCode }
+                                            onFocus={() => {this.setState({empCode:'',err:false})}}
+                                            underlineColorAndroid='transparent'
+                                        />:
+                                        <TextInput
+                                            autoCapitalize={'none'}
+                                            style={{height: 43,
+                                                borderWidth: 1,
+                                                color:'#000000',
+                                                opacity:0.6,
+                                                borderColor:'#dddddd',
+                                                backgroundColor:'#f5f3ee',
+                                                paddingLeft:15.5,
+                                                paddingTop:0,
+                                                marginTop:15,
+                                                fontFamily:'hilti-roman',
+                                                fontSize:12
+                                            }}
+                                            onChangeText={(empCode) => this.setState({empCode:empCode})}
+                                            value={ '12345' }
+                                            onFocus={() => {this.setState({empCode:'',err:false,showPaswd:true})}}
+                                            underlineColorAndroid='transparent'
+                                        />
 
+                                }
 
-                                <TextInput
-                                    autoCapitalize={'none'}
-                                    style={{height: 43,
-                                        borderWidth: 1,
-                                        color:'#000000',
-                                        opacity:0.6,
-                                        borderColor:'#dddddd',
-                                        backgroundColor:'#f5f3ee',
-                                        paddingLeft:15.5,
-                                        paddingTop:0,
-                                        marginTop:15,
-                                        fontFamily:'hilti-roman',
-                                        fontSize:12
-                                    }}
-                                    secureTextEntry={true}
-                                    onChangeText={(empCode) => this.setState({empCode:empCode})}
-                                    value={this.state.empCode}
-                                    onFocus={() => {this.setState({empCode:'',err:false})}}
-                                    underlineColorAndroid='transparent'
-                                />
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
                                     <View>
                                         <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', marginTop:8.5, textAlign:'center' }}>SIGN IN</Text>

@@ -4,6 +4,7 @@ import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
 import { asyncRemove } from '../../utils/asyncStore'
+import { NavigationActions } from "react-navigation";
 
 class PageHeaderLogout extends Component {
     constructor(){
@@ -36,7 +37,7 @@ class PageHeaderLogout extends Component {
             x:0,
             y:1,
             style:{marginVertical:1}
-        }
+        };
         return(
             <BoxShadow setting={shadowOpt}>
                 <View style={{position:"relative",
@@ -62,15 +63,20 @@ class PageHeaderLogout extends Component {
                                             onPress={()=>this.props.props.navigation.goBack()} />
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
+                                    <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>{
+                                        asyncRemove('token');
+                                        asyncRemove('userDetail');
+                                        const resetAction = NavigationActions.reset({
+                                            index: 0,
+                                            actions: [
+                                                NavigationActions.navigate({ routeName: 'Login' })
+                                            ]
+                                        });
+                                        this.props.navigation.dispatch(resetAction);
+                                    }}>
                                         <Icon
                                             name="sign-out"
                                             size={20}
-                                            onPress={()=>{
-                                                asyncRemove('token');
-                                                asyncRemove('userDetail');
-                                                this.props.navigation.navigate('Login',{})
-                                            }}
                                         />
                                     </TouchableOpacity>
                                 </View>

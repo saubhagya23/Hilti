@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { FileSystem } from 'expo';
 import PageHeaderNotif from '../common/pageHeaderNotif'
-import { Font } from 'expo'
+import { Font , WebBrowser} from 'expo'
 
 class travelOverview extends Component {
     constructor(){
@@ -24,7 +24,7 @@ class travelOverview extends Component {
     }
 
     downloadFile = () => {
-        console.log('*************************',FileSystem.documentDirectory);
+       /* console.log('*************************',FileSystem.documentDirectory);
         FileSystem.downloadAsync(
             'http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx',
             FileSystem.documentDirectory + 'Travel_Overview.xlsx'
@@ -34,8 +34,16 @@ class travelOverview extends Component {
             })
             .catch(error => {
                 console.error(error);
+            });*/
+
+        WebBrowser.openBrowserAsync('http://13.68.114.98:9000/api/documents/download/Travel_Overview.xlsx')
+            .then((resp) => {
+                console.log("Finished", resp);
+            })
+            .catch(error => {
+                alert.error(error);
             });
-    }
+    };
 
     render(){
         return(

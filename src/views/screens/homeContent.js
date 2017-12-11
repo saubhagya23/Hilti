@@ -11,7 +11,7 @@ import { getVideo } from '../../actions/apiData';
 class HomeContent extends Component {
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             fontLoaded:false,
             showVideo:false,
@@ -35,9 +35,8 @@ class HomeContent extends Component {
             this.setState({
                 url:videoUrl,
                 showVideo:true
-            },()=>{
-                console.log("url is :",this.state.url)
             })
+
         }else {
             const {getVideo} = this.props;
              await getVideo();
