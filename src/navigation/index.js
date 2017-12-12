@@ -25,7 +25,7 @@ import NavigationContainer from '../views/common/navigationContainer'
 import AssistanceNavigation from '../views/screens/assistanceNavigation'
 import TravelAssistance from '../views/screens/travelAssistance'
 import HotelAssistance from '../views/screens/hotelAssistance'
-import ComingSoon from '../views/common/comingSoon'
+import Comments from '../views/screens/comments'
 import Notifications from '../views/screens/notifications'
 import ExperienceCorner from '../views/screens/experienceCorner'
 
@@ -105,8 +105,8 @@ const routes = {
     HotelAssistance: {
         screen: HotelAssistance
     },
-    ComingSoon: {
-        screen: ComingSoon
+    Comments: {
+        screen: Comments
     },
     Notifications: {
         screen: Notifications

@@ -30,6 +30,10 @@ let API = {
             GET_NOTIFICATION: {url: '/api/notifications',method: 'GET'},
             READ_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
             DELETE_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
+        },
+        COMMENTS : {
+            GET_COMMENTS: {url: '/api/comments',method: 'GET'},
+            POST_COMMENTS: {url: '/api/comments',method: 'POST'}
         }
     }
 };

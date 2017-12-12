@@ -118,7 +118,7 @@ class HomeScreen extends Component {
 
                         {/*post comment nav container*/}
                         <HomeNavContainer
-                            navigationPage='ComingSoon'
+                            navigationPage='Comments'
                             imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
                             titleText='POST YOUR COMMENTS'
                             homeNavProps={this.props}

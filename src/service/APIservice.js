@@ -21,6 +21,7 @@ async function requestAPI(url, options = {}) {
 
     if(options.method.toLowerCase() !== 'get') {
         if(options.headers){
+            console.log("headers");
             reqBody['body'] = options.payload
         }
         else{
@@ -29,21 +30,21 @@ async function requestAPI(url, options = {}) {
 
     }
     return fetch(url, reqBody).then(res => res.json())
-};
+}
 
 export function getEventList(option={}){
   let { url , method } = API.ENDPOINT.AUTH.LOGIN;
   let URL = `${API_BASE + url}`;
   option.method = method;
   return requestAPI(URL, option)
-};
+}
 
 export function postEventList(option={}){
     let { url , method } = API.ENDPOINT.AUTH.AUTH_LOGIN;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option);
-};
+}
 
 export function getArrivalList(option={}) {
     let { url , method } = API.ENDPOINT.ARRIVAL.DETAIL;
@@ -93,14 +94,14 @@ export function uploadIdProofEventList(option={}){
     option.method = method;
     console.log('options--',option);
     return requestAPI(URL, option);
-};
+}
 
 export function postNotificationToken(option={}){
     let { url , method } = API.ENDPOINT.NOTIFICATION.POST_TOKEN;
     let URL = `${API_BASE + url +option.params}`;
     option.method = method;
     return requestAPI(URL, option);
-};
+}
 
 export function getdownloadIdProofEventList(option={}) {
     let { url , method } = API.ENDPOINT.USER.DOWNLOAD_ID_PROOF;
@@ -145,4 +146,19 @@ export function deleteNotif(option={}) {
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL, option)
+}
+
+export function getAllComments(option={}) {
+    let { url,method } = API.ENDPOINT.COMMENTS.GET_COMMENTS;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
+}
+
+export function postComm(option={}) {
+    console.log("postComm ***",option);
+    let { url , method } = API.ENDPOINT.COMMENTS.POST_COMMENTS;
+    let URL = `${API_BASE + url }`;
+    option.method = method;
+    return requestAPI(URL, option);
 }
