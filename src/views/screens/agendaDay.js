@@ -96,7 +96,7 @@ class AgendaDay extends Component{
                             </View>
 
 
-                                <Text style={{marginLeft:19,marginTop:11,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                 <Text style={{marginLeft:19,marginTop:11,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                     MARKETING REACH TEAM
                                 </Text>
                                 <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>

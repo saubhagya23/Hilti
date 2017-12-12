@@ -420,7 +420,7 @@ class SubmitId extends Component {
                         //console.log('both images not cancelled-11111--');
                         uploadBackResponse = await this.uploadImage('back',resultBack.uri);
                         //console.log('both images not cancelled-22222--');
-                        this.setState({btnText:'DELETE'});
+                        this.setState({btnText:'DELETE',errText:'Image(s) uploaded successfully.'});
                     }
                 } catch (e) {
                     console.log('Front--',{ uploadFrontResponse });
@@ -442,7 +442,7 @@ class SubmitId extends Component {
                     if (!result.cancelled) {
                         console.log('uri got==2==',result.uri)
                         uploadResponse = await this.uploadImage('front',result.uri);
-                        this.setState({btnText:'DELETE'});
+                        this.setState({btnText:'DELETE',errText:'Image(s) uploaded successfully.'});
                     }
                 } catch (e) {
                     console.log('Front--',{ uploadResponse });

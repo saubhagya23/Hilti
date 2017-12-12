@@ -113,14 +113,14 @@ export function setUserDetail(userInfo) {
 }
 
 export function uploadIdProofEvent(uploadObj) {
-    console.log('event object upload',uploadObj);
+    // console.log('event object upload',uploadObj);
     return function (dispatch) {
         return uploadIdProofEventList(uploadObj).then(function (response) {
             dispatch({
                 type: UPLOAD_ID_PROOF_LIST,
                 payload: response
             });
-            console.log('response of upload------>>>>>',response);
+            // console.log('response of upload------>>>>>',response);
             return response;
         }, function(err){
             console.log(' error', err)
@@ -132,7 +132,7 @@ export function uploadIdProofEvent(uploadObj) {
 
 
 export function getdownloadIdProofEvent(data) {
-    console.log('image type is--------------');
+    // console.log('image type is--------------');
     return function (dispatch) {
         return getdownloadIdProofEventList(data).then(function (response) {
             dispatch({
@@ -145,7 +145,7 @@ export function getdownloadIdProofEvent(data) {
 }
 
 export function deletedownloadIdProofEvent(data) {
-    console.log('deleting started ------------');
+    // console.log('deleting started ------------');
     return function (dispatch) {
         return deletedownloadIdProofEventList(data).then(function (response) {
             dispatch({
