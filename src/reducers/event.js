@@ -1,5 +1,6 @@
-import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF} from "../constants/index";
+import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
+import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF ,READ_NOTIF} from "../constants/index";
+
 const initialState = {
     // eventList: [],
     eventLoginList:{},
@@ -13,6 +14,8 @@ const initialState = {
     userDetail:{},
     notificationCount: {},
     allNotifications: {},
+    arrivalTicket:{},
+    departureTicket: {}
 }
 
 export function event (state = initialState, action) {
@@ -29,9 +32,17 @@ export function event (state = initialState, action) {
             let arrivalList = action.payload;
             return Object.assign({}, state, {arrivalList});
         }
+        case ARRIVAL_TICKET:{
+            let arrivalTicket = action.payload;
+            return Object.assign({}, state, {arrivalTicket});
+        }
         case DEPARTURE_LIST: {
             let departureList = action.payload;
             return Object.assign({}, state, {departureList});
+        }
+        case DEPARTURE_TICKET:{
+            let departureTicket = action.payload;
+            return Object.assign({}, state, {departureTicket});
         }
         case STAY_LIST:{
             let stayList = action.payload;
@@ -52,6 +63,10 @@ export function event (state = initialState, action) {
         case GET_NOTIF: {
             let allNotifications = action.payload;
             return Object.assign({}, state, {allNotifications});
+        }
+        case READ_NOTIF: {
+            let notificationCount = {count: 0};
+            return Object.assign({}, state, {notificationCount});
         }
         case UPLOAD_ID_PROOF_LIST: {
             console.log('action.payload--',action.payload,action);

@@ -6,10 +6,12 @@ let API = {
             AUTH_LOGIN: {url: '/auth/local', method: 'POST'}
         },
         ARRIVAL: {
-            DETAIL: {url: `/api/arrivals/detail/`, method: 'GET'} //get arrival details for code:88210
+            DETAIL: {url: `/api/arrivals/detail/`, method: 'GET'}, //get arrival details for code:88210
+            TICKET: {url:'/api/arrivals/ticket/download',method: 'GET'}
         },
         DEPARTURE: {
-            DETAIL: {url: `/api/departures/detail/`,method:'GET'}//departure details for code:88210
+            DETAIL: {url: `/api/departures/detail/`,method:'GET'}, //departure details for code:88210
+            TICKET: {url: '/api/departures/ticket/download', method: 'GET'}
         },
         USER: {
             UPLOAD_ID_PROOF: {url:'/api/user-ids/upload',method: 'POST'},

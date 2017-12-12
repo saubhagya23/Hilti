@@ -5,7 +5,7 @@ import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
 import NotificationBell from './notificationBell';
 
-class PageHeaderNotif extends Component {
+class notificationHeader extends Component {
     constructor(){
         super();
 
@@ -55,8 +55,8 @@ class PageHeaderNotif extends Component {
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
 
-                                    <View style={{marginLeft:165.5, marginTop:19.5, marginRight:24}}>
-                                        <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
+                                    <View style={{marginLeft:185.5, marginTop:19.5, marginRight:24}}>
+                                        {/* <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} /> */}
                                     </View>
                                     <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
@@ -131,4 +131,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PageHeaderNotif;
+export default notificationHeader;

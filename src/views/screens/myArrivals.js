@@ -7,9 +7,9 @@ import MaterialComIcon  from 'react-native-vector-icons/MaterialCommunityIcons'
 import FeatherIcon  from 'react-native-vector-icons/Feather'
 
 import PageHeaderNotif from '../common/pageHeaderNotif'
-import { Font } from 'expo'
+import { Font, WebBrowser } from 'expo'
 import DetailContainer from '../common/detailContainer'
-import { getArrivals } from '../../actions/apiData';
+import { getArrivals, getArrivalTicket } from '../../actions/apiData';
 
 class MyArrivals extends Component {
     constructor(){
@@ -31,9 +31,28 @@ class MyArrivals extends Component {
     }
 
     componentDidMount(){
-        const { getArrivals } = this.props;
+        const { getArrivals, getArrivalTicket } = this.props;
         let detail = JSON.parse(this.props.userDetail);
         getArrivals({param:detail.Code});
+        getArrivalTicket();
+
+    }
+
+    downloadArrTicket = () => {
+        let userTicketUrl = this.props.arrivalTicket.url;
+        if(userTicketUrl !== '') {
+            WebBrowser.openBrowserAsync(userTicketUrl)
+                .then((resp) => {
+                    console.log("Finished", resp);
+                })
+                .catch(error => {
+                    ToastAndroid.showWithGravity('Download Unsuccessful.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+                    alert.error(error);
+                });
+        }
+        else{
+            ToastAndroid.showWithGravity('Ticket not available yet.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }
     }
 
     render(){
@@ -69,7 +88,7 @@ class MyArrivals extends Component {
                                         justifyContent:'flex-end'
                                     }}
 
-                                    onPress={() => {}}
+                                    onPress={() => {this.downloadArrTicket()}}
                                 >
                                     <FeatherIcon
                                         style={{color:'#dd2127'}}
@@ -237,8 +256,9 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
     return {
         arrivalList: state.event.arrivalList,
+        arrivalTicket: state.event.arrivalTicket,
         eventLoginList: state.event.eventLoginList,
-        userDetail:state.event.userDetail
+        userDetail:state.event.userDetail,
     }
 }
 
@@ -247,6 +267,7 @@ function mapDispatchToProps(dispatch){
         dispatch,
         ...bindActionCreators({
                 getArrivals,
+                getArrivalTicket
             },
             dispatch
         ),

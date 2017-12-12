@@ -41,10 +41,10 @@ class DressCodeDay extends Component {
                                             <Text style={{marginLeft:20,marginTop:20,fontFamily:'hilti-roman',fontSize:18,color:'#d2051e'}}>Delhi</Text>
                                             <Text style={{marginLeft:20,marginTop:3,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>Friday</Text>
                                         </View>
-                                        <View style={{flex:0.75}}>
-                                            <Text style={{marginTop:15,fontSize:42.2,fontFamily:'hilti-roman',color:'#000000'}}>5</Text>
+                                        <View style={{flex:2.5}}>
+                                            <Text style={{marginTop:15,fontSize:40,fontFamily:'hilti-roman',color:'#000000'}}>7-22</Text>
                                         </View>
-                                        <View style={{flex:7.25}}>
+                                        <View style={{flex:5.5}}>
                                             <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000'}}>&deg; C</Text>
                                             <Text style={{marginTop:1.5,marginLeft:8.5,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>Cold</Text>
                                         </View>

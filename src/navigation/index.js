@@ -27,6 +27,7 @@ import TravelAssistance from '../views/screens/travelAssistance'
 import HotelAssistance from '../views/screens/hotelAssistance'
 import ComingSoon from '../views/common/comingSoon'
 import Notifications from '../views/screens/notifications'
+import ExperienceCorner from '../views/screens/experienceCorner'
 
 const routes = {
     Main:{
@@ -109,6 +110,9 @@ const routes = {
     },
     Notifications: {
         screen: Notifications
+    },
+    ExperienceCorner: {
+        screen: ExperienceCorner
     }
 };
 

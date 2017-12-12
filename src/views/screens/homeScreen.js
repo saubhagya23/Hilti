@@ -83,7 +83,7 @@ class HomeScreen extends Component {
 
                         {/*experience corner nav container*/}
                         <HomeNavContainer
-                            navigationPage='ComingSoon'
+                            navigationPage='ExperienceCorner'
                             imgSrc={require('../../assets/images/exp-corner/experience_corner_mdpi.png')}
                             titleText='EXPERIENCE CORNER'
                             homeNavProps={this.props}
@@ -118,7 +118,7 @@ class HomeScreen extends Component {
 
                         {/*post comment nav container*/}
                         <HomeNavContainer
-                            navigationPage='TravelNavigation'
+                            navigationPage='ComingSoon'
                             imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
                             titleText='POST YOUR COMMENTS'
                             homeNavProps={this.props}
