@@ -30,6 +30,7 @@ export function event (state = initialState, action) {
         }*/
         case EVENT_LOGIN_LIST: {
             let eventLoginList = action.payload;
+            console.log("eventLoginList***",eventLoginList);
             return Object.assign({}, state, eventLoginList);
         }
         case ARRIVAL_LIST:{
@@ -58,7 +59,6 @@ export function event (state = initialState, action) {
         }
         case USER_DETAIL:{
             let userDetail = action.payload;
-            console.log("user is :",userDetail)
             return Object.assign({}, state, {userDetail});
         }
         case NOTIF_COUNT:{

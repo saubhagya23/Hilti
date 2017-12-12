@@ -26,6 +26,7 @@ import AssistanceNavigation from '../views/screens/assistanceNavigation'
 import TravelAssistance from '../views/screens/travelAssistance'
 import HotelAssistance from '../views/screens/hotelAssistance'
 import Comments from '../views/screens/comments'
+import AdminComment from '../views/screens/adminComment'
 import Notifications from '../views/screens/notifications'
 import ExperienceCorner from '../views/screens/experienceCorner'
 
@@ -113,6 +114,9 @@ const routes = {
     },
     ExperienceCorner: {
         screen: ExperienceCorner
+    },
+    AdminComment:{
+        screen: AdminComment
     }
 };
 
