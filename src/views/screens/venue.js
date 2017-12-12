@@ -26,6 +26,7 @@ class Venue extends Component {
     }
 
     openExternalApp(url) {
+        console.log('url is-----',url);
         Linking.canOpenURL(url).then(supported => {
             if (supported) {
                 Linking.openURL(url);

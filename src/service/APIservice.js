@@ -111,7 +111,7 @@ export function getdownloadIdProofEventList(option={}) {
 }
 
 export function deletedownloadIdProofEventList(option={}) {
-    console.log('delete service---');
+    // console.log('delete service---');
     let { url , method } = API.ENDPOINT.USER.DELETE_ID_PROOF;
     let URL = `${API_BASE + url+ option.param}`;
     option.method = method;

@@ -29,7 +29,7 @@ export default class DosDonts extends Component {
                         <ScrollView>
                         <View style={{backgroundColor:'#f5f3ee'}}>
                             <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>BEFORE KICK OFF</Text>
-                            <View style={{backgroundColor:'#ffffff',height:450,marginTop:16}}>
+                            <View style={{backgroundColor:'#ffffff',height:510,marginTop:16}}>
                                 <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
@@ -38,7 +38,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Go through all the data provided on Kick off 2018 App/Share-point Kick off 2018 Webpage.
                                     </Text>
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
@@ -48,7 +48,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Check your ticket before hand and in case of any discrepancy, please send your concern through the App under Travel Related Query or write at Teamannualkickoff.in@hilti.com
                                     </Text>
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
@@ -58,7 +58,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Download your ticket and keep it safe with you and plan to carry your identity proof with you.
                                     </Text>
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
@@ -68,7 +68,17 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Plan to arrive 2 hours early to avoid missing your flight.
+                                    </Text>
+                                </View>
+                                <View style={{flexDirection:'row',marginRight:27.5}}>
+                                    <Icon
+                                        style={{color:'#000000',marginLeft:21,marginTop:32}}
+                                        name='circle'
+                                        size={10}
+                                    />
+                                    <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
+                                        Carry your Employee ID card.
                                     </Text>
                                 </View>
                                 <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Don't</Text>
@@ -79,7 +89,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Request to change the room sharing or travel plan on your personal account.
                                     </Text>
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
@@ -89,13 +99,13 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                        Call us to know the details which are already available in the Kick off App/Share-point Kick off 2018 Webpage.
                                     </Text>
                                 </View>
                             </View>
                             <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>DURING KICK OFF</Text>
-                            <View style={{backgroundColor:'#ffffff',height:200,marginTop:16}}>
-                                    <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
+                            <View style={{backgroundColor:'#ffffff',height:250,marginTop:16}}>
+                                <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
                                     <View style={{flexDirection:'row',marginRight:27.5}}>
                                         <Icon
                                             style={{color:'#000000',marginLeft:21,marginTop:32}}
@@ -103,7 +113,7 @@ export default class DosDonts extends Component {
                                             size={10}
                                         />
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                            Be punctual to meeting timings and arrive at the venue atleast 15 minutes prior to the meeting time.
                                         </Text>
                                     </View>
                                     <View style={{flexDirection:'row',marginRight:27.5}}>
@@ -113,7 +123,27 @@ export default class DosDonts extends Component {
                                             size={10}
                                         />
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+                                            Keep your mobile on silent mode during the meeting.
+                                        </Text>
+                                    </View>
+                                    <View style={{flexDirection:'row',marginRight:27.5}}>
+                                        <Icon
+                                            style={{color:'#000000',marginLeft:21,marginTop:32}}
+                                            name='circle'
+                                            size={10}
+                                        />
+                                        <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
+                                            Come prepared to celebrate, connect and contemplate.
+                                        </Text>
+                                    </View>
+                                    <View style={{flexDirection:'row',marginRight:27.5}}>
+                                        <Icon
+                                            style={{color:'#000000',marginLeft:21,marginTop:32}}
+                                            name='circle'
+                                            size={10}
+                                        />
+                                        <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
+                                            Check-out in the morning of the day of departure.
                                         </Text>
                                     </View>
                             </View>
