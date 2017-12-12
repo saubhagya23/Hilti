@@ -9,7 +9,7 @@ class assistanceContainer extends Component {
     submit = (url) => {
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
-            let urlSub = url + `?subject= - Kick off  2018 - ${selectedItem} - ${JSON.parse( this.props.userDetail).Name}`;
+            let urlSub = url + `?subject= Kick off  2018 - ${selectedItem} - ${JSON.parse( this.props.userDetail).Name}`;
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
                     Linking.openURL(urlSub);

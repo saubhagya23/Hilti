@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { getNotificationCount, readAllNotification} from '../../actions/apiData';
 import { connect } from 'react-redux';
@@ -36,14 +36,15 @@ class notificationBell extends Component {
     render() {
 
         return(
-            <View style={styles.notification}>
-                {this.props.notificationCount.count && this.props.notificationCount.count!=0?
-                <Text style={styles.notifBadge}>{this.props.notificationCount.count}</Text>:null}
-                    <Icon 
-                    name='bell'
-                    size={20}
-                    onPress={() => this.bellIconClick()} />
-            </View>
+                <TouchableOpacity onPress={() => this.bellIconClick()} style={styles.notification}>
+                    <View>
+                    {this.props.notificationCount.count && this.props.notificationCount.count!=0?
+                    <Text style={styles.notifBadge}>{this.props.notificationCount.count}</Text>:null}
+                        <Icon 
+                        name='bell'
+                        size={20} />
+                        </View>
+                </TouchableOpacity>
         );
     }
 }
@@ -60,14 +61,13 @@ const styles = StyleSheet.create({
         color: '#fff',
         backgroundColor: 'red',
         borderRadius: 8,
-        height: 16,
-        width: 16,
+        height: 14,
+        width: 14,
         zIndex:15,
         padding: 1,
-        fontSize: 9,
+        fontSize: 8,
         textAlign: 'center',
-        left: 5,
-        top: -5,
+        left: 10,
     },
     notification: {
         position: 'relative',

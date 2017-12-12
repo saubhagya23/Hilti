@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import { StyleSheet, View, Text, ImageBackground,TouchableOpacity } from 'react-native';
 import { Font } from 'expo'
 import Expo from 'expo'
+import { FileSystem } from 'expo'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
-import { asyncPost,asyncGet } from '../../utils/asyncStore';
+import {asyncPost, asyncGet, asyncRemove} from '../../utils/asyncStore';
 import { getVideo } from '../../actions/apiData';
 
 class HomeContent extends Component {
@@ -15,7 +16,10 @@ class HomeContent extends Component {
         this.state = {
             fontLoaded:false,
             showVideo:false,
-            url:''
+            url:null,
+            localURL:'',
+            video:'',
+            appIsReady:false
         };
     }
 
@@ -30,13 +34,13 @@ class HomeContent extends Component {
     }
 
     playVideo = async() => {
-        let videoUrl = await asyncGet('video');
+
+        let videoUrl = await asyncGet('localURL');
         if(videoUrl){
             this.setState({
                 url:videoUrl,
                 showVideo:true
             })
-
         }else {
             const {getVideo} = this.props;
              await getVideo();
@@ -45,14 +49,31 @@ class HomeContent extends Component {
                     this.setState({
                         url:this.props.video.videoUrl,
                         showVideo:true
-                    })
+                    });
+
+                    FileSystem.downloadAsync(
+                        this.props.video.videoUrl,
+                        FileSystem.documentDirectory + 'small.mp4'
+                    )
+                        .then(async ({ uri }) =>{
+                            await asyncPost('localURL',uri);
+                            let videoURL = await asyncGet('localURL')
+                            this.setState({
+                                url:videoURL,
+                                showVideo:true
+                            })
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
                 }
         }
+
     };
 
 
-
     render(){
+
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -60,18 +81,22 @@ class HomeContent extends Component {
                         {
                             this.state.showVideo ?
                                 <View style={{flex:1}}>
-                                    <Expo.Video
-                                        ref={this.props._handleVideoRef}
-                                        source={{ uri: `${this.state.url}` }}
-                                        rate={1.0}
-                                        volume={1.0}
-                                        muted={false}
-                                        resizeMode="cover"
-                                        shouldPlay={true}
-                                        isLooping
-                                        useNativeControls={true}
-                                        style={{flex:1}}
-                                    />
+                                    {
+                                        this.state.url ? (
+                                            <Expo.Video
+                                                ref={this.props._handleVideoRef}
+                                                source={{uri:`${this.state.url}`}}
+                                                rate={1.0}
+                                                volume={1.0}
+                                                muted={false}
+                                                resizeMode="cover"
+                                                shouldPlay={true}
+                                                isLooping
+                                                useNativeControls={true}
+                                                style={{flex:1}}
+                                                onLoad={obj => console.log(obj)}
+                                            />) : null
+                                    }
                                 </View>
                                 :
                                 <ImageBackground
