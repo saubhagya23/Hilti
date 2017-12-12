@@ -56,7 +56,7 @@ class NavigationContainer extends Component {
                                                         height: 64.5,
 
                                                     }}
-                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject= - Kick off 2018 - ${link.name} - ${JSON.parse( this.props.userDetail).Name}`)}>
+                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject= Kick off 2018 - ${link.name} - ${JSON.parse( this.props.userDetail).Name}`)}>
                                                     <Text style={{color:'#dd2127',
                                                         fontSize:16,
                                                         height:20.5,
