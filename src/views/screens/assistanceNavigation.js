@@ -5,7 +5,11 @@ class assistanceNavigation extends Component {
     render() {
         return (
                     <NavigationContainer navigation={this.props.navigation}
-                     navData={[{name: 'TRAVEL RELATED',nav:'TravelAssistance'},{name: 'HOTEL RELATED',nav:'HotelAssistance'}]}/>
+                     navData={[
+                         {name: 'TRAVEL RELATED',nav:'TravelAssistance'},
+                         {name: 'HOTEL RELATED',nav:'HotelAssistance'},
+                         {name: 'EMERGENCY CONTACT NO.',nav:'ComingSoon'}
+                         ]}/>
 
         )
     }

@@ -119,14 +119,14 @@ class AgendaDay extends Component{
                                      </View>
                                  </View>
 
-                                 {dummyData.map((emp)=>{
+                                 {dummyData.map((emp,index)=>{
                                      return(
-                                         <View>
+                                         <View key={index}>
                                              {
                                                  emp.userType === 'Trainee'?
                                                      <View>
                                                          <Text style={{marginLeft:19,marginTop:11,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                                             Group:{emp.group}, Coordinator:{emp.grpCoordinator}
+                                                             {emp.group}, Coordinator:{emp.grpCoordinator}
                                                          </Text>
 
                                                          <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
@@ -137,13 +137,6 @@ class AgendaDay extends Component{
                                                              <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>
                                                                  {emp.agenda}
                                                              </Text>
-                                                             <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                                                 Trainer:{emp.trainer}
-                                                             </Text>
-                                                             <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                                                 Location:{emp.location}
-                                                             </Text>
-
                                                              <View style={{flexDirection:'row'}}>
                                                                  <Icon
                                                                      style={{marginTop:5}}
@@ -157,6 +150,12 @@ class AgendaDay extends Component{
                                                                      9 Hr
                                                                  </Text>
                                                              </View>
+                                                             <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                                                 Trainer:{emp.trainer}
+                                                             </Text>
+                                                             <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
+                                                                 Location:{emp.location}
+                                                             </Text>
                                                          </View>
                                                      </View>:
                                                      <View>

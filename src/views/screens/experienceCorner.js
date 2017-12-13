@@ -34,7 +34,7 @@ class ExperienceCorner extends Component {
                             source={require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png')}
                         >
                             <Text style={{position:'absolute',marginTop:22.5,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                BE READY FOR AN UNFORGETTING EXPERIENCE AT EXHILARATING EXPERIENCE ZONES
+                                BE READY FOR A MEMORABLE EXPERIENCE
                             </Text>
                             <Text style={{position:'absolute',marginTop:85,marginLeft:18.5,fontSize:9,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                 Check-out this page on Jan 07, 2018 for details.
