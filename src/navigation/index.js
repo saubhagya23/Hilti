@@ -30,6 +30,7 @@ import AdminComment from '../views/screens/adminComment'
 import Notifications from '../views/screens/notifications'
 import ExperienceCorner from '../views/screens/experienceCorner'
 import OrgInfo from '../views/screens/orgInfo'
+import ApproveComments from '../views/screens/approveComments'
 
 const routes = {
     Main:{
@@ -121,6 +122,9 @@ const routes = {
     },
     AdminComment:{
         screen: AdminComment
+    },
+    ApproveComments:{
+        screen: ApproveComments
     }
 };
 

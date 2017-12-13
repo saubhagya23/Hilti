@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList, getAllComments, postComm} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS} from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList, getAllComments, postComm, getAllUnapprovedComments, approveComm} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -113,14 +113,12 @@ export function setUserDetail(userInfo) {
 }
 
 export function uploadIdProofEvent(uploadObj) {
-    // console.log('event object upload',uploadObj);
     return function (dispatch) {
         return uploadIdProofEventList(uploadObj).then(function (response) {
             dispatch({
                 type: UPLOAD_ID_PROOF_LIST,
                 payload: response
             });
-            // console.log('response of upload------>>>>>',response);
             return response;
         }, function(err){
             console.log(' error', err)
@@ -132,7 +130,6 @@ export function uploadIdProofEvent(uploadObj) {
 
 
 export function getdownloadIdProofEvent(data) {
-    // console.log('image type is--------------');
     return function (dispatch) {
         return getdownloadIdProofEventList(data).then(function (response) {
             dispatch({
@@ -145,7 +142,6 @@ export function getdownloadIdProofEvent(data) {
 }
 
 export function deletedownloadIdProofEvent(data) {
-    // console.log('deleting started ------------');
     return function (dispatch) {
         return deletedownloadIdProofEventList(data).then(function (response) {
             dispatch({
@@ -206,7 +202,6 @@ export function readAllNotification(data) {
 }
 
 export function getComments() {
-    console.log("get comment started");
     return function (dispatch) {
         return getAllComments().then(function (response) {
             dispatch({
@@ -219,10 +214,8 @@ export function getComments() {
 }
 
 export function postComment(data) {
-    console.log("post comment started",data);
     return function (dispatch) {
         return postComm(data).then(function (response) {
-            console.log("after posting comment response is :",response)
             dispatch({
                 type: POST_COMMENTS,
                 payload: response
@@ -230,4 +223,29 @@ export function postComment(data) {
             return response;
         })
     }
+}
+
+export function getUnapprovedComments() {
+    return function (dispatch) {
+        return getAllUnapprovedComments().then(function (response) {
+            dispatch({
+                type: GET_UNAPPROVED_COMMENTS,
+                payload: response
+            });
+            return response;
+        })
+    }
+}
+
+export function approveComment(data) {
+    return function (dispatch) {
+        return approveComm(data).then(function (response) {
+            dispatch({
+                type: APPROVE_COMMENTS,
+                payload: response
+            });
+            return response;
+        })
+    }
+
 }
