@@ -25,7 +25,7 @@ export default class DosDonts extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded ?
                     <View style={{flex: 1}}>
-                        <PageHeaderNotif props={this.props} parentPage={`DO\'S & DON\'T`} navigation={this.props.navigation}/>
+                        <PageHeaderNotif props={this.props} parentPage={`DO\'S & DON\'T\'S`} navigation={this.props.navigation}/>
                         <ScrollView>
                         <View style={{backgroundColor:'#f5f3ee'}}>
                             <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>BEFORE KICK OFF</Text>

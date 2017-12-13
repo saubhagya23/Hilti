@@ -31,6 +31,7 @@ import Notifications from '../views/screens/notifications'
 import ExperienceCorner from '../views/screens/experienceCorner'
 import OrgInfo from '../views/screens/orgInfo'
 import ApproveComments from '../views/screens/approveComments'
+import PreKickOff from '../views/screens/preKickOff'
 
 const routes = {
     Main:{
@@ -56,6 +57,9 @@ const routes = {
     },
     AgendaNavigation:{
         screen: AgendaNavigation
+    },
+    PreKickOff: {
+        screen: PreKickOff
     },
     AgendaDay1:{
         screen: AgendaDay1
