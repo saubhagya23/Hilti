@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, ToastAndroid, ActivityIndicator } from 'react-native';
 import { Font, ImagePicker } from 'expo'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import RadioButton from 'radio-button-react-native';
 import { uploadIdProofEvent, getdownloadIdProofEvent, deletedownloadIdProofEvent } from '../../actions/apiData';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Modal from 'react-native-modal'
 import Icon  from 'react-native-vector-icons/FontAwesome'
 //import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
@@ -20,12 +21,14 @@ class SubmitId extends Component {
             imgBackLoaded:false,
             imgFrontUrl:'',
             imgBackUrl:'',
+            currImgType:'',
             imgFrontType:'',
             imgBackType:'',
             imgFrontData:{},
             imgBackData:{},
             btnText:'UPLOAD FILE',
-            errText:''
+            errText:'',
+            isModalVisible: false
         }
     }
 
@@ -162,31 +165,121 @@ class SubmitId extends Component {
 
     handleOnPress(value){
         console.log('value is******',value);
-        if(this.state.errText !== ''){
+        if(this.state.value !== ''){
+            if(this.state.imgFrontType !== ''){
+                this.setState({
+                    errText:'Please delete the image(s) first.'
+                })
+            }
+        }
+        else{
+            this.setState({
+                value:value,
+                errText:''
+            })
+        }
+        /*if(this.state.errText !== ''){
             this.setState({
                 errText:'',
                 value:value,
             })
         }else{
             this.setState({
-                value:value,
+                value:'',
+
             })
-        }
+        }*/
     }
 
-    pickImage = async (type) => {
+    showModal = (typeSelected) => {
+        if(this.state.btnText === 'DELETE'|| this.state.value === ''){
+            this.setState({
+                isModalVisible:false,
+                currImgType:'',
+                errText:'Either image(s) are present or Type is not selected.'
+            })
+        }
+        else{
+            if(typeSelected === 'back' && this.state.imgFrontType === ''){
+                this.setState({
+                    isModalVisible:false,
+                    errText:'Please select the front image first.'
+                })
+            }
+            else{
+                this.setState({
+                    isModalVisible:true,
+                    currImgType:typeSelected,
+                    errText:''
+                })
+            }
+        }
+        /*if(typeSelected === 'front'){
+            this.setState({imgFrontType:'front'})
+        }
+        else{
+            this.setState({imgBackType:'back'})
+        }*/
+
+    }
+
+    takePhoto =  async () => {
+        let pickerResult = await ImagePicker.launchCameraAsync({
+            allowsEditing: true,
+            aspect: [4, 3],
+        });
+        console.log('img photo result--->>>>>>',pickerResult);
+        if(pickerResult.cancelled === 'true'){
+            if(this.state.currImgType === 'front'){
+                this.setState({
+                    imgFrontType:'',
+                    errText:'No picture taken'
+                })
+            }
+            if(this.state.currImgType === 'back'){
+                this.setState({
+                    imgBackType:'',
+                    errText:'No picture taken'
+                })
+            }
+        }
+        else{
+            if(this.state.currImgType === 'front'){
+                this.setState({
+                    imgFrontLoaded:true,
+                    imgFrontUrl:pickerResult.uri,
+                    imgFrontData:pickerResult,
+                    imgFrontType:this.state.currImgType,
+                    errText:'',
+                    isModalVisible:false
+                })
+            }
+            if(this.state.currImgType === 'back'){
+                this.setState({
+                    imgBackLoaded:true,
+                    imgBackUrl:pickerResult.uri,
+                    imgBackData:pickerResult,
+                    imgBackType:this.state.currImgType,
+                    errText:'',
+                    isModalVisible:false
+                })
+            }
+        }
+        // this.handleImagePicked(pickerResult);
+    };
+
+    pickImage = async () => {
         if(this.state.value === ''){
             //ToastAndroid.showWithGravity('Please select a type of ID proof', ToastAndroid.SHORT, ToastAndroid.CENTER);
             this.setState({errText:'Please select a type of ID proof'})
         }
         else{
-            console.log('type=====',type);
             let result, resultFront,resultBack;
             /*result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
             });*/
 
-            if(type === 'front'){
+            if(this.state.currImgType === 'front'){
                 /*resultFront = await ImagePicker.launchImageLibraryAsync({
                     allowsEditing: true,
                 });*/
@@ -198,8 +291,9 @@ class SubmitId extends Component {
                         imgFrontLoaded:true,
                         imgFrontUrl:resultFront.uri,
                         imgFrontData:resultFront,
-                        imgFrontType:type,
-                        errText:''
+                        imgFrontType:this.state.currImgType,
+                        errText:'',
+                        isModalVisible:false
                         // btnText:'DELETE'
                     })
                 }
@@ -208,8 +302,9 @@ class SubmitId extends Component {
                         imgFrontLoaded:true,
                         imgFrontUrl:resultFront.uri,
                         imgFrontData:resultFront,
-                        imgFrontType:type,
-                        errText:''
+                        imgFrontType:this.state.currImgType,
+                        errText:'',
+                        isModalVisible:false
                         // btnText:'DELETE'
                     })
                 }
@@ -232,8 +327,9 @@ class SubmitId extends Component {
                     imgBackLoaded:true,
                     imgBackUrl:resultBack.uri,
                     imgBackData:resultBack,
-                    imgBackType:type,
-                    errText:''
+                    imgBackType:this.state.currImgType,
+                    errText:'',
+                    isModalVisible:false
                     // btnText:'DELETE'
                 })}
             }
@@ -242,7 +338,7 @@ class SubmitId extends Component {
             });*/
 
             //console.log(resultFront);
-            if(type === 'front'){
+            if(this.state.currImgType === 'front'){
                 if(resultFront.cancelled){
                     this.setState({
                         imgFrontLoaded:false,
@@ -253,6 +349,7 @@ class SubmitId extends Component {
                         imgBackType:'',
                         imgFrontData:{},
                         imgBackData:{},
+                        isModalVisible:false
                     })
                 }
             }
@@ -268,6 +365,7 @@ class SubmitId extends Component {
                             imgBackType:'',
                             imgFrontData:{},
                             imgBackData:{},
+                            isModalVisible:false
                         })
                     }
                 }
@@ -416,6 +514,7 @@ class SubmitId extends Component {
                 try {
                     if (!resultFront.cancelled && !resultBack.cancelled) {
                         //console.log('both images not cancelled---');
+                        this.setState({btnText:'LOADING',errText:'Upload in progress.'});
                         uploadFrontResponse = await this.uploadImage('front',resultFront.uri);
                         //console.log('both images not cancelled-11111--');
                         uploadBackResponse = await this.uploadImage('back',resultBack.uri);
@@ -440,7 +539,8 @@ class SubmitId extends Component {
                 try {
                     console.log('uri got===',result.uri)
                     if (!result.cancelled) {
-                        console.log('uri got==2==',result.uri)
+                        console.log('uri got==2==',result.uri);
+                        this.setState({btnText:'LOADING',errText:'Upload in progress.'})
                         uploadResponse = await this.uploadImage('front',result.uri);
                         this.setState({btnText:'DELETE',errText:'Image(s) uploaded successfully.'});
                     }
@@ -575,7 +675,7 @@ class SubmitId extends Component {
                                             <TouchableOpacity
                                                 style={{flex:0.9,borderColor:'black',opacity:0.8,borderWidth:1,width:120,borderStyle:'dashed'}}
 
-                                                onPress={() => this.pickImage('front')}
+                                                onPress={() => this.showModal('front')}
                                             >
                                                 <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                                                     {this.state.imgFrontLoaded?
@@ -597,7 +697,7 @@ class SubmitId extends Component {
                                             <TouchableOpacity
                                                 style={{flex:0.9,borderColor:'black',opacity:0.8,borderWidth:1,width:120}}
 
-                                                onPress={() => this.pickImage('back')}
+                                                onPress={() => this.showModal('back')}
                                             >
                                                 <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                                                     {this.state.imgBackLoaded?
@@ -621,8 +721,11 @@ class SubmitId extends Component {
 
                                         onPress={() => {this.handleImagePicked()}}
                                     >
-                                        <Text style={{color:'#dd2127',fontFamily:'hilti-roman',fontSize:13}}>{this.state.btnText}</Text>
+                                        {this.state.btnText === 'LOADING'?
+                                            <ActivityIndicator color='red' style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}/>:
+                                            <Text style={{color:'#dd2127',fontFamily:'hilti-roman',fontSize:13}}>{this.state.btnText}</Text>
 
+                                        }
                                     </TouchableOpacity>
                                 </View>
 
@@ -631,6 +734,28 @@ class SubmitId extends Component {
                                     this.state.errText ?
                                         <Text style={{alignSelf:'center',color:'#dd2127',fontFamily:'hilti-roman',fontSize:13}}>{this.state.errText}</Text>:null
                                 }
+
+                                <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
+                                    <View style={{ flex: 1 ,justifyContent:'center',alignItems:'center'}}>
+                                        <TouchableOpacity
+                                            style={{width:200,height:50,backgroundColor:'#dd2127',justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'#dd2127',borderRadius:5}}
+
+                                            onPress={() => {this.takePhoto()}}
+                                        >
+                                            <Text style={{color:'#ffffff',fontFamily:'hilti-roman',fontSize:13}}>Take a picture</Text>
+
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity
+                                            style={{width:200,height:50,marginTop:10,backgroundColor:'#dd2127',justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'#dd2127',borderRadius:5}}
+
+                                            onPress={() => {this.pickImage()}}
+                                        >
+                                            <Text style={{color:'#ffffff',fontFamily:'hilti-roman',fontSize:13}}>Choose from device</Text>
+
+                                        </TouchableOpacity>
+                                    </View>
+                                </Modal>
                             </View>
                         </View>:null
                 }
