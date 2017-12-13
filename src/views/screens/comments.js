@@ -15,7 +15,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
-import Header from '../common/commentsHeader';
 import PageHeaderNotif from "../common/pageHeaderNotif";
 
 class Comments extends Component {
@@ -47,7 +46,7 @@ class Comments extends Component {
         // read message from component state
         const message = this.state.typing;
         if(message) {
-            console.log("Message: ", message);
+            this.flatList.scrollToEnd();
             const {postComment} = this.props;
             postComment({
                 payload: {
@@ -58,55 +57,45 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
-            this.flatList.scrollToEnd();
+
         }else{
             errText:'Please enter some text'
         }
     };
 
-    renderItem({item}) {
-        console.log("item:",item);
-        return (
-            <View style={styles.row}>
-                <View style={styles.rowText}>
-                        <Text style={styles.sender}>{item.name}</Text>
-                        <Text style={styles.message}>{item.comment}</Text>
-                        <Text>{moment(item.timestamp).fromNow()}</Text>
-                </View>
-            </View>
-        );
-    }
 
     render(){
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
-        console.log(code,typeof code);
         let comments= this.props.commentList;
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation}/>
-                        <Header title={"Comments"} />
                         <FlatList
                             ref={elm => this.flatList = elm}
                             data={comments}
-                            getItemLayout={(data, index) => (
-                                {length: 10, offset: 10 * index, index}
-                            )}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     {
                                     code === item.code ?
                                         <View style={styles.rowTextRight}>
-                                            <Text style={styles.sender}>{item.name}</Text>
-                                            <Text style={styles.message}>{item.comment}</Text>
-                                            <Text>{moment(item.timestamp).fromNow()}</Text>
+                                            <View>
+                                                <Text >{moment(item.timestamp).fromNow()}</Text>
+                                                <Text style={styles.messageSender}>{item.comment}</Text>
+                                            </View>
                                         </View>:
                                         <View style={styles.rowTextLeft}>
-                                            <Text style={styles.sender}>{item.name}</Text>
+                                            <View style={{flexDirection:'row'}}>
+                                                <View style={styles.senderImage}>
+                                                    <Text style={styles.senderImageText}>{item.name[0]}</Text>
+                                                </View>
+                                                <Text style={styles.sender}>{item.name}</Text>
+                                                <Text style={{ marginTop:10,marginLeft:100}}>{moment(item.timestamp).fromNow()}</Text>
+                                            </View>
+
                                             <Text style={styles.message}>{item.comment}</Text>
-                                            <Text>{moment(item.timestamp).fromNow()}</Text>
                                         </View>
                                 }
 
@@ -152,25 +141,24 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#eee',
     },
-    avatar: {
-        borderRadius: 20,
-        width: 40,
-        height: 40,
-        marginRight: 10,
-    },
     rowTextLeft: {
         flex: 1,
     },
     rowTextRight:{
         flex:1,
-        alignItems:'flex-end'
     },
     message: {
-        fontSize: 18,
+        marginLeft:50,
+        fontSize: 15
+    },
+    messageSender:{
+        fontSize:15,
+        alignSelf:'flex-end'
     },
     sender: {
-        fontWeight: 'bold',
-        paddingRight: 10,
+        marginTop:10,
+        marginLeft:10,
+        fontWeight: 'bold'
     },
     footer: {
         flexDirection: 'row',
@@ -188,6 +176,19 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         padding: 20,
     },
+    senderImage:{
+        backgroundColor:'lightblue',
+        height:40,
+        width:40,
+        borderRadius: 40,
+        alignItems:'center',
+        justifyContent:'center'
+
+    },
+    senderImageText:{
+        fontSize:30,
+        fontWeight:'bold'
+    }
 });
 
 
@@ -213,15 +214,4 @@ function mapDispatchToProps(dispatch){
 export default connect(mapStateToProps, mapDispatchToProps)(Comments)
 
 
-
-
-/*
-    componentWillMount() {
-        /!*
-        subscribe(CHANNEL, messages => {
-          this.setState({messages});
-        });
-        *!/
-
-    }*/
 

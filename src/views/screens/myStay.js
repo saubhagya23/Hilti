@@ -58,7 +58,7 @@ class MyStay extends Component {
                                         name='building'
                                         size={20}
                                     />
-                                    <Text style={{marginLeft:7,marginTop:1,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>STAY DETAILS</Text>
+                                    <Text style={{marginLeft:7,marginTop:1,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>STAY</Text>
                                 </View>
                             </View>
 

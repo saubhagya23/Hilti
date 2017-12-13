@@ -66,7 +66,7 @@ class travelOverview extends Component {
                             <Text style={{marginTop:35,fontSize:22,fontFamily:'hilti-bold',color:'#000000'}}>
                                 TRAVEL OVERVIEW
                             </Text>
-                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 7 Jan, 2017</Text>
+                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 5 Jan, 2018</Text>
                         </View>
                     </View>:null
                 }

@@ -128,12 +128,7 @@ class Login extends Component {
                             />
                             </View>
 
-                            <Image
-                                style={{position:'absolute',marginTop:38.5,marginLeft:18.5}}
-                                source={require('../../assets/images/logo/logo_hdpi.png')}
-                            />
-
-                            <Text style={{position:'absolute', marginTop:86.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
+                            <Text style={{position:'absolute', marginTop:67.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
                             <View style={{marginLeft:30, marginRight:30}}>
                                 {
                                     this.state.err ?

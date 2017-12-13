@@ -1,7 +1,7 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
 import {
     ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
-    GET_COMMENTS, POST_COMMENTS
+    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS
 } from "../constants/index";
 
 const initialState = {
@@ -19,7 +19,8 @@ const initialState = {
     allNotifications: {},
     arrivalTicket:{},
     departureTicket: {},
-    commentList:[]
+    commentList:[],
+    unapprovedCommentList:[]
 };
 
 export function event (state = initialState, action) {
@@ -30,7 +31,6 @@ export function event (state = initialState, action) {
         }*/
         case EVENT_LOGIN_LIST: {
             let eventLoginList = action.payload;
-            console.log("eventLoginList***",eventLoginList);
             return Object.assign({}, state, eventLoginList);
         }
         case ARRIVAL_LIST:{
@@ -74,18 +74,14 @@ export function event (state = initialState, action) {
             return Object.assign({}, state, {notificationCount});
         }
         case UPLOAD_ID_PROOF_LIST: {
-            console.log('action.payload--',action.payload,action);
             let uploadIdProofEvent = action.payload;
             return Object.assign({}, state, uploadIdProofEvent);
         }
         case DOWNLOAD_ID_PROOF_LIST: {
-            console.log('action.payload-download--*********--',action.payload,action);
             let downloadIdProofEvent = action.payload;
-            console.log('data set---->>>---->>',downloadIdProofEvent);
             return Object.assign({}, state, {downloadIdProofEvent});
         }
         case DELETE_ID_PROOF_LIST: {
-            console.log('data deleted----',action.payload);
             let downloadIdProofEvent = [];
             return Object.assign({},state,{downloadIdProofEvent});
         }
@@ -97,6 +93,25 @@ export function event (state = initialState, action) {
             let commentList = JSON.parse(JSON.stringify(state.commentList));
             commentList.push(action.payload);
             return Object.assign({},state,{commentList});
+        }
+        case GET_UNAPPROVED_COMMENTS : {
+            let unapprovedCommentList = action.payload;
+            return Object.assign({},state,{unapprovedCommentList})
+        }
+        case APPROVE_COMMENTS : {
+            let commentList = JSON.parse(JSON.stringify(state.commentList));
+            let unapprovedCommentList = JSON.parse(JSON.stringify(state.unapprovedCommentList));
+                for (var i = 0, lenCom = action.payload.length; i < lenCom; i++) {
+                    for (var j = 0, len = unapprovedCommentList.length; j < len; j++) {
+                        if (action.payload[i]._id === unapprovedCommentList[j]._id) {
+                            unapprovedCommentList.splice(j, 1);
+                            len--;
+                        }
+                    }
+                }
+
+            commentList.concat(action.payload);
+            return Object.assign({},state,{commentList,unapprovedCommentList});
         }
         default:
             return state;

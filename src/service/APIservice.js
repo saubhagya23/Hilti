@@ -21,7 +21,6 @@ async function requestAPI(url, options = {}) {
 
     if(options.method.toLowerCase() !== 'get') {
         if(options.headers){
-            console.log("headers");
             reqBody['body'] = options.payload
         }
         else{
@@ -92,7 +91,6 @@ export function uploadIdProofEventList(option={}){
     let { url , method } = API.ENDPOINT.USER.UPLOAD_ID_PROOF;
     let URL = `${API_BASE + url}`;
     option.method = method;
-    console.log('options--',option);
     return requestAPI(URL, option);
 }
 
@@ -111,7 +109,6 @@ export function getdownloadIdProofEventList(option={}) {
 }
 
 export function deletedownloadIdProofEventList(option={}) {
-    // console.log('delete service---');
     let { url , method } = API.ENDPOINT.USER.DELETE_ID_PROOF;
     let URL = `${API_BASE + url+ option.param}`;
     option.method = method;
@@ -155,9 +152,22 @@ export function getAllComments(option={}) {
 }
 
 export function postComm(option={}) {
-    console.log("postComm ***",option);
     let { url , method } = API.ENDPOINT.COMMENTS.POST_COMMENTS;
     let URL = `${API_BASE + url }`;
     option.method = method;
     return requestAPI(URL, option);
+}
+
+export function getAllUnapprovedComments(option={}) {
+    let { url,method } = API.ENDPOINT.COMMENTS.GET_UNAPPROVED_COMMENTS;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
+}
+
+export function approveComm(option={}) {
+    let { url,method } = API.ENDPOINT.COMMENTS.APPROVED_COMMENTS;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
 }
