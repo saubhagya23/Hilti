@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, Dimensions} from 'react-native';
-import { Font } from 'expo'
-import {BoxShadow} from 'react-native-shadow';
-import  moment from 'moment'
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity} from 'react-native';
+import { Font } from 'expo';
+import  moment from 'moment';
+import Icon  from 'react-native-vector-icons/FontAwesome';
+import { deleteNotification } from '../../actions/apiData';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const {height, width} = Dimensions.get('window');
 class Notification extends Component {
@@ -10,6 +13,7 @@ class Notification extends Component {
         super();
         this.state = {
             fontLoaded:false,
+            showThis: true
         }
     }
 
@@ -22,30 +26,37 @@ class Notification extends Component {
             fontLoaded:true
         })
     }
-
+    deleteThisNotification = (id) => {
+        let options = { params: id }
+        this.props.deleteNotification(options).then(()=> {
+            this.setState({showThis: false});
+        })
+    }
     render(){
         return(
-                <View>
+                <View style={{marginTop:10}}>
                 {  
-                    this.state.fontLoaded  ? (
+                    this.state.fontLoaded && this.state.showThis  ? (
                         <View style={styles.container}>
-                            <View style={{flexDirection:'row',marginBottom:10}}>
+                            
+                            <View style={{flexDirection:'row',marginBottom:5}}>
                                 <Text style={{
                                         alignSelf:'flex-start',
-                                        marginTop:16,
                                         flex:1,
                                         fontSize:14,
                                         fontFamily:'hilti-roman',
                                         color:'#dd2127'}}>
                                     {this.props.notification.title}
                                 </Text>
-                                <Text style={{
-                                    flexShrink:1,
-                                    alignSelf: 'flex-end',
-                                    fontSize: 9,
-                                    color: '#5b5b5b',
-                                    textAlign:'right'
-                                }}>{moment(this.props.notification.timestamp).fromNow()}</Text>
+                                <View style={styles.delBtn}>
+                                    <TouchableOpacity onPress={() => this.deleteThisNotification(this.props.notification.nid)}>
+                                        <Icon 
+                                        name='times'
+                                        size={15}
+                                        color='#dd2127' />
+                                    </TouchableOpacity>
+                                </View>
+                                
 
                             </View>
                                 
@@ -70,6 +81,14 @@ class Notification extends Component {
                                         {this.props.notification.body}
                                         </Text>
                                 </View> 
+                                <Text style={{
+                                    flexShrink:1,
+                                    alignSelf: 'flex-end',
+                                    fontSize: 9,
+                                    color: '#5b5b5b',
+                                    textAlign:'right',
+                                    marginBottom: 5
+                                }}>{moment(this.props.notification.timestamp).fromNow()}</Text>
                                 <View style={styles.horizontalLine}></View>  
                         </View>):null
                 }
@@ -93,6 +112,22 @@ const styles = StyleSheet.create({
         width: width-20,
         backgroundColor: '#d6d6d6' ,
         paddingHorizontal: 10,
+    },
+    delBtn: {
+        alignItems: 'flex-end',
+        padding:2,
     }
 });
-export default Notification;
+
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+                deleteNotification,
+            },
+            dispatch
+        ),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Notification)

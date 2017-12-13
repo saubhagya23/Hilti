@@ -225,6 +225,21 @@ export function postComment(data) {
     }
 }
 
+export function deleteNotification (data) {
+    return function (dispatch) {
+        return deleteNotif(data).then(function (response) {
+            dispatch({
+                type: DELETE_NOTIF,
+                payload: response
+            });
+            return response;
+        }, function(err){
+          console.log('notification error', err)
+        }).catch(function(err){
+          console.log('notification catch error', err)
+        })
+    }
+}
 export function getUnapprovedComments() {
     return function (dispatch) {
         return getAllUnapprovedComments().then(function (response) {

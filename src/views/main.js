@@ -17,14 +17,16 @@ class Home extends Component {
 
         this.state = {
             appState: AppState.currentState,
-            notificationCount: this.props.notificationCount
+            notificationCount: this.props.notificationCount,
+            notifResponse: {},
             // token:'',
             // loader:true,
-        }
+        } 
     }
 
     componentWillMount(){
         //asyncRemove('token');
+        Notifications.addListener(this._handleListner);
         asyncGet('token').then((value) => {
             if(value !== null){
                 asyncGet('userDetail').then((detail) => {
@@ -38,7 +40,6 @@ class Home extends Component {
                     ]
                 });
                 this.props.navigation.dispatch(resetAction);
-                Notifications.addListener(this._handleListner);
             }
             else{
                 const resetAction = NavigationActions.reset({
@@ -54,10 +55,22 @@ class Home extends Component {
     }
 
     _handleListner= (notification) => {
+        this.setState({notifResponse: notification});
+        if(notification.origin == 'selected') {
+            const resetAction = NavigationActions.reset({
+                index: 1,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'HomeScreen' }),
+                    NavigationActions.navigate({ routeName: 'Notifications' })
+                ]
+            });
+            this.props.navigation.dispatch(resetAction);
+        } 
         this.getNotificationAsync().then((data) => {
             this.setState({ notificationCount : data });
-        })     
+        })
     }
+
     async getNotificationAsync() { 
         return this.props.getNotificationCount();
     }
