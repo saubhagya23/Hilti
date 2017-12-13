@@ -15,3 +15,5 @@ export const READ_NOTIF = 'READ_NOTIF';
 export const DELETE_NOTIF = 'DELETE_NOTIF';
 export const ARRIVAL_TICKET = 'ARRIVAL_TICKET';
 export const DEPARTURE_TICKET = 'DEPARTURE_TICKET';
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const POST_COMMENTS = 'POST_COMMENTS';

@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
-import StandaloneNav from '../common/StandaloneNav'
+import { connect } from 'react-redux';
 
 class HomeScreen extends Component {
 
@@ -25,6 +25,10 @@ class HomeScreen extends Component {
     };
 
     render(){
+        let user;
+        if(typeof this.props.userDetail === "string"){
+            user = JSON.parse(this.props.userDetail)
+        }
         return(
             <View style={styles.container}>
                 <View style={{height:38}}>
@@ -117,13 +121,24 @@ class HomeScreen extends Component {
                         />
 
                         {/*post comment nav container*/}
-                        <HomeNavContainer
-                            navigationPage='ComingSoon'
-                            imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
-                            titleText='POST YOUR COMMENTS'
-                            homeNavProps={this.props}
-                            pauseVideo={this.pauseVideo}
-                        />
+                        {
+                            user && user.role === "user"?
+                                <HomeNavContainer
+                                    navigationPage='Comments'
+                                    imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
+                                    titleText='POST YOUR COMMENTS'
+                                    homeNavProps={this.props}
+                                    pauseVideo={this.pauseVideo}
+                                />:
+                                <HomeNavContainer
+                                    navigationPage='AdminComment'
+                                    imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
+                                    titleText='POST YOUR COMMENTS'
+                                    homeNavProps={this.props}
+                                    pauseVideo={this.pauseVideo}
+                                />
+                        }
+
                     </View>
                 </ScrollView>
             </View>
@@ -151,4 +166,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomeScreen;
+function mapStateToProps (state) {
+    return {
+        // eventLoginList: state.event.eventLoginList,
+        userDetail:state.event.userDetail
+    }
+}
+
+export default connect(mapStateToProps, null)(HomeScreen)
+

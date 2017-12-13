@@ -1,5 +1,5 @@
-import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET} from '../constants'
+import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList, getAllComments, postComm} from '../service/APIservice';
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -203,4 +203,31 @@ export function readAllNotification(data) {
             return response;
         });
     };
+}
+
+export function getComments() {
+    console.log("get comment started");
+    return function (dispatch) {
+        return getAllComments().then(function (response) {
+            dispatch({
+                type: GET_COMMENTS,
+                payload: response
+            });
+            return response;
+        })
+    }
+}
+
+export function postComment(data) {
+    console.log("post comment started",data);
+    return function (dispatch) {
+        return postComm(data).then(function (response) {
+            console.log("after posting comment response is :",response)
+            dispatch({
+                type: POST_COMMENTS,
+                payload: response
+            });
+            return response;
+        })
+    }
 }

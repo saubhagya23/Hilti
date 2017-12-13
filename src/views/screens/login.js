@@ -39,6 +39,7 @@ class Login extends Component {
         })
     }
 
+
     login = () => {
         if (this.state.empId === 'xyz.abc@hilti.com' || this.state.empCode === 'employee code' || this.state.empId === '' || this.state.empCode === '') {
             this.setState(
@@ -56,6 +57,7 @@ class Login extends Component {
             postEvent({payload: empLoginInfo}).then(eventLoginList => {
                 if (eventLoginList.token) {
                     asyncPost('token', eventLoginList.token);
+                    eventLoginList.userDetail.role = eventLoginList.role;
                     asyncPost('userDetail', JSON.stringify(eventLoginList.userDetail));
 
                     const {setUserDetail} = this.props;

@@ -1,5 +1,8 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
-import {ARRIVAL_LIST, DEPARTURE_LIST,STAY_LIST,VIDEO_URL,USER_DETAIL,NOTIF_COUNT,GET_NOTIF ,READ_NOTIF} from "../constants/index";
+import {
+    ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
+    GET_COMMENTS, POST_COMMENTS
+} from "../constants/index";
 
 const initialState = {
     // eventList: [],
@@ -15,8 +18,9 @@ const initialState = {
     notificationCount: {},
     allNotifications: {},
     arrivalTicket:{},
-    departureTicket: {}
-}
+    departureTicket: {},
+    commentList:[]
+};
 
 export function event (state = initialState, action) {
     switch (action.type) {
@@ -26,6 +30,7 @@ export function event (state = initialState, action) {
         }*/
         case EVENT_LOGIN_LIST: {
             let eventLoginList = action.payload;
+            console.log("eventLoginList***",eventLoginList);
             return Object.assign({}, state, eventLoginList);
         }
         case ARRIVAL_LIST:{
@@ -83,6 +88,15 @@ export function event (state = initialState, action) {
             console.log('data deleted----',action.payload);
             let downloadIdProofEvent = [];
             return Object.assign({},state,{downloadIdProofEvent});
+        }
+        case GET_COMMENTS: {
+            let commentList = action.payload;
+            return Object.assign({},state,{commentList})
+        }
+        case POST_COMMENTS: {
+            let commentList = JSON.parse(JSON.stringify(state.commentList));
+            commentList.push(action.payload);
+            return Object.assign({},state,{commentList});
         }
         default:
             return state;
