@@ -7,9 +7,14 @@ import { connect } from 'react-redux';
 
 class assistanceContainer extends Component {
     submit = (url) => {
+        let urlSub;
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
-            let urlSub = url + `?subject= Kick off  2018 - ${selectedItem} - ${JSON.parse( this.props.userDetail).Name}`;
+            if(this.props.assistanceData.title === "Hotel Related Query"){
+                urlSub = url + `?subject= HQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+            }else{
+                urlSub = url + `?subject= TQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+            }
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
                     Linking.openURL(urlSub);

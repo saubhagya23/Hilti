@@ -1,11 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class Header extends React.Component {
     render() {
         return (
             <View style={styles.header}>
-                <StatusBar backgroundColor="lightseagreen" barStyle="light-content" />
                 <Text style={styles.title}>
                     {this.props.title}
                 </Text>
@@ -16,7 +15,7 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
     header: {
-        height: 80,
+        height: 50,
         backgroundColor: '#dd2127',
         alignItems: 'center',
         justifyContent: 'flex-end',

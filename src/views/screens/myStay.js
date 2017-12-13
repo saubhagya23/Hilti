@@ -71,7 +71,7 @@ class MyStay extends Component {
                                 <DetailContainer leftHeading={'Room Partner'} rightHeading={'Room No.'} leftData={details.RoomPartner||'N/A'} rightData={'Will be allocated at time of check-in'} />
 
                                 <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8,paddingLeft:40, paddingRight:17}}>Team</Text>
-                                <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000',paddingLeft:40, paddingRight:17}}>{details.Team}</Text>
+                                <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000',paddingLeft:40, paddingRight:17}}>{details.Team}</Text>
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35,marginTop:10}}/>
 
@@ -93,7 +93,7 @@ class MyStay extends Component {
                                                     ))
                                                  }
                                             </View>
-                                            :<Text>N/A</Text>
+                                            :<Text style={{marginLeft:50.5}}>N/A</Text>
                                     }
                                 </View>
 
@@ -102,10 +102,10 @@ class MyStay extends Component {
                                 <View >
                                     {
                                         details && details.ImportantToRemember ?
-                                            <View style={{flexDirection:'row',flexWrap:'wrap',marginBottom:15}}>
+                                            <View style={{marginBottom:15}}>
                                                 {
                                                     details.ImportantToRemember.map((data,index)=>(
-                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
+                                                        <View style={{ height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                                 name="circle"
                                                                 style={{color:'#dd2127'}}
@@ -115,7 +115,7 @@ class MyStay extends Component {
                                                     ))
                                                 }
                                             </View>
-                                            :<Text>N/A</Text>
+                                            :<Text style={{marginLeft:50.5}}>N/A</Text>
                                     }
                                 </View>
                             </View>

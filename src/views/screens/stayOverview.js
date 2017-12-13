@@ -66,7 +66,7 @@ class stayOverview extends Component {
                             <Text style={{marginTop:35,fontSize:22,fontFamily:'hilti-bold',color:'#000000'}}>
                                 STAY OVERVIEW
                             </Text>
-                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 7 Jan, 2017</Text>
+                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete excel will be available only after Jan 5, 2018</Text>
                         </View>
                     </View>:null
                 }
