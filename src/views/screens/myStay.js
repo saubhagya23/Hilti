@@ -102,7 +102,7 @@ class MyStay extends Component {
                                 <View >
                                     {
                                         details && details.ImportantToRemember ?
-                                            <View style={{flexDirection:'row',flexWrap:'wrap',marginBottom:15}}>
+                                            <View style={{marginBottom:15}}>
                                                 {
                                                     details.ImportantToRemember.map((data,index)=>(
                                                         <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>

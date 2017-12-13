@@ -31,8 +31,8 @@ class ComingSoon extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage='Experience Corner' navigation={this.props.navigation}/>
-                        <Text style={{alignSelf:'center',color:'#dd2127',fontSize:22,marginTop:200}}>Data will be displayed Soon !!!</Text>
+                        <PageHeaderNotif props={this.props} parentPage='Emergency Contact No.' navigation={this.props.navigation}/>
+                        <Text style={{alignSelf:'center',color:'#dd2127',marginTop:200,marginLeft:15}}>Emergency contacts will be available after 1 Jan, therefore, please write in to Annual kick off Email ID</Text>
                     </View>:null
                 }
             </View>
