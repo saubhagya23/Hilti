@@ -141,9 +141,8 @@ export function readAllNotif(option={}) {
 }
 
 export function deleteNotif(option={}) {
-    console.log('deleteNotif---');
     let { url , method } = API.ENDPOINT.NOTIFICATION.DELETE_NOTIFICATION;
-    let URL = `${API_BASE + url}`;
+    let URL = `${API_BASE + url +option.params}`;
     option.method = method;
     return requestAPI(URL, option)
 }

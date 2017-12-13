@@ -29,7 +29,7 @@ let API = {
             NOTIFICATION_COUNT: {url: '/api/notifications/unread',method: 'GET'},
             GET_NOTIFICATION: {url: '/api/notifications',method: 'GET'},
             READ_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
-            DELETE_NOTIFICATION: {url: '/api/notifications/readall',method: 'GET'},
+            DELETE_NOTIFICATION: {url: '/api/notifications/',method: 'DELETE'},
         },
         COMMENTS : {
             GET_COMMENTS: {url: '/api/comments',method: 'GET'},
