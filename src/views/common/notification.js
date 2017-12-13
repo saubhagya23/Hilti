@@ -34,7 +34,7 @@ class Notification extends Component {
     }
     render(){
         return(
-                <View style={{marginTop:10}}>
+                <View>
                 {  
                     this.state.fontLoaded && this.state.showThis  ? (
                         <View style={styles.container}>
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
         overflow:"hidden",
         justifyContent:'center',
         paddingHorizontal: 10,
+        marginTop:10
     },
     horizontalLine: {
         height: 2,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     },
     delBtn: {
         alignItems: 'flex-end',
-        padding:2,
+        padding:5,
     }
 });
 
