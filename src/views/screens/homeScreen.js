@@ -1,16 +1,34 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
+//import { Font } from 'expo'
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
 import { connect } from 'react-redux';
+import Modal from 'react-native-modal'
+import Icon  from 'react-native-vector-icons/FontAwesome';
 
 class HomeScreen extends Component {
 
     state = {
         videoPlay:true,
-        playbackObject : null
+        playbackObject : null,
+        isModalVisible: true,
+        fontLoaded:false,
     };
+
+    /*async componentWillMount(){
+        await Font.loadAsync({
+            'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
+            'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
+        });
+        this.setState({
+            fontLoaded:true,
+        })
+
+        /!*const { downloadIdProofEvent } = this.props;
+        downloadIdProofEvent();*!/
+    }*/
 
 
     _handleVideoRef = component => {
@@ -26,11 +44,63 @@ class HomeScreen extends Component {
 
     render(){
         let user;
+        if(this.props.userDetail){
+            user = this.props.userDetail;
+        }
+
         if(typeof this.props.userDetail === "string"){
             user = JSON.parse(this.props.userDetail)
         }
+        console.log('userDetails home screen--->>>>',this.props.userDetail);
         return(
             <View style={styles.container}>
+
+                <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
+                    <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}}>
+                        <View style={{backgroundColor:"#ffffff",height:350,width:280,borderWidth:2,borderColor:'#dd2127',borderRadius:5}}>
+                            <View style={{flexDirection:'row',justifyContent:'center',margin:15}}>
+                                <Text style={{fontSize:16,fontWeight:'bold'}}>Profile</Text>
+                                <Icon style={{marginLeft:'auto'}} size={20} name='close' onPress={() => {this.setState({isModalVisible:false})}}/>
+                            </View>
+
+                            <View style={{height:1,marginLeft:15,marginRight:15,backgroundColor:'grey'}}/>
+
+                            <View style={{justifyContent:'center',alignItems:'flex-start'}}>
+                                <View style={{flexDirection:"row",marginLeft:15,marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name='user'/>
+                                    <Text style={{marginLeft:10}}>Name</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:35}}>{user.Name}</Text>
+
+                                <View style={{flexDirection:"row",marginLeft:12,marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="group"/>
+                                    <Text style={{marginLeft:10}}>Team</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:35}}>{user.Team}</Text>
+
+                                <View style={{flexDirection:"row",marginLeft:15,marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="map-marker" size={15}/>
+                                    <Text style={{marginLeft:11}}>Location</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:35}}>{user.Location}</Text>
+
+                                <View style={{flexDirection:"row",marginLeft:13,marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="sitemap" size={13}/>
+                                    <Text style={{marginLeft:10}}>Team Category</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:35}}>{user.Code}</Text>
+
+                                <View style={{flexDirection:"row",marginLeft:13,marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="id-card"/>
+                                    <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.Code}</Text>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+
+                {/*HomeScreen code*/}
                 <View style={{height:38}}>
                     <PageHeader navigation={this.props.navigation} showBell={true} showUser={true} pauseVideo={this.pauseVideo}/>
                 </View>
