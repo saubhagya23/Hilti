@@ -81,7 +81,7 @@ export default class DosDonts extends Component {
                                         Carry your Employee ID card.
                                     </Text>
                                 </View>
-                                <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Don't</Text>
+                                <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Don't's</Text>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
                                         style={{color:'#000000',marginLeft:21,marginTop:32}}

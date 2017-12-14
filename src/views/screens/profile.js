@@ -36,6 +36,7 @@ class Profile extends Component {
         if(typeof this.props.userDetail === "string"){
             detail = JSON.parse(this.props.userDetail)
         }
+        console.log('UserDetails-----profile---->>>',this.props.userDetail);
 
         return (
             <View style={styles.container}>
@@ -53,20 +54,26 @@ class Profile extends Component {
                                 <Text style={{color:'grey',marginLeft:20}}>{detail.Name}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
-                                    <Icon style={{marginTop:4}} name="envelope"/>
-                                    <Text style={{marginLeft:10}}>Email Id</Text>
-                                </View>
-                                <Text style={{color:'grey',marginLeft:20}}>{detail.EmailId}</Text>
-
-                                <View style={{flexDirection:"row",marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="group"/>
                                     <Text style={{marginLeft:10}}>Team</Text>
                                 </View>
                                 <Text style={{color:'grey',marginLeft:20}}>{detail.Team}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="map-marker"/>
+                                    <Text style={{marginLeft:10}}>Location</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:20}}>{detail.Location}</Text>
+
+                                <View style={{flexDirection:"row",marginTop:10}}>
+                                    <Icon style={{marginTop:4}} name="sitemap"/>
+                                    <Text style={{marginLeft:10}}>Team Category</Text>
+                                </View>
+                                <Text style={{color:'grey',marginLeft:22}}>{detail.Code}</Text>
+
+                                <View style={{flexDirection:"row",marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
-                                    <Text style={{marginLeft:10}}>Code</Text>
+                                    <Text style={{marginLeft:10}}>Group Name</Text>
                                 </View>
                                 <Text style={{color:'grey',marginLeft:22}}>{detail.Code}</Text>
 
