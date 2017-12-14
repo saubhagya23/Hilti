@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     messageSender:{
+
         fontSize:15,
         alignSelf:'flex-end'
     },
@@ -165,6 +166,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     },
     input: {
+        borderWidth: 2,  // size/width of the border
+        borderColor: 'lightgrey',
         paddingHorizontal: 20,
         fontSize: 18,
         flex: 1,
