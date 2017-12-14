@@ -51,7 +51,7 @@ class HomeScreen extends Component {
         if(typeof this.props.userDetail === "string"){
             user = JSON.parse(this.props.userDetail)
         }
-        console.log('userDetails home screen--->>>>',this.props.userDetail);
+        // console.log('userDetails home screen--->>>>',this.props.userDetail);
         return(
             <View style={styles.container}>
 

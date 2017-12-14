@@ -1,7 +1,7 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
 import {
     ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
-    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS
+    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST
 } from "../constants/index";
 
 const initialState = {
@@ -20,7 +20,8 @@ const initialState = {
     arrivalTicket:{},
     departureTicket: {},
     commentList:[],
-    unapprovedCommentList:[]
+    unapprovedCommentList:[],
+    agendaList:{},
 };
 
 export function event (state = initialState, action) {
@@ -112,6 +113,10 @@ export function event (state = initialState, action) {
 
             commentList.concat(action.payload);
             return Object.assign({},state,{commentList,unapprovedCommentList});
+        }
+        case AGENDA_LIST:{
+            let agendaList = action.payload;
+            return Object.assign({}, state, {agendaList});
         }
         default:
             return state;
