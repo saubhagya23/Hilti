@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import {asyncPost, asyncGet, asyncRemove} from '../../utils/asyncStore';
 import { getVideo } from '../../actions/apiData';
+import * as Progress from 'react-native-progress';
 
 class HomeContent extends Component {
 
@@ -19,7 +20,9 @@ class HomeContent extends Component {
             url:null,
             localURL:'',
             video:'',
-            appIsReady:false
+            appIsReady:false,
+            downloadProgress: 0,
+            shouldPlay: false
         };
     }
 
@@ -34,42 +37,60 @@ class HomeContent extends Component {
     }
 
     playVideo = async() => {
-
         let videoUrl = await asyncGet('localURL');
         if(videoUrl){
             this.setState({
                 url:videoUrl,
-                showVideo:true
+                showVideo:true,
+                downloadProgress: 2,
+                shouldPlay: true
             })
         }else {
             const {getVideo} = this.props;
              await getVideo();
-                if(this.props.video && this.props.video.videoUrl){
-                    await asyncPost('video', this.props.video.videoUrl);
-                    this.setState({
-                        url:this.props.video.videoUrl,
-                        showVideo:true
-                    });
+             this.setState({ showVideo:true })
 
-                    FileSystem.downloadAsync(
-                        this.props.video.videoUrl,
-                        FileSystem.documentDirectory + 'small.mp4'
-                    )
-                        .then(async ({ uri }) =>{
-                            await asyncPost('localURL',uri);
-                            let videoURL = await asyncGet('localURL')
-                            this.setState({
-                                url:videoURL,
-                                showVideo:true
-                            })
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                }
+            const downloadResumable = FileSystem.createDownloadResumable(
+                this.props.video.videoUrl,
+                FileSystem.documentDirectory + 'small.mp4',
+                {},
+                this.callback
+            )
+
+            try {
+                const { uri } = await downloadResumable.downloadAsync();
+                console.log('Finished downloading to ', uri);
+                await asyncPost('localURL', uri);
+                this.setState({ url:uri, showVideo:true});
+
+                // downloadResumable.downloadAsync().then(videoObject => {
+                //     this.setState({ url:videoObject.uri, showVideo:true},() =>{
+                //         console.log('uri from setstate >> ', videoObject.uri)
+                //         asyncPost('video', videoObject.uri)
+                //     });
+                    
+                // })
+            } catch (e) {
+                console.error(e);
+            }
         }
 
     };
+    callback = downloadProgress => {
+        const progress =
+          downloadProgress.totalBytesWritten /
+          downloadProgress.totalBytesExpectedToWrite;
+        this.setState({
+          downloadProgress: progress,
+        });
+      };
+
+      _onPlaybackStatusUpdate = playbackStatus => {
+          if (!playbackStatus.isPlaying) {
+              this.setState({shouldPlay: true})
+          }
+      }
+      
 
 
     render(){
@@ -82,7 +103,7 @@ class HomeContent extends Component {
                             this.state.showVideo ?
                                 <View style={{flex:1}}>
                                     {
-                                        this.state.url ? (
+                                        this.state.downloadProgress >= 1 ? (
                                             <Expo.Video
                                                 ref={this.props._handleVideoRef}
                                                 source={{uri:`${this.state.url}`}}
@@ -90,12 +111,16 @@ class HomeContent extends Component {
                                                 volume={1.0}
                                                 muted={false}
                                                 resizeMode="cover"
-                                                shouldPlay={true}
-                                                isLooping
+                                                shouldPlay={this.state.shouldPlay}
+                                                isLooping={false}
                                                 useNativeControls={true}
                                                 style={{flex:1}}
-                                                onLoad={obj => console.log(obj)}
-                                            />) : null
+                                                onLoad={this._onPlaybackStatusUpdate}
+                                            />) : 
+                                            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+                                                <Progress.Circle progress={this.state.downloadProgress} size={60} color='#dd2127' showsText={true}/>
+                                            </View>
+                                            
                                     }
                                 </View>
                                 :
