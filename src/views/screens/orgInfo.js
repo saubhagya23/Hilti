@@ -135,7 +135,7 @@ export default class OrgInfo extends Component {
                                     <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:12}}>
                                         For Ticket (Train/Flight) Related Query :
                                     </Text>
-                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
                                         Gurpreet Singh | TravelDesk
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
@@ -147,7 +147,7 @@ export default class OrgInfo extends Component {
                                     <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
                                         For Airport/Railway Station/ Delhi/NCR Shuttles :
                                     </Text>
-                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
                                         Akash Singh Tomar | Sr. Executive - Administration
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
@@ -159,7 +159,7 @@ export default class OrgInfo extends Component {
                                     <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
                                         For App Related Query :
                                     </Text>
-                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
                                         Ashish Nautiyal| Asst Manager - IT
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
@@ -171,7 +171,7 @@ export default class OrgInfo extends Component {
                                     <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
                                         For Any Other Emergency :
                                     </Text>
-                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
                                         Tanya Manchanda | Kick off Event -Champion
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
