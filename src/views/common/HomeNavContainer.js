@@ -47,11 +47,13 @@ export default class HomeNavContainer extends Component {
                         />
                         <View style={{
                             height:35,
-                            justifyContent:'center'
+                            justifyContent:'center',
+                            backgroundColor:'white',
                             }}>
                             <Text
                                 style={{
                                     color:'#dd2127',
+                                    backgroundColor:'white',
                                     fontFamily:'hilti-roman',
                                     fontSize:10,
                                     letterSpacing:0.5,
