@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import  moment from 'moment';
+import Icon  from 'react-native-vector-icons/FontAwesome';
 
 import {
     StyleSheet,
@@ -16,10 +17,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
-import io from 'socket.io-client'
+import openSocket from 'socket.io-client';
 
-
-const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
+// const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
 
 class Comments extends Component {
 
@@ -44,9 +44,32 @@ class Comments extends Component {
 
 
     componentDidMount() {
-        const socket = io(SocketEndpoint, {
-            transports: ['websocket'],
-        });
+/*
+        var ws = new WebSocket('http://13.68.114.98:3000/socket.io-client');
+
+        ws.onopen = e => {
+            // connection opened
+            console.log("connected",e);
+        };
+
+        ws.onmessage = e => {
+            // a message was received
+            console.log("message",e.data);
+        };
+
+        ws.onerror = e => {
+            // an error occurred
+            console.log("error",e.message);
+        };
+
+        ws.onclose = e => {
+            // connection closed
+            console.log("close",e.code, e.reason);
+        };*/
+
+        // const socket = WebSocket('http://13.68.114.98:9000/socket.io-client');
+         const socket = openSocket("http://10.1.0.221:9000/socket.io-client");
+
 
         socket.on('connect', () => {
             this.setState({ isConnected: true });
@@ -56,11 +79,12 @@ class Comments extends Component {
             this.setState(data);
         });
 
-        const { getComments } = this.props;
+       const { getComments } = this.props;
         getComments();
     }
 
     sendMessage = async () => {
+        console.log("send button clicked");
         // read message from component state
         const message = this.state.typing;
         if(message) {
@@ -100,21 +124,24 @@ class Comments extends Component {
                                     {
                                     code === item.code ?
                                         <View style={styles.rowTextRight}>
-                                            <View>
-                                                <Text >{moment(item.timestamp).fromNow()}</Text>
+                                            <View style={styles.messageContainer}>
                                                 <Text style={styles.messageSender}>{item.comment}</Text>
+                                                <Text style={styles.timeNotif}>{moment(item.timestamp).fromNow()}</Text>
                                             </View>
                                         </View>:
                                         <View style={styles.rowTextLeft}>
-                                            <View style={{flexDirection:'row'}}>
-                                                <View style={styles.senderImage}>
-                                                    <Text style={styles.senderImageText}>{item.name[0]}</Text>
+                                            <View style={styles.messageContainer}>
+                                                <Text style={styles.message}>{item.comment}</Text>
+                                                <View style={{flexDirection:'row', marginTop:8}}>
+                                                    <Text style={styles.sender}>{item.name}</Text>
+                                                    <Icon
+                                                        style={{marginLeft:5,marginTop:6}}
+                                                        name='circle'
+                                                        size={5}
+                                                    />
+                                                    <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(item.timestamp).fromNow()}</Text>
                                                 </View>
-                                                <Text style={styles.sender}>{item.name}</Text>
-                                                <Text style={{ marginTop:10,marginLeft:100}}>{moment(item.timestamp).fromNow()}</Text>
                                             </View>
-
-                                            <Text style={styles.message}>{item.comment}</Text>
                                         </View>
                                 }
 
@@ -123,7 +150,7 @@ class Comments extends Component {
                             keyExtractor={item => item.timestamp}
                         />
                         <KeyboardAwareScrollView style={{paddingBottom:20}}>
-                            <View >
+                            <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
                                     style={styles.input}
@@ -132,7 +159,7 @@ class Comments extends Component {
                                     placeholder="Type something nice"
                                     onChangeText={text => this.setState({typing: text})}
                                 />
-                                <TouchableOpacity onPress={this.sendMessage}>
+                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,zIndex:10}}>
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
@@ -161,24 +188,34 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     rowTextLeft: {
-        flex: 1,
+        width:200,
+        borderRadius:10,
+        backgroundColor:'#E2D1E8',
+
+    },
+    timeNotif:{
+      alignSelf:'flex-end',
+        fontSize:10,
+        marginTop:8
     },
     rowTextRight:{
+        justifyContent:'flex-end',
         flex:1,
+        width:100,
+        borderRadius:10,
+        backgroundColor:'#EBE7ED',
+        marginLeft:100
     },
     message: {
-        marginLeft:50,
         fontSize: 15
     },
     messageSender:{
-
         fontSize:15,
-        alignSelf:'flex-end'
     },
     sender: {
-        marginTop:10,
-        marginLeft:10,
-        fontWeight: 'bold'
+        fontWeight:'bold',
+        alignSelf:'flex-end',
+        fontSize:10
     },
     footer: {
         flexDirection: 'row',
@@ -189,14 +226,15 @@ const styles = StyleSheet.create({
         borderColor: 'lightgrey',
         paddingHorizontal: 20,
         fontSize: 18,
-        flex: 1,
+        width:250,
+        marginLeft:10
     },
     send: {
         alignSelf: 'center',
         color: '#dd2127',
         fontSize: 16,
         fontWeight: 'bold',
-        padding: 20,
+        padding:10
     },
     senderImage:{
         backgroundColor:'lightblue',
@@ -210,6 +248,9 @@ const styles = StyleSheet.create({
     senderImageText:{
         fontSize:30,
         fontWeight:'bold'
+    },
+    messageContainer:{
+        padding:10
     }
 });
 
