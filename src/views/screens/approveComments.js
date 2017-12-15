@@ -6,7 +6,6 @@ import { Font } from 'expo'
 
 import { getUnapprovedComments ,approveComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
-// import Checkbox from '../common/Checkbox'
 import ApproveCheckbox from '../common/approveCheckbox';
 class ApproveComments extends Component {
 
@@ -15,7 +14,8 @@ class ApproveComments extends Component {
         this.state = {
             typing: '',
             errText:'',
-            checked: {}
+            checked: {},
+            commentObj:{}
         }
     }
 
@@ -34,9 +34,45 @@ class ApproveComments extends Component {
         getUnapprovedComments();
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps) {
+            console.log("nextProps in cwrp[approveComments]", nextProps.unapprovedCommentList);
+            let localObj ={};
+            for(let i = 0 ;i<nextProps.unapprovedCommentList.length;i++){
+                localObj[nextProps.unapprovedCommentList[i]._id]=false;
+
+            }
+            this.setState({
+                commentObj : localObj
+            });
+            console.log("localObj is:",localObj);
+        }
+
+    }
+
     checked = (index,state) => {
-        let newob  = Object.assign({},this.state.checked,{[index]:state})
+        let newob  = Object.assign({},this.state.checked,{[index]:state});
         this.setState({checked: newob})
+    };
+
+    approveAllComments = () => {
+        //todo: approve all comments
+
+        let tempArray =[];
+        let newOb = JSON.parse(JSON.stringify(this.state.commentObj));
+            for(let key in newOb){
+                newOb[key]=true;
+                tempArray.push(key);
+            }
+        if(tempArray) {
+            const {approveComment} = this.props;
+            approveComment({
+                payload: {
+                    ids: tempArray
+                }
+            });
+        }
+            this.setState({commentObj:newOb});
     };
 
     approveComments = () => {
@@ -71,13 +107,16 @@ class ApproveComments extends Component {
                             data={comments}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
-                                    <ApproveCheckbox item={item} checked={this.checked}/>
+                                    <ApproveCheckbox item={item} checked={this.checked} commentObj={this.state.commentObj}/>
                                 </View>
                             }
                             keyExtractor={item => item.timestamp}
                         />
                         <TouchableOpacity onPress={this.approveComments}>
                             <Text style={styles.approve}>Approve</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.approveAllComments}>
+                            <Text style={styles.approve}>Approve All</Text>
                         </TouchableOpacity>
                     </View>
                     :null

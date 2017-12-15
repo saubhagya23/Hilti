@@ -33,6 +33,7 @@ export default class ApproveCheckbox extends Component {
     }
 
     render() {
+        console.log("********",this.props.item);
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
         return (

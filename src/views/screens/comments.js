@@ -16,6 +16,10 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
+import io from 'socket.io-client'
+
+
+const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
 
 class Comments extends Component {
 
@@ -23,7 +27,8 @@ class Comments extends Component {
         super(props);
         this.state = {
             typing: '',
-            errText:''
+            errText:'',
+            isConnected: false
         }
     }
 
@@ -37,7 +42,20 @@ class Comments extends Component {
         })
     }
 
-    componentDidMount(){
+
+    componentDidMount() {
+        const socket = io(SocketEndpoint, {
+            transports: ['websocket'],
+        });
+
+        socket.on('connect', () => {
+            this.setState({ isConnected: true });
+        });
+
+        socket.on('ping', data => {
+            this.setState(data);
+        });
+
         const { getComments } = this.props;
         getComments();
     }
