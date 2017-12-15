@@ -10,7 +10,6 @@ export default class ApproveCheckbox extends Component {
         super(props);
         this.state = {
             fontLoaded:false,
-            check: false
         }
     }
 
@@ -24,11 +23,15 @@ export default class ApproveCheckbox extends Component {
         })
     }
 
+    componentWillReceiveProps(nextProps){
+
+        }
+    componentWillUpdate(nextProps, nextState) {
+        // console.log(nextProps,'>>>>>>>',nextState)
+    }
+
     handleChange=()=>{
-        // this.props.selecteHandler(this.props.idx);
-        this.setState ({check: !this.state.check},() => {
-            this.props.checked(this.props.item._id,this.state.check);
-        })
+        this.props.checked(this.props.item._id);
 
     }
 
@@ -38,7 +41,7 @@ export default class ApproveCheckbox extends Component {
         return (
             this.state.fontLoaded?
                 <TouchableOpacity style={styles.checkbox} onPress={()=>this.handleChange()}>
-                    {this.state.check?checked:unchecked}
+                    {this.props.isChecked?checked:unchecked}
                     <View style={styles.rowTextLeft}>
                         <View style={{flexDirection:'row'}}>
                             <View style={styles.senderImage}>

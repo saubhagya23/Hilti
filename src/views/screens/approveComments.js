@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { StyleSheet, Text, View, FlatList ,TouchableOpacity } from 'react-native';
-import { Font } from 'expo'
+import { Font } from 'expo';
+import Icon  from 'react-native-vector-icons/FontAwesome';
 
 import { getUnapprovedComments ,approveComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
@@ -15,7 +16,8 @@ class ApproveComments extends Component {
         this.state = {
             typing: '',
             errText:'',
-            checked: {}
+            checked: {},
+            selectAllState: false,
         }
     }
 
@@ -31,13 +33,19 @@ class ApproveComments extends Component {
 
     componentDidMount(){
         const { getUnapprovedComments } = this.props;
-        getUnapprovedComments();
+        getUnapprovedComments().then(()=> {
+            let initialObject = {}
+            for (let key in this.props.unapprovedCommentList){
+                initialObject[this.props.unapprovedCommentList[key]._id]  = false
+            }
+            this.setState({checked: initialObject})
+        });
     }
 
-    checked = (index,state) => {
-        let newob  = Object.assign({},this.state.checked,{[index]:state})
+    checked = (index) => {
+        let newob  = Object.assign({},this.state.checked,{[index]:!this.state.checked[index]})
         this.setState({checked: newob})
-    };
+    }
 
     approveComments = () => {
         let tempArray = [];
@@ -59,19 +67,42 @@ class ApproveComments extends Component {
         }
 
     };
+    selectAll = () => {
+        let newob  = {}
+        for(let key in this.state.checked) {
+            newob[key]  = !this.state.selectAllState
+        }
+        this.setState({
+            selectAllState: !this.state.selectAllState,
+            checked: newob
+        })
+    }
 
-    render(){
+    render() {
         let comments= this.props.unapprovedCommentList;
+        const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
+        const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
+        
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage={`Approve Comments`} navigation={this.props.navigation}/>
+                        <View>
+                            <TouchableOpacity  onPress={() => this.selectAll()}>
+                                <View style={{flexDirection:'row', padding: 20,}}>
+                                    {this.state.selectAllState?checked:unchecked}
+                                    <Text>Select all</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        
                         <FlatList
-                            data={comments}
+                        extraData = {this.state.checked}
+                        data={comments}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
-                                    <ApproveCheckbox item={item} checked={this.checked}/>
+                                    <ApproveCheckbox isChecked = {this.state.checked[item._id]?true:false} item={item} checked={this.checked}/>
                                 </View>
                             }
                             keyExtractor={item => item.timestamp}
