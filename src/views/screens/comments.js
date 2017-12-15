@@ -159,7 +159,7 @@ class Comments extends Component {
                                     placeholder="Type something nice"
                                     onChangeText={text => this.setState({typing: text})}
                                 />
-                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,zIndex:10}}>
+                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5}}>
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
@@ -191,7 +191,6 @@ const styles = StyleSheet.create({
         width:200,
         borderRadius:10,
         backgroundColor:'#E2D1E8',
-
     },
     timeNotif:{
       alignSelf:'flex-end',

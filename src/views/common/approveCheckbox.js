@@ -10,7 +10,6 @@ export default class ApproveCheckbox extends Component {
         super(props);
         this.state = {
             fontLoaded:false,
-            check: false
         }
     }
 
@@ -25,44 +24,42 @@ export default class ApproveCheckbox extends Component {
     }
 
     handleChange=()=>{
-        // this.props.selecteHandler(this.props.idx);
-        this.setState ({check: !this.state.check},() => {
-            this.props.checked(this.props.item._id,this.state.check);
-        })
-
+        this.props.checked(this.props.item._id);
     };
 
     render() {
-        console.log("********",this.props.item);
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
         return (
             this.state.fontLoaded?
                 <TouchableOpacity style={styles.checkbox} onPress={()=>this.handleChange()}>
-                    {this.state.check?checked:unchecked}
-                        <View style={styles.rowTextRight}>
-                            <View style={styles.messageContainer}>
-                                <Text style={styles.messageSender}>{this.props.item.comment}</Text>
-                                <View style={{flexDirection:'row', marginTop:8}}>
-                                    <Text style={styles.sender}>{this.props.item.name}</Text>
-                                    <Icon
-                                        style={{marginLeft:5,marginTop:15}}
-                                        name='circle'
-                                        size={5}
-                                    />
-                                    <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(this.props.item.timestamp).fromNow()}</Text>
+                    {this.props.isChecked?checked:unchecked}
+                    <View style={styles.rowTextLeft}>
+                        <View style={{flexDirection:'row'}}>
+                            <View style={styles.rowTextLeft}>
+                                <View style={styles.messageContainer}>
+                                    <Text style={styles.message}>{this.props.item.comment}</Text>
+                                    <View style={{flexDirection:'row', marginTop:8}}>
+                                        <Text style={styles.sender}>{this.props.item.name}</Text>
+                                        <Icon
+                                            style={{marginLeft:5,marginTop:15}}
+                                            name='circle'
+                                            size={5}
+                                        />
+                                        <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(this.props.item.timestamp).fromNow()}</Text>
+                                    </View>
                                 </View>
                             </View>
                         </View>
+                    </View>
+                    {/*<Text style={styles.checkboxText}>{this.props.content}</Text>*/}
                 </TouchableOpacity>:null
         )
     }
 }
 const styles = StyleSheet.create({
     checkbox: {
-        // marginBottom:11.5,
-        // flexDirection: 'row',
-        // paddingVertical: 5
+        flexDirection: 'row'
     },
         row: {
 
@@ -78,10 +75,11 @@ const styles = StyleSheet.create({
             marginRight: 10,
         },
         rowTextLeft: {
-            flex: 1,
+                width:200,
+                borderRadius:10,
+                backgroundColor:'#EBE7ED',
         },
         message: {
-            marginLeft:50,
             fontSize: 15
         },
         senderImage:{
