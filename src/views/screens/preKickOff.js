@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image , TouchableOpacity} from 'react-native';
 import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
 import { Font } from 'expo'
+import RadioButton from 'radio-button-react-native';
 
 class PreKickOff extends Component{
     constructor(){
         super();
 
         this.state = {
-            fontLoaded:false
+            fontLoaded:false,
+            selectedDate:'6 Jan'
         }
     }
 
@@ -21,6 +23,12 @@ class PreKickOff extends Component{
         });
         this.setState({
             fontLoaded:true
+        })
+    }
+
+    handleOnPress = (value) => {
+        this.setState({
+            selectedDate: value
         })
     }
 
@@ -93,7 +101,7 @@ class PreKickOff extends Component{
                         <View style={{flex:1}}>
                             <PageHeaderNotif props={this.props} parentPage='Pre Kick-Off' navigation={this.props.navigation}/>
                             <ScrollView>
-                                <View style={{height:179.5}}>
+                                <View style={{height:249.5}}>
                                     <Image
                                         style={{flex:1, width:null, height:null}}
                                         source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.png')}
@@ -123,14 +131,48 @@ class PreKickOff extends Component{
                                             fontFamily:'hilti-bold'}}>
                                         Participants : MO India Team
                                     </Text>
-                                    <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:20,justifyContent:'center',alignItems:'center'}}>
+                                    <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:140.5,left:20,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                         <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>28</Text>
                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
                                     </View>
 
+                                    <View style={{height:50,backgroundColor:'#ffffff',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                                        <TouchableOpacity style={{padding:10,margin:5}}>
+                                            <RadioButton
+                                                currentValue={this.state.selectedDate}
+                                                value={'6 Jan'}
+                                                outerCircleSize={15}
+                                                innerCircleSize={7.5}
+                                                innerCircleColor={'#dd2127'}
+                                                onPress={this.handleOnPress.bind(this)}
+                                            >
+                                                <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>6 Jan</Text>
+                                            </RadioButton>
+                                            {/*<Text style={{fontSize:14, color:'#dd2127', fontFamily:'hilti-bold'}}>
+                                                6 Jan
+                                            </Text>*/}
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity style={{padding:10,margin:5}}>
+                                            <RadioButton
+                                                currentValue={this.state.selectedDate}
+                                                value={'7 Jan'}
+                                                outerCircleSize={15}
+                                                innerCircleSize={7.5}
+                                                innerCircleColor={'#dd2127'}
+                                                onPress={this.handleOnPress.bind(this)}
+                                            >
+                                                <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>7 Jan</Text>
+                                            </RadioButton>
+                                            {/*<Text style={{fontSize:14, color:'#dd2127', fontFamily:'hilti-bold'}}>
+                                                7 Jan
+                                            </Text>*/}
+                                        </TouchableOpacity>
+                                    </View>
+
                                 </View>
 
-                                <View style={{marginTop:30}}>
+                                <View style={{marginTop:20}}>
                                     <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                         {trainerCommonData.group}
                                     </Text>
