@@ -83,6 +83,7 @@ class Comments extends Component {
 
 
     render(){
+        console.log("Socket connection state",this.state.isConnected);
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
         let comments= this.props.commentList;

@@ -30,7 +30,7 @@ export default class ApproveCheckbox extends Component {
             this.props.checked(this.props.item._id,this.state.check);
         })
 
-    }
+    };
 
     render() {
         console.log("********",this.props.item);
