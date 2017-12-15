@@ -145,6 +145,18 @@ export default class OrgInfo extends Component {
                                     <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
 
                                     <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
+                                        For Airport/Railway Station/ Delhi/NCR Shuttles :
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        Akash Singh Tomar | Sr. Executive - Administration
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +91 9582381609| E Akash.Tomar@hilti.com
+                                    </Text>
+
+                                    <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
+
+                                    <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
                                         For App Related Query :
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>

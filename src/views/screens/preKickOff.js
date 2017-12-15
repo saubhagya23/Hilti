@@ -132,7 +132,7 @@ class PreKickOff extends Component{
                                         Participants : MO India Team
                                     </Text>
                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:140.5,left:20,justifyContent:'center',alignItems:'center',zIndex:1}}>
-                                        <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>28</Text>
+                                        <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>6-7</Text>
                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
                                     </View>
 
