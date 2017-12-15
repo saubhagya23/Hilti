@@ -51,70 +51,23 @@ class SubmitId extends Component {
         deletedownloadIdProofEvent({param:detail.Code});*/
         const { getdownloadIdProofEvent } = this.props;
         getdownloadIdProofEvent({param:detail.Code});
-        /*let downloadedImageArray = this.props.downloadIdProofEvent;
-        console.log('downloaded data....CDM....',downloadedImageArray);
-        if(downloadedImageArray.length !== 0) {
-            console.log('Abcdef....');
-            if (downloadedImageArray.length === 1) {
-                console.log('Hello1');
-                if (downloadedImageArray[0].type === 'front') {
-                    console.log('Hello2',downloadedImageArray[0].idType);
-                    this.setState({
-                        imgFrontType: downloadedImageArray[0].type,
-                        imgFrontLoaded: true,
-                        imgFrontUrl: downloadedImageArray[0].url,
-                        value: downloadedImageArray[0].idType
-                    }, (() => {
-                        console.log('Hello3');
-                    }))
-                }
-            }
-            else{
-                console.log('Abcdefghi......');
-                if (downloadedImageArray[0].type === 'front'){
-                    this.setState({
-                        value: downloadedImageArray[0].idType,
-                        imgFrontLoaded: true,
-                        imgFrontUrl: downloadedImageArray[0].url,
-                        imgFrontType: downloadedImageArray[0].type,
-                        imgBackLoaded: true,
-                        imgBackUrl: downloadedImageArray[1].url,
-                        imgBackType: downloadedImageArray[1].type
-                    })
-                }
-                else {
-                    this.setState({
-                        value: downloadedImageArray[0].idType,
-                        imgBackLoaded: true,
-                        imgBackUrl: downloadedImageArray[0].url,
-                        imgBackType: downloadedImageArray[0].type,
-                        imgFrontLoaded: true,
-                        imgFrontUrl: downloadedImageArray[1].url,
-                        imgFrontType: downloadedImageArray[1].type
-                    })
-                }
-            }
-        }
-        else{
-            ToastAndroid.showWithGravity('No ID Submitted yet.', ToastAndroid.SHORT, ToastAndroid.CENTER);
-        }*/
     }
 
     componentWillReceiveProps(nextProps){
        console.log('Data------------------------->>>>>>>>>>>>>>>>>>>>',nextProps.downloadIdProofEvent.length);
         if(nextProps.downloadIdProofEvent && nextProps.downloadIdProofEvent.length){
-            console.log('h1');
+            // console.log('h1');
             let downloadedImageArray = nextProps.downloadIdProofEvent || [];
-            console.log('h2');
+            // console.log('h2');
             if(downloadedImageArray && downloadedImageArray.length !== 0) {
-                console.log('h3');
+                // console.log('h3');
                 let initialDownloadObject = downloadedImageArray[0] || {};
                 let secondDownloadObject = downloadedImageArray[1] || {};
-                console.log('h4');
+                // console.log('h4');
                 if (downloadedImageArray.length === 1) {
-                    console.log('h5');
+                    // console.log('h5');
                     if (initialDownloadObject && initialDownloadObject.type === 'front') {
-                        console.log('h6');
+                        // console.log('h6');
                         this.setState({
                             imgFrontType: initialDownloadObject.type,
                             imgFrontLoaded: true,
@@ -227,6 +180,7 @@ class SubmitId extends Component {
         let pickerResult = await ImagePicker.launchCameraAsync({
             allowsEditing: true,
             aspect: [4, 3],
+            quality:0.5
         });
         console.log('img photo result--->>>>>>',pickerResult);
         if(pickerResult.cancelled === 'true'){

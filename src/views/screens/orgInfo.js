@@ -40,7 +40,7 @@ export default class OrgInfo extends Component {
                                 <View style={{marginLeft:30,marginRight:60}}>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:15}}>THE LEELA AMBIENCE CONVENTION HOTEL, EAST DELHI</Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>CBD Maharaj Surajmal Road, Near Yamuna Sports Complex, Delhi 110 032</Text>
-                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>https://gurgaon.regency.hyatt.com/en.hotel/home.html</Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>https://www.theleela.com/en_us/hotels-in-delhi/the-leela-ambience-convention-hotel-delhi/</Text>
                                 </View>
 
                                 <View style={{flexDirection:'row'}}>

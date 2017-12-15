@@ -76,7 +76,7 @@ class NavigationContainer extends Component {
                                                         height: 64.5,
 
                                                     }}
-                                                    onPress={()=>this.props.navigation.navigate(link.nav,{})}>
+                                                    onPress={()=>this.props.navigation.navigate(link.nav,{day:link.day||''})}>
                                                     <Text style={{color:'#dd2127',
                                                         fontSize:16,
                                                         height:20.5,

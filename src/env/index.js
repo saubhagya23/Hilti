@@ -36,6 +36,9 @@ let API = {
             POST_COMMENTS: {url: '/api/comments',method: 'POST'},
             GET_UNAPPROVED_COMMENTS:{url:'/api/comments/unapproved',method:'GET'},
             APPROVED_COMMENTS:{url:'/api/comments/approveComments',method:'POST'}
+        },
+        AGENDA: {
+            DETAIL: {url:'/api/agendas/', method:'GET'}
         }
     }
 };
