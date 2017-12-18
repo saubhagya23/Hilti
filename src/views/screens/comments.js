@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import  moment from 'moment';
+import Icon  from 'react-native-vector-icons/FontAwesome';
 
 import {
     StyleSheet,
@@ -16,14 +17,19 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
+import openSocket from 'socket.io-client';
 
+// const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
+let socket;
 class Comments extends Component {
 
     constructor(props){
         super(props);
         this.state = {
             typing: '',
-            errText:''
+            errText:'',
+            isConnected: false,
+            commentsList:[]
         }
     }
 
@@ -37,9 +43,53 @@ class Comments extends Component {
         })
     }
 
-    componentDidMount(){
+
+    componentDidMount() {
+         socket = openSocket('http://13.68.114.98:9000', {
+            path: '/socket.io-client'
+        });
+
+        socket.on('connect', () => {
+            console.log('connected!');
+        });
+
+        socket.on('error', error => {
+            console.log('connected!');
+        });
+
+        /*socket.on('comment:save',(data) => {
+            console.log("data inserted 1 :",data);
+            let localComments = this.state.commentsList;
+            localComments.push(data);
+            this.setState({
+                commentsList:localComments
+            })
+        });*/
+
+        socket.on('comment:findOneAndUpdate', (data) => {
+            // console.log('data updated',data);
+            console.log("data updated 1 :",data);
+            let localComments = this.state.commentsList;
+            let index =localComments.findIndex((item)=> item._id === data._id);
+            if(index < 0){
+                console.log("index is :",index);
+                localComments.push(data);
+                this.setState({
+                    commentsList:localComments
+                })
+            }
+
+        });
+
         const { getComments } = this.props;
         getComments();
+    }
+
+    componentWillReceiveProps(nextProps){
+
+     this.setState({
+         commentsList:nextProps.commentList
+     })
     }
 
     sendMessage = async () => {
@@ -63,39 +113,53 @@ class Comments extends Component {
         }
     };
 
+    disconnectSocket = () => {
+
+        // openSocket.sockets.connected[socket.id].disconnect();
+        socket.close();
+
+        // socket.disconnect();
+        console.log("disconnection started");
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
+    };
+
 
     render(){
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
-        let comments= this.props.commentList;
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation}/>
+                        <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
                             ref={elm => this.flatList = elm}
-                            data={comments}
+                            data={this.state.commentsList}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     {
                                     code === item.code ?
                                         <View style={styles.rowTextRight}>
-                                            <View>
-                                                <Text >{moment(item.timestamp).fromNow()}</Text>
+                                            <View style={styles.messageContainer}>
                                                 <Text style={styles.messageSender}>{item.comment}</Text>
+                                                <Text style={styles.timeNotif}>{moment(item.timestamp).fromNow()}</Text>
                                             </View>
                                         </View>:
                                         <View style={styles.rowTextLeft}>
-                                            <View style={{flexDirection:'row'}}>
-                                                <View style={styles.senderImage}>
-                                                    <Text style={styles.senderImageText}>{item.name[0]}</Text>
+                                            <View style={styles.messageContainer}>
+                                                <Text style={styles.message}>{item.comment}</Text>
+                                                <View style={{flexDirection:'row', marginTop:8}}>
+                                                    <Text style={styles.sender}>{item.name}</Text>
+                                                    <Icon
+                                                        style={{marginLeft:5,marginTop:6}}
+                                                        name='circle'
+                                                        size={5}
+                                                    />
+                                                    <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(item.timestamp).fromNow()}</Text>
                                                 </View>
-                                                <Text style={styles.sender}>{item.name}</Text>
-                                                <Text style={{ marginTop:10,marginLeft:100}}>{moment(item.timestamp).fromNow()}</Text>
                                             </View>
-
-                                            <Text style={styles.message}>{item.comment}</Text>
                                         </View>
                                 }
 
@@ -104,7 +168,7 @@ class Comments extends Component {
                             keyExtractor={item => item.timestamp}
                         />
                         <KeyboardAwareScrollView style={{paddingBottom:20}}>
-                            <View >
+                            <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
                                     style={styles.input}
@@ -113,7 +177,7 @@ class Comments extends Component {
                                     placeholder="Type something nice"
                                     onChangeText={text => this.setState({typing: text})}
                                 />
-                                <TouchableOpacity onPress={this.sendMessage}>
+                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5}}>
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
@@ -142,39 +206,52 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     rowTextLeft: {
-        flex: 1,
+        width:200,
+        borderRadius:10,
+        backgroundColor:'#E2D1E8',
+    },
+    timeNotif:{
+      alignSelf:'flex-end',
+        fontSize:10,
+        marginTop:8
     },
     rowTextRight:{
+        justifyContent:'flex-end',
         flex:1,
+        width:100,
+        borderRadius:10,
+        backgroundColor:'#EBE7ED',
+        marginLeft:100
     },
     message: {
-        marginLeft:50,
         fontSize: 15
     },
     messageSender:{
         fontSize:15,
-        alignSelf:'flex-end'
     },
     sender: {
-        marginTop:10,
-        marginLeft:10,
-        fontWeight: 'bold'
+        fontWeight:'bold',
+        alignSelf:'flex-end',
+        fontSize:10
     },
     footer: {
         flexDirection: 'row',
         backgroundColor: '#eee',
     },
     input: {
+        borderWidth: 2,  // size/width of the border
+        borderColor: 'lightgrey',
         paddingHorizontal: 20,
         fontSize: 18,
-        flex: 1,
+        width:250,
+        marginLeft:10
     },
     send: {
         alignSelf: 'center',
         color: '#dd2127',
         fontSize: 16,
         fontWeight: 'bold',
-        padding: 20,
+        padding:10
     },
     senderImage:{
         backgroundColor:'lightblue',
@@ -188,6 +265,9 @@ const styles = StyleSheet.create({
     senderImageText:{
         fontSize:30,
         fontWeight:'bold'
+    },
+    messageContainer:{
+        padding:10
     }
 });
 

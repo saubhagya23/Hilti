@@ -7,8 +7,10 @@ import Icon  from 'react-native-vector-icons/FontAwesome';
 
 import { getUnapprovedComments ,approveComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
-// import Checkbox from '../common/Checkbox'
 import ApproveCheckbox from '../common/approveCheckbox';
+import openSocket from 'socket.io-client';
+
+let socket;
 class ApproveComments extends Component {
 
     constructor(props){
@@ -18,6 +20,7 @@ class ApproveComments extends Component {
             errText:'',
             checked: {},
             selectAllState: false,
+            unapprovedList:[]
         }
     }
 
@@ -31,21 +34,75 @@ class ApproveComments extends Component {
         })
     }
 
+    componentWillReceiveProps(nextProps){
+        // console.log("cwrp[Comments]",nextProps.unapprovedCommentList);
+        this.setState({
+            unapprovedList:nextProps.unapprovedCommentList
+        })
+    }
+
     componentDidMount(){
+
+        socket = openSocket('http://13.68.114.98:9000', {
+            path: '/socket.io-client'
+        });
+
+        socket.on('connect', () => {
+            console.log('connected!');
+        });
+
+        socket.on('error', error => {
+            console.log('connected!');
+        });
+
+        socket.on('comment:save',(data) => {
+            console.log("data inserted 1 :",data);
+            let localComments = this.state.unapprovedList;
+            localComments.push(data);
+            this.setState({
+                unapprovedList:localComments
+            })
+        });
+
+
+        socket.on('comment:findOneAndUpdate', (data) => {
+            // console.log('data updated',data);
+            let localComments = this.state.unapprovedList;
+            let index =localComments.findIndex((item)=> item._id === data._id);
+            if(index >=0){
+                localComments.splice(index,1);
+            }
+            this.setState({
+                unapprovedList:localComments
+            })
+        });
+
+
         const { getUnapprovedComments } = this.props;
         getUnapprovedComments().then(()=> {
-            let initialObject = {}
-            for (let key in this.props.unapprovedCommentList){
-                initialObject[this.props.unapprovedCommentList[key]._id]  = false
+            let initialObject = {};
+            for (let key in this.state.unapprovedList){
+                initialObject[this.state.unapprovedList[key]._id]  = false
             }
             this.setState({checked: initialObject})
         });
     }
 
+
+    disconnectSocket = () => {
+        // openSocket.sockets.connected[socket.id].disconnect();
+        socket.disconnect();
+        // socket.socket.disconnect();
+        console.log("disconnect started");
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
+    };
+
     checked = (index) => {
         let newob  = Object.assign({},this.state.checked,{[index]:!this.state.checked[index]})
         this.setState({checked: newob})
-    }
+    };
 
     approveComments = () => {
         let tempArray = [];
@@ -79,15 +136,15 @@ class ApproveComments extends Component {
     }
 
     render() {
-        let comments= this.props.unapprovedCommentList;
+        let comments= this.state.unapprovedList;
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
-        
+
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage={`Approve Comments`} navigation={this.props.navigation}/>
+                        <PageHeaderNotif props={this.props} parentPage={`Approve Comments`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <View>
                             <TouchableOpacity  onPress={() => this.selectAll()}>
                                 <View style={{flexDirection:'row', padding: 20,}}>
@@ -96,7 +153,7 @@ class ApproveComments extends Component {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        
+
                         <FlatList
                         extraData = {this.state.checked}
                         data={comments}
@@ -107,7 +164,7 @@ class ApproveComments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
-                        <TouchableOpacity onPress={this.approveComments}>
+                        <TouchableOpacity onPress={this.approveComments} style={{width:100,marginLeft:150,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,marginBottom:10}}>
                             <Text style={styles.approve}>Approve</Text>
                         </TouchableOpacity>
                     </View>
@@ -174,7 +231,7 @@ const styles = StyleSheet.create({
         color: '#dd2127',
         fontSize: 16,
         fontWeight: 'bold',
-        padding: 20,
+        padding:5,
     },
 });
 

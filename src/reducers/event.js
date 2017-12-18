@@ -101,9 +101,9 @@ export function event (state = initialState, action) {
             return Object.assign({},state,{unapprovedCommentList})
         }
         case APPROVE_COMMENTS : {
-            let commentList = JSON.parse(JSON.stringify(state.commentList));
+            // let commentList = JSON.parse(JSON.stringify(state.commentList));
             let unapprovedCommentList = JSON.parse(JSON.stringify(state.unapprovedCommentList));
-                for (var i = 0, lenCom = action.payload.length; i < lenCom; i++) {
+               /* for (var i = 0, lenCom = action.payload.length; i < lenCom; i++) {
                     for (var j = 0, len = unapprovedCommentList.length; j < len; j++) {
                         if (action.payload[i]._id === unapprovedCommentList[j]._id) {
                             unapprovedCommentList.splice(j, 1);
@@ -112,8 +112,8 @@ export function event (state = initialState, action) {
                     }
                 }
 
-            commentList.concat(action.payload);
-            return Object.assign({},state,{commentList,unapprovedCommentList});
+            commentList.concat(action.payload);*/
+            return Object.assign({},state,{unapprovedCommentList});
         }
         case AGENDA_LIST:{
             let agendaList = action.payload;

@@ -4,7 +4,7 @@ import NavigationContainer from '../common/navigationContainer'
 class AgendaNavigation extends Component {
     render(){
         const data = [
-                        {name: 'Pre Kick-Off',nav:'AgendaDay1',day:'pre-kick-off'},
+                        {name: 'Pre Kick-Off',nav:'PreKickOff'},
                         {name: 'Day 1',nav:'AgendaDay1',day:'Day1'},
                         {name: 'Day 2',nav:'AgendaDay1',day:'Day2'},
                         {name: 'Day 3',nav:'AgendaDay1',day:'Day3'},
