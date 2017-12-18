@@ -52,7 +52,6 @@ export default class ApproveCheckbox extends Component {
                             </View>
                         </View>
                     </View>
-                    {/*<Text style={styles.checkboxText}>{this.props.content}</Text>*/}
                 </TouchableOpacity>:null
         )
     }

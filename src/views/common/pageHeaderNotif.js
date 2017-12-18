@@ -70,7 +70,12 @@ class PageHeaderNotif extends Component {
                                         style={{height:26.5,
                                             flexDirection:'row',
                                             backgroundColor:'white'}}
-                                        onPress={()=>this.props.props.navigation.goBack()}>
+                                        onPress={()=>{
+                                            if(this.props.disconnectSocket){
+                                                this.props.disconnectSocket();
+                                            }
+                                            this.props.props.navigation.goBack()
+                                        }}>
                                         <Icon
                                             style={{marginLeft:19.5}}
                                             name="angle-left"

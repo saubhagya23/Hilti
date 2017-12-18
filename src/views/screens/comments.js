@@ -20,7 +20,7 @@ import PageHeaderNotif from "../common/pageHeaderNotif";
 import openSocket from 'socket.io-client';
 
 // const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
-
+let socket;
 class Comments extends Component {
 
     constructor(props){
@@ -28,7 +28,8 @@ class Comments extends Component {
         this.state = {
             typing: '',
             errText:'',
-            isConnected: false
+            isConnected: false,
+            commentsList:[]
         }
     }
 
@@ -44,47 +45,39 @@ class Comments extends Component {
 
 
     componentDidMount() {
-/*
-        var ws = new WebSocket('http://13.68.114.98:3000/socket.io-client');
-
-        ws.onopen = e => {
-            // connection opened
-            console.log("connected",e);
-        };
-
-        ws.onmessage = e => {
-            // a message was received
-            console.log("message",e.data);
-        };
-
-        ws.onerror = e => {
-            // an error occurred
-            console.log("error",e.message);
-        };
-
-        ws.onclose = e => {
-            // connection closed
-            console.log("close",e.code, e.reason);
-        };*/
-
-        // const socket = WebSocket('http://13.68.114.98:9000/socket.io-client');
-         const socket = openSocket("http://10.1.0.221:9000/socket.io-client");
-
+         socket = openSocket('http://13.68.114.98:9000', {
+            path: '/socket.io-client'
+        });
 
         socket.on('connect', () => {
-            this.setState({ isConnected: true });
+            console.log('connected!');
         });
 
-        socket.on('ping', data => {
-            this.setState(data);
+        socket.on('error', error => {
+            console.log('connected!');
         });
 
-       const { getComments } = this.props;
+        socket.on('comment:save',(data) => {
+            console.log("data inserted 1 :",data);
+            let localComments = this.state.commentsList;
+            localComments.push(data);
+            this.setState({
+                commentsList:localComments
+            })
+        });
+
+        const { getComments } = this.props;
         getComments();
     }
 
+    componentWillReceiveProps(nextProps){
+
+     this.setState({
+         commentsList:nextProps.commentList
+     })
+    }
+
     sendMessage = async () => {
-        console.log("send button clicked");
         // read message from component state
         const message = this.state.typing;
         if(message) {
@@ -105,20 +98,24 @@ class Comments extends Component {
         }
     };
 
+    disconnectSocket = () => {
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
+    };
+
 
     render(){
-        console.log("Socket connection state",this.state.isConnected);
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
-        let comments= this.props.commentList;
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation}/>
+                        <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
                             ref={elm => this.flatList = elm}
-                            data={comments}
+                            data={this.state.commentsList}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     {
