@@ -44,7 +44,7 @@ class ExperienceCorner extends Component {
     render(){
         // let imgSrc = require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png');
         let imgSrc;
-        let currDate = new Date().getDate();
+        letimgSrc = require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png'); currDate = new Date().getDate();
         let currMonth = monthName[new Date().getMonth()];
         // console.log('date and month---->>>',typeof currDate,typeof currMonth);
         let today = currDate.toString() + " " + currMonth + new Date().getFullYear();
