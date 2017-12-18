@@ -266,7 +266,7 @@ export function approveComment(data) {
 }
 
 export function getAgendaData(data) {
-    // console.log('data in apidata---agenda-->>',data);
+    console.log('data in apidata---agenda-->>',data);
     return function (dispatch) {
         return getAgendaList(data).then(function (response) {
             dispatch({

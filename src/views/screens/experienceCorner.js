@@ -63,17 +63,24 @@ class ExperienceCorner extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='EXPERIENCE CORNER' navigation={this.props.navigation}/>
 
-                        <ImageBackground
-                            style={{height:183}}
-                            source={imgSrc}
-                        >
-                            <Text style={{position:'absolute',marginTop:22.5,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                BE READY FOR A MEMORABLE EXPERIENCE
-                            </Text>
-                            <Text style={{position:'absolute',marginTop:85,marginLeft:18.5,fontSize:9,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                Check-out this page on Jan 07, 2018 for details.
-                            </Text>
-                        </ImageBackground>
+                        {(today >= '7 Jan 2018')?
+                            <Image
+                                resizeMode={'stretch'}
+                                source={imgSrc}
+                            />:
+                            <ImageBackground
+                                style={{height:183}}
+                                source={imgSrc}
+                            >
+                                <Text style={{position:'absolute',marginTop:22.5,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                    BE READY FOR A MEMORABLE EXPERIENCE
+                                </Text>
+                                <Text style={{position:'absolute',marginTop:85,marginLeft:18.5,fontSize:9,fontFamily:'hilti-bold',color:'#7c294e'}}>
+                                    Check-out this page on Jan 07, 2018 for details.
+                                </Text>
+                            </ImageBackground>
+                        }
+
                     </View>:null
                 }
             </View>

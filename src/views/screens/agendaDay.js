@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image ,FlatList} from 'react-native';
 import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
@@ -32,15 +32,35 @@ class AgendaDay extends Component{
     componentDidMount(){
         const { getAgendaData } = this.props;
         let detail = JSON.parse(this.props.userDetail);
-        let day = this.props.navigation.state.params.day;
-        // console.log('day is----->>>',day,detail);
+        let date = this.props.navigation.state.params.day;
+        console.log('day is----->>>',date,detail.Jan08GroupA);
+        let grpName;
         let groupName = 'ASM-TM Group 11'
-        getAgendaData({param:groupName,day:day});
+        if(date === '8 Jan 18'){
+            grpName = detail.Jan08GroupA;
+        }
+        else if(date === '9 Jan 18'){
+            grpName = detail.Jan09GroupA;
+        }
+        else{
+            grpName = detail.Jan10GroupA;
+        }
+        getAgendaData({param:grpName,day:date});
     }
 
     render(){
         console.log('this.props in agenda day----------->>>>>',this.props.agendaList);
-        let day = this.props.navigation.state.params.day;
+        let date = this.props.navigation.state.params.day
+        let day;
+        if(date === '8 Jan 18'){
+            day = 'Day 1'
+        }
+        else if(date === '9 Jan 18'){
+            day = 'Day 2'
+        }
+        else{
+            day = 'Day 3'
+        }
         /*let traineeCommonData = {group:'ASM-TM Group 1', dressCode:'Smart casual, safety shoes',};
         let trainerCommonData = {group:'TAC-1', dressCode:'Smart casual, safety shoes',}
         let dummyData = [
@@ -102,7 +122,28 @@ class AgendaDay extends Component{
                 to:'14:13'
             }*!/
         ];*/
-        let empAgenda = this.props.agendaList;
+        console.log('***********',this.props.agendaList);
+        let empAgenda = {
+                header: {
+                    Date: null,
+                    ParticipantsGroups: null,
+                    DressCode: null,
+                    GroupCoordinator: null
+                },
+                body: []
+            };
+
+        if(this.props.agendaList && Object.keys(this.props.agendaList).length){
+            empAgenda = this.props.agendaList;
+            console.log('empagenda',empAgenda,'*********',this.props.agendaList);
+        }
+        console.log('empAgenda-------------',empAgenda);
+
+
+        //console.log('empagenda',empAgenda,'*********',this.props.agendaList);
+        let currentDateStr = date.split(' ');
+        let currentDate = currentDateStr[0];
+        let currentMonth = currentDateStr[1];
         return(
             <View style={styles.container}>
                 {
@@ -140,24 +181,64 @@ class AgendaDay extends Component{
                                              fontFamily:'hilti-bold'}}>
                                          Participants : MO India Team
                                      </Text>
-                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:20,justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>28</Text>
-                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
+                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:20,justifyContent:'center',alignItems:'center',zIndex:10}}>
+                                         <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentDate}</Text>
+                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentMonth}</Text>
                                      </View>
 
                                  </View>
 
-                                 <View style={{marginTop:30}}>
-                                     <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                         {empAgenda.GroupName}
-                                     </Text>
+                                 <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
+                                     {empAgenda.header.ParticipantsGroups?
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                             Participants Groups: {empAgenda.header.ParticipantsGroups}
+                                         </Text>:
+                                         null
+                                     }
 
-                                     <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                         Dress Code: {empAgenda.DressCode}
-                                     </Text>
+                                     {empAgenda.header.DressCode?
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
+                                             Dress Code: {empAgenda.header.DressCode}
+                                         </Text>:
+                                         null
+                                     }
+
+                                     {empAgenda.header.GroupCoordinator?
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
+                                             Group Coordinator: {empAgenda.header.GroupCoordinator}
+                                         </Text>:
+                                         null
+                                     }
+
                                  </View>
 
-                                 {
+                                 <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10,marginTop:15}}>
+                                     <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>Agenda</Text>
+                                     <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>Presenter</Text>
+                                     <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>Duration</Text>
+                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>From</Text>
+                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>To</Text>
+                                 </View>
+
+                                 <FlatList
+                                     data={empAgenda.body}
+                                     keyExtractor = {(item,index) => index}
+                                     renderItem = {({item}) => (
+                                         <View>
+                                             <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
+                                                 <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.AgendaItem}</Text>
+                                                 <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.Presenter}</Text>
+                                                 <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.Dur}</Text>
+                                                 <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.From}</Text>
+                                                 <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.To}</Text>
+                                             </View>
+                                             {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
+                                         </View>
+                                     )}
+                                 >
+                                 </FlatList>
+
+                                 {/*{
                                      empAgenda.isTrainer?
                                          <View>
                                              {empAgenda.Agenda && empAgenda.Agenda.map((emp,index)=> {
@@ -253,7 +334,7 @@ class AgendaDay extends Component{
                                                  );
                                              })}
                                          </View>
-                                 }
+                                 }*/}
                              </ScrollView>
 
                         </View>:null
