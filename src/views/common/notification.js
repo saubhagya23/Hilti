@@ -38,7 +38,9 @@ class Notification extends Component {
                 {  
                     this.state.fontLoaded && this.state.showThis  ? (
                         <View style={styles.container}>
-                            
+                        {
+                        (typeof(this.props.notification.data)!='undefined') ? (
+                            <View>
                             <View style={{flexDirection:'row',marginBottom:5}}>
                                 <Text style={{
                                         alignSelf:'flex-start',
@@ -56,40 +58,85 @@ class Notification extends Component {
                                         color='#dd2127' />
                                     </TouchableOpacity>
                                 </View>
-                                
-
                             </View>
-                                
-
-                                {(typeof(this.props.notification.data)!='undefined') ?
-                                <View style={{flex:1,height:250,width:width}}>
-                                    <Image 
-                                    style={{flex:1, height: undefined, width: undefined}}
-                                    resizeMode='contain' source={{uri:this.props.notification.data.url}}/> 
-                                </View>
-                                :null}
-
-                                <View style={{
-                                    alignItems:'flex-start',
-                                    flex:1}}>
-                                    <Text style={{
-                                        textAlign: 'left',
-                                        fontFamily:'hilti-roman',
-                                        fontSize:10,
-                                        color:'#000000',
-                                        marginVertical:10}}>
-                                        {this.props.notification.body}
-                                        </Text>
-                                </View> 
+                            <View style={{flex:1,height:250,width:width}}>
+                                <Image 
+                                style={{flex:1, height: undefined, width: undefined}}
+                                resizeMode='contain' source={{uri:this.props.notification.data.url}}/> 
+                            </View>
+                            <View style={{
+                                alignItems:'flex-start',
+                                flex:1}}>
                                 <Text style={{
-                                    flexShrink:1,
-                                    alignSelf: 'flex-end',
-                                    fontSize: 9,
-                                    color: '#5b5b5b',
-                                    textAlign:'right',
-                                    marginBottom: 5
-                                }}>{moment(this.props.notification.timestamp).fromNow()}</Text>
-                                <View style={styles.horizontalLine}></View>  
+                                    textAlign: 'left',
+                                    fontFamily:'hilti-roman',
+                                    fontSize:10,
+                                    color:'#000000',
+                                    marginVertical:10}}>
+                                    {this.props.notification.body}
+                                    </Text>
+                            </View> 
+                            <Text style={{
+                                flexShrink:1,
+                                alignSelf: 'flex-end',
+                                fontSize: 9,
+                                color: '#5b5b5b',
+                                textAlign:'right',
+                                marginBottom: 5
+                            }}>
+                                {moment(this.props.notification.timestamp).fromNow()}
+                            </Text>
+                            <View style={styles.horizontalLine}></View>
+                            </View>):
+                            (
+                                
+                                <View>
+                                    <View style={{flexDirection:'row',marginBottom:5}}>
+                                            <Text style={{
+                                                    alignSelf:'flex-start',
+                                                    flex:1,
+                                                    fontSize:14,
+                                                    fontFamily:'hilti-roman',
+                                                    color:'#dd2127'}}>
+                                                {this.props.notification.title}
+                                            </Text>
+                                            <View style={styles.delBtn}>
+                                                <TouchableOpacity onPress={() => this.deleteThisNotification(this.props.notification.nid)}>
+                                                    <Icon 
+                                                    name='times'
+                                                    size={15}
+                                                    color='#dd2127' />
+                                                </TouchableOpacity>
+                                            </View>
+                                    </View>
+                                    <View style={{backgroundColor: "#d6d6d6",position: 'relative',minHeight: 100,}}>
+                                        <View style={styles.whiteOverlay}></View>
+                                            <View style={{
+                                                alignItems:'flex-start',
+                                                flex:1}}>
+                                                <Text style={{
+                                                    textAlign: 'left',
+                                                    fontFamily:'hilti-roman',
+                                                    fontSize:10,
+                                                    color:'#000000',
+                                                    width: width/2,
+                                                    marginVertical:10}}>
+                                                    {this.props.notification.body}
+                                                    </Text>
+                                            </View> 
+                                            <Text style={{
+                                                flexShrink:1,
+                                                alignSelf: 'flex-end',
+                                                fontSize: 9,
+                                                color: '#5b5b5b',
+                                                textAlign:'right',
+                                                marginBottom: 5,
+                                                marginRight: 5
+                                            }}>{moment(this.props.notification.timestamp).fromNow()}</Text>
+                                            <View style={styles.horizontalLine}></View>  
+                                    </View>
+                                </View>
+                            ) } 
                         </View>):null
                 }
                 </View>
@@ -117,6 +164,15 @@ const styles = StyleSheet.create({
     delBtn: {
         alignItems: 'flex-end',
         padding:5,
+    },
+    whiteOverlay : {
+        width: width/1.5,
+        position: 'absolute',
+        borderTopColor: '#FFF',
+        borderRightColor: 'transparent',
+        borderStyle: 'solid',
+        borderTopWidth: 200,
+        borderRightWidth: width/2,
     }
 });
 
