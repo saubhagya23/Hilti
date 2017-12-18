@@ -49,6 +49,8 @@ class Comments extends Component {
             path: '/socket.io-client'
         });
 
+        console.ignoredYellowBox = [ 'Setting a timer' ];
+
         socket.on('connect', () => {
             console.log('connected!');
         });
@@ -57,36 +59,26 @@ class Comments extends Component {
             console.log('connected!');
         });
 
-        /*socket.on('comment:save',(data) => {
-            console.log("data inserted 1 :",data);
-            let localComments = this.state.commentsList;
-            localComments.push(data);
-            this.setState({
-                commentsList:localComments
-            })
-        });*/
-
         socket.on('comment:findOneAndUpdate', (data) => {
-            // console.log('data updated',data);
-            console.log("data updated 1 :",data);
-            let localComments = this.state.commentsList;
+            let localComments = JSON.parse(JSON.stringify(this.state.commentsList));
             let index =localComments.findIndex((item)=> item._id === data._id);
             if(index < 0){
-                console.log("index is :",index);
-                localComments.push(data);
+                localComments.unshift(data);
                 this.setState({
                     commentsList:localComments
                 })
             }
-
         });
+
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
 
         const { getComments } = this.props;
         getComments();
     }
 
     componentWillReceiveProps(nextProps){
-
      this.setState({
          commentsList:nextProps.commentList
      })
@@ -96,7 +88,6 @@ class Comments extends Component {
         // read message from component state
         const message = this.state.typing;
         if(message) {
-            this.flatList.scrollToEnd();
             const {postComment} = this.props;
             postComment({
                 payload: {
@@ -107,6 +98,7 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
+            // this.flatList.scrollToEnd();
 
         }else{
             errText:'Please enter some text'
@@ -114,17 +106,8 @@ class Comments extends Component {
     };
 
     disconnectSocket = () => {
-
-        // openSocket.sockets.connected[socket.id].disconnect();
-        socket.close();
-
-        // socket.disconnect();
-        console.log("disconnection started");
-        socket.on('disconnect',()=>{
-            console.log("disconnected*************")
-        })
+        socket.disconnect();
     };
-
 
     render(){
         let user = JSON.parse(this.props.userDetail);
@@ -135,6 +118,8 @@ class Comments extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
+                            style={{marginBottom:80}}
+                            inverted
                             ref={elm => this.flatList = elm}
                             data={this.state.commentsList}
                             renderItem={({item}) =>
@@ -167,7 +152,7 @@ class Comments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
-                        <KeyboardAwareScrollView style={{paddingBottom:20}}>
+                        <KeyboardAwareScrollView style={{paddingBottom:20,bottom:0,position:'absolute'}}>
                             <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
@@ -177,7 +162,7 @@ class Comments extends Component {
                                     placeholder="Type something nice"
                                     onChangeText={text => this.setState({typing: text})}
                                 />
-                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5}}>
+                                <TouchableOpacity onPress={this.sendMessage} style={{marginLeft:10,width:70,justifyContent:'center',alignItems:'center',borderWidth:2,borderColor:'lightgrey',borderRadius:10}}>
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
@@ -208,7 +193,7 @@ const styles = StyleSheet.create({
     rowTextLeft: {
         width:200,
         borderRadius:10,
-        backgroundColor:'#E2D1E8',
+        backgroundColor:'#EBE7ED',
     },
     timeNotif:{
       alignSelf:'flex-end',
@@ -239,6 +224,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     },
     input: {
+        borderRadius:10,
         borderWidth: 2,  // size/width of the border
         borderColor: 'lightgrey',
         paddingHorizontal: 20,

@@ -35,7 +35,6 @@ class ApproveComments extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        // console.log("cwrp[Comments]",nextProps.unapprovedCommentList);
         this.setState({
             unapprovedList:nextProps.unapprovedCommentList
         })
@@ -47,6 +46,8 @@ class ApproveComments extends Component {
             path: '/socket.io-client'
         });
 
+        console.ignoredYellowBox = [ 'Setting a timer' ]
+
         socket.on('connect', () => {
             console.log('connected!');
         });
@@ -56,17 +57,18 @@ class ApproveComments extends Component {
         });
 
         socket.on('comment:save',(data) => {
-            console.log("data inserted 1 :",data);
-            let localComments = this.state.unapprovedList;
-            localComments.push(data);
+            let localComments = JSON.parse(JSON.stringify(this.state.unapprovedList));
+            localComments.unshift(data);
             this.setState({
                 unapprovedList:localComments
             })
         });
 
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        });
 
         socket.on('comment:findOneAndUpdate', (data) => {
-            // console.log('data updated',data);
             let localComments = this.state.unapprovedList;
             let index =localComments.findIndex((item)=> item._id === data._id);
             if(index >=0){
@@ -90,13 +92,7 @@ class ApproveComments extends Component {
 
 
     disconnectSocket = () => {
-        // openSocket.sockets.connected[socket.id].disconnect();
         socket.disconnect();
-        // socket.socket.disconnect();
-        console.log("disconnect started");
-        socket.on('disconnect',()=>{
-            console.log("disconnected*************")
-        })
     };
 
     checked = (index) => {
@@ -125,7 +121,7 @@ class ApproveComments extends Component {
 
     };
     selectAll = () => {
-        let newob  = {}
+        let newob  = {};
         for(let key in this.state.checked) {
             newob[key]  = !this.state.selectAllState
         }
@@ -133,10 +129,9 @@ class ApproveComments extends Component {
             selectAllState: !this.state.selectAllState,
             checked: newob
         })
-    }
+    };
 
     render() {
-        let comments= this.state.unapprovedList;
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
 
@@ -155,8 +150,9 @@ class ApproveComments extends Component {
                         </View>
 
                         <FlatList
+                            inverted
                         extraData = {this.state.checked}
-                        data={comments}
+                        data={this.state.unapprovedList}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     <ApproveCheckbox isChecked = {this.state.checked[item._id]?true:false} item={item} checked={this.checked}/>
@@ -164,6 +160,7 @@ class ApproveComments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
+
                         <TouchableOpacity onPress={this.approveComments} style={{width:100,marginLeft:150,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,marginBottom:10}}>
                             <Text style={styles.approve}>Approve</Text>
                         </TouchableOpacity>

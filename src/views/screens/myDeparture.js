@@ -144,7 +144,7 @@ class MyDeparture extends Component {
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
-                                <DetailContainer leftHeading={'My Champion Name'} rightHeading={'Champion No.'} leftData={details.MyTravelChampionName||'N/A'} rightData={details.MyTravelChampionContactNumber||'N/A'} />
+                                <DetailContainer leftHeading={'My Champion Name'} rightHeading={'Champion No.'} leftData={details.MyTravelChampionName1||'N/A'} rightData={details.MyTravelChampionContactNumber1||'N/A'} />
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
