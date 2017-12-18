@@ -92,7 +92,7 @@ export function event (state = initialState, action) {
         }
         case POST_COMMENTS: {
             let commentList = JSON.parse(JSON.stringify(state.commentList));
-            commentList.push(action.payload);
+            commentList.unshift(action.payload);
             return Object.assign({},state,{commentList});
         }
         case GET_UNAPPROVED_COMMENTS : {

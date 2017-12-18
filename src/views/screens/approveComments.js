@@ -35,7 +35,6 @@ class ApproveComments extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        // console.log("cwrp[Comments]",nextProps.unapprovedCommentList);
         this.setState({
             unapprovedList:nextProps.unapprovedCommentList
         })
@@ -58,10 +57,8 @@ class ApproveComments extends Component {
         });
 
         socket.on('comment:save',(data) => {
-            console.log("data inserted 1 in approveComments :",data);
-            let localComments = this.state.unapprovedList;
-            // console.log("localComments",localComments);
-            localComments.push(data);
+            let localComments = JSON.parse(JSON.stringify(this.state.unapprovedList));
+            localComments.unshift(data);
             this.setState({
                 unapprovedList:localComments
             })
@@ -69,10 +66,9 @@ class ApproveComments extends Component {
 
         socket.on('disconnect',()=>{
             console.log("disconnected*************")
-        })
+        });
 
         socket.on('comment:findOneAndUpdate', (data) => {
-            // console.log('data updated',data);
             let localComments = this.state.unapprovedList;
             let index =localComments.findIndex((item)=> item._id === data._id);
             if(index >=0){
@@ -154,6 +150,7 @@ class ApproveComments extends Component {
                         </View>
 
                         <FlatList
+                            inverted
                         extraData = {this.state.checked}
                         data={this.state.unapprovedList}
                             renderItem={({item}) =>
@@ -163,6 +160,7 @@ class ApproveComments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
+
                         <TouchableOpacity onPress={this.approveComments} style={{width:100,marginLeft:150,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,marginBottom:10}}>
                             <Text style={styles.approve}>Approve</Text>
                         </TouchableOpacity>

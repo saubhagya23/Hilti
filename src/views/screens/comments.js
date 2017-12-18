@@ -49,7 +49,7 @@ class Comments extends Component {
             path: '/socket.io-client'
         });
 
-        console.ignoredYellowBox = [ 'Setting a timer' ]
+        console.ignoredYellowBox = [ 'Setting a timer' ];
 
         socket.on('connect', () => {
             console.log('connected!');
@@ -60,18 +60,14 @@ class Comments extends Component {
         });
 
         socket.on('comment:findOneAndUpdate', (data) => {
-            // console.log('data updated',data);
-            console.log("data updated 1 :",data);
-            let localComments = this.state.commentsList;
+            let localComments = JSON.parse(JSON.stringify(this.state.commentsList));
             let index =localComments.findIndex((item)=> item._id === data._id);
             if(index < 0){
-                console.log("index is :",index);
-                localComments.push(data);
+                localComments.unshift(data);
                 this.setState({
                     commentsList:localComments
                 })
             }
-
         });
 
         socket.on('disconnect',()=>{
@@ -83,7 +79,6 @@ class Comments extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-
      this.setState({
          commentsList:nextProps.commentList
      })
@@ -103,7 +98,7 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
-             this.flatList.scrollToEnd();
+            // this.flatList.scrollToEnd();
 
         }else{
             errText:'Please enter some text'
@@ -114,7 +109,6 @@ class Comments extends Component {
         socket.disconnect();
     };
 
-
     render(){
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
@@ -124,6 +118,7 @@ class Comments extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
+                            inverted
                             ref={elm => this.flatList = elm}
                             data={this.state.commentsList}
                             renderItem={({item}) =>
