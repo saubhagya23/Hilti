@@ -114,6 +114,11 @@ class Comments extends Component {
     };
 
     disconnectSocket = () => {
+
+        // openSocket.sockets.connected[socket.id].disconnect();
+        socket.close();
+
+        // socket.disconnect();
         console.log("disconnection started");
         socket.on('disconnect',()=>{
             console.log("disconnected*************")
