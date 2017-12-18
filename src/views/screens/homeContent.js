@@ -59,17 +59,8 @@ class HomeContent extends Component {
 
             try {
                 const { uri } = await downloadResumable.downloadAsync();
-                console.log('Finished downloading to ', uri);
                 await asyncPost('localURL', uri);
                 this.setState({ url:uri, showVideo:true});
-
-                // downloadResumable.downloadAsync().then(videoObject => {
-                //     this.setState({ url:videoObject.uri, showVideo:true},() =>{
-                //         console.log('uri from setstate >> ', videoObject.uri)
-                //         asyncPost('video', videoObject.uri)
-                //     });
-                    
-                // })
             } catch (e) {
                 console.error(e);
             }
@@ -90,7 +81,11 @@ class HomeContent extends Component {
               this.setState({shouldPlay: true})
           }
       }
-      
+      _handlePlayback = playbackStatus => {
+        if(playbackStatus.didJustFinish) {
+            this.setState({showVideo: false})
+        }
+      }
 
 
     render(){
@@ -116,6 +111,7 @@ class HomeContent extends Component {
                                                 useNativeControls={true}
                                                 style={{flex:1}}
                                                 onLoad={this._onPlaybackStatusUpdate}
+                                                onPlaybackStatusUpdate = {this._handlePlayback}
                                             />) : 
                                             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                                                 <Progress.Circle progress={this.state.downloadProgress} size={60} color='#dd2127' showsText={true}/>
