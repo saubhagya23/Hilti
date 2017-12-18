@@ -47,6 +47,8 @@ class ApproveComments extends Component {
             path: '/socket.io-client'
         });
 
+        console.ignoredYellowBox = [ 'Setting a timer' ]
+
         socket.on('connect', () => {
             console.log('connected!');
         });

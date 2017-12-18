@@ -87,7 +87,6 @@ class Comments extends Component {
      this.setState({
          commentsList:nextProps.commentList
      })
-
     }
 
     sendMessage = async () => {
@@ -104,7 +103,7 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
-            this.flatList.scrollToEnd();
+             this.flatList.scrollToEnd();
 
         }else{
             errText:'Please enter some text'
