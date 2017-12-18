@@ -56,14 +56,18 @@ class ApproveComments extends Component {
         });
 
         socket.on('comment:save',(data) => {
-            console.log("data inserted 1 :",data);
+            console.log("data inserted 1 in approveComments :",data);
             let localComments = this.state.unapprovedList;
+            // console.log("localComments",localComments);
             localComments.push(data);
             this.setState({
                 unapprovedList:localComments
             })
         });
 
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
 
         socket.on('comment:findOneAndUpdate', (data) => {
             // console.log('data updated',data);
@@ -90,13 +94,7 @@ class ApproveComments extends Component {
 
 
     disconnectSocket = () => {
-        // openSocket.sockets.connected[socket.id].disconnect();
         socket.disconnect();
-        // socket.socket.disconnect();
-        console.log("disconnect started");
-        socket.on('disconnect',()=>{
-            console.log("disconnected*************")
-        })
     };
 
     checked = (index) => {
@@ -125,7 +123,7 @@ class ApproveComments extends Component {
 
     };
     selectAll = () => {
-        let newob  = {}
+        let newob  = {};
         for(let key in this.state.checked) {
             newob[key]  = !this.state.selectAllState
         }
@@ -133,10 +131,9 @@ class ApproveComments extends Component {
             selectAllState: !this.state.selectAllState,
             checked: newob
         })
-    }
+    };
 
     render() {
-        let comments= this.state.unapprovedList;
         const unchecked = <Icon name='square-o' size={20} color='#000' style={{marginRight: 14}}/>
         const checked = <Icon name='check-square-o' size={20} color='#dd2127' style={{marginRight: 14}}/>
 
@@ -156,7 +153,7 @@ class ApproveComments extends Component {
 
                         <FlatList
                         extraData = {this.state.checked}
-                        data={comments}
+                        data={this.state.unapprovedList}
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     <ApproveCheckbox isChecked = {this.state.checked[item._id]?true:false} item={item} checked={this.checked}/>

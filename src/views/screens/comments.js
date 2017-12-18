@@ -49,6 +49,8 @@ class Comments extends Component {
             path: '/socket.io-client'
         });
 
+        console.ignoredYellowBox = [ 'Setting a timer' ]
+
         socket.on('connect', () => {
             console.log('connected!');
         });
@@ -56,15 +58,6 @@ class Comments extends Component {
         socket.on('error', error => {
             console.log('connected!');
         });
-
-        /*socket.on('comment:save',(data) => {
-            console.log("data inserted 1 :",data);
-            let localComments = this.state.commentsList;
-            localComments.push(data);
-            this.setState({
-                commentsList:localComments
-            })
-        });*/
 
         socket.on('comment:findOneAndUpdate', (data) => {
             // console.log('data updated',data);
@@ -81,6 +74,10 @@ class Comments extends Component {
 
         });
 
+        socket.on('disconnect',()=>{
+            console.log("disconnected*************")
+        })
+
         const { getComments } = this.props;
         getComments();
     }
@@ -90,13 +87,13 @@ class Comments extends Component {
      this.setState({
          commentsList:nextProps.commentList
      })
+
     }
 
     sendMessage = async () => {
         // read message from component state
         const message = this.state.typing;
         if(message) {
-            this.flatList.scrollToEnd();
             const {postComment} = this.props;
             postComment({
                 payload: {
@@ -107,6 +104,7 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
+            this.flatList.scrollToEnd();
 
         }else{
             errText:'Please enter some text'
@@ -114,15 +112,7 @@ class Comments extends Component {
     };
 
     disconnectSocket = () => {
-
-        // openSocket.sockets.connected[socket.id].disconnect();
-        socket.close();
-
-        // socket.disconnect();
-        console.log("disconnection started");
-        socket.on('disconnect',()=>{
-            console.log("disconnected*************")
-        })
+        socket.disconnect();
     };
 
 
