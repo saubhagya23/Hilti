@@ -57,13 +57,28 @@ class Comments extends Component {
             console.log('connected!');
         });
 
-        socket.on('comment:save',(data) => {
+        /*socket.on('comment:save',(data) => {
             console.log("data inserted 1 :",data);
             let localComments = this.state.commentsList;
             localComments.push(data);
             this.setState({
                 commentsList:localComments
             })
+        });*/
+
+        socket.on('comment:findOneAndUpdate', (data) => {
+            // console.log('data updated',data);
+            console.log("data updated 1 :",data);
+            let localComments = this.state.commentsList;
+            let index =localComments.findIndex((item)=> item._id === data._id);
+            if(index < 0){
+                console.log("index is :",index);
+                localComments.push(data);
+                this.setState({
+                    commentsList:localComments
+                })
+            }
+
         });
 
         const { getComments } = this.props;
@@ -99,6 +114,7 @@ class Comments extends Component {
     };
 
     disconnectSocket = () => {
+        console.log("disconnection started");
         socket.on('disconnect',()=>{
             console.log("disconnected*************")
         })
