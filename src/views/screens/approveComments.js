@@ -90,6 +90,10 @@ class ApproveComments extends Component {
 
 
     disconnectSocket = () => {
+        // openSocket.sockets.connected[socket.id].disconnect();
+        socket.disconnect();
+        // socket.socket.disconnect();
+        console.log("disconnect started");
         socket.on('disconnect',()=>{
             console.log("disconnected*************")
         })
