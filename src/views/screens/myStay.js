@@ -75,7 +75,7 @@ class MyStay extends Component {
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35,marginTop:10}}/>
 
-                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:48,marginTop:21.5}}>Inclusions</Text>
+                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:40,marginTop:21.5}}>Inclusions</Text>
 
                                 <View >
                                     {
@@ -83,7 +83,7 @@ class MyStay extends Component {
                                             <View style={{flexDirection:'row',flexWrap:'wrap'}}>
                                                 {
                                                     details.Inclusions.map((data,index)=>(
-                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
+                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:40,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                              name="circle"
                                                              style={{color:'#dd2127'}}
@@ -97,7 +97,7 @@ class MyStay extends Component {
                                     }
                                 </View>
 
-                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:48,marginTop:21.5}}>Important to Remember</Text>
+                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:40,marginTop:21.5}}>Important to Remember</Text>
 
                                 <View >
                                     {
@@ -105,7 +105,7 @@ class MyStay extends Component {
                                             <View style={{marginBottom:15}}>
                                                 {
                                                     details.ImportantToRemember.map((data,index)=>(
-                                                        <View style={{ height:40, marginTop:10,marginLeft:50.5,flexDirection:'row'}} key={index}>
+                                                        <View style={{ height:40, marginTop:10,marginLeft:40,flexDirection:'row'}} key={index}>
                                                             <Icon
                                                                 name="circle"
                                                                 style={{color:'#dd2127'}}

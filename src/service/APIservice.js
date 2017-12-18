@@ -1,6 +1,8 @@
 import API from '../env'
 const API_BASE = API.ENDPOINT.BASE;
 import { asyncGet } from '../utils/asyncStore'
+import store from '../store/configureStore'
+
 
 async function requestAPI(url, options = {}) {
 
@@ -9,7 +11,10 @@ async function requestAPI(url, options = {}) {
           'Content-Type': 'application/json'
       };
 
-    let token = await asyncGet('token');
+    const unsubscribe = store.subscribe(() => store.getState())
+    let token = store.getState().event.userToken.token ? 
+            store.getState().event.userToken.token:
+            await asyncGet('token');
     if(token){
         headers.Authorization = `Bearer ${token}`
     }
@@ -28,7 +33,13 @@ async function requestAPI(url, options = {}) {
         }
 
     }
-    return fetch(url, reqBody).then(res => res.json())
+    return fetch(url, reqBody)
+    .then(function(resp){
+        return resp.json();
+    })
+    .catch(function(err){
+        console.log('Error:', err);
+    })
 }
 
 export function getEventList(option={}){

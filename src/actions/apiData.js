@@ -1,5 +1,5 @@
 import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList, getAllComments, postComm, getAllUnapprovedComments, approveComm,getAgendaList} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST} from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST,USER_TOKEN} from '../constants'
 
 export function getEvent() {
   return function (dispatch) {
@@ -276,4 +276,14 @@ export function getAgendaData(data) {
             return response;
         });
     };
+}
+
+export function setToken(userToken) {
+    return function (dispatch) {
+        dispatch({
+            type:USER_TOKEN,
+            payload:userToken
+        });
+        return;
+    }
 }
