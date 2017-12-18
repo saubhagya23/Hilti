@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator,AppState } from 'react-native
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { getEvent,setUserDetail, readAllNotification, getNotificationCount } from '../actions/apiData';
+import { getEvent,setUserDetail, setToken, readAllNotification, getNotificationCount } from '../actions/apiData';
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
@@ -32,7 +32,11 @@ class Home extends Component {
                 asyncGet('userDetail').then((detail) => {
                     const { setUserDetail } = this.props;
                     this.props.setUserDetail(detail);
-                });
+                    return value;
+                })
+                .then((value)=>
+                    this.props.setToken({token: value})
+                );
                 const resetAction = NavigationActions.reset({
                     index: 0,
                     actions: [
@@ -121,7 +125,8 @@ function mapDispatchToProps(dispatch){
             getEvent,
             setUserDetail,
             readAllNotification,
-            getNotificationCount
+            getNotificationCount,
+            setToken
       },
       dispatch
     ),
