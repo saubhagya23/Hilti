@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView,ToastAndroid } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
@@ -39,30 +39,38 @@ class MyArrivals extends Component {
     }
 
     downloadArrTicket = () => {
-        let userTicketUrl = this.props.arrivalTicket.url;
-        if(userTicketUrl !== '') {
-            WebBrowser.openBrowserAsync(userTicketUrl)
-                .then((resp) => {
-                    console.log("Finished", resp);
-                })
-                .catch(error => {
-                    ToastAndroid.showWithGravity('Download Unsuccessful.', ToastAndroid.SHORT, ToastAndroid.CENTER);
-                    alert.error(error);
-                });
+        if(this.props.arrivalTicket.url) {
+            let userTicketUrl = this.props.arrivalTicket.url;
+            if (userTicketUrl !== '') {
+                WebBrowser.openBrowserAsync(userTicketUrl)
+                    .then((resp) => {
+                        console.log("Finished", resp);
+                    })
+                    .catch(error => {
+                        ToastAndroid.showWithGravity('Download Unsuccessful.', ToastAndroid.SHORT, ToastAndroid.CENTER);
+                        alert.error(error);
+                    });
+            }
         }
         else{
             ToastAndroid.showWithGravity('Ticket not available yet.', ToastAndroid.SHORT, ToastAndroid.CENTER);
         }
-    }
+    };
 
     render(){
-        let details={...this.props.arrivalList[0]};
+        let details={};
+        if(this.props.arrivalList.length){
+            details={...this.props.arrivalList[0]}
+        }
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='MY ARRIVAL' navigation={this.props.navigation}/>
                         <ScrollView>
+                            {
+                                !details.hasOwnProperty('From') ? <Text style={{alignSelf:'center',color:'#dd2127',fontWeight:'bold',marginTop:7}}>No details for Delhi / NCR people</Text>:null
+                            }
                             <View
                                 style={{height:39.5,
                                     flexDirection:'row',
