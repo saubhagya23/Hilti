@@ -1,19 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, Linking, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
-import Icon  from 'react-native-vector-icons/FontAwesome';
+import { bindActionCreators } from 'redux';
+
 import Checkbox from './Checkbox';
 import { connect } from 'react-redux';
+import { sendNotif } from '../../actions/apiData'
 
 class assistanceContainer extends Component {
     submit = (url) => {
         let urlSub;
+        let Notifbody;
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
             if(this.props.assistanceData.title === "Hotel Related Query"){
                 urlSub = url + `?subject= HQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                Notifbody = 'HQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }else{
                 urlSub = url + `?subject= TQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                Notifbody = 'TQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
@@ -22,6 +27,15 @@ class assistanceContainer extends Component {
                     console.log('Don\'t know how to open URI: ' + url);
                 }
             });
+            let options = {
+                payload: {
+                    title: 'Need Assistance',
+                    body: Notifbody
+                }
+            }
+            const { sendNotif } = this.props;
+            sendNotif(options);
+
         }else{
             this.setState({
                 err:true,
@@ -129,4 +143,15 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps, null)(assistanceContainer)
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+                sendNotif
+            },
+            dispatch
+        ),
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(assistanceContainer)

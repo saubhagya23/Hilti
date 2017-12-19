@@ -125,7 +125,7 @@ class Comments extends Component {
                             renderItem={({item}) =>
                                 <View style={styles.row}>
                                     {
-                                    code === item.code ?
+                                        code === item.code ?
                                         <View style={styles.rowTextRight}>
                                             <View style={styles.messageContainer}>
                                                 <Text style={styles.messageSender}>{item.comment}</Text>
@@ -147,7 +147,7 @@ class Comments extends Component {
                                             </View>
                                         </View>
                                 }
-
+                                    { console.log("item is :",item)}
                                 </View>
                             }
                             keyExtractor={item => item.timestamp}

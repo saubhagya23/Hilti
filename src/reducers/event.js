@@ -1,7 +1,7 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
 import {
     ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
-    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN
+    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN,GET_FLAG
 } from "../constants/index";
 
 const initialState = {
@@ -22,7 +22,8 @@ const initialState = {
     commentList:[],
     unapprovedCommentList:[],
     agendaList:{},
-    userToken:{}
+    userToken:{},
+    expCorner:{}
 };
 
 export function event (state = initialState, action) {
@@ -122,6 +123,10 @@ export function event (state = initialState, action) {
         case USER_TOKEN: {
             let userToken = action.payload;
             return Object.assign({}, state, {userToken});
+        }
+        case GET_FLAG:{
+            let expCorner = action.payload[0];
+            return Object.assign({},state,{expCorner});
         }
         default:
             return state;
