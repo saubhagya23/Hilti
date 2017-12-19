@@ -47,7 +47,7 @@ export function getArrivalTicket() {
             dispatch({
                 type: ARRIVAL_TICKET,
                 payload: response
-            });
+            })
             return response;
         });
     };

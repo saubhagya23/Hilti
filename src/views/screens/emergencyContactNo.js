@@ -34,9 +34,7 @@ class EmergencyContactNo extends Component {
     }
 
     render(){
-
         let display,imgSrc ;
-        console.log("props in emergency contact no. is:",this.props.staticsContact);
         if(this.props.staticsContact){
             display= this.props.staticsContact.display;
         }
