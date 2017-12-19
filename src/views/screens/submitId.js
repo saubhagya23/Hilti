@@ -124,6 +124,12 @@ class SubmitId extends Component {
                     errText:'Please delete the image(s) first.'
                 })
             }
+            else{
+                this.setState({
+                    value:value,
+                    errText:''
+                })
+            }
         }
         else{
             this.setState({

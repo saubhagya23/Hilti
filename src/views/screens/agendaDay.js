@@ -368,7 +368,7 @@ class AgendaDay extends Component{
                                                                  <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
                                                                  :null
                                                              }
-                                                             <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Duration</Text>
+                                                             <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Dur</Text>
                                                              <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>From</Text>
                                                              <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>To</Text>
                                                          </View>
@@ -404,7 +404,7 @@ class AgendaDay extends Component{
                                                          <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
                                                          :null
                                                      }
-                                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Duration</Text>
+                                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Dur</Text>
                                                      <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>From</Text>
                                                      <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>To</Text>
                                                  </View>
@@ -434,7 +434,7 @@ class AgendaDay extends Component{
 
                                      ):
                                      <View style={{justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not updated yet....</Text>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                      </View>
                                  }
                                  {/*{(empAgenda.body && empAgenda.body.length && empAgenda.body[0].AgendaItem && empAgenda.body[0].Presenter)?
