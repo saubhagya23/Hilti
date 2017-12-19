@@ -38,7 +38,7 @@ class notificationBell extends Component {
         return(
                 <TouchableOpacity onPress={() => this.bellIconClick()} style={styles.notification}>
                     <View>
-                    {this.props.notificationCount.count && this.props.notificationCount.count!=0?
+                    {this.props.notificationCount && this.props.notificationCount.count && this.props.notificationCount.count!=0?
                     <Text style={styles.notifBadge}>{this.props.notificationCount.count}</Text>:null}
                         <Icon 
                         name='bell'
