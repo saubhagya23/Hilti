@@ -191,3 +191,10 @@ export function getAgendaList(option={}) {
     // console.log('url--->>>',URL);
     return requestAPI(URL, option)
 }
+
+export function getExperienceCornerFlag(option={}) {
+    let { url , method } = API.ENDPOINT.EXPERIENCECORNER.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
+}

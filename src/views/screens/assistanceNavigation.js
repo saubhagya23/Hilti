@@ -8,7 +8,7 @@ class assistanceNavigation extends Component {
                      navData={[
                          {name: 'TRAVEL RELATED',nav:'TravelAssistance'},
                          {name: 'HOTEL RELATED',nav:'HotelAssistance'},
-                         {name: 'EMERGENCY CONTACT NO.',nav:'ComingSoon'}
+                         {name: 'EMERGENCY CONTACT NO.',nav:'EmergencyContact'}
                          ]}/>
 
         )

@@ -39,6 +39,9 @@ let API = {
         },
         AGENDA: {
             DETAIL: {url:'/api/agendas/', method:'GET'}
+        },
+        EXPERIENCECORNER:{
+            DETAIL:{ url:'/api/........',method:'GET'}
         }
     }
 };

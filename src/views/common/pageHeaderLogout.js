@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'rea
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
 import {BoxShadow} from 'react-native-shadow';
-import { asyncRemove } from '../../utils/asyncStore'
+import {asyncGet, asyncRemove} from '../../utils/asyncStore'
 import NotificationBell from './notificationBell';
 import { NavigationActions } from "react-navigation";
 
@@ -63,7 +63,9 @@ class PageHeaderLogout extends Component {
 
                                     <TouchableOpacity style={{paddingRight:5,marginTop:19, marginRight:10}} onPress={()=>{
                                         asyncRemove('token');
+                                        asyncGet('token').then(a=>console.log("token is:",a));
                                         asyncRemove('userDetail');
+
                                         const resetAction = NavigationActions.reset({
                                             index: 0,
                                             actions: [
