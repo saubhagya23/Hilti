@@ -316,12 +316,15 @@ class AgendaDay extends Component{
                                      if(empAgenda.Venue){
                                          venueCount++;
                                      }
+                                     if(empAgenda.Presenter){
+                                         presenterCount++;
+                                     }
                                  })}
 
                                  {(empAgenda.body && empAgenda.body.length)?
                                      ((empAgenda.body[0].AgendaItem || empAgenda.body[0].Agendaitem)?
                                              (
-                                                 (empAgenda.body[0].Presenter)?
+                                                 (presenterCount>0)?
                                                      <View>
                                                          <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                              <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>

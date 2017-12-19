@@ -4,6 +4,7 @@ import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
 import { Font } from 'expo'
+import getDirections from 'react-native-google-maps-directions'
 
 class VenueLayout extends Component{
     constructor(){
@@ -13,6 +14,22 @@ class VenueLayout extends Component{
             fontLoaded:false
         }
     }
+    handleGetDirections = () => {
+        const data = {
+          destination: {
+            latitude: 28.6621,
+            longitude: 77.3021
+          },
+          params: [
+            {
+              key: "dirflg",
+              value: "d"
+            }
+          ]
+        }
+     
+        getDirections(data)
+      }
 
     async componentWillMount(){
         await Font.loadAsync({
@@ -34,11 +51,6 @@ class VenueLayout extends Component{
         });
     }
 
-    findViaGMap = () => {
-        var url = 'geo:' + '28.6621,77.3021'
-        this.openExternalApp(url);
-    }
-
     render(){
         return(
             <View style={styles.container}>
@@ -49,7 +61,7 @@ class VenueLayout extends Component{
                             style={{height:249.5}}
                             source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.png')}
                         />
-                        <TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.findViaGMap()}}>
+                        <TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
                             <View style={{flexDirection:'row'}}>
                                 <Image
                                     style={{width:9.5,height:13}}

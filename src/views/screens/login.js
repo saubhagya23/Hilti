@@ -163,7 +163,14 @@ class Login extends Component {
                                     }}
                                     onChangeText={(empId) => this.setState({empId:empId.toLowerCase(),err:false})}
                                     value={this.state.empId}
-                                    onFocus={() => {this.setState({empId:'',err:false})}}
+                                    onFocus={() => {
+                                                    if(this.state.empId === 'xyz.abc@hilti.com')
+                                                    {
+                                                        this.setState({empId:'',err:false})
+                                                    }
+                                                    else{
+                                                        this.setState({empId:this.state.empId,err:false})
+                                                    }}}
                                     underlineColorAndroid='transparent'
                                 />
 
@@ -194,7 +201,15 @@ class Login extends Component {
                                             secureTextEntry={true}
                                             onChangeText={(empCode) => this.setState({empCode:empCode})}
                                             value={ this.state.empCode }
-                                            onFocus={() => {this.setState({empCode:'',err:false})}}
+                                            onFocus={() => {
+                                                            if(this.state.empCode === 'xyz.abc@hilti.com')
+                                                            {
+                                                                this.setState({empCode:'',err:false})
+                                                            }
+                                                            else{
+                                                                this.setState({empCode:this.state.empCode,err:false})
+                                                            }
+                                                            }}
                                             underlineColorAndroid='transparent'
                                         />:
                                         <TextInput
