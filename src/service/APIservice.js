@@ -198,3 +198,10 @@ export function getExperienceCornerFlag(option={}) {
     option.method = method;
     return requestAPI(URL,option)
 }
+
+export function sendNotificationMail(option={}) {
+    let { url , method } = API.ENDPOINT.MAIL_NOTIF.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
+}

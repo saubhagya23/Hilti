@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, Linking, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
-import Icon  from 'react-native-vector-icons/FontAwesome';
+import { bindActionCreators } from 'redux';
+
 import Checkbox from './Checkbox';
 import { connect } from 'react-redux';
+import { sendNotif } from '../../actions/apiData'
 
 class assistanceContainer extends Component {
     submit = (url) => {
@@ -22,6 +24,10 @@ class assistanceContainer extends Component {
                     console.log('Don\'t know how to open URI: ' + url);
                 }
             });
+
+            const { sendNotif } = this.props;
+            sendNotif();
+
         }else{
             this.setState({
                 err:true,
@@ -129,4 +135,15 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps, null)(assistanceContainer)
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+                sendNotif
+            },
+            dispatch
+        ),
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(assistanceContainer)

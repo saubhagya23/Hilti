@@ -23,7 +23,7 @@ const initialState = {
     unapprovedCommentList:[],
     agendaList:{},
     userToken:{},
-    flag:''
+    expCorner:{}
 };
 
 export function event (state = initialState, action) {
@@ -125,8 +125,8 @@ export function event (state = initialState, action) {
             return Object.assign({}, state, {userToken});
         }
         case GET_FLAG:{
-            let flag = action.payload;
-            return Object.assign({},state,{flag});
+            let expCorner = action.payload[0];
+            return Object.assign({},state,{expCorner});
         }
         default:
             return state;

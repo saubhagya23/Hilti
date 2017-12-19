@@ -27,27 +27,18 @@ class ExperienceCorner extends Component {
     }
 
     componentDidMount() {
-
         const { getFlag } = this.props;
         getFlag();
-
-        /*let currDate = new Date().getDate();
-        let currMonth = monthName[new Date().getMonth()];
-        let today = currDate.toString() + " " + currMonth +" "+ new Date().getFullYear();
-        console.log("today is :",today,typeof today);
-
-        if(+new Date(today) >= +new Date('7 Dec 2017')){
-            console.log("greater");
-            this.setState({
-                show:true
-            })
-        }*/
     }
 
     render(){
+        let display ;
+        if(this.props.expCorner){
+            display= this.prop.expCorner.display;
+        }
         let imgSrc;
 
-        if(this.props.flag){
+        if(display){
             imgSrc = require('../../assets/images/experienceCornerRevised/exp_corner_revision_mdpi.png');
         }
         else{
@@ -64,7 +55,7 @@ class ExperienceCorner extends Component {
                             source={imgSrc}
                         >
                             {
-                                !this.props.flag ?
+                                !display ?
                                     <View>
                                         <Text style={{position:'absolute',marginTop:22.5,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                             BE READY FOR A MEMORABLE EXPERIENCE
@@ -91,7 +82,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        flag:state.event.flag
+        expCorner:state.event.expCorner
     }
 }
 

@@ -41,7 +41,10 @@ let API = {
             DETAIL: {url:'/api/agendas/', method:'GET'}
         },
         EXPERIENCECORNER:{
-            DETAIL:{ url:'/api/........',method:'GET'}
+            DETAIL:{ url:'/api/statics/experienceCorner',method:'GET'}
+        },
+        MAIL_NOTIF:{
+            DETAIL:{ url:'/api/....',method:'POST' }
         }
     }
 };
