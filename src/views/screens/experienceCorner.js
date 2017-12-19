@@ -28,13 +28,14 @@ class ExperienceCorner extends Component {
 
     componentDidMount() {
         const { getFlag } = this.props;
-        getFlag();
+        getFlag('experienceCorner');
     }
 
     render(){
         let display ;
-        if(this.props.expCorner){
-            display= this.prop.expCorner.display;
+        console.log("props in experience corner",this.props.statics);
+        if(this.props.statics){
+            display= this.props.statics.display;
         }
         let imgSrc;
 
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        expCorner:state.event.expCorner
+        statics:state.event.statics
     }
 }
 
