@@ -23,3 +23,4 @@ export const AGENDA_LIST = 'AGENDA_LIST';
 export const USER_TOKEN = 'USER_TOKEN';
 export const GET_FLAG_EXP_COR = 'GET_FLAG_EXP_COR';
 export const GET_FLAG_CONTACT = 'GET_FLAG_CONTACT';
+export const ASSISTANCE_NOTIF = 'ASSISTANCE_NOTIF';

@@ -10,12 +10,15 @@ import { sendNotif } from '../../actions/apiData'
 class assistanceContainer extends Component {
     submit = (url) => {
         let urlSub;
+        let Notifbody;
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
             if(this.props.assistanceData.title === "Hotel Related Query"){
                 urlSub = url + `?subject= HQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                Notifbody = 'HQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }else{
                 urlSub = url + `?subject= TQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                Notifbody = 'TQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
@@ -24,9 +27,14 @@ class assistanceContainer extends Component {
                     console.log('Don\'t know how to open URI: ' + url);
                 }
             });
-
+            let options = {
+                payload: {
+                    title: 'Need Assistance',
+                    body: Notifbody
+                }
+            }
             const { sendNotif } = this.props;
-            sendNotif();
+            sendNotif(options);
 
         }else{
             this.setState({

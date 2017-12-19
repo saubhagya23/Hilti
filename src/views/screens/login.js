@@ -4,7 +4,7 @@ import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavigationActions } from "react-navigation";
-import { postEvent ,setUserDetail, postUserNotificationToken} from '../../actions/apiData';
+import { postEvent ,setUserDetail,setToken, postUserNotificationToken} from '../../actions/apiData';
 import { asyncPost } from '../../utils/asyncStore';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {Permissions, Notifications} from 'expo';
@@ -62,7 +62,7 @@ class Login extends Component {
 
                     const {setUserDetail} = this.props;
                     this.props.setUserDetail(JSON.stringify(eventLoginList.userDetail));
-
+                    this.props.setToken({token: eventLoginList.token})
                     const resetAction = NavigationActions.reset({
                         index: 0,
                         actions: [
@@ -295,7 +295,8 @@ function mapDispatchToProps(dispatch){
         ...bindActionCreators({
                 postEvent,
                 setUserDetail,
-                postUserNotificationToken
+                postUserNotificationToken,
+                setToken
             },
             dispatch
         ),
