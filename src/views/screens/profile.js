@@ -69,13 +69,13 @@ class Profile extends Component {
                                     <Icon style={{marginTop:4}} name="sitemap"/>
                                     <Text style={{marginLeft:10}}>Team Category</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:22}}>{detail.Code}</Text>
+                                <Text style={{color:'grey',marginLeft:22}}>{detail.Category}</Text>
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
                                     <Text style={{marginLeft:10}}>Group Name</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:22}}>{detail.Code}</Text>
+                                <Text style={{color:'grey',marginLeft:22}}>{detail.Jan09GroupA}</Text>
 
                             </View>
 
