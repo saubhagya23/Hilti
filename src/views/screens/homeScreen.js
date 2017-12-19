@@ -88,13 +88,13 @@ class HomeScreen extends Component {
                                     <Icon style={{marginTop:4}} name="sitemap" size={13}/>
                                     <Text style={{marginLeft:10}}>Team Category</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:35}}>{user.Code}</Text>
+                                <Text style={{color:'grey',marginLeft:35}}>{user.Category}</Text>
 
                                 <View style={{flexDirection:"row",marginLeft:13,marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
                                     <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.Code}</Text>
+                                <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.Jan09GroupA}</Text>
                             </View>
                         </View>
                     </View>
