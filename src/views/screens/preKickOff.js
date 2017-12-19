@@ -15,7 +15,7 @@ class PreKickOff extends Component{
 
         this.state = {
             fontLoaded:false,
-            selectedDate:'06-jan-2018'
+            selectedDate:'6 Jan 18'
         }
     }
 
@@ -33,10 +33,11 @@ class PreKickOff extends Component{
         //get api call for 6 Jan.
         const { getAgendaData } = this.props;
         let detail = JSON.parse(this.props.userDetail);
+        let grpName = detail.Jan06GroupA;
         //let day = this.props.navigation.state.params.day;
-        // console.log('day is----->>>',day,detail);
+        console.log('day is----->>>',detail);
         let groupName = 'ASM-TM Group 11'
-        getAgendaData({param:groupName,day:'06-jan-2018'});
+        getAgendaData({param:grpName,day:'6 Jan 18'});
     }
 
     handleOnPress = (value) => {
@@ -44,14 +45,14 @@ class PreKickOff extends Component{
             selectedDate: value
         },()=> {
             //if Jan 6 selected then api call for Jan 6 else Jan 7.
-            if(this.state.selectedDate === '06-jan-2018'){
+            if(this.state.selectedDate === '6 Jan 18'){
                 // 6 jan api call
                 const { getAgendaData } = this.props;
                 let detail = JSON.parse(this.props.userDetail);
                 let day = this.props.navigation.state.params.day;
                 // console.log('day is----->>>',day,detail);
-                let groupName = 'ASM-TM Group 11'
-                getAgendaData({param:groupName,day:'06-jan-2018'});
+                let groupName = detail.Jan06GroupA;
+                getAgendaData({param:groupName,day:'6 Jan 18'});
             }
             else{
                 // 7 Jan api call
@@ -59,15 +60,36 @@ class PreKickOff extends Component{
                 let detail = JSON.parse(this.props.userDetail);
                 let day = this.props.navigation.state.params.day;
                 // console.log('day is----->>>',day,detail);
-                let groupName = 'ASM-TM Group 11'
-                getAgendaData({param:groupName,day:'07-jan-2018'});
+                let groupName = detail.Jan07GroupA;
+                getAgendaData({param:groupName,day:'7 Jan 18'});
             }
         })
     }
 
     render(){
-        let empAgenda = this.props.agendaList;
-        console.log('prekickoff data---->>>',empAgenda);
+        /*let empAgenda = this.props.agendaList;
+        console.log('prekickoff data---->>>',empAgenda);*/
+        console.log('***********',this.props.agendaList);
+        let empAgenda = {
+            header: {
+                Date: null,
+                ParticipantsGroups: null,
+                DressCode: null,
+                GroupCoordinator: null
+            },
+            body: []
+        };
+
+        if(this.props.agendaList && Object.keys(this.props.agendaList).length){
+            empAgenda = this.props.agendaList;
+            console.log('prekickoff data---->>>',empAgenda,'*********',this.props.agendaList);
+        }
+        console.log('empAgenda-------------',empAgenda);
+        let venueCount = 0;
+
+
+        /*dummy data*/
+
         let traineeCommonData = {group:'ASM-TM Group 1', dressCode:'Smart casual, safety shoes',};
         let trainerCommonData = {group:'TAC-1', dressCode:'Smart casual, safety shoes',}
         let dummyData = [
@@ -129,6 +151,7 @@ class PreKickOff extends Component{
                 to:'14:13'
             }*/
         ]
+
         return(
             <View style={styles.container}>
                 {
@@ -152,9 +175,9 @@ class PreKickOff extends Component{
                                             fontSize:14,
                                             color:'#dd2127',
                                             fontFamily:'hilti-roman'}}>
-                                        MO INDIA KICK OFF 2018</Text>
+                                        HILTI INDIA KICK OFF 2018</Text>
 
-                                    <Text
+                                    {/*<Text
                                         style={{position:'absolute',
                                             marginTop:61,
                                             marginLeft:18.5,
@@ -165,27 +188,47 @@ class PreKickOff extends Component{
                                             color:'#7c294e',
                                             fontFamily:'hilti-bold'}}>
                                         Participants : MO India Team
-                                    </Text>
+                                    </Text>*/}
                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:165.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                         <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>6-7</Text>
                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
                                     </View>
 
                                     <View style={{height:90,backgroundColor:'#ffffff'}}>
-                                        <View style={{height:50,marginLeft:100}}>
-                                            <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',marginTop:10}}>
+                                        <View style={{flex:3,marginLeft:100,justifyContent:'center',alignItems:'flex-start'}}>
+                                            {empAgenda.header.ParticipantsGroups?
+                                                <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                                    Participants Groups: {empAgenda.header.ParticipantsGroups||'Data not available'}
+                                                </Text>:
+                                                null
+                                            }
+
+                                            {empAgenda.header.DressCode?
+                                                <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
+                                                    Dress Code: {empAgenda.header.DressCode||'Data not available'}
+                                                </Text>:
+                                                null
+                                            }
+
+                                            {empAgenda.header.GroupCoordinator?
+                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
+                                                    Group Coordinator: {empAgenda.header.GroupCoordinator||'Data not available'}
+                                                </Text>:
+                                                null
+                                            }
+                                            {/*<Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',marginTop:7}}>
                                                 {trainerCommonData.group}
                                             </Text>
 
-                                            <Text style={{marginTop:6.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
+                                            <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                                 Dress Code: {trainerCommonData.dressCode},
-                                            </Text>
+                                            </Text>*/}
                                         </View>
-                                        <View style={{height:40,backgroundColor:'#ffffff',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                                        <View style={{flex:2,backgroundColor:'#ffffff',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                                             <TouchableOpacity style={{paddingRight:10,paddingTop:10,paddingBottom:10,marginRight:5,marginTop:5,marginBottom:5}}>
                                                 <RadioButton
                                                     currentValue={this.state.selectedDate}
-                                                    value={'06-jan-2018'}
+                                                    value={'6 Jan 18'}
                                                     outerCircleSize={15}
                                                     innerCircleSize={7.5}
                                                     innerCircleColor={'#dd2127'}
@@ -201,7 +244,7 @@ class PreKickOff extends Component{
                                             <TouchableOpacity style={{padding:10,margin:5}}>
                                                 <RadioButton
                                                     currentValue={this.state.selectedDate}
-                                                    value={'07-jan-2018'}
+                                                    value={'7 Jan 18'}
                                                     outerCircleSize={15}
                                                     innerCircleSize={7.5}
                                                     innerCircleColor={'#dd2127'}
@@ -218,6 +261,129 @@ class PreKickOff extends Component{
 
                                 </View>
 
+                                {empAgenda.body.map((empAgenda)=>{
+                                    if(empAgenda.Venue){
+                                        venueCount++;
+                                    }
+                                })}
+
+                                {(empAgenda.body && empAgenda.body.length)?
+                                    ((empAgenda.body[0].AgendaItem || empAgenda.body[0].Agendaitem)?
+                                            (
+                                                (empAgenda.body[0].Presenter)?
+                                                    <View>
+                                                        <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
+                                                            <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>
+                                                            <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Presenter</Text>
+                                                            {(venueCount > 0)?
+                                                                <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
+                                                                :null
+                                                            }
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Dur</Text>
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>From</Text>
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>To</Text>
+                                                        </View>
+
+                                                        <FlatList
+                                                            data={empAgenda.body}
+                                                            keyExtractor = {(item,index) => index}
+                                                            renderItem = {({item}) => (
+                                                                <View>
+                                                                    <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
+                                                                        <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.AgendaItem||item.Agendaitem}</Text>
+                                                                        <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Presenter||'-'}</Text>
+                                                                        {(venueCount > 0)?
+                                                                            <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
+                                                                            :null
+                                                                        }
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
+                                                                    </View>
+                                                                    {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
+                                                                </View>
+                                                            )}
+                                                        >
+                                                        </FlatList>
+                                                    </View>
+                                                    :<View>
+                                                        <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
+                                                            <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>
+                                                            <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Trainer</Text>
+                                                            {(venueCount > 0)?
+                                                                <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
+                                                                :null
+                                                            }
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Duration</Text>
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>From</Text>
+                                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>To</Text>
+                                                        </View>
+
+                                                        <FlatList
+                                                            data={empAgenda.body}
+                                                            keyExtractor = {(item,index) => index}
+                                                            renderItem = {({item}) => (
+                                                                <View>
+                                                                    <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
+                                                                        <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.AgendaItem||item.Agendaitem}</Text>
+                                                                        <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Trainer||'-'}</Text>
+                                                                        {(venueCount > 0)?
+                                                                            <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
+                                                                            :null
+                                                                        }
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
+                                                                        <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
+                                                                    </View>
+                                                                    {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
+                                                                </View>
+                                                            )}
+                                                        >
+                                                        </FlatList>
+                                                    </View>
+                                            )
+                                            :<View>
+                                                <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
+                                                    <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Visiting</Text>
+                                                    <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Leaders</Text>
+                                                    {(venueCount > 0)?
+                                                        <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
+                                                        :null
+                                                    }
+                                                    <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Duration</Text>
+                                                    <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>From</Text>
+                                                    <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>To</Text>
+                                                </View>
+
+                                                <FlatList
+                                                    data={empAgenda.body}
+                                                    keyExtractor = {(item,index) => index}
+                                                    renderItem = {({item}) => (
+                                                        <View>
+                                                            <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
+                                                                <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupVisiting}</Text>
+                                                                <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||'-'}</Text>
+                                                                {(venueCount > 0)?
+                                                                    <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
+                                                                    :null
+                                                                }
+                                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
+                                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
+                                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
+                                                            </View>
+                                                            {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
+                                                        </View>
+                                                    )}
+                                                >
+                                                </FlatList>
+                                            </View>
+
+                                    ):
+                                    <View style={{justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not updated yet....</Text>
+                                    </View>
+                                }
+
                                 {/*<View style={{marginTop:20}}>
                                     <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                         {trainerCommonData.group}
@@ -228,32 +394,32 @@ class PreKickOff extends Component{
                                     </Text>
                                 </View>*/}
 
-                                <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10,marginTop:15}}>
+                                {/*<View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10,marginTop:15}}>
                                     <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>Agenda</Text>
                                     <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>Presenter</Text>
                                     <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>Duration</Text>
                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>From</Text>
                                     <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>To</Text>
                                 </View>
-                                {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
 
                                 <FlatList
                                     data={dummyData}
                                     keyExtractor = {(item,index) => index}
                                     renderItem = {({item}) => (
                                         <View>
-                                        <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
-                                            <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.agenda}</Text>
-                                            <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.trainer}</Text>
-                                            <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>9 Hrs</Text>
-                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.from}</Text>
-                                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.to}</Text>
-                                        </View>
-                                            {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
+                                            <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
+                                                <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.agenda}</Text>
+                                                <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.trainer}</Text>
+                                                <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>9 Hrs</Text>
+                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.from}</Text>
+                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.to}</Text>
+                                            </View>
+                                            <View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>
                                         </View>
                                     )}
                                 >
-                                </FlatList>
+                                </FlatList>*/}
+                                {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
 
                                 {/*{dummyData.map((emp,index)=>{
                                     return(

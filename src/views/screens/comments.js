@@ -112,6 +112,7 @@ class Comments extends Component {
     render(){
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
+        console.log("code is :",code);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?

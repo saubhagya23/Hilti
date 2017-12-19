@@ -11,10 +11,13 @@ async function requestAPI(url, options = {}) {
           'Content-Type': 'application/json'
       };
 
-    const unsubscribe = store.subscribe(() => store.getState())
+    /*const unsubscribe = store.subscribe(() => store.getState())
     let token = store.getState().event.userToken.token ? 
             store.getState().event.userToken.token:
             await asyncGet('token');
+
+    */
+    let token = await asyncGet('token');
     if(token){
         headers.Authorization = `Bearer ${token}`
     }
@@ -193,7 +196,7 @@ export function getAgendaList(option={}) {
 }
 
 export function getExperienceCornerFlag(option={}) {
-    let { url , method } = API.ENDPOINT.EXPERIENCECORNER.DETAIL;
+    let { url , method } = API.ENDPOINT.EXPERIENCE_CORNER.DETAIL;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL,option)
@@ -201,6 +204,13 @@ export function getExperienceCornerFlag(option={}) {
 
 export function sendNotificationMail(option={}) {
     let { url , method } = API.ENDPOINT.MAIL_NOTIF.DETAIL;
+    let URL = `${API_BASE + url}`;
+    option.method = method;
+    return requestAPI(URL,option)
+}
+
+export function getEmergencyContactFlag(option={}) {
+    let { url , method } = API.ENDPOINT.EMERGENCY_CONTACT.DETAIL;
     let URL = `${API_BASE + url}`;
     option.method = method;
     return requestAPI(URL,option)
