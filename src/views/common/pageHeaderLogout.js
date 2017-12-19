@@ -56,12 +56,13 @@ class PageHeaderLogout extends Component {
                                         style={{marginTop:20,marginLeft:19.5}}
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
-                                    <TouchableOpacity style={{paddingVertical:5,marginLeft:165.5, marginTop:14.5, marginRight:24}} onPress={()=>this.props.props.navigation.goBack()}>
+
+                                    <TouchableOpacity style={{paddingVertical:5,marginLeft:150, marginTop:14.5,marginRight:5}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
                                     </TouchableOpacity>
 
 
-                                    <TouchableOpacity style={{paddingRight:5,marginTop:19, marginRight:10}} onPress={()=>{
+                                    <TouchableOpacity style={{marginTop:19,marginRight:50,width:55}} onPress={()=>{
                                         asyncRemove('token');
                                         asyncGet('token').then(a=>console.log("token is:",a));
                                         asyncRemove('userDetail');
@@ -74,10 +75,7 @@ class PageHeaderLogout extends Component {
                                         });
                                         this.props.navigation.dispatch(resetAction);
                                     }}>
-                                        <Icon
-                                            name="sign-out"
-                                            size={20}
-                                        />
+                                        <Text style={{padding:4,color:'white',backgroundColor:'#dd2127',fontWeight:'bold'}}>Logout</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{height:26.5,flexDirection:'row',backgroundColor:'white'}}>

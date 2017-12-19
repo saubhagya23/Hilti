@@ -82,14 +82,6 @@ class assistanceContainer extends Component {
                                 fontFamily:'hilti-roman'
                                 }}>
                                 {this.props.assistanceData.title}</Text>
-                        <Text style={{
-                                fontSize: 12,
-                                textAlign:'center',
-                                fontFamily:'hilti-roman',
-                                marginTop: 18,
-                                }}>
-                                {this.props.assistanceData.desc} 
-                        </Text>
                     </View>
                     <View style={{flex:1}}>
                         {CheckBoxes}

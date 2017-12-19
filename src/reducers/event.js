@@ -1,7 +1,7 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
 import {
     ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
-    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN,GET_FLAG
+    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN,GET_FLAG_EXP_COR,GET_FLAG_CONTACT
 } from "../constants/index";
 
 const initialState = {
@@ -23,7 +23,8 @@ const initialState = {
     unapprovedCommentList:[],
     agendaList:{},
     userToken:{},
-    expCorner:{}
+    statics:'',
+    staticsContact:''
 };
 
 export function event (state = initialState, action) {
@@ -124,9 +125,13 @@ export function event (state = initialState, action) {
             let userToken = action.payload;
             return Object.assign({}, state, {userToken});
         }
-        case GET_FLAG:{
-            let expCorner = action.payload[0];
-            return Object.assign({},state,{expCorner});
+        case GET_FLAG_EXP_COR:{
+            let statics = action.payload[0];
+            return Object.assign({},state,{statics});
+        }
+        case GET_FLAG_CONTACT:{
+            let staticsContact = action.payload[0];
+            return Object.assign({},state,{staticsContact})
         }
         default:
             return state;
