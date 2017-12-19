@@ -22,3 +22,4 @@ export const APPROVE_COMMENTS = 'APPROVE_COMMENTS';
 export const AGENDA_LIST = 'AGENDA_LIST';
 export const USER_TOKEN = 'USER_TOKEN';
 export const GET_FLAG = 'GET_FLAG';
+export const ASSISTANCE_NOTIF = 'ASSISTANCE_NOTIF';

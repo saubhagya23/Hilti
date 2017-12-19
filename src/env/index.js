@@ -44,7 +44,7 @@ let API = {
             DETAIL:{ url:'/api/statics/experienceCorner',method:'GET'}
         },
         MAIL_NOTIF:{
-            DETAIL:{ url:'/api/....',method:'POST' }
+            DETAIL:{ url:'/api/notifications/needAssistance/send', method:'POST' }
         }
     }
 };
