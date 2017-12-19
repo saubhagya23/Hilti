@@ -11,13 +11,10 @@ async function requestAPI(url, options = {}) {
           'Content-Type': 'application/json'
       };
 
-    /*const unsubscribe = store.subscribe(() => store.getState())
+    const unsubscribe = store.subscribe(() => store.getState())
     let token = store.getState().event.userToken.token ? 
             store.getState().event.userToken.token:
             await asyncGet('token');
-
-    */
-    let token = await asyncGet('token');
     if(token){
         headers.Authorization = `Bearer ${token}`
     }
