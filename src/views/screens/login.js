@@ -120,15 +120,19 @@ class Login extends Component {
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
                         <View style={styles.container1}>
-                            <View style={{height:215.5}}>
-                            <Image
-                                style={{position:'relative', width:null, height:null, flex:1}}
-                                resizeMode={'cover'}
-                                source={require('../../assets/images/loginMainImg/loginMainImg_hdpi.png')}
-                            />
+                            <View style={{height:179.5}}>
+                                <Image
+                                    style={{position:'relative', width:null, height:null, flex:1}}
+                                    resizeMode={'cover'}
+                                    source={require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png')}
+                                />
                             </View>
 
-                            <Text style={{position:'absolute', marginTop:67.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>MO INDIA EVENTS</Text>
+                            <Image
+                                style={{position:'absolute',marginTop:18.5,marginLeft:18.5}}
+                                source={require('../../assets/images/logo/logo_hdpi.png')}
+                            />
+                            <Text style={{position:'absolute', marginTop:67.5, marginLeft:18.5, color:'#dd2127', fontFamily:'hilti-roman'}}>HILTI INDIA EVENTS</Text>
                             <View style={{marginLeft:30, marginRight:30}}>
                                 {
                                     this.state.err ?

@@ -185,10 +185,10 @@ export function approveComm(option={}) {
 
 export function getAgendaList(option={}) {
     let { url , method } = API.ENDPOINT.AGENDA.DETAIL;
-    // console.log('options are--->>>>',option);
+    console.log('options are--->>>>',option);
     let URL = `${API_BASE + url + option.param+'/'+option.day}`;
     option.method = method;
-    // console.log('url--->>>',URL);
+    console.log('url--->>>',URL);
     return requestAPI(URL, option)
 }
 
