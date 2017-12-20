@@ -29,6 +29,14 @@ class HomeScreen extends Component {
         /!*const { downloadIdProofEvent } = this.props;
         downloadIdProofEvent();*!/
     }*/
+    componentWillMount() {
+        if(this.props.navigation.state.params && this.props.navigation.state.params.formLogin) {
+            this.setState({isModalVisible: true});
+        }
+        else {
+            this.setState({isModalVisible: false});
+        }
+    }
 
 
     _handleVideoRef = component => {
