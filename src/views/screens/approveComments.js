@@ -65,7 +65,7 @@ class ApproveComments extends Component {
         });
 
         socket.on('disconnect',()=>{
-            console.log("disconnected*************")
+            console.log("disconnected")
         });
 
         socket.on('comment:findOneAndUpdate', (data) => {

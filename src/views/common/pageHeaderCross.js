@@ -76,23 +76,6 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'flex-end'
     },
-    /*text: {
-        textAlign: 'center'
-    },
-    button: {
-        height: 60,
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#0b7eff'
-    },
-    buttonText: {
-        color: 'white'
-    },
-    icon: {
-        height: 25,
-        width: 40
-    }*/
 });
 
 export default PageHeaderCross;

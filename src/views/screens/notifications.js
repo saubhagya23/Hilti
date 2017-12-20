@@ -74,4 +74,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications)
-// export default Notifications;

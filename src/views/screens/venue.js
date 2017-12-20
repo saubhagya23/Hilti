@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Image, Linking } from 'react-native';
-//import Icon  from 'react-native-vector-icons/EvilIcons'
-import PageHeaderNotif from '../common/pageHeaderNotif'
-import BackTravel from './backTravel'
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/MaterialIcons'
+import PageHeaderNotif from '../common/pageHeaderNotif'
+
 
 class Venue extends Component {
     constructor(){
@@ -26,12 +25,9 @@ class Venue extends Component {
     }
 
     openExternalApp(url) {
-        console.log('url is-----',url);
         Linking.canOpenURL(url).then(supported => {
             if (supported) {
                 Linking.openURL(url);
-            } else {
-                console.log('Don\'t know how to open URI: ' + url);
             }
         });
     }
@@ -53,11 +49,6 @@ class Venue extends Component {
                                 style={{flex:1,position:'relative'}}
                                 source={require('../../assets/images/venueMainImg/banner_img_mdpi.png')}
                             />
-
-                            {/*<Image
-                                style={{position:'absolute',marginTop:22,marginLeft:19.5,width:63.5,height:15.5}}
-                                source={require('../../assets/images/logo/logo_mdpi.png')}
-                            />*/}
 
                             <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:148,height:48.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                 THE LEELA AMBIENCE CONVENTION HOTEL, EAST DELHI
@@ -83,7 +74,7 @@ class Venue extends Component {
                                     style={{color:'#dd2127'}}
                                     name='location-on'
                                     size={15}
-                                    onPress={() => {/*start video*/}} />
+                                />
                                 <Text style={{marginLeft:7.5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                     FIND ON GOOGLE MAP
                                 </Text>

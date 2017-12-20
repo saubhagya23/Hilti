@@ -23,8 +23,6 @@ class assistanceContainer extends Component {
             Linking.canOpenURL(urlSub).then(supported => {
                 if (supported) {
                     Linking.openURL(urlSub);
-                } else {
-                    console.log('Don\'t know how to open URI: ' + url);
                 }
             });
             let options = {

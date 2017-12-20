@@ -6,8 +6,7 @@ class OrgInfoNavigation extends Component {
         const data = [
                         {name: 'Org Info',nav:'OrgInfo'},
                         {name: "Do's & Don't's",nav:'DosDonts'},
-                        {name: 'FAQs',nav:'Faqs'},
-                        /*{name: 'I would like to share',nav:'OrgShare'},*/
+                        {name: 'FAQs',nav:'Faqs'}
                     ]
         return(            
             <NavigationContainer navigation={this.props.navigation}

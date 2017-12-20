@@ -1,9 +1,18 @@
 import {getEventList, postEventList,getArrivalList,getDepartureList,getStayList,getVideoUrl,uploadIdProofEventList,getdownloadIdProofEventList, deletedownloadIdProofEventList, postNotificationToken, getNotifCount, getAllNotif, readAllNotif, deleteNotif, getArrivalTicketList, getDepartureTicektList, getAllComments, postComm, getAllUnapprovedComments, approveComm,getAgendaList, getExperienceCornerFlag, sendNotificationMail,getEmergencyContactFlag} from '../service/APIservice';
-import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST,USER_TOKEN,GET_FLAG_EXP_COR,GET_FLAG_CONTACT,ASSISTANCE_NOTIF} from '../constants'
+import { EVENT_LIST, EVENT_LOGIN_LIST,ARRIVAL_LIST,DEPARTURE_LIST,STAY_LIST,VIDEO_URL ,USER_DETAIL,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, NOTIFICATION_TOKEN, NOTIF_COUNT, GET_NOTIF, READ_NOTIF, DELETE_NOTIF , ARRIVAL_TICKET, DEPARTURE_TICKET,GET_COMMENTS,POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST,USER_TOKEN,GET_FLAG_EXP_COR,GET_FLAG_CONTACT,ASSISTANCE_NOTIF,SESSION_EXPIRED} from '../constants'
+
+export function setSession() {
+    return function (dispatch) {
+        dispatch({
+            type:SESSION_EXPIRED,
+            payload:true
+        })
+    }
+}
 
 export function getEvent() {
   return function (dispatch) {
-    return getEventList().then(function (response) {
+    return getEventList(dispatch).then(function (response) {
       dispatch({
         type: EVENT_LIST,
         payload: response
@@ -15,7 +24,7 @@ export function getEvent() {
 
 export function postEvent(empLoginInfo) {
     return function (dispatch) {
-        return postEventList(empLoginInfo).then(function (response) {
+        return postEventList(dispatch,empLoginInfo).then(function (response) {
             dispatch({
                 type: EVENT_LOGIN_LIST,
                 payload: response
@@ -31,7 +40,7 @@ export function postEvent(empLoginInfo) {
 
 export function getArrivals(data) {
     return function (dispatch) {
-        return getArrivalList(data).then(function (response) {
+        return getArrivalList(dispatch,data).then(function (response) {
             dispatch({
                 type: ARRIVAL_LIST,
                 payload: response
@@ -43,7 +52,7 @@ export function getArrivals(data) {
 
 export function getArrivalTicket() {
     return function (dispatch) {
-        return getArrivalTicketList().then(function (response) {
+        return getArrivalTicketList(dispatch).then(function (response) {
             dispatch({
                 type: ARRIVAL_TICKET,
                 payload: response
@@ -55,7 +64,7 @@ export function getArrivalTicket() {
 
 export function getStay(data) {
     return function (dispatch) {
-        return getStayList(data).then(function (response) {
+        return getStayList(dispatch,data).then(function (response) {
             dispatch({
                 type: STAY_LIST,
                 payload: response
@@ -67,7 +76,7 @@ export function getStay(data) {
 
 export function getDepartures(data) {
     return function (dispatch) {
-        return getDepartureList(data).then(function (response) {
+        return getDepartureList(dispatch,data).then(function (response) {
             dispatch({
                 type: DEPARTURE_LIST,
                 payload: response
@@ -79,7 +88,7 @@ export function getDepartures(data) {
 
 export function getDepartureTicket() {
     return function (dispatch) {
-        return getDepartureTicektList().then(function (response) {
+        return getDepartureTicektList(dispatch).then(function (response) {
             dispatch({
                 type: DEPARTURE_TICKET,
                 payload: response
@@ -91,7 +100,7 @@ export function getDepartureTicket() {
 
 export function getVideo() {
     return function (dispatch) {
-        return getVideoUrl().then(function (response) {
+        return getVideoUrl(dispatch).then(function (response) {
             dispatch({
                 type: VIDEO_URL,
                 payload: response
@@ -114,7 +123,7 @@ export function setUserDetail(userInfo) {
 
 export function uploadIdProofEvent(uploadObj) {
     return function (dispatch) {
-        return uploadIdProofEventList(uploadObj).then(function (response) {
+        return uploadIdProofEventList(dispatch,uploadObj).then(function (response) {
             dispatch({
                 type: UPLOAD_ID_PROOF_LIST,
                 payload: response
@@ -131,7 +140,7 @@ export function uploadIdProofEvent(uploadObj) {
 
 export function getdownloadIdProofEvent(data) {
     return function (dispatch) {
-        return getdownloadIdProofEventList(data).then(function (response) {
+        return getdownloadIdProofEventList(dispatch,data).then(function (response) {
             dispatch({
                 type: DOWNLOAD_ID_PROOF_LIST,
                 payload: response
@@ -143,7 +152,7 @@ export function getdownloadIdProofEvent(data) {
 
 export function deletedownloadIdProofEvent(data) {
     return function (dispatch) {
-        return deletedownloadIdProofEventList(data).then(function (response) {
+        return deletedownloadIdProofEventList(dispatch,data).then(function (response) {
             dispatch({
                 type: DELETE_ID_PROOF_LIST,
                 payload: response
@@ -154,7 +163,7 @@ export function deletedownloadIdProofEvent(data) {
 }
 export function postUserNotificationToken (data) {
     return function (dispatch) {
-        return postNotificationToken(data).then(function (response) {
+        return postNotificationToken(dispatch,data).then(function (response) {
             dispatch({
                 type: NOTIFICATION_TOKEN,
                 payload: response
@@ -169,7 +178,7 @@ export function postUserNotificationToken (data) {
 }
 export function getNotificationCount(data) {
     return function (dispatch) {
-        return getNotifCount(data).then(function (response) {
+        return getNotifCount(dispatch,data).then(function (response) {
             dispatch({
                 type: NOTIF_COUNT,
                 payload: response
@@ -180,7 +189,7 @@ export function getNotificationCount(data) {
 }
 export function getAllNotification(data) {
     return function (dispatch) {
-        return getAllNotif(data).then(function (response) {
+        return getAllNotif(dispatch,data).then(function (response) {
             dispatch({
                 type: GET_NOTIF,
                 payload: response
@@ -191,7 +200,7 @@ export function getAllNotification(data) {
 }
 export function readAllNotification(data) {
     return function (dispatch) {
-        return readAllNotif(data).then(function (response) {
+        return readAllNotif(dispatch,data).then(function (response) {
             dispatch({
                 type: READ_NOTIF,
                 payload: response
@@ -203,7 +212,7 @@ export function readAllNotification(data) {
 
 export function getComments() {
     return function (dispatch) {
-        return getAllComments().then(function (response) {
+        return getAllComments(dispatch).then(function (response) {
             dispatch({
                 type: GET_COMMENTS,
                 payload: response
@@ -215,7 +224,7 @@ export function getComments() {
 
 export function postComment(data) {
     return function (dispatch) {
-        return postComm(data).then(function (response) {
+        return postComm(dispatch,data).then(function (response) {
             dispatch({
                 type: POST_COMMENTS,
                 payload: response
@@ -227,7 +236,7 @@ export function postComment(data) {
 
 export function deleteNotification (data) {
     return function (dispatch) {
-        return deleteNotif(data).then(function (response) {
+        return deleteNotif(dispatch,data).then(function (response) {
             dispatch({
                 type: DELETE_NOTIF,
                 payload: response
@@ -242,7 +251,7 @@ export function deleteNotification (data) {
 }
 export function getUnapprovedComments() {
     return function (dispatch) {
-        return getAllUnapprovedComments().then(function (response) {
+        return getAllUnapprovedComments(dispatch).then(function (response) {
             dispatch({
                 type: GET_UNAPPROVED_COMMENTS,
                 payload: response
@@ -254,7 +263,7 @@ export function getUnapprovedComments() {
 
 export function approveComment(data) {
     return function (dispatch) {
-        return approveComm(data).then(function (response) {
+        return approveComm(dispatch,data).then(function (response) {
             dispatch({
                 type: APPROVE_COMMENTS,
                 payload: response
@@ -266,9 +275,8 @@ export function approveComment(data) {
 }
 
 export function getAgendaData(data) {
-    console.log('data in apidata---agenda-->>',data);
     return function (dispatch) {
-        return getAgendaList(data).then(function (response) {
+        return getAgendaList(dispatch,data).then(function (response) {
             dispatch({
                 type: AGENDA_LIST,
                 payload: response
@@ -291,7 +299,7 @@ export function setToken(userToken) {
 export function getFlag(data) {
     return function (dispatch) {
         if(data === 'experienceCorner'){
-            return getExperienceCornerFlag().then(function (response) {
+            return getExperienceCornerFlag(dispatch).then(function (response) {
                 dispatch({
                     type: GET_FLAG_EXP_COR,
                     payload: response
@@ -299,7 +307,7 @@ export function getFlag(data) {
                 return response;
             });
         }else{
-            return getEmergencyContactFlag().then(function (response) {
+            return getEmergencyContactFlag(dispatch).then(function (response) {
                 dispatch({
                     type: GET_FLAG_CONTACT,
                     payload: response
@@ -312,7 +320,7 @@ export function getFlag(data) {
 
 export function sendNotif(data) {
     return function (dispatch) {
-        return sendNotificationMail(data).then(function (response) {
+        return sendNotificationMail(dispatch,data).then(function (response) {
             dispatch({
                 type: ASSISTANCE_NOTIF,
                 payload: response

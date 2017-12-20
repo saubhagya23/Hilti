@@ -9,12 +9,6 @@ import { asyncPost } from '../../utils/asyncStore';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import {Permissions, Notifications} from 'expo';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-// You can import from local files
-/*import AssetExample from './components/AssetExample';
-import Header from './components/Header';*/
-
-// or any pure javascript modules available in npm
-//import { Card } from 'react-native-elements'; // 0.17.0
 
 class Login extends Component {
     constructor(props) {
@@ -37,6 +31,8 @@ class Login extends Component {
         this.setState({
             fontLoaded:true
         })
+
+
     }
 
 
@@ -55,7 +51,7 @@ class Login extends Component {
             };
             const {postEvent} = this.props;
             postEvent({payload: empLoginInfo}).then(eventLoginList => {
-                if (eventLoginList.token) {
+                if (eventLoginList && eventLoginList.token) {
                     asyncPost('token', eventLoginList.token);
                     eventLoginList.userDetail.role = eventLoginList.role;
                     asyncPost('userDetail', JSON.stringify(eventLoginList.userDetail));
@@ -101,7 +97,7 @@ class Login extends Component {
         }
         if (finalStatus !== 'granted') {
             return;
-        } console.log(finalStatus,'permission');
+        }
         let token = await Notifications.getExpoPushTokenAsync();
         let options = {
             payload: { token: token },
@@ -115,7 +111,6 @@ class Login extends Component {
         return (
             <KeyboardAwareScrollView
                 style={styles.container}
-                // behavior="padding"
             >
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
@@ -227,7 +222,7 @@ class Login extends Component {
                                                 fontSize:12
                                             }}
                                             onChangeText={(empCode) => this.setState({empCode:empCode})}
-                                            value={ '12345' }
+                                            value={ 'Employee code' }
                                             onFocus={() => {this.setState({empCode:'',err:false,showPaswd:true})}}
                                             underlineColorAndroid='transparent'
                                         />
@@ -251,16 +246,10 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        /*alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,*/
         backgroundColor: 'white',
     },
     container1: {
         flex: 1,
-        /*alignItems: 'center',*/
-        /*justifyContent: 'center',*/
-        /*paddingTop: Constants.statusBarHeight,*/
         backgroundColor: 'white',
     },
     title: {
@@ -289,13 +278,6 @@ const styles = StyleSheet.create({
         borderWidth:1,
         marginTop:36,
     }
-    /*paragraph: {
-      margin: 24,
-      fontSize: 18,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      color: '#34495e',
-    },*/
 });
 
 function mapStateToProps (state) {

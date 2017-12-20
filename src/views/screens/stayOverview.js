@@ -24,18 +24,6 @@ class stayOverview extends Component {
     }
 
     downloadFile = () => {
-        /*console.log('*************************',FileSystem.documentDirectory);
-        FileSystem.downloadAsync(
-            'http://13.68.114.98:9000/api/documents/download/Stay_Overview.xlsx',
-            FileSystem.documentDirectory + 'Stay_Overview.xlsx'
-        )
-            .then(({ uri }) => {
-                console.log('Finished downloading to ', uri);
-            })
-            .catch(error => {
-                console.error(error);
-            });*/
-
         WebBrowser.openBrowserAsync('http://13.68.114.98:9000/api/documents/download/Stay_Overview.xlsx')
             .then((resp) => {
                 console.log("Finished", resp);

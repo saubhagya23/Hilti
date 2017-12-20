@@ -4,6 +4,7 @@ import Icon  from 'react-native-vector-icons/FontAwesome';
 import { getNotificationCount, readAllNotification} from '../../actions/apiData';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { NavigationActions } from "react-navigation";
 
 class notificationBell extends Component {
     constructor(){
@@ -17,16 +18,27 @@ class notificationBell extends Component {
     async componentWillMount() {
         this.getNotificationAsync()
         .then((data)=>{
-            // alert(data.count);
         });
     }
+
+    componentWillReceiveProps(nextProps){
+        if(!nextProps.isLogged){
+            const resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({routeName: 'Login'})
+                ]
+            });
+            nextProps.navigation.dispatch(resetAction);
+        }
+    }
+
 
     async getNotificationAsync() { 
         return this.props.getNotificationCount();
     }
 
     bellIconClick() { 
-        // this.props.pauseVideo();
         this.props.readAllNotification().then((resp)=>{
             this.props.navigation.navigate('Notifications',{})
         })
@@ -78,7 +90,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return {
-        notificationCount: state.event.notificationCount
+        notificationCount: state.event.notificationCount,
+        isLogged:state.event.isLogged
     }
 }
 

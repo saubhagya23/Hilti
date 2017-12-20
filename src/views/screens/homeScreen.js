@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
-//import { Font } from 'expo'
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
 import { connect } from 'react-redux';
 import Modal from 'react-native-modal'
 import Icon  from 'react-native-vector-icons/FontAwesome';
+import { bindActionCreators } from 'redux';
+import { setSession }from '../../actions/apiData'
 
 class HomeScreen extends Component {
 
@@ -17,18 +18,12 @@ class HomeScreen extends Component {
         fontLoaded:false,
     };
 
-    /*async componentWillMount(){
-        await Font.loadAsync({
-            'hilti-bold': require('../../assets/fonts/Hilti-Bold.ttf'),
-            'hilti-roman': require('../../assets/fonts/Hilti-Roman.ttf'),
-        });
-        this.setState({
-            fontLoaded:true,
-        })
+     componentWillMount(){
+         const { setSession } = this.props;
+        setSession();
+    }
 
-        /!*const { downloadIdProofEvent } = this.props;
-        downloadIdProofEvent();*!/
-    }*/
+
 
 
     _handleVideoRef = component => {
@@ -51,8 +46,7 @@ class HomeScreen extends Component {
         if(typeof this.props.userDetail === "string"){
             user = JSON.parse(this.props.userDetail)
         }
-        // console.log('userDetails home screen--->>>>',this.props.userDetail);
-        return(
+       return(
             <View style={styles.container}>
 
                 <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
@@ -166,13 +160,6 @@ class HomeScreen extends Component {
                     </View>
                     <View style={{height:136.5,marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
                         {/*organisational information nav container*/}
-                        {/*<StandaloneNav
-                        navigationPage='TravelNavigation'
-                        imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
-                        titleText='ORGANISATIONAL INFORMATION'
-
-                        homeNavProps={this.props}/>*/}
-
                         <HomeNavContainer
                             navigationPage='OrgInfoNavigation'
                             imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
@@ -236,12 +223,22 @@ const styles = StyleSheet.create({
     }
 });
 
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch,
+        ...bindActionCreators({
+               setSession
+            },
+            dispatch
+        ),
+    };
+}
+
 function mapStateToProps (state) {
     return {
-        // eventLoginList: state.event.eventLoginList,
-        userDetail:state.event.userDetail
+       userDetail:state.event.userDetail
     }
 }
 
-export default connect(mapStateToProps, null)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
 

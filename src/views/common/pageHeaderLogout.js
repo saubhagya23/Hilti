@@ -64,7 +64,7 @@ class PageHeaderLogout extends Component {
 
                                     <TouchableOpacity style={{marginTop:19,marginRight:50,width:55}} onPress={()=>{
                                         asyncRemove('token');
-                                        asyncGet('token').then(a=>console.log("token is:",a));
+                                        asyncGet('token');
                                         asyncRemove('userDetail');
 
                                         const resetAction = NavigationActions.reset({

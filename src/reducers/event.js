@@ -1,7 +1,7 @@
 import { EVENT_LIST, EVENT_LOGIN_LIST ,UPLOAD_ID_PROOF_LIST, DOWNLOAD_ID_PROOF_LIST, DELETE_ID_PROOF_LIST, ARRIVAL_TICKET, DEPARTURE_TICKET } from '../constants'
 import {
     ARRIVAL_LIST, DEPARTURE_LIST, STAY_LIST, VIDEO_URL, USER_DETAIL, NOTIF_COUNT, GET_NOTIF, READ_NOTIF,
-    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN,GET_FLAG_EXP_COR,GET_FLAG_CONTACT
+    GET_COMMENTS, POST_COMMENTS,GET_UNAPPROVED_COMMENTS,APPROVE_COMMENTS,AGENDA_LIST, USER_TOKEN,GET_FLAG_EXP_COR,GET_FLAG_CONTACT,SESSION_EXPIRED
 } from "../constants/index";
 
 const initialState = {
@@ -24,15 +24,16 @@ const initialState = {
     agendaList:{},
     userToken:{},
     statics:'',
-    staticsContact:''
+    staticsContact:'',
+    isLogged:true
 };
 
 export function event (state = initialState, action) {
     switch (action.type) {
-        /*case EVENT_LIST: {
-            let eventList = action.payload;
-            return Object.assign({}, state, eventList);
-        }*/
+        case SESSION_EXPIRED: {
+            let isLogged = action.payload;
+            return Object.assign({}, state,{isLogged});
+        }
         case EVENT_LOGIN_LIST: {
             let eventLoginList = action.payload;
             return Object.assign({}, state, eventLoginList);
@@ -103,18 +104,7 @@ export function event (state = initialState, action) {
             return Object.assign({},state,{unapprovedCommentList})
         }
         case APPROVE_COMMENTS : {
-            // let commentList = JSON.parse(JSON.stringify(state.commentList));
             let unapprovedCommentList = JSON.parse(JSON.stringify(state.unapprovedCommentList));
-               /* for (var i = 0, lenCom = action.payload.length; i < lenCom; i++) {
-                    for (var j = 0, len = unapprovedCommentList.length; j < len; j++) {
-                        if (action.payload[i]._id === unapprovedCommentList[j]._id) {
-                            unapprovedCommentList.splice(j, 1);
-                            len--;
-                        }
-                    }
-                }
-
-            commentList.concat(action.payload);*/
             return Object.assign({},state,{unapprovedCommentList});
         }
         case AGENDA_LIST:{

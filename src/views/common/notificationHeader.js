@@ -56,7 +56,6 @@ class notificationHeader extends Component {
                                     />
 
                                     <View style={{marginLeft:185.5, marginTop:19.5, marginRight:24}}>
-                                        {/* <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} /> */}
                                     </View>
                                     <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon

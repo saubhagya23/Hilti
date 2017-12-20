@@ -7,8 +7,6 @@ import { uploadIdProofEvent, getdownloadIdProofEvent, deletedownloadIdProofEvent
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-native-modal'
-import Icon  from 'react-native-vector-icons/FontAwesome'
-//import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class SubmitId extends Component {
     constructor(){
@@ -41,49 +39,32 @@ class SubmitId extends Component {
             fontLoaded:true,
         })
 
-        /*const { downloadIdProofEvent } = this.props;
-        downloadIdProofEvent();*/
     }
 
     componentDidMount(){
         let detail = JSON.parse(this.props.userDetail);
-        /*const { deletedownloadIdProofEvent } = this.props;
-        deletedownloadIdProofEvent({param:detail.Code});*/
         const { getdownloadIdProofEvent } = this.props;
         getdownloadIdProofEvent({param:detail.Code});
     }
 
     componentWillReceiveProps(nextProps){
-       console.log('Data------------------------->>>>>>>>>>>>>>>>>>>>',nextProps.downloadIdProofEvent.length);
         if(nextProps.downloadIdProofEvent && nextProps.downloadIdProofEvent.length){
-            // console.log('h1');
             let downloadedImageArray = nextProps.downloadIdProofEvent || [];
-            // console.log('h2');
             if(downloadedImageArray && downloadedImageArray.length !== 0) {
-                // console.log('h3');
                 let initialDownloadObject = downloadedImageArray[0] || {};
                 let secondDownloadObject = downloadedImageArray[1] || {};
-                // console.log('h4');
                 if (downloadedImageArray.length === 1) {
-                    // console.log('h5');
                     if (initialDownloadObject && initialDownloadObject.type === 'front') {
-                        // console.log('h6');
                         this.setState({
                             imgFrontType: initialDownloadObject.type,
                             imgFrontLoaded: true,
                             imgFrontUrl: initialDownloadObject.url+'?random_number='+new Date().getTime(),
                             value: initialDownloadObject.idType,
                             btnText: 'DELETE'
-                        }, (() => {
-                            console.log('Hello3');
-                        }))
-                    }
-                    else{
-                        console.log('data found for back img-----');
+                        })
                     }
                 }
                 else{
-                    //console.log('Abcdefghi......');
                     if (initialDownloadObject && initialDownloadObject.type === 'front'){
                         this.setState({
                             value: initialDownloadObject.idType,
@@ -117,7 +98,6 @@ class SubmitId extends Component {
     }
 
     handleOnPress(value){
-        console.log('value is******',value);
         if(this.state.value !== ''){
             if(this.state.imgFrontType !== ''){
                 this.setState({
@@ -137,17 +117,6 @@ class SubmitId extends Component {
                 errText:''
             })
         }
-        /*if(this.state.errText !== ''){
-            this.setState({
-                errText:'',
-                value:value,
-            })
-        }else{
-            this.setState({
-                value:'',
-
-            })
-        }*/
     }
 
     showModal = (typeSelected) => {
@@ -173,13 +142,6 @@ class SubmitId extends Component {
                 })
             }
         }
-        /*if(typeSelected === 'front'){
-            this.setState({imgFrontType:'front'})
-        }
-        else{
-            this.setState({imgBackType:'back'})
-        }*/
-
     }
 
     takePhoto =  async () => {
@@ -188,7 +150,6 @@ class SubmitId extends Component {
             aspect: [4, 3],
             quality:0.5
         });
-        console.log('img photo result--->>>>>>',pickerResult);
         if(pickerResult.cancelled === 'true'){
             if(this.state.currImgType === 'front'){
                 this.setState({
@@ -225,24 +186,17 @@ class SubmitId extends Component {
                 })
             }
         }
-        // this.handleImagePicked(pickerResult);
     };
 
     pickImage = async () => {
         if(this.state.value === ''){
-            //ToastAndroid.showWithGravity('Please select a type of ID proof', ToastAndroid.SHORT, ToastAndroid.CENTER);
             this.setState({errText:'Please select a type of ID proof'})
         }
         else{
-            let result, resultFront,resultBack;
-            /*result = await ImagePicker.launchImageLibraryAsync({
-                allowsEditing: true,
-            });*/
+            let resultFront,resultBack;
+
 
             if(this.state.currImgType === 'front'){
-                /*resultFront = await ImagePicker.launchImageLibraryAsync({
-                    allowsEditing: true,
-                });*/
                 resultFront = await ImagePicker.launchImageLibraryAsync({
                     allowsEditing: true,
                 });
@@ -254,7 +208,6 @@ class SubmitId extends Component {
                         imgFrontType:this.state.currImgType,
                         errText:'',
                         isModalVisible:false
-                        // btnText:'DELETE'
                     })
                 }
                 else{
@@ -265,15 +218,11 @@ class SubmitId extends Component {
                         imgFrontType:this.state.currImgType,
                         errText:'',
                         isModalVisible:false
-                        // btnText:'DELETE'
                     })
                 }
 
             }
             else{
-                /*resultBack = await ImagePicker.launchImageLibraryAsync({
-                    allowsEditing: true,
-                });*/
                 if(this.state.imgFrontType!=='front'){
                     this.setState({
                         errText:'First select front image'
@@ -290,14 +239,9 @@ class SubmitId extends Component {
                     imgBackType:this.state.currImgType,
                     errText:'',
                     isModalVisible:false
-                    // btnText:'DELETE'
                 })}
             }
-            /*let result = await ImagePicker.launchImageLibraryAsync({
-                allowsEditing: true,
-            });*/
 
-            //console.log(resultFront);
             if(this.state.currImgType === 'front'){
                 if(resultFront.cancelled){
                     this.setState({
@@ -330,63 +274,11 @@ class SubmitId extends Component {
                     }
                 }
             }
-
-
-
-            /*if(type === 'front'){
-                this.setState({
-                    imgFrontLoaded:true,
-                    imgFrontUrl:result.uri,
-                    imgFrontData:result,
-                    imgFrontType:type,
-                    btnText:'DELETE'
-                })
-            }
-            else{
-                this.setState({
-                    imgBackLoaded:true,
-                    imgBackUrl:result.uri,
-                    imgBackData:result,
-                    imgBackType:type,
-                    btnText:'DELETE'
-                })
-            }*/
-
-            /*if(result.cancelled){
-                this.setState({
-                    imgFrontLoaded:false,
-                    imgBackLoaded:false,
-                    imgFrontUrl:'',
-                    imgBackUrl:'',
-                    imgFrontType:'',
-                    imgBackType:'',
-                    imgFrontData:{},
-                    imgBackData:{},
-                })
-            }*/
-
-            //this.handleImagePicked(result);
-
-
-            /*let uploadObj = {
-                id:this.state.value,
-                type:type,
-                file:result.uri
-            }
-
-            console.log('upload obj is----',uploadObj);*/
-
-            /*if (!result.cancelled) {
-                this.setState({ imgUrl: result.uri });
-            }*/
         }
     };
 
     uploadImage = (imageStatus,uri) => {
-        console.log('image upload fn called..');
-        console.log('states####',this.state.value,this.state.imgFrontType,uri);
         if((this.state.value === ''|| this.state.imgFrontType === '')){
-            //ToastAndroid.showWithGravity('Please select the type and images.', ToastAndroid.SHORT, ToastAndroid.CENTER);
             this.setState({
                 errText:'Please select the type and images',
                 value:'',
@@ -414,39 +306,19 @@ class SubmitId extends Component {
             else{
                 uploadObj.append('type',this.state.imgBackType);
             }
-            /*let uploadObj = {
-                id:this.state.value,
-                type:this.state.imgtype,
-                file:this.state.imgUrl
-            }*/
-
-
-            console.log('upload obj is----',uploadObj);
 
             let header = {
                 'Accept': 'application/json',
                 'Content-Type': 'multipart/form-data',
-                //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTFkMDQxNTRkYTA2YTZiOTZhMTNlODEiLCJzdWIiOiJhYmhpc2hlay5qYWluQGhpbHRpLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTEyMDM2NTMxLCJleHAiOjE1MTQxOTY1MzF9.yjfM45pq_GjbNyFkbeFq3WM8zip8z1tpvHsQ0a-gKpY'
             }
 
-            /*let options = {
-                method: 'POST',
-                body: uploadObj,
-                headers: header
-            }*/
-
-            /*if(this.state.imgFrontType !== ''){
-
-            }*/
             const { uploadIdProofEvent } = this.props;
             return uploadIdProofEvent({payload:uploadObj,headers:header})
-            //return fetch('http://13.68.114.98:9000/api/user-ids/upload',options);
         }
     };
 
     handleImagePicked = async () => {
         if(this.state.btnText === 'DELETE'){
-            console.log('delete clicked');
             let detail = JSON.parse(this.props.userDetail);
             const { deletedownloadIdProofEvent } = this.props;
             deletedownloadIdProofEvent({param:detail.Code});
@@ -467,102 +339,41 @@ class SubmitId extends Component {
         else{
             let uploadResponse, result, resultFront, resultBack, uploadFrontResponse, uploadBackResponse;
             if(this.state.imgFrontLoaded === true && this.state.imgBackLoaded === true){
-                //console.log('both images picked---');
                 resultFront  = this.state.imgFrontData;
                 resultBack = this.state.imgBackData;
-                //console.log('resultBack^^^^^^',resultBack);
                 try {
                     if (!resultFront.cancelled && !resultBack.cancelled) {
-                        //console.log('both images not cancelled---');
                         this.setState({btnText:'LOADING',errText:'Upload in progress.'});
                         uploadFrontResponse = await this.uploadImage('front',resultFront.uri);
-                        //console.log('both images not cancelled-11111--');
                         uploadBackResponse = await this.uploadImage('back',resultBack.uri);
-                        //console.log('both images not cancelled-22222--');
                         this.setState({btnText:'DELETE',errText:'Image(s) uploaded successfully.'});
                     }
                 } catch (e) {
-                    console.log('Front--',{ uploadFrontResponse });
-                    console.log({ e });
-                    console.log('Back--',{ uploadBackResponse });
-                    console.log({ e });
                     this.setState({errText:'Upload failed, sorry :('})
-                    //alert('Upload failed, sorry :(');
-                } finally {
-                    //this.setState({ uploading: false });
-                    // console.log('upload complete--!!')
+
                 }
             }
             else if(this.state.imgFrontLoaded === true && this.state.imgBackLoaded === false){
-                console.log('front image---',this.state.imgFrontData);
                 result = this.state.imgFrontData;
                 try {
-                    console.log('uri got===',result.uri)
                     if (!result.cancelled) {
-                        console.log('uri got==2==',result.uri);
                         this.setState({btnText:'LOADING',errText:'Upload in progress.'})
                         uploadResponse = await this.uploadImage('front',result.uri);
                         this.setState({btnText:'DELETE',errText:'Image(s) uploaded successfully.'});
                     }
                 } catch (e) {
-                    console.log('Front--',{ uploadResponse });
-                    console.log({ e });
                     this.setState({errText:'Upload failed, sorry :('})
-                    //alert('Upload failed, sorry :(');
-                } finally {
-                    //this.setState({ uploading: false });
-                    // console.log('upload complete--!!')
                 }
             }
             else{
                 this.setState({
                     errText:'Please select the type and image(s).'
                 })
-                /*result = this.state.imgBackData;
-                try {
-                    if (!result.cancelled) {
-                        uploadResponse = await this.uploadImage(result.uri);
-                        this.setState({btnText:'DELETE'});
-                    }
-                } catch (e) {
-                    console.log('Back--',{ uploadResponse });
-                    console.log({ e });
-                    this.setState({errText:'Upload failed, sorry :('})
-                    //alert('Upload failed, sorry :(');
-                } finally {
-                    //this.setState({ uploading: false });
-                    // console.log('upload complete--!!')
-                }*/
             }
         }
-        //console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     };
 
     render(){
-        //console.log('props*******%%%%%%*****submit id------',this.props,this.props.downloadIdProofEvent);
-
-        /*if(downloadedImageArray.length>0 && downloadedImageArray.length<3){
-            downloadedImageArray.map((downloadedImg) => {
-                if(downloadedImg.type === 'front'){
-                    this.setState({
-                        imgFrontLoaded:true,
-                        imgFrontUrl: downloadedImg.url,
-                        value: downloadedImg.idType
-                    },() => {console.log('this.state1---value--*****',this.state)})
-                }
-                else{
-                    this.setState({
-                        imgBackLoaded:true,
-                        imgBackUrl: downloadedImg.url,
-                        value: downloadedImg.idType
-                    },() => {console.log('this.state2-----*****',this.state)})
-                }
-            })
-
-        }
-        let imageFrontUrl = `uri:'${this.state.imgFrontUrl}'`;
-        let imageBackUrl = `uri:${this.state.imgBackUrl}`;*/
-        //console.log('url+++++',imageUrl);
         return(
             <View style={styles.container}>
                 {

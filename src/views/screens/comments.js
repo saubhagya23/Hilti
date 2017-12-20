@@ -19,7 +19,6 @@ import { getComments, postComment } from '../../actions/apiData';
 import PageHeaderNotif from "../common/pageHeaderNotif";
 import openSocket from 'socket.io-client';
 
-// const SocketEndpoint = 'http://13.68.114.98:9000/socket.io-client';
 let socket;
 class Comments extends Component {
 
@@ -85,7 +84,6 @@ class Comments extends Component {
     }
 
     sendMessage = async () => {
-        // read message from component state
         const message = this.state.typing;
         if(message) {
             const {postComment} = this.props;
@@ -98,8 +96,6 @@ class Comments extends Component {
             this.setState({
                 typing: ''
             });
-            // this.flatList.scrollToEnd();
-
         }else{
             errText:'Please enter some text'
         }
@@ -112,7 +108,6 @@ class Comments extends Component {
     render(){
         let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
-        console.log("code is :",code);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -148,7 +143,6 @@ class Comments extends Component {
                                             </View>
                                         </View>
                                 }
-                                    { console.log("item is :",item)}
                                 </View>
                             }
                             keyExtractor={item => item.timestamp}
@@ -226,7 +220,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderRadius:10,
-        borderWidth: 2,  // size/width of the border
+        borderWidth: 2,
         borderColor: 'lightgrey',
         paddingHorizontal: 20,
         fontSize: 18,

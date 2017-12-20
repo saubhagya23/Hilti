@@ -11,6 +11,7 @@ import { Font, WebBrowser } from 'expo'
 import DetailContainer from '../common/detailContainer'
 import { getArrivals, getArrivalTicket } from '../../actions/apiData';
 
+
 class MyArrivals extends Component {
     constructor(){
         super();
@@ -19,6 +20,7 @@ class MyArrivals extends Component {
             fontLoaded:false
         }
     }
+
 
     async componentWillMount(){
         await Font.loadAsync({
@@ -132,11 +134,11 @@ class MyArrivals extends Component {
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
-                                <DetailContainer leftHeading={'Flight/Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+                                <DetailContainer leftHeading={'Flight or Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
-                                <DetailContainer leftHeading={'Dep Date & Time'} rightHeading={'Arrival Date & Time'} leftData={`${details.DepartureDate} ${details.DepartureTime}`||'N/A'} rightData={`${details.ArrivalDate} ${details.ArrivalTime}`||'N/A'} />
+                                <DetailContainer leftHeading={'Dep Date & Time'} rightHeading={'Arrival Date & Time'} leftData={details.DepartureDate && details.DepartureTime ? `${details.DepartureDate} | ${details.DepartureTime}`:'N/A'} rightData={details.ArrivalDate && details.ArrivalTime ? `${details.ArrivalDate} | ${details.ArrivalTime}`:'N/A'} />
 
                                 <View
                                     style={{
@@ -267,6 +269,7 @@ function mapStateToProps (state) {
         arrivalTicket: state.event.arrivalTicket,
         eventLoginList: state.event.eventLoginList,
         userDetail:state.event.userDetail,
+        isLogged:state.event.isLogged
     }
 }
 

@@ -34,9 +34,6 @@ class PreKickOff extends Component{
         const { getAgendaData } = this.props;
         let detail = JSON.parse(this.props.userDetail);
         let grpName = detail.Jan06GroupA;
-        //let day = this.props.navigation.state.params.day;
-        console.log('day is----->>>',detail);
-        let groupName = 'ASM-TM Group 11'
         getAgendaData({param:grpName,day:'6 Jan 18'});
     }
 
@@ -49,8 +46,6 @@ class PreKickOff extends Component{
                 // 6 jan api call
                 const { getAgendaData } = this.props;
                 let detail = JSON.parse(this.props.userDetail);
-                let day = this.props.navigation.state.params.day;
-                // console.log('day is----->>>',day,detail);
                 let groupName = detail.Jan06GroupA;
                 getAgendaData({param:groupName,day:'6 Jan 18'});
             }
@@ -58,8 +53,6 @@ class PreKickOff extends Component{
                 // 7 Jan api call
                 const { getAgendaData } = this.props;
                 let detail = JSON.parse(this.props.userDetail);
-                let day = this.props.navigation.state.params.day;
-                // console.log('day is----->>>',day,detail);
                 let groupName = detail.Jan07GroupA;
                 getAgendaData({param:groupName,day:'7 Jan 18'});
             }
@@ -67,9 +60,6 @@ class PreKickOff extends Component{
     }
 
     render(){
-        /*let empAgenda = this.props.agendaList;
-        console.log('prekickoff data---->>>',empAgenda);*/
-        console.log('***********',this.props.agendaList);
         let empAgenda = {
             header: {
                 Date: null,
@@ -82,76 +72,8 @@ class PreKickOff extends Component{
 
         if(this.props.agendaList && Object.keys(this.props.agendaList).length){
             empAgenda = this.props.agendaList;
-            console.log('prekickoff data---->>>',empAgenda,'*********',this.props.agendaList);
         }
-        console.log('empAgenda-------------',empAgenda);
         let venueCount = 0,presenterCount=0;
-
-
-        /*dummy data*/
-
-        let traineeCommonData = {group:'ASM-TM Group 1', dressCode:'Smart casual, safety shoes',};
-        let trainerCommonData = {group:'TAC-1', dressCode:'Smart casual, safety shoes',}
-        let dummyData = [
-            {
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            /*{
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            }*/
-        ]
-
         return(
             <View style={styles.container}>
                 {
@@ -177,18 +99,6 @@ class PreKickOff extends Component{
                                             fontFamily:'hilti-roman'}}>
                                         HILTI INDIA KICK OFF 2018</Text>
 
-                                    {/*<Text
-                                        style={{position:'absolute',
-                                            marginTop:61,
-                                            marginLeft:18.5,
-                                            // width:139,
-                                            height:25,
-                                            fontSize:10,
-                                            letterSpacing:0.05,
-                                            color:'#7c294e',
-                                            fontFamily:'hilti-bold'}}>
-                                        Participants : MO India Team
-                                    </Text>*/}
                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:165.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                         <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>6-7</Text>
                                         <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
@@ -216,13 +126,6 @@ class PreKickOff extends Component{
                                                 </Text>:
                                                 null
                                             }
-                                            {/*<Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',marginTop:7}}>
-                                                {trainerCommonData.group}
-                                            </Text>
-
-                                            <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                                Dress Code: {trainerCommonData.dressCode},
-                                            </Text>*/}
                                         </View>
                                         <View style={{flex:2,backgroundColor:'#ffffff',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                                             <TouchableOpacity style={{paddingRight:10,paddingTop:10,paddingBottom:10,marginRight:5,marginTop:5,marginBottom:5}}>
@@ -236,9 +139,6 @@ class PreKickOff extends Component{
                                                 >
                                                     <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>6 Jan</Text>
                                                 </RadioButton>
-                                                {/*<Text style={{fontSize:14, color:'#dd2127', fontFamily:'hilti-bold'}}>
-                                                6 Jan
-                                            </Text>*/}
                                             </TouchableOpacity>
 
                                             <TouchableOpacity style={{padding:10,margin:5}}>
@@ -252,9 +152,6 @@ class PreKickOff extends Component{
                                                 >
                                                     <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>7 Jan</Text>
                                                 </RadioButton>
-                                                {/*<Text style={{fontSize:14, color:'#dd2127', fontFamily:'hilti-bold'}}>
-                                                7 Jan
-                                            </Text>*/}
                                             </TouchableOpacity>
                                         </View>
                                     </View>
@@ -303,7 +200,6 @@ class PreKickOff extends Component{
                                                                         <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
                                                                         <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
                                                                     </View>
-                                                                    {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
                                                                 </View>
                                                             )}
                                                         >
@@ -338,7 +234,6 @@ class PreKickOff extends Component{
                                                                         <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
                                                                         <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
                                                                     </View>
-                                                                    {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
                                                                 </View>
                                                             )}
                                                         >
@@ -374,7 +269,6 @@ class PreKickOff extends Component{
                                                                 <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
                                                                 <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
                                                             </View>
-                                                            {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
                                                         </View>
                                                     )}
                                                 >
@@ -386,248 +280,6 @@ class PreKickOff extends Component{
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                     </View>
                                 }
-
-                                {/*<View style={{marginTop:20}}>
-                                    <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                        {trainerCommonData.group}
-                                    </Text>
-
-                                    <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                        Dress Code: {trainerCommonData.dressCode}
-                                    </Text>
-                                </View>*/}
-
-                                {/*<View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10,marginTop:15}}>
-                                    <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>Agenda</Text>
-                                    <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>Presenter</Text>
-                                    <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>Duration</Text>
-                                    <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>From</Text>
-                                    <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>To</Text>
-                                </View>
-
-                                <FlatList
-                                    data={dummyData}
-                                    keyExtractor = {(item,index) => index}
-                                    renderItem = {({item}) => (
-                                        <View>
-                                            <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
-                                                <Text style={{flex:3.5,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.agenda}</Text>
-                                                <Text style={{flex:2.1,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.trainer}</Text>
-                                                <Text style={{flex:1.9,padding:5,borderWidth:1,borderColor:'#000000'}}>9 Hrs</Text>
-                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.from}</Text>
-                                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'#000000'}}>{item.to}</Text>
-                                            </View>
-                                            <View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>
-                                        </View>
-                                    )}
-                                >
-                                </FlatList>*/}
-                                {/*<View style={{height:0.5,backgroundColor:'green',marginLeft:10,marginRight:10}}/>*/}
-
-                                {/*{dummyData.map((emp,index)=>{
-                                    return(
-                                        <View key={index}>
-                                            {
-                                                emp.userType === 'Trainee'?
-                                                    <View style={{}}>
-                                                        <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                                            {traineeCommonData.group}
-                                                        </Text>
-
-                                                        <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                                            Dress Code: {traineeCommonData.dressCode}
-                                                        </Text>
-
-                                                        <View style={{backgroundColor:'#ffffff',marginTop:13,marginLeft:9,marginRight:9, padding:8}}>
-                                                            <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>
-                                                                {emp.agenda}
-                                                            </Text>
-                                                            <View style={{flexDirection:'row'}}>
-                                                                <Icon
-                                                                    style={{marginTop:5}}
-                                                                    name='clock'
-                                                                    size={15}
-                                                                    onPress={() => {}} />
-                                                                <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                                                    {emp.from} - {emp.to},
-                                                                </Text>
-                                                                <Text style={{marginLeft:3.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#888888'}}>
-                                                                    9 Hr
-                                                                </Text>
-                                                            </View>
-                                                            <View style={{flexDirection:'row'}}>
-                                                                <Icon
-                                                                    style={{marginTop:5}}
-                                                                    name='location'
-                                                                    size={15}
-                                                                    onPress={() => {}} />
-                                                                <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                                                    Location/Venue: {emp.location}
-                                                                </Text>
-                                                            </View>
-
-                                                            <View style={{marginLeft:11.5,marginTop:12.5,marginRight:11.5}}>
-                                                                <Text style={{fontSize:11,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>GROUP COORDINATOR :</Text>
-                                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>{emp.grpCoordinator}</Text>
-                                                            </View>
-
-                                                            <View style={{marginLeft:11.5,marginTop:12.5,marginRight:11.5}}>
-                                                                <Text style={{fontSize:11,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>TRAINER :</Text>
-                                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>{emp.trainer}</Text>
-                                                            </View>
-                                                        </View>
-                                                    </View>:
-                                                    <View style={{}}>
-                                                        <Text style={{marginLeft:19,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                                            {emp.group}
-                                                        </Text>
-
-                                                        <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                                            Dress Code: {emp.dressCode}
-                                                        </Text>
-
-                                                        <View style={{backgroundColor:'#ffffff',marginTop:13,marginLeft:9,marginRight:9, padding:8}}>
-                                                            <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>
-                                                                {emp.grpVisiting}
-                                                            </Text>
-                                                            <View style={{flexDirection:'row'}}>
-                                                                <Icon
-                                                                    style={{marginTop:5}}
-                                                                    name='clock'
-                                                                    size={15}
-                                                                    onPress={() => {}} />
-                                                                <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                                                    {emp.from} - {emp.to},
-                                                                </Text>
-                                                                <Text style={{marginLeft:3.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#888888'}}>
-                                                                    9 Hr
-                                                                </Text>
-                                                            </View>
-                                                            <View style={{flexDirection:'row'}}>
-                                                                <Icon
-                                                                    style={{marginTop:5}}
-                                                                    name='location'
-                                                                    size={15}
-                                                                    onPress={() => {}} />
-                                                                <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                                                    Location/Venue: {emp.location}
-                                                                </Text>
-                                                            </View>
-
-                                                            <View style={{marginLeft:11.5,marginTop:12.5,marginRight:11.5}}>
-                                                                <Text style={{fontSize:11,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>PARTICIPATING GROUPS :</Text>
-                                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>{emp.participatingGrps}</Text>
-                                                            </View>
-
-                                                            <View style={{marginLeft:11.5,marginTop:12.5,marginRight:11.5}}>
-                                                                <Text style={{fontSize:11,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>TRAINER :</Text>
-                                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>{emp.trainer}</Text>
-                                                            </View>
-                                                        </View>
-                                                    </View>
-                                            }
-                                        </View>
-                                    )
-                                })}*/}
-
-                                {/*<Text style={{marginLeft:19,marginTop:11,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                     MARKETING REACH TEAM
-                                 </Text>
-                                 <Text style={{marginLeft:19,marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                                     Dress Code: Hilti red shirt+Coat/Blazer+Dark Trouser/Skirt
-                                 </Text>
-
-                                 <View style={{backgroundColor:'#ffffff',marginTop:12.5,marginLeft:9,marginRight:9, padding:8}}>
-                                     <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>
-                                         Trade Application Demo Session
-                                     </Text>
-                                     <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                         (Please refer your respective detailed agenda)
-                                     </Text>
-
-                                     <View style={{flexDirection:'row'}}>
-                                         <Image
-                                            style={{marginTop:5,width:10,opacity:0.6}}
-                                            source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
-                                        />
-
-                                         <Icon
-                                             style={{marginTop:5}}
-                                             name='clock'
-                                             size={15}
-                                             onPress={() => {}} />
-                                         <Text style={{marginLeft:4.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                             9:00 - 18:00,
-                                         </Text>
-                                         <Text style={{marginLeft:3.5,marginTop:2.5,fontSize:12,fontFamily:'hilti-roman',color:'#888888'}}>
-                                             9 Hr
-                                         </Text>
-                                     </View>
-
-                                     <Text style={{marginTop:8.5,fontSize:12,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
-                                         Participants :
-                                     </Text>
-                                     <View style={{width:215.5,marginLeft:12,marginTop:5}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             Sales (Mainstream – N/C)
-                                         </Text>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             Sales (Mainstream – W/S)
-                                         </Text>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             Sales – E&I
-                                         </Text>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             Key Accounts & Engineering
-                                         </Text>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             E&I (Technical),
-                                         </Text>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                             Marketing – Trade, PLS & Strategic Marketing Team
-                                         </Text>
-                                     </View>
-                                 </View>
-
-                                 <View style={{backgroundColor:'#ffffff',marginTop:12.5,marginLeft:9,marginRight:9, padding:8}}>
-                                     <Text style={{height:13,fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>
-                                         Functional Meetings
-                                     </Text>
-                                     <Text style={{marginTop:3.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6}}>
-                                         (Please refer your respective detailed agenda)
-                                     </Text>
-
-                                     <Text style={{marginTop:7,width:262,fontSize:12,fontFamily:'hilti-roman',lineHeight:12,color:'#000000',opacity:0.8,}}>
-                                         Finance, HR, Marketing-GCC, Operations, Professional Service, Supply Chain
-                                     </Text>
-
-                                     <View style={{flexDirection:'row'}}>
-                                         <Image
-                                            style={{marginTop:9,width:10,height:10,opacity:0.6}}
-                                            source={require('../../assets/images/watch_icon/watch_icon_hdpi.png')}
-                                        />
-
-                                         <Icon
-                                             style={{marginTop:9}}
-                                             name='clock'
-                                             size={15}
-                                             onPress={() => {}} />
-                                         <Text style={{marginTop:6.5,fontSize:12,fontFamily:'hilti-roman',color:'#000000'}}>
-                                             9:00 - 18:00,
-                                         </Text>
-                                         <Text style={{marginTop:6.5,fontSize:12,fontFamily:'hilti-roman',color:'#888888'}}>
-                                             9 Hr
-                                         </Text>
-                                     </View>
-
-                                     <Text style={{marginTop:9.5,fontSize:12,fontFamily:'hilti-bold',color:'#000000',opacity:0.8,letterSpacing:0.7}}>
-                                         Participants :
-                                     </Text>
-
-                                     <Text style={{marginTop:3,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.6,lineHeight:15}}>
-                                         All respective team members.
-                                     </Text>
-                                 </View>*/}
                             </ScrollView>
 
                         </View>:null

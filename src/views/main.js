@@ -7,9 +7,8 @@ import { getEvent,setUserDetail, setToken, readAllNotification, getNotificationC
 
 import Login from './screens/login'
 import HomeScreen from './screens/homeScreen'
-import { asyncGet, asyncRemove } from '../utils/asyncStore'
+import { asyncGet } from '../utils/asyncStore'
 import {Notifications} from 'expo';
-import NotificationBell from './common/notificationBell'
 
 class Home extends Component {
     constructor(props){
@@ -19,13 +18,11 @@ class Home extends Component {
             appState: AppState.currentState,
             notificationCount: this.props.notificationCount,
             notifResponse: {},
-            // token:'',
-            // loader:true,
-        } 
+        }
     }
 
+
     componentWillMount(){
-        //asyncRemove('token');
         Notifications.addListener(this._handleListner);
         asyncGet('token').then((value) => {
             if(value !== null){
@@ -114,7 +111,7 @@ function mapStateToProps (state) {
     return {
         eventList: state.event.eventList,
         eventLoginList:state.event.eventLoginList,
-        notificationCount: state.event.notificationCount
+        notificationCount: state.event.notificationCount,
     }
 }
 

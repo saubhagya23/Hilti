@@ -36,7 +36,6 @@ class Profile extends Component {
         if(typeof this.props.userDetail === "string"){
             detail = JSON.parse(this.props.userDetail)
         }
-        console.log('UserDetails-----profile---->>>',this.props.userDetail);
 
         return (
             <View style={styles.container}>

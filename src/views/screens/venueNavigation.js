@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import PageHeaderCross from '../common/pageHeaderCross'
 import { Font } from 'expo'
-//import Icon  from 'react-native-vector-icons/FontAwesome'
 
 class VenueNavigation extends Component {
     constructor(){

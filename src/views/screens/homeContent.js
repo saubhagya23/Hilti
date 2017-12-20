@@ -6,7 +6,7 @@ import { FileSystem } from 'expo'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
-import {asyncPost, asyncGet, asyncRemove} from '../../utils/asyncStore';
+import {asyncPost, asyncGet} from '../../utils/asyncStore';
 import { getVideo } from '../../actions/apiData';
 import * as Progress from 'react-native-progress';
 
@@ -120,6 +120,7 @@ class HomeContent extends Component {
                                     }
                                 </View>
                                 :
+                                <TouchableOpacity onPress={this.playVideo} style={{flex:1}}>
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
                                     resizeMode={'cover'}
@@ -132,7 +133,7 @@ class HomeContent extends Component {
                                         We welcome you to be a part of our annual meet.
                                     </Text>
 
-                                    <TouchableOpacity style={{position:'absolute',marginTop:111.5,marginLeft:19,flexDirection:'row'}} onPress={this.playVideo}>
+                                    <View style={{position:'absolute',marginTop:111.5,marginLeft:19,flexDirection:'row'}} >
                                     <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
                                         Watch Video
                                     </Text>
@@ -143,8 +144,9 @@ class HomeContent extends Component {
                                             size={10}
                                              />
                                     </View>
-                                    </TouchableOpacity>
+                                    </View>
                                 </ImageBackground>
+                                </TouchableOpacity>
                         }
                     </View>:null
                 }
