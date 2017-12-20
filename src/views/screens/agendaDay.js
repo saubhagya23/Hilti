@@ -120,7 +120,7 @@ class AgendaDay extends Component{
 
                                  <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
                                      {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
-                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
                                          null
@@ -134,7 +134,7 @@ class AgendaDay extends Component{
                                      }
 
                                      {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
                                          null
@@ -264,7 +264,7 @@ class AgendaDay extends Component{
 
                                      ):
                                      <View style={{justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                      </View>
                                  }
                                  {/*{(empAgenda.body && empAgenda.body.length && empAgenda.body[0].AgendaItem && empAgenda.body[0].Presenter)?
