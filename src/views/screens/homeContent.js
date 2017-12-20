@@ -105,7 +105,7 @@ class HomeContent extends Component {
                                                 rate={1.0}
                                                 volume={1.0}
                                                 muted={false}
-                                                resizeMode="cover"
+                                                resizeMode="stretch"
                                                 shouldPlay={this.state.shouldPlay}
                                                 isLooping={false}
                                                 useNativeControls={true}

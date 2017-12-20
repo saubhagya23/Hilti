@@ -50,11 +50,11 @@ class PageHeader extends Component {
                     overflow:"hidden"
                 }}>
                     <View style={styles.container}>
-                        <View style={styles.logo}>
+                        <TouchableOpacity style={styles.logo} onPress={()=>this.props.navigation.navigate('HomeScreen')}>
                             <Image
                                 source={require('../../assets/images/logo/logo_mdpi.png')}
                             />
-                        </View>
+                        </TouchableOpacity>
                         <View style={styles.IconBtn}>
                             {
                                 this.props.showBell ?(
