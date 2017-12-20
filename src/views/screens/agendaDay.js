@@ -289,7 +289,7 @@ class AgendaDay extends Component{
                                          ):
                                          <Text>No data available</Text>
                                      }*/}
-                                     {empAgenda.header.ParticipantsGroups?
+                                     {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
@@ -303,9 +303,9 @@ class AgendaDay extends Component{
                                          null
                                      }
 
-                                     {empAgenda.header.GroupCoordinator?
+                                     {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
                                          <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
-                                             Group Coordinator: {empAgenda.header.GroupCoordinator||'Data not available'}
+                                             Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
                                          null
                                      }
@@ -416,7 +416,7 @@ class AgendaDay extends Component{
                                                          <View>
                                                              <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
                                                                  <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupVisiting}</Text>
-                                                                 <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||'-'}</Text>
+                                                                 <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||item.GroupLeader||'-'}</Text>
                                                                  {(venueCount > 0)?
                                                                      <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
                                                                      :null

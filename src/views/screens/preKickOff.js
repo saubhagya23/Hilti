@@ -195,24 +195,24 @@ class PreKickOff extends Component{
                                     </View>
 
                                     <View style={{height:90,backgroundColor:'#ffffff'}}>
-                                        <View style={{flex:3,marginLeft:100,justifyContent:'center',alignItems:'flex-start'}}>
-                                            {empAgenda.header.ParticipantsGroups?
-                                                <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                                    Participants Groups: {empAgenda.header.ParticipantsGroups||'Data not available'}
+                                        <View style={{flex:3,paddingLeft:100,justifyContent:'center',alignItems:'flex-start'}}>
+                                            {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
+                                                <Text style={{marginTop:3,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                                    Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                                 </Text>:
                                                 null
                                             }
 
                                             {empAgenda.header.DressCode?
-                                                <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
+                                                <Text style={{marginTop:3,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:3}}>
                                                     Dress Code: {empAgenda.header.DressCode||'Data not available'}
                                                 </Text>:
                                                 null
                                             }
 
-                                            {empAgenda.header.GroupCoordinator?
-                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
-                                                    Group Coordinator: {empAgenda.header.GroupCoordinator||'Data not available'}
+                                            {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
+                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:3}}>
+                                                    Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                                 </Text>:
                                                 null
                                             }
@@ -365,7 +365,7 @@ class PreKickOff extends Component{
                                                         <View>
                                                             <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
                                                                 <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupVisiting}</Text>
-                                                                <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||'-'}</Text>
+                                                                <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||item.GroupLeader||'-'}</Text>
                                                                 {(venueCount > 0)?
                                                                     <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
                                                                     :null
