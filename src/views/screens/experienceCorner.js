@@ -33,7 +33,7 @@ class ExperienceCorner extends Component {
 
     render(){
         let display ;
-        console.log("props in experience corner",this.props.statics);
+        // console.log("props in experience corner",this.props.statics);
         if(this.props.statics){
             display= this.props.statics.display;
         }
