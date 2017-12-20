@@ -153,7 +153,7 @@ class Comments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
-                        <KeyboardAwareScrollView style={{paddingBottom:20,bottom:0,position:'absolute'}}>
+                        <KeyboardAwareScrollView keyboardShouldPersistTaps='always' style={{paddingBottom:20,bottom:0,position:'absolute'}}>
                             <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
