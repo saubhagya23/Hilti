@@ -104,8 +104,8 @@ class HomeContent extends Component {
                                                 source={{uri:`${this.state.url}`}}
                                                 rate={1.0}
                                                 volume={1.0}
+                                                resizeMode={'stretch'}
                                                 muted={false}
-                                                resizeMode="cover"
                                                 shouldPlay={this.state.shouldPlay}
                                                 isLooping={false}
                                                 useNativeControls={true}

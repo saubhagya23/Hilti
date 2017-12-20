@@ -39,7 +39,7 @@ class DressCodeDay extends Component {
                 {
                     imgUrl:require('../../assets/images/dressImg2/dressImg2_mdpi.png'),
                     title:'SERVICE AWARD​ NIGHT',
-                    subTitle:'Smart Casual : Be yourself',
+                    subTitle:'Smart Casuals : Be yourself',
                 },
                 {
                     imgUrl:require('../../assets/images/dressImg3/dressImg3_mdpi.png'),
@@ -59,7 +59,7 @@ class DressCodeDay extends Component {
                 {
                     imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.png'),
                     title:'TEAM MEETING​',
-                    subTitle:'Smart Casual',
+                    subTitle:'Smart Casuals',
                 },
             ]
         }
@@ -69,7 +69,7 @@ class DressCodeDay extends Component {
                 {
                     imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.png'),
                     title:'TEAM MEETING​',
-                    subTitle:'Smart Casual',
+                    subTitle:'Smart Casuals',
                 },
             ]
         }
@@ -123,30 +123,6 @@ class DressCodeDay extends Component {
                                     </View>
                                 )
                             })}
-
-                            {/*<View style={{height:306}}>
-                                <Image
-                                    style={{marginTop:2,height:213.5,alignSelf:'center'}}
-                                    source={require('../../assets/images/dressDay1_1/dressDay1_1_mdpi.png')}
-                                />
-                                <View style={{height:90.5}}>
-                                    <Text style={{marginLeft:17.5,marginTop:19.5,fontSize:15,fontFamily:'hilti-roman',color:'#dd2127'}}>AFTERNOON : KICK OFF 2018</Text>
-                                    <Text style={{marginLeft:19.5,marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>Hilti Red Shirt - Refreshed Brand</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:348.5}}>
-                                <Image
-                                    style={{marginTop:2,height:213.5,alignSelf:'center'}}
-                                    source={require('../../assets/images/dressDay1_2/dressDay1_2_mdpi.png')}
-                                />
-                                <View style={{height:90.5}}>
-                                    <Text style={{marginLeft:17.5,marginTop:19.5,fontSize:15,fontFamily:'hilti-roman',color:'#dd2127'}}>EVENING : SERVICE AWARD</Text>
-                                    <Text style={{marginLeft:19.5,marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>For Awardees - Business Casuals</Text>
-                                    <Text style={{marginLeft:19.5,marginTop:4,marginRight:10,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>(Shirt + Trouser/Skirt/Jeans + Coat/Blazer or Indian Ethnic)</Text>
-                                    <Text style={{marginLeft:19.5,marginTop:4,fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>For Rest : Smart Casual</Text>
-                                </View>
-                            </View>*/}
                         </ScrollView>
                     </View>:null
                 }
