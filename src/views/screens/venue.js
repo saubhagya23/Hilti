@@ -37,6 +37,14 @@ class Venue extends Component {
         this.openExternalApp(url);
     }
 
+    callNumber = (url) => {
+        Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+                Linking.openURL(url);
+            }
+        });
+    };
+
     render(){
         return(
             <View style={styles.container}>
@@ -55,8 +63,13 @@ class Venue extends Component {
                             </Text>
                         </View>
 
-                        <Text style={{marginLeft:18.5,marginTop:14,width:235,height:41,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
+                        <Text style={{marginLeft:18.5,marginTop:14,width:235,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                             CBD Maharaj Surajmal Road, Near Yamuna Sports Complex, Delhi 110 032
+                        </Text>
+
+                        <Text
+                            onPress={()=>{this.callNumber('tel:01171721234')}}
+                            style={{marginLeft:18.5,marginTop:14,width:235,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                             T: 011 71721234
                         </Text>
 
