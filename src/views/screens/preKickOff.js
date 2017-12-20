@@ -196,7 +196,7 @@ class PreKickOff extends Component{
                                     <View style={{height:90,backgroundColor:'#ffffff'}}>
                                         <View style={{flex:3,paddingLeft:100,justifyContent:'center',alignItems:'flex-start'}}>
                                             {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
-                                                <Text style={{marginTop:3,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                                <Text style={{marginTop:3,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                                     Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                                 </Text>:
                                                 null
@@ -210,7 +210,7 @@ class PreKickOff extends Component{
                                             }
 
                                             {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
-                                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:3}}>
+                                                <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:3}}>
                                                     Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                                 </Text>:
                                                 null
@@ -382,7 +382,7 @@ class PreKickOff extends Component{
 
                                     ):
                                     <View style={{justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
+                                        <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                     </View>
                                 }
 

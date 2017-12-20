@@ -33,9 +33,9 @@ class AgendaDay extends Component{
         const { getAgendaData } = this.props;
         let detail = JSON.parse(this.props.userDetail);
         let date = this.props.navigation.state.params.day;
-        console.log('day is----->>>',date,detail.Jan09GroupA);
+        // console.log('day is----->>>',date,detail.Jan09GroupA);
         let grpName;
-        let groupName = 'ASM-TM Group 11'
+        // let groupName = 'ASM-TM Group 11'
         if(date === '8 Jan 18'){
             grpName = detail.Jan08GroupA;
             getAgendaData({param:grpName,day:date});
@@ -54,7 +54,7 @@ class AgendaDay extends Component{
     }
 
     render(){
-        console.log('this.props in agenda day----------->>>>>',this.props.agendaList);
+        // console.log('this.props in agenda day----------->>>>>',this.props.agendaList);
         let date = this.props.navigation.state.params.day
         let day;
         if(date === '8 Jan 18'){
@@ -66,68 +66,7 @@ class AgendaDay extends Component{
         else{
             day = 'Day 3'
         }
-        /*let traineeCommonData = {group:'ASM-TM Group 1', dressCode:'Smart casual, safety shoes',};
-        let trainerCommonData = {group:'TAC-1', dressCode:'Smart casual, safety shoes',}
-        let dummyData = [
-            {
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            /!*{
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainee',
-                agenda:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Mohit Vasistha',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },*!/
-            {
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            /!*{
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            },
-            {
-                userType:'Trainer',
-                participatingGrps:'ASM 1,ASM 2,ASM 3',
-                grpVisiting:'Infra strategy launch',
-                grpCoordinator:'Mohit Kumar',
-                trainer:'Ashish Markande/Ashish Mittal',
-                location:'classroom 1',
-                from:'13:30',
-                to:'14:13'
-            }*!/
-        ];*/
-        console.log('***********',this.props.agendaList);
+
         let empAgenda = {
                 header: {
                     Date: null,
@@ -140,83 +79,14 @@ class AgendaDay extends Component{
 
         if(this.props.agendaList && Object.keys(this.props.agendaList).length){
             empAgenda = this.props.agendaList;
-            console.log('empagenda',empAgenda,'*********',this.props.agendaList);
         }
-        console.log('empAgenda-------------',empAgenda);
 
 
-        //console.log('empagenda',empAgenda,'*********',this.props.agendaList);
         let currentDateStr = date.split(' ');
         let currentDate = currentDateStr[0];
         let currentMonth = currentDateStr[1];
         let venueCount = 0,agendaItemCount = 0,presenterCount = 0, trainerCount = 0, grpVistingCount = 0;
 
-        /*let agendaDetails = empAgenda.body.map((data) => {
-            if(data && data.length){
-                if(data.AgendaItem||data.Agendaitem){
-                    agendaItemCount++;
-                }
-                if(data.Presenter){
-                    presenterCount++;
-                }
-                if(data.Venue){
-                    venueCount++;
-                }
-                if(data.Trainer){
-                    trainerCount++;
-                }
-                if(data.GroupVisting){
-                    grpVistingCount++;
-                }
-                if(agendaItemCount>0){
-                    if(presenterCount>0){
-                        return(
-                            <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
-                                <Text style={{flex:3.0,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.AgendaItem||item.Agendaitem}</Text>
-                                <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Presenter||'-'}</Text>
-                                {(venueCount > 0)?
-                                    <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
-                                    :null
-                                }
-                                <Text style={{flex:2.2,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
-                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
-                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
-                            </View>
-                        )
-                    }
-                    if(trainerCount>0){
-                        return(
-                            <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
-                                <Text style={{flex:3.0,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.AgendaItem||item.Agendaitem}</Text>
-                                <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Trainer||'-'}</Text>
-                                {(venueCount > 0)?
-                                    <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
-                                    :null
-                                }
-                                <Text style={{flex:2.2,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
-                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
-                                <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
-                            </View>
-                        )
-                    }
-                }
-                else{
-                   return(
-                        <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:10,marginRight:10}}>
-                            <Text style={{flex:3.0,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupVisiting}</Text>
-                            <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||'-'}</Text>
-                            {(venueCount > 0)?
-                                <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
-                                :null
-                            }
-                            <Text style={{flex:2.2,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.Dur||'-'}</Text>
-                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.From||'-'}</Text>
-                            <Text style={{flex:1.25,padding:5,borderWidth:1,borderColor:'grey',fontFamily:'hilti-roman',fontSize:10}}>{item.To||'-'}</Text>
-                        </View>
-                    )
-                }
-            }
-        });*/
         return(
             <View style={styles.container}>
                 {
@@ -241,18 +111,6 @@ class AgendaDay extends Component{
                                              fontFamily:'hilti-roman'}}>
                                          HILTI INDIA KICK OFF 2018</Text>
 
-                                     {/*<Text
-                                         style={{position:'absolute',
-                                             marginTop:61,
-                                             marginLeft:18.5,
-                                             // width:139,
-                                             height:25,
-                                             fontSize:10,
-                                             letterSpacing:0.05,
-                                             color:'#7c294e',
-                                             fontFamily:'hilti-bold'}}>
-                                         Participants : MO India Team
-                                     </Text>*/}
                                      <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:20,justifyContent:'center',alignItems:'center',zIndex:10}}>
                                          <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentDate}</Text>
                                          <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentMonth}</Text>
@@ -261,35 +119,8 @@ class AgendaDay extends Component{
                                  </View>
 
                                  <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
-                                     {/*{(empAgenda.header && Object.keys(empAgenda.header).length)?
-                                         ((empAgenda.header.ParticipantsGroups || empAgenda.header.DressCode || empAgenda.header.GroupCoordinator)?
-                                         //true
-                                                 ( (empAgenda.header.ParticipantsGroups?
-                                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                                             Participants Groups: {empAgenda.header.ParticipantsGroups}
-                                                         </Text>:
-                                                         null)
-                                                     (empAgenda.header.DressCode?
-                                                             <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
-                                                                 Dress Code: {empAgenda.header.DressCode||''}
-                                                             </Text>:
-                                                             null
-                                                     )
-                                                     (empAgenda.header.GroupCoordinator?
-                                                             <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
-                                                                 Group Coordinator: {empAgenda.header.GroupCoordinator}
-                                                             </Text>:
-                                                             null
-                                                     )
-
-                                                 )
-                                            : <Text>Fields not provided</Text>
-
-                                         ):
-                                         <Text>No data available</Text>
-                                     }*/}
                                      {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
-                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
                                          null
@@ -303,7 +134,7 @@ class AgendaDay extends Component{
                                      }
 
                                      {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
                                          null
@@ -433,7 +264,7 @@ class AgendaDay extends Component{
 
                                      ):
                                      <View style={{justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                      </View>
                                  }
                                  {/*{(empAgenda.body && empAgenda.body.length && empAgenda.body[0].AgendaItem && empAgenda.body[0].Presenter)?
