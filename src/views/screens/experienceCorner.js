@@ -40,7 +40,7 @@ class ExperienceCorner extends Component {
         let imgSrc;
 
         if(display){
-            imgSrc = require('../../assets/images/experienceCornerRevised/exp_corner_revision_mdpi.png');
+            imgSrc = require('../../assets/images/experienceCornerRevised/exp_corner_revision_mdpi.jpg');
         }
         else{
             imgSrc = require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png');

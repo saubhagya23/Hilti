@@ -84,7 +84,7 @@ class PreKickOff extends Component{
                                 <View style={{height:289.5}}>
                                     <Image
                                         style={{flex:1, width:null, height:null}}
-                                        source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.png')}
+                                        source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.jpg')}
                                         resizeMode={'cover'}
                                     />
 
@@ -276,7 +276,7 @@ class PreKickOff extends Component{
 
                                     ):
                                     <View style={{justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Not Applicable in all screen.</Text>
+                                        <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Not Applicable.</Text>
                                     </View>
                                 }
                             </ScrollView>

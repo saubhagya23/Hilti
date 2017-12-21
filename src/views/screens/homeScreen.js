@@ -111,7 +111,7 @@ class HomeScreen extends Component {
                         {/*travel nav container*/}
                         <HomeNavContainer
                             navigationPage='TravelNavigation'
-                            imgSrc={require('../../assets/images/travelers/travelers_mdpi.png')}
+                            imgSrc={require('../../assets/images/travelers/travelers_mdpi.jpg')}
                             titleText='TRAVEL'
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}
@@ -148,7 +148,7 @@ class HomeScreen extends Component {
                         {/*stay overview nav container*/}
                         <HomeNavContainer
                             navigationPage='StayNavigation'
-                            imgSrc={require('../../assets/images/stay/stay_mdpi.png')}
+                            imgSrc={require('../../assets/images/stay/stay_mdpi.jpg')}
                             titleText='STAY OVERVIEW'
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}

@@ -104,7 +104,6 @@ class HomeContent extends Component {
                                                 source={{uri:`${this.state.url}`}}
                                                 rate={1.0}
                                                 volume={1.0}
-                                                resizeMode={'stretch'}
                                                 muted={false}
                                                 resizeMode="stretch"
                                                 shouldPlay={this.state.shouldPlay}
@@ -125,7 +124,7 @@ class HomeContent extends Component {
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
                                     resizeMode={'cover'}
-                                    source={require('../../assets/images/homeVideoImg/homeVideoImg_hdpi.png')}
+                                    source={require('../../assets/images/homeVideoImg/homeVideoImg_mdpi.jpg')}
                                 >
                                     <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
                                         WELCOME MESSAGE BY GM

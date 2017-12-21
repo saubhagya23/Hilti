@@ -32,17 +32,17 @@ class DressCodeDay extends Component {
             currDate = '08 Jan';
             dressCodeData = [
                 {
-                    imgUrl:require('../../assets/images/dressImg1/dressImg1_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg1/dressImg1_mdpi.jpg'),
                     title:'KICK OFF 2018',
                     subTitle:'Hilti Red Shirt with Dark Trouser + Coat/Jacket'
                 },
                 {
-                    imgUrl:require('../../assets/images/dressImg2/dressImg2_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg2/dressImg2_mdpi.jpg'),
                     title:'SERVICE AWARD​ NIGHT',
                     subTitle:'Smart Casuals : Be yourself',
                 },
                 {
-                    imgUrl:require('../../assets/images/dressImg3/dressImg3_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg3/dressImg3_mdpi.jpg'),
                     title:'SPECIAL DRESS CODE FOR SERVICE AWARDEES​',
                     subTitle:'Formals : Indian or Western - (Saree/Kurta Pajama or Shirt + Trouser/Skirt) with Blazer(optional)',
                 }
@@ -52,12 +52,12 @@ class DressCodeDay extends Component {
             currDate = '09 Jan';
             dressCodeData = [
                 {
-                    imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.jpg'),
                     title:'WAVE 1',
                     subTitle:'Hilti Red T-shirt + Safety Shoes'
                 },
                 {
-                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
                     title:'TEAM MEETING​',
                     subTitle:'Smart Casuals',
                 },
@@ -67,7 +67,7 @@ class DressCodeDay extends Component {
             currDate = '10 Jan';
             dressCodeData = [
                 {
-                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.png'),
+                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
                     title:'TEAM MEETING​',
                     subTitle:'Smart Casuals',
                 },
