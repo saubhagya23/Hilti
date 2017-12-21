@@ -33,8 +33,9 @@ class ExperienceCorner extends Component {
 
     render(){
         let display ;
+        console.log('display',this.props.statics);
         if(this.props.statics){
-            display= true;
+            display= this.props.statics.display;
         }
         let imgSrc;
 

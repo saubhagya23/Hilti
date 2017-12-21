@@ -41,16 +41,17 @@ class stayOverview extends Component {
                         <PageHeaderNotif props={this.props} parentPage='STAY OVERVIEW' navigation={this.props.navigation}/>
 
                         <View style={{height:331,justifyContent:'center',alignItems:'center'}}>
+                            <TouchableOpacity onPress={this.downloadFile}>
                             <Image
                                 style={{marginTop:76}}
                                 source={require('../../assets/images/excel_icon.png')}
                             />
-                            <TouchableOpacity
+                            </TouchableOpacity>
+                            <View
                                 style={{marginTop:22}}
-                                onPress={this.downloadFile}
                             >
                                 <Text style={{fontSize:15,fontFamily:'hilti-roman',color:'#dd2127'}}>DOWNLOAD COMPLETE EXCEL SHEET</Text>
-                            </TouchableOpacity>
+                            </View>
                             <Text style={{marginTop:35,fontSize:22,fontFamily:'hilti-bold',color:'#000000'}}>
                                 STAY OVERVIEW
                             </Text>

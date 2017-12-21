@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Image, Linking } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, TouchableOpacity } from 'react-native';
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/MaterialIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
@@ -67,11 +67,18 @@ class Venue extends Component {
                             CBD Maharaj Surajmal Road, Near Yamuna Sports Complex, Delhi 110 032
                         </Text>
 
-                        <Text
-                            onPress={()=>{this.callNumber('tel:01171721234')}}
-                            style={{marginLeft:18.5,marginTop:14,width:235,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                            T: 011 71721234
-                        </Text>
+
+                        <View style={{flexDirection:'row'}}>
+                            <Text style={{marginLeft:18.5,marginTop:12,fontSize:12,fontFamily:'hilti-bold',color:'blue'}}>
+                                T: </Text>
+                            <TouchableOpacity style={{marginTop:12,justifyContent:'center',alignItems:'center'}}>
+                                <Text
+                                    onPress={()=>{this.callNumber('tel:01171721234')}}
+                                    style={{fontSize:12,fontFamily:'hilti-bold',color:'blue',textDecorationLine:'underline'}}>
+                                    011 71721234
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
 
                         <Text style={{marginLeft:18.5,marginTop:15,fontSize:10,fontFamily:'hilti-bold',color:'#000000'}}>
                             From Airport: 25 kms/ 1 hr to 1.5 hrs
