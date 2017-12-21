@@ -252,7 +252,7 @@ class AgendaDay extends Component{
 
                                      ):
                                      <View style={{justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Data not available yet....</Text>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Not Applicable in all screen.</Text>
                                      </View>
                                  }
                              </ScrollView>

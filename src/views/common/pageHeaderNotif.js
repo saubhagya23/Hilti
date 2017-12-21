@@ -50,11 +50,11 @@ class PageHeaderNotif extends Component {
                         {this.state.fontLoaded?
                             <View style={{flex:1,shadowColor:'#000000',shadowOffset:{width:0,height:5},shadowRadius:3,shadowOpacity:5}}>
                                 <View style={styles.container}>
+                                <TouchableOpacity style={{marginTop:20,marginLeft:19.5}} onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
                                     <Image
-                                        style={{marginTop:20,marginLeft:19.5}}
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
-
+                                </TouchableOpacity>
                                     <View style={{marginLeft:165.5, marginTop:19.5, marginRight:24}}>
                                         <NotificationBell pauseVideo ={this.props.pauseVideo} navigation={this.props.navigation} />
                                     </View>

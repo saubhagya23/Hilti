@@ -34,7 +34,7 @@ class ExperienceCorner extends Component {
     render(){
         let display ;
         if(this.props.statics){
-            display= this.props.statics.display;
+            display= true;
         }
         let imgSrc;
 
@@ -50,12 +50,16 @@ class ExperienceCorner extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='EXPERIENCE CORNER' navigation={this.props.navigation}/>
 
-                        <ImageBackground
+                        {/*<ImageBackground
                             style={{height:183}}
                             source={imgSrc}
-                        >
+                        >*/}
                             {
                                 !display ?
+                                    <ImageBackground
+                                        style={{height:183}}
+                                        source={imgSrc}
+                                    >
                                     <View>
                                         <Text style={{position:'absolute',marginTop:22.5,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                             BE READY FOR A MEMORABLE EXPERIENCE
@@ -63,9 +67,17 @@ class ExperienceCorner extends Component {
                                         <Text style={{position:'absolute',marginTop:85,marginLeft:18.5,fontSize:9,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                             Check-out this page on Jan 07, 2018 for details.
                                         </Text>
-                                    </View>:null
+                                    </View>
+                                    </ImageBackground>
+                                        :
+                                    <ImageBackground
+                                        style={{height:258}}
+                                        source={imgSrc}
+                                    >
+
+                                    </ImageBackground>
                             }
-                        </ImageBackground>
+                        {/*</ImageBackground>*/}
                     </View>:null
                 }
             </View>

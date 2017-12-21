@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { Font } from 'expo'
+import { NavigationActions } from "react-navigation";
 
 
 class PageHeaderCross extends Component {
     constructor(){
         super();
-
         this.state = {
             fontLoaded:false
         }
@@ -29,11 +29,14 @@ class PageHeaderCross extends Component {
                 {this.state.fontLoaded?
                     <View style={styles.container}>
                         <View style={styles.logo}>
+                        <TouchableOpacity onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
                             <Image
                                 source={require('../../assets/images/logo/logo_mdpi.png')}
                             />
+                        </TouchableOpacity>
+                            
                         </View>
-                        <TouchableOpacity style={styles.IconBtn} onPress={()=>this.props.props.navigation.goBack()}>
+                        <TouchableOpacity style={styles.IconBtn} onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
                             <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                                 <Icon
                                     style={{color:'#000000'}}
