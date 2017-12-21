@@ -19,11 +19,16 @@ class HomeScreen extends Component {
     };
 
      componentWillMount(){
+         if(this.props.navigation.state.params && this.props.navigation.state.params.formLogin) {
+             this.setState({isModalVisible: true});
+         }
+         else {
+             this.setState({isModalVisible: false});
+         }
+
          const { setSession } = this.props;
         setSession();
     }
-
-
 
 
     _handleVideoRef = component => {

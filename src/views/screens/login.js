@@ -62,8 +62,8 @@ class Login extends Component {
                     const resetAction = NavigationActions.reset({
                         index: 0,
                         actions: [
-                            NavigationActions.navigate({routeName: 'HomeScreen'})
-                        ]
+                            NavigationActions.navigate({routeName: 'HomeScreen', params:{ formLogin: true} })
+                        ],
                     });
                     this.props.navigation.dispatch(resetAction);
                 } else {

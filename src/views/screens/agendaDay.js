@@ -97,7 +97,6 @@ class AgendaDay extends Component{
                                              marginTop:20.5,
                                              marginLeft:18.5,
                                              width:133.5,
-                                             height:31.5,
                                              fontSize:14,
                                              color:'#dd2127',
                                              fontFamily:'hilti-roman'}}>
@@ -111,9 +110,8 @@ class AgendaDay extends Component{
                                  </View>
 
                                  <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
-
-                                     {empAgenda.header.ParticipantsGroups?
-                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                     {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
+                                         <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
                                          null
@@ -126,9 +124,9 @@ class AgendaDay extends Component{
                                          null
                                      }
 
-                                     {empAgenda.header.GroupCoordinator?
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',paddingBottom:7}}>
-                                             Group Coordinator: {empAgenda.header.GroupCoordinator||'Data not available'}
+                                     {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
+                                             Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
                                          null
                                      }
@@ -220,7 +218,7 @@ class AgendaDay extends Component{
                                              :<View>
                                                  <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                      <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Visiting</Text>
-                                                     <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Leaders</Text>
+                                                     <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Leader</Text>
                                                      {(venueCount > 0)?
                                                          <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Venue</Text>
                                                          :null
@@ -237,7 +235,7 @@ class AgendaDay extends Component{
                                                          <View>
                                                              <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5}}>
                                                                  <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupVisiting}</Text>
-                                                                 <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||'-'}</Text>
+                                                                 <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.GroupLeaders||item.GroupLeader||'-'}</Text>
                                                                  {(venueCount > 0)?
                                                                      <Text style={{flex:1.7,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-roman',fontSize:10}}>{item.Venue||'-'}</Text>
                                                                      :null
@@ -254,7 +252,7 @@ class AgendaDay extends Component{
 
                                      ):
                                      <View style={{justifyContent:'center',alignItems:'center'}}>
-                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127',padding:10}}>Data not available yet....</Text>
+                                         <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#dd2127',padding:10}}>Data not available yet....</Text>
                                      </View>
                                  }
                              </ScrollView>
