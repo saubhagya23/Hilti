@@ -35,6 +35,7 @@ class MyStay extends Component {
 
     render(){
         let details={...this.props.stayList};
+        console.log('staylist------',this.props.stayList);
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -64,7 +65,18 @@ class MyStay extends Component {
 
                             <View style={{backgroundColor:'#ffffff'}}>
 
-                                <DetailContainer leftHeading={'Check in Date & Time'} rightHeading={'Check out Date & Time'} leftData={details.Checkin||'N/A'} rightData={details.Checkout||'N/A'} />
+                                <DetailContainer leftHeading={'Check in Date'} rightHeading={'Check out Date'} leftData={details.Checkin||'N/A'} rightData={details.Checkout||'N/A'} extraLeft={details.CheckinTime||'N/A'} extraRight={details.CheckoutTime||'N/A'}/>
+
+                                <View style={{paddingLeft:40,paddingBottom:10}}>
+                                    <View style={{flexDirection:'row'}}>
+                                        <Text style={{width:110,fontFamily:'hilti-roman',fontSize:10,opacity:0.8,color:'#000000'}}>Check in Time</Text>
+                                        <Text style={{marginLeft:40,width:110,fontFamily:'hilti-roman',fontSize:10,opacity:0.8,color:'#000000'}}>Check out Time</Text>
+                                    </View>
+                                    <View style={{flexDirection:'row'}}>
+                                        <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CheckinTime}</Text>
+                                        <Text style={{marginLeft:40,width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CheckoutTime}</Text>
+                                    </View>
+                                </View>
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
