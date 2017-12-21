@@ -33,7 +33,6 @@ class ExperienceCorner extends Component {
 
     render(){
         let display ;
-        console.log('display',this.props.statics);
         if(this.props.statics){
             display= this.props.statics.display;
         }

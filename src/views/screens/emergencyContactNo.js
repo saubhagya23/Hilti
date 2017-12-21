@@ -102,19 +102,6 @@ class EmergencyContactNo extends Component {
                                             M: +91 7838069479 | E: Ashish.Nautiyal@hilti.com
                                         </Text>
 
-                                        <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
-
-                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
-                                            For Any Other Emergency :
-                                        </Text>
-
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Tanya Manchanda | Kick off Event -Champion
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            E: Tanya.Manchanda@hilti.com
-                                        </Text>
-
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:7}}>
                                             Pramod Kumar Singh | Manager-IT
                                         </Text>
@@ -127,6 +114,19 @@ class EmergencyContactNo extends Component {
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
                                             M: +91 7290075839 | E: Amol.Oberoi@hilti.com
+                                        </Text>
+
+                                        <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
+
+                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
+                                            For Any Other Emergency :
+                                        </Text>
+
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                            Tanya Manchanda | Kick off Event -Champion
+                                        </Text>
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                            E: Tanya.Manchanda@hilti.com
                                         </Text>
                                     </View>
                             }
