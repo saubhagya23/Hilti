@@ -111,7 +111,15 @@ class MyDeparture extends Component {
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
-                                <DetailContainer leftHeading={'Flight or Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+                                {(details && details.ModeofJourney === '#N/A' || !details.hasOwnProperty('From'))?
+                                    <DetailContainer leftHeading={'Flight/Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+                                    :
+                                    (details.ModeofJourney === 'Train'||details.ModeofJourney === 'train')?
+                                        <DetailContainer leftHeading={'Train No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+                                        :
+                                        <DetailContainer leftHeading={'Flight No.'} rightHeading={'PNR No.'} leftData={details.FlightTrainNumber||'N/A'} rightData={details.PNRNo||'N/A'} />
+
+                                }
 
                                 <View style={{height:0.5,backgroundColor:'#000000',marginLeft:35,marginRight:35}}/>
 
