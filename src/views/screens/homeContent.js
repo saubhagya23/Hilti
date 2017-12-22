@@ -6,7 +6,7 @@ import { FileSystem } from 'expo'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
-import {asyncPost, asyncGet} from '../../utils/asyncStore';
+import {asyncPost, asyncGet, asyncRemove} from '../../utils/asyncStore';
 import { getVideo } from '../../actions/apiData';
 import * as Progress from 'react-native-progress';
 
@@ -37,8 +37,11 @@ class HomeContent extends Component {
     }
 
     playVideo = async() => {
+        // console.log('video fn called removed.');
+        //asyncRemove('localURL');
         let videoUrl = await asyncGet('localURL');
         if(videoUrl){
+            // console.log('video got from storage.');
             this.setState({
                 url:videoUrl,
                 showVideo:true,
@@ -46,9 +49,11 @@ class HomeContent extends Component {
                 shouldPlay: true
             })
         }else {
+            // console.log('video api called');
             const {getVideo} = this.props;
              await getVideo();
              this.setState({ showVideo:true })
+            // console.log('download started..');
 
             const downloadResumable = FileSystem.createDownloadResumable(
                 this.props.video.videoUrl,
@@ -58,6 +63,7 @@ class HomeContent extends Component {
             )
 
             try {
+                 // console.log('video being stored in local storage.');
                 const { uri } = await downloadResumable.downloadAsync();
                 await asyncPost('localURL', uri);
                 this.setState({ url:uri, showVideo:true});

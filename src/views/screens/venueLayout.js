@@ -48,10 +48,10 @@ class VenueLayout extends Component{
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
                         <Image
-                            style={{height:249.5}}
-                            source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.png')}
+                            style={{height:213.5}}
+                            source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.jpg')}
                         />
-                        <TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
+                        {/*<TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
                             <View style={{flexDirection:'row'}}>
                                 <Image
                                     style={{width:9.5,height:13}}
@@ -61,7 +61,7 @@ class VenueLayout extends Component{
                                     FIND ON GOOGLE MAP
                                 </Text>
                             </View>
-                        </TouchableHighlight>
+                        </TouchableHighlight>*/}
                     </View>:null
                 }
             </View>
