@@ -139,17 +139,17 @@ class HomeContent extends Component {
                                         Kick off 2018
                                     </Text>
 
-                                    <View style={{position:'absolute',marginTop:111.5,marginLeft:19,flexDirection:'row'}} >
-                                    <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
-                                        Watch Video
-                                    </Text>
-                                    <View style={{marginLeft:5}}>
-                                        <Icon
-                                            style={{color:'#dd2127'}}
-                                            name='play-circle-o'
-                                            size={10}
-                                             />
-                                    </View>
+                                    <View style={{position:'absolute',marginTop:110.5,marginLeft:19,flexDirection:'row'}} >
+                                        <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
+                                            Watch Video
+                                        </Text>
+                                        <View style={{marginLeft:5,marginTop:2}}>
+                                            <Icon
+                                                style={{color:'#dd2127'}}
+                                                name='play-circle-o'
+                                                size={10}
+                                            />
+                                        </View>
                                     </View>
                                 </ImageBackground>
                                 </TouchableOpacity>

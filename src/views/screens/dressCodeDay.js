@@ -82,7 +82,7 @@ class DressCodeDay extends Component {
                             <View style={{height:133.5}}>
                                 <ImageBackground
                                     style={{flex:1}}
-                                    source={require('../../assets/images/dressCodeWeatherImg/dressCodeWeather_mdpi.png')}
+                                    source={require('../../assets/images/dressCodeWeatherImg/dressCodeWeather_mdpi.jpg')}
                                 >
                                     <View style={{height:62.5,flexDirection:'row'}}>
                                         <View style={{flex:2}}>

@@ -59,7 +59,7 @@ class Venue extends Component {
                             />
 
                             <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                THE LEELA AMBIENCE CONVENTION HOTEL, EAST DELHI
+                                LEELA AMBIENCE, YAMUNA SPORTS COMPLEX, EAST DELHI
                             </Text>
                         </View>
 

@@ -61,10 +61,10 @@ class MyArrivals extends Component {
 
     render(){
         let details={};
-        console.log('data--1--',this.props.arrivalList);
+        //console.log('data--1--',this.props.arrivalList);
         if(this.props.arrivalList.length){
             details={...this.props.arrivalList[0]}
-            console.log('data----',this.props.arrivalList[0]);
+            //console.log('data----',this.props.arrivalList[0]);
         }
         return(
             <View style={styles.container}>
