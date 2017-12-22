@@ -170,7 +170,7 @@ class PreKickOff extends Component{
                                     ((empAgenda.body[0].AgendaItem || empAgenda.body[0].Agendaitem)?
                                             (
                                                 (presenterCount>0)?
-                                                    <View>
+                                                    <View style={{marginBottom:10}}>
                                                         <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                             <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>
                                                             <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Presenter</Text>
@@ -204,7 +204,7 @@ class PreKickOff extends Component{
                                                         >
                                                         </FlatList>
                                                     </View>
-                                                    :<View>
+                                                    :<View style={{marginBottom:10}}>
                                                         <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                             <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>
                                                             <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Trainer</Text>
@@ -239,7 +239,7 @@ class PreKickOff extends Component{
                                                         </FlatList>
                                                     </View>
                                             )
-                                            :<View>
+                                            :<View style={{marginBottom:10}}>
                                                 <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                     <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Visiting</Text>
                                                     <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Group Leader</Text>
