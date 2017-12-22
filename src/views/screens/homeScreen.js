@@ -91,7 +91,7 @@ class HomeScreen extends Component {
 
                                 <View style={{flexDirection:"row",marginLeft:13,marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
-                                    <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name</Text>
+                                    <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name (Jan 09)</Text>
                                 </View>
                                 <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.Jan09GroupA}</Text>
                             </View>

@@ -33,7 +33,7 @@ class Venue extends Component {
     }
 
     findViaGMap = () => {
-        var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience Convention Hotel,label=L';
+        var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, Yamuna Sports Complex, East Delhi,label=L';
         this.openExternalApp(url);
     }
 
@@ -58,7 +58,7 @@ class Venue extends Component {
                                 source={require('../../assets/images/venueMainImg/banner_img_mdpi.jpg')}
                             />
 
-                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:148,height:48.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                 THE LEELA AMBIENCE CONVENTION HOTEL, EAST DELHI
                             </Text>
                         </View>

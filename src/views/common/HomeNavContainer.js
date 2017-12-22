@@ -37,7 +37,7 @@ export default class HomeNavContainer extends Component {
                     >
                         <Image
                             style={{
-                              backgroundColor:'white',
+                              backgroundColor:'#f5f3ee',
                               width:null,
                               height:null,
                               flex:1,
@@ -48,12 +48,12 @@ export default class HomeNavContainer extends Component {
                         <View style={{
                             height:35,
                             justifyContent:'center',
-                            backgroundColor:'white',
+                            backgroundColor:'#f5f3ee',
                             }}>
                             <Text
                                 style={{
                                     color:'#dd2127',
-                                    backgroundColor:'white',
+                                    backgroundColor:'#f5f3ee',
                                     fontFamily:'hilti-roman',
                                     fontSize:10,
                                     letterSpacing:0.5,

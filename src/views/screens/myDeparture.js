@@ -69,7 +69,7 @@ class MyDeparture extends Component {
                         <PageHeaderNotif props={this.props} parentPage='MY DEPARTURE' navigation={this.props.navigation}/>
                         <ScrollView>
                             {
-                                !details.hasOwnProperty('From') ? <Text style={{alignSelf:'center',color:'#dd2127',fontWeight:'bold',marginTop:7}}>No details for Delhi / NCR people</Text>:null
+                                !details.hasOwnProperty('From') ? <Text style={{alignSelf:'center',color:'#dd2127',fontWeight:'bold',marginTop:7}}>Not Applicable for Delhi/NCR Team Members</Text>:null
                             }
                             <View
                                 style={{height:39.5,

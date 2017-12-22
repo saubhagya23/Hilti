@@ -136,7 +136,7 @@ class HomeContent extends Component {
                                         WELCOME MESSAGE BY GM
                                     </Text>
                                     <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
-                                        We welcome you to be a part of our annual meet.
+                                        Kick off 2018
                                     </Text>
 
                                     <View style={{position:'absolute',marginTop:111.5,marginLeft:19,flexDirection:'row'}} >
