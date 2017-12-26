@@ -99,7 +99,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Call us to know the details which are already available in the Kick off App/Share-point Kick off 2018 Webpage.
+                                        Call us to just know the details which are already there in the Kick off App.
                                     </Text>
                                 </View>
                             </View>

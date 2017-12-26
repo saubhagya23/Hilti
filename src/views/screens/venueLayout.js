@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Image, Linking } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, Dimensions } from 'react-native';
 import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
 import { Font } from 'expo'
 import getDirections from 'react-native-google-maps-directions'
+import ImageZoom from 'react-native-image-pan-zoom';
 
 class VenueLayout extends Component{
     constructor(){
@@ -47,10 +48,15 @@ class VenueLayout extends Component{
                 {this.state.fontLoaded ?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
-                        <Image
-                            style={{height:213.5}}
-                            source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.jpg')}
-                        />
+                        <ImageZoom cropWidth={Dimensions.get('window').width}
+                                   cropHeight={213.5}
+                                   imageWidth={Dimensions.get('window').width}
+                                   imageHeight={213.5}>
+                            <Image
+                                style={{height:213.5}}
+                                source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.jpg')}
+                            />
+                        </ImageZoom>
                         {/*<TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
                             <View style={{flexDirection:'row'}}>
                                 <Image
