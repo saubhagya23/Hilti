@@ -60,7 +60,6 @@ class PreKickOff extends Component{
     }
 
     render(){
-        console.log('data----',this.props.agendaList);
         let empAgenda = {
             header: {
                 Date: null,
