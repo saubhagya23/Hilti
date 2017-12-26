@@ -49,11 +49,13 @@ class VenueLayout extends Component{
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
                         <ImageZoom cropWidth={Dimensions.get('window').width}
-                                   cropHeight={213.5}
+                                   cropHeight={Dimensions.get('window').height}
                                    imageWidth={Dimensions.get('window').width}
-                                   imageHeight={213.5}>
+                                   imageHeight={Dimensions.get('window').height}
+                                   centerOn={{x:0, y:0, scale:1,duration:2}}
+                                   >
                             <Image
-                                style={{height:213.5}}
+                                style={{height:null, width: null, flex:1}}
                                 resizeMode="contain"
                                 source={require('../../assets/images/venueRoadMap/venue_road_map_hdpi.png')}
                             />
