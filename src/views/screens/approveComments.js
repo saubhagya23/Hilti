@@ -161,7 +161,7 @@ class ApproveComments extends Component {
                             keyExtractor={item => item.timestamp}
                         />
 
-                        <TouchableOpacity onPress={this.approveComments} style={{width:100,marginLeft:150,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,marginBottom:10}}>
+                        <TouchableOpacity onPress={this.approveComments} style={{width:100,marginLeft:150,justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'lightgrey',borderRadius:5,marginBottom:10, marginTop:10}}>
                             <Text style={styles.approve}>Approve</Text>
                         </TouchableOpacity>
                     </View>
