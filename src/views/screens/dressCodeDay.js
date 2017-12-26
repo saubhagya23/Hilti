@@ -86,19 +86,19 @@ class DressCodeDay extends Component {
                                 >
                                     <View style={{height:62.5,flexDirection:'row'}}>
                                         <View style={{flex:2}}>
-                                            <Text style={{marginLeft:20,marginTop:20,fontFamily:'hilti-roman',fontSize:18,color:'#d2051e'}}>Delhi</Text>
-                                            <Text style={{marginLeft:20,marginTop:3,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>{currDate}</Text>
+                                            <Text style={{marginLeft:20,marginTop:20,fontFamily:'hilti-roman',fontSize:18,color:'#d2051e', backgroundColor:'transparent'}}>Delhi</Text>
+                                            <Text style={{marginLeft:20,marginTop:3,fontFamily:'hilti-roman',fontSize:12,color:'#000000', backgroundColor:'transparent'}}>{currDate}</Text>
                                         </View>
                                         <View style={{flex:2.5}}>
-                                            <Text style={{marginTop:15,fontSize:40,fontFamily:'hilti-roman',color:'#000000'}}>7-22</Text>
+                                            <Text style={{marginTop:15,fontSize:40,fontFamily:'hilti-roman',color:'#000000', backgroundColor:'transparent'}}>7-22</Text>
                                         </View>
                                         <View style={{flex:5.5}}>
-                                            <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000'}}>&deg; C</Text>
-                                            <Text style={{marginTop:1.5,marginLeft:8.5,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>Cold</Text>
+                                            <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000', backgroundColor:'transparent'}}>&deg; C</Text>
+                                            <Text style={{marginTop:1.5,marginLeft:8.5,fontFamily:'hilti-roman',fontSize:12,color:'#000000', backgroundColor:'transparent'}}>Cold</Text>
                                         </View>
                                     </View>
 
-                                    <Text style={{marginLeft:19,marginTop:12,fontFamily:'hilti-roman',fontSize:14,color:'#7c294e'}}>
+                                    <Text style={{marginLeft:19,marginTop:12,fontFamily:'hilti-roman',fontSize:14,color:'#7c294e', backgroundColor:'transparent'}}>
                                         Carry warm clothes
                                     </Text>
                                 </ImageBackground>
@@ -112,11 +112,11 @@ class DressCodeDay extends Component {
                                             source={item.imgUrl}
                                         />
                                         <View style={{flex:1,justifyContent:'center',paddingBottom:15}}>
-                                            <Text style={{marginLeft:17.5,fontSize:15,fontFamily:'hilti-roman',color:'#dd2127'}}>{item.title}</Text>
-                                            <Text style={{marginLeft:19.5,marginRight:19,marginTop:6,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>{item.subTitle}</Text>
+                                            <Text style={{marginLeft:17.5,fontSize:15,fontFamily:'hilti-roman',color:'#dd2127', backgroundColor:'transparent'}}>{item.title}</Text>
+                                            <Text style={{marginLeft:19.5,marginRight:19,marginTop:6,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e', backgroundColor:'transparent'}}>{item.subTitle}</Text>
                                             {
                                                 item.data?
-                                                    <Text style={{marginLeft:19.5,marginTop:4,fontSize:12,fontFamily:'hilti-bold',color:'#000000'}}>{item.data}</Text>
+                                                    <Text style={{marginLeft:19.5,marginTop:4,fontSize:12,fontFamily:'hilti-bold',color:'#000000', backgroundColor:'transparent'}}>{item.data}</Text>
                                                     :null
                                             }
                                         </View>
