@@ -257,7 +257,7 @@ export default class DosDonts extends Component {
                                             Wherever, it is too critical, then only make a call.
                                         </Text>
 
-                                        <View style={{flexDirection:'row'}}>
+                                        {/*<View style={{flexDirection:'row'}}>
                                             <Icon
                                                 style={{color:'#000000',marginLeft:19.5,marginTop:25}}
                                                 name='circle'
@@ -270,7 +270,7 @@ export default class DosDonts extends Component {
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>
                                             Please post your question through this link "I want to know" and we will be more than happy to respond
                                             to you and add the same in this FAQ in the next update on 2 Jan for the benefit of others.
-                                        </Text>
+                                        </Text>*/}
                                     </View>
                                 </ScrollView>
                             </View>

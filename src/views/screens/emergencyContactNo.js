@@ -75,7 +75,7 @@ class EmergencyContactNo extends Component {
                                             Gurpreet Singh | TravelDesk
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: + 91 8285148204 | E: travel.desk@hilti.com
+                                            M: + 918285148204 | E: travel.desk@hilti.com
                                         </Text>
 
                                         <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
@@ -87,7 +87,15 @@ class EmergencyContactNo extends Component {
                                             Akash Singh Tomar | Sr. Executive - Administration
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +91 9582381609 | E Akash.Tomar@hilti.com
+                                            M: +919582381609 | E: Akash.Tomar@hilti.com
+                                        </Text>
+
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                            Dinesh Prasad | Local Process Expert - Finance
+                                        </Text>
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                            M: +919711989254 | E: Dinesh.Prasad@hilti.com
+
                                         </Text>
 
                                         <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
@@ -96,24 +104,17 @@ class EmergencyContactNo extends Component {
                                             For App Related Query :
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Ashish Nautiyal | Asst Manager - IT
+                                            Pramod-Kumar Singh | Manager IT
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +91 7838069479 | E: Ashish.Nautiyal@hilti.com
+                                            M: +919958893301 | E: Pramod Kumar.Singh@hilti.com
                                         </Text>
 
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:7}}>
-                                            Pramod Kumar Singh | Manager-IT
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +91 9958893301 | E: PramodKumar.Singh@hilti.com
-                                        </Text>
-
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:7}}>
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
                                             Amol Oberoi | Head– Digital Marketing
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +91 7290075839 | E: Amol.Oberoi@hilti.com
+                                            M: +917290075839 | E: Amol.Oberoi@hilti.com
                                         </Text>
 
                                         <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
@@ -123,10 +124,17 @@ class EmergencyContactNo extends Component {
                                         </Text>
 
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Tanya Manchanda | Kick off Event -Champion
+                                            Kamal Khattar | Local Process Expert - Finance
                                         </Text>
                                         <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            E: Tanya.Manchanda@hilti.com
+                                            M: +911244139917 | E: Kamal.Khattar@hilti.com
+                                        </Text>
+
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                            Loveleen Arora | Kick off Project Lead
+                                        </Text>
+                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                            M: +919811902669 | E: loveleen.arora@hilti.com
                                         </Text>
                                     </View>
                             }

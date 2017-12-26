@@ -29,9 +29,9 @@ export default class DosDonts extends Component {
                         <ScrollView>
                         <View style={{backgroundColor:'#f5f3ee'}}>
                             <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>BEFORE KICK OFF</Text>
-                            <View style={{backgroundColor:'#ffffff',height:510,marginTop:16}}>
+                            <View style={{backgroundColor:'#ffffff',height:490,marginTop:16}}>
                                 <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:19.5}}>Do's</Text>
-                                <View style={{flexDirection:'row',marginRight:27.5}}>
+                                {/*<View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
                                         style={{color:'#000000',marginLeft:21,marginTop:32}}
                                         name='circle'
@@ -40,7 +40,7 @@ export default class DosDonts extends Component {
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
                                         Go through all the data provided on Kick off 2018 App/Share-point Kick off 2018 Webpage.
                                     </Text>
-                                </View>
+                                </View>*/}
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
                                     <Icon
                                         style={{color:'#000000',marginLeft:21,marginTop:32}}
@@ -68,7 +68,7 @@ export default class DosDonts extends Component {
                                         size={10}
                                     />
                                     <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:10,marginTop:28}}>
-                                        Plan to arrive 2 hours early to avoid missing your flight.
+                                        Plan to arrive 2 hours early at the airport to avoid missing your flight
                                     </Text>
                                 </View>
                                 <View style={{flexDirection:'row',marginRight:27.5}}>
