@@ -54,7 +54,8 @@ class VenueLayout extends Component{
                                    imageHeight={213.5}>
                             <Image
                                 style={{height:213.5}}
-                                source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.jpg')}
+                                resizeMode="contain"
+                                source={require('../../assets/images/venueRoadMap/venue_road_map_hdpi.png')}
                             />
                         </ImageZoom>
                         {/*<TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
