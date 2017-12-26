@@ -110,21 +110,21 @@ class AgendaDay extends Component{
                                  </View>
 
                                  <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
-                                     {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
+                                     {((empAgenda.header && empAgenda.header.ParticipantsGroups)||(empAgenda.header && empAgenda.header.ParticipantsGroup))?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
                                          null
                                      }
 
-                                     {empAgenda.header.DressCode?
+                                     {(empAgenda.header && empAgenda.header.DressCode)?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Dress Code: {empAgenda.header.DressCode||'Data not available'}
                                          </Text>:
                                          null
                                      }
 
-                                     {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
+                                     {((empAgenda.header && empAgenda.header.GroupCoordinator)||(empAgenda.header && empAgenda.header.Groupcoordinator))?
                                          <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
@@ -133,7 +133,7 @@ class AgendaDay extends Component{
 
                                  </View>
 
-                                 {empAgenda.body.map((empAgenda)=>{
+                                 {empAgenda.body && empAgenda.body.map((empAgenda)=>{
                                      if(empAgenda.Venue){
                                          venueCount++;
                                      }
