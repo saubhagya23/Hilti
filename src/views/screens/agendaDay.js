@@ -85,7 +85,7 @@ class AgendaDay extends Component{
                         <View style={{flex:1}}>
                             <PageHeaderNotif props={this.props} parentPage={day} navigation={this.props.navigation}/>
                              <ScrollView>
-                                 <View style={{height:179.5}}>
+                                 <View style={{height:179.5, zIndex:1}}>
                                      <Image
                                          style={{flex:1, width:null, height:null}}
                                          source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.jpg')}
