@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
         zIndex:15,
         padding: 1,
         fontSize: 8,
+        overflow:'hidden',
         textAlign: 'center',
         left: 10,
     },

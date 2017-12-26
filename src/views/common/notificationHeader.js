@@ -51,9 +51,7 @@ class notificationHeader extends Component {
                             <View style={{flex:1,shadowColor:'#000000',shadowOffset:{width:0,height:5},shadowRadius:3,shadowOpacity:5}}>
                                 <View style={styles.container}>
                                 <TouchableOpacity style={{marginTop:20,marginLeft:19.5}} onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
-                                
                                     <Image
-                                        
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
                                 </TouchableOpacity>
