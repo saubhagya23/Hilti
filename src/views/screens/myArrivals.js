@@ -37,7 +37,6 @@ class MyArrivals extends Component {
         let detail = JSON.parse(this.props.userDetail);
         getArrivals({param:detail.Code});
         getArrivalTicket();
-
     }
 
     downloadArrTicket = () => {

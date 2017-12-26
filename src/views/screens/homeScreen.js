@@ -53,7 +53,6 @@ class HomeScreen extends Component {
         }
        return(
             <View style={styles.container}>
-
                 <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
                     <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}}>
                         <View style={{backgroundColor:"#ffffff",height:350,width:280,borderWidth:2,borderColor:'#dd2127',borderRadius:5}}>
