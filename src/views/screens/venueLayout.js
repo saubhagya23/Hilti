@@ -48,13 +48,16 @@ class VenueLayout extends Component{
                 {this.state.fontLoaded ?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
-                        <ImageZoom cropWidth={Dimensions.get('window').width}
-                                   cropHeight={213.5}
+                        <ImageZoom style={{justifyContent:'flex-start'}} cropWidth={Dimensions.get('window').width}
+                                   cropHeight={Dimensions.get('window').height}
                                    imageWidth={Dimensions.get('window').width}
-                                   imageHeight={213.5}>
+                                   imageHeight={231}
+                                   centerOn={{x:0, y:0, scale:1,duration:2}}
+                                   >
                             <Image
-                                style={{height:213.5}}
-                                source={require('../../assets/images/venueRoadMap/venue_road_map_mdpi.jpg')}
+                                style={{height:null, width: null, flex:1}}
+                                resizeMode="contain"
+                                source={require('../../assets/images/venueRoadMap/venue_road_map_hdpi.png')}
                             />
                         </ImageZoom>
                         {/*<TouchableHighlight style={{marginLeft:97,marginTop:23,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.handleGetDirections()}}>
