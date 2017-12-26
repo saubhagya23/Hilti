@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, TouchableOpacity, Platform } from 'react-native';
 import { Font } from 'expo'
 import Icon  from 'react-native-vector-icons/MaterialIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
@@ -33,7 +33,14 @@ class Venue extends Component {
     }
 
     findViaGMap = () => {
-        var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, Yamuna Sports Complex, East Delhi,label=L';
+        http://maps.apple.com/?ll=<lat>,<long>
+        if(Platform.OS === 'android'){
+            var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, Yamuna Sports Complex, East Delhi,label=L';
+        }
+        else if(Platform.OS === 'ios'){
+            var url = 'http://maps.apple.com/?ll=28.6621,77.3021';
+        }
+        
         this.openExternalApp(url);
     }
 
