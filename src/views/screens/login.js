@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableHighlight, KeyboardAvoidingView, ScrollView, ActivityIndicator} from 'react-native';
 import { Constants, Font } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -19,7 +19,8 @@ class Login extends Component {
             fontLoaded:false,
             err:false,
             errText:'',
-            showPaswd:false
+            showPaswd:false,
+            showSpinner:false
         };
     }
 
@@ -45,6 +46,7 @@ class Login extends Component {
                 })
         }
         else {
+            this.setState({showSpinner:true});
             let empLoginInfo = {
                 email: this.state.empId,
                 password: this.state.empCode
@@ -84,7 +86,10 @@ class Login extends Component {
                         asyncPost('notifToken', data.token);
                     });
                 }               
-            });
+            })
+            .finally(()=>{
+                this.setState({showSpinner:false});
+            })
         }
     };
 
@@ -230,9 +235,15 @@ class Login extends Component {
                                 }
 
                                 <TouchableHighlight style={styles.button} onPress= { () => {this.login()}}>
-                                    <View>
-                                        <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', marginTop:8.5, textAlign:'center' }}>SIGN IN</Text>
-                                    </View>
+                                    {
+                                        this.state.showSpinner?
+                                            <ActivityIndicator color='red' style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}/>
+                                            :
+                                            <View>
+                                                <Text style={{color:'#dd2127',fontSize:16, fontFamily:'hilti-roman', marginTop:8.5, textAlign:'center' }}>SIGN IN</Text>
+                                            </View>
+
+                                    }
                                 </TouchableHighlight>
                             </View>
                         </View>
