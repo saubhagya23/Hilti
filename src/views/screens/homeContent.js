@@ -132,14 +132,14 @@ class HomeContent extends Component {
                                     resizeMode={'cover'}
                                     source={require('../../assets/images/homeVideoImg/homeVideoImg_mdpi.jpg')}
                                 >
-                                    <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman'}}>
+                                    <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman', backgroundColor:'transparent'}}>
                                         WELCOME MESSAGE BY GM
                                     </Text>
-                                    <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold'}}>
+                                    <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold', backgroundColor:'transparent'}}>
                                         Kick off 2018
                                     </Text>
 
-                                    <View style={{position:'absolute',marginTop:110.5,marginLeft:19,flexDirection:'row'}} >
+                                    <View style={{position:'absolute',marginTop:110.5,marginLeft:19,flexDirection:'row', backgroundColor:'transparent'}} >
                                         <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
                                             Watch Video
                                         </Text>
