@@ -109,6 +109,7 @@ class AgendaDay extends Component{
                                              width:133.5,
                                              fontSize:14,
                                              color:'#dd2127',
+                                             backgroundColor:'transparent',
                                              fontFamily:'hilti-roman'}}>
                                          HILTI INDIA KICK OFF 2018</Text>
 
