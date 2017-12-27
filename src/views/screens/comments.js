@@ -10,9 +10,10 @@ import {
     View,
     FlatList,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Keyboard,
+    Platform
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
@@ -28,7 +29,9 @@ class Comments extends Component {
             typing: '',
             errText:'',
             isConnected: false,
-            commentsList:[]
+            commentsList:[],
+            isKeyboardOn :false,
+            keyboardHeight:0
         }
     }
 
@@ -39,9 +42,34 @@ class Comments extends Component {
         });
         this.setState({
             fontLoaded:true
-        })
+        });
+        if(Platform.OS === 'ios') {
+            this.keyboardWillShowListener = Keyboard.addListener('keyboardWillShow', this._keyboardWillShow);
+            this.keyboardWillHideListener = Keyboard.addListener('keyboardWillHide', this._keyboardWillHide);
+        }
     }
 
+    componentWillUnmount () {
+        if(Platform.OS === 'ios') {
+            this.keyboardWillShowListener.remove();
+            this.keyboardWillHideListener.remove();
+        }
+    }
+
+    _keyboardWillShow = (e) =>  {
+        console.log(JSON.stringify(e,null, '\t'));
+        this.setState({
+            isKeyboardOn:true,
+            keyboardHeight: e.endCoordinates.height
+        });
+    }
+
+    _keyboardWillHide = (e) => {
+        this.setState({
+            isKeyboardOn:false,
+            keyboardHeight:0
+        });
+    }
 
     componentDidMount() {
          socket = openSocket('http://40.70.8.97:9000', {
@@ -111,7 +139,7 @@ class Comments extends Component {
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
-                    <View style={{flex:1}}>
+                    <View style={{flex:1, ...Platform.select({ios:{marginBottom:this.state.isKeyboardOn? this.state.keyboardHeight:0 }, android:{marginBottom:0}})}}>
                         <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
                             style={{marginBottom:80}}
@@ -147,7 +175,7 @@ class Comments extends Component {
                             }
                             keyExtractor={item => item.timestamp}
                         />
-                        <KeyboardAwareScrollView keyboardShouldPersistTaps='always' style={{paddingBottom:20,bottom:0,position:'absolute'}}>
+                        <View style={{paddingBottom:20  ,bottom:0,position:'absolute'}}>
                             <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
@@ -161,7 +189,7 @@ class Comments extends Component {
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
-                        </KeyboardAwareScrollView>
+                        </View>
                         {
                             this.state.errText?
                                 <Text>{this.state.errText}</Text>:null
