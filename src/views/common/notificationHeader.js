@@ -50,14 +50,14 @@ class notificationHeader extends Component {
                         {this.state.fontLoaded?
                             <View style={{flex:1,shadowColor:'#000000',shadowOffset:{width:0,height:5},shadowRadius:3,shadowOpacity:5}}>
                                 <View style={styles.container}>
-                                <TouchableOpacity style={{marginTop:20,marginLeft:19.5}} onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
+                                <TouchableOpacity style={{marginTop:20,marginLeft:19.5,marginRight:'auto'}} onPress={()=>this.props.props.navigation.navigate('HomeScreen')}>
                                     <Image
                                         source={require('../../assets/images/logo/logo_mdpi.png')}
                                     />
                                 </TouchableOpacity>
-                                    <View style={{marginLeft:185.5, marginTop:19.5, marginRight:24}}>
-                                    </View>
-                                    <TouchableOpacity style={{marginTop:19, marginRight:10}} onPress={()=>this.props.props.navigation.goBack()}>
+                                    {/*<View style={{marginLeft:185.5, marginTop:19.5, marginRight:24,backgroundColor:'yellow'}}>
+                                    </View>*/}
+                                    <TouchableOpacity style={{marginTop:19, marginRight:20}} onPress={()=>this.props.props.navigation.goBack()}>
                                         <Icon
                                             name='user-circle-o'
                                             size={20}
