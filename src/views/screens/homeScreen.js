@@ -54,7 +54,7 @@ class HomeScreen extends Component {
        return(
             <View style={styles.container}>
                 <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
-                    <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}}>
+                    <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}} pointerEvents={'box-none'}>
                         <View style={{backgroundColor:"#ffffff",height:350,width:280,borderWidth:2,borderColor:'#dd2127',borderRadius:5}}>
                             <View style={{flexDirection:'row',justifyContent:'center',margin:15}}>
                                 <Text style={{fontSize:16,fontWeight:'bold'}}>Profile</Text>

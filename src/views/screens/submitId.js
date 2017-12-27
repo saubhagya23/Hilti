@@ -507,7 +507,7 @@ class SubmitId extends Component {
                                 }
 
                                 <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
-                                    <View style={{ flex: 1 ,justifyContent:'center',alignItems:'center'}}>
+                                    <View style={{ flex: 1 ,justifyContent:'center',alignItems:'center'}} pointerEvents={'box-none'}>
                                         <TouchableOpacity
                                             style={{width:200,height:50,backgroundColor:'#dd2127',justifyContent:'center',alignItems:'center',borderWidth:1,borderColor:'#dd2127',borderRadius:5}}
 
