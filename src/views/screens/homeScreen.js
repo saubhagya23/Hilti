@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Platform } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
@@ -210,7 +210,15 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'#f5f3ee'
+        backgroundColor:'#f5f3ee',
+        ...Platform.select({
+            ios: {
+                marginTop: 18,
+            },
+            android: {
+                marginTop:0,
+            },
+        }),
     },
     text: {
         textAlign: 'center'
