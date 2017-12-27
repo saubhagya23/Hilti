@@ -95,7 +95,7 @@ class MyStay extends Component {
                                             <View style={{flexDirection:'row',flexWrap:'wrap'}}>
                                                 {
                                                     details.Inclusions.map((data,index)=>(
-                                                        <View style={{width:100, height:40, marginTop:10,marginLeft:40,flexDirection:'row'}} key={index}>
+                                                        <View style={{height:40, marginTop:10,marginLeft:40,flexDirection:'row',marginRight:35}} key={index}>
                                                             <Icon
                                                              name="circle"
                                                              style={{color:'#dd2127'}}
@@ -109,7 +109,7 @@ class MyStay extends Component {
                                     }
                                 </View>
 
-                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:40,marginTop:21.5}}>Important to Remember</Text>
+                                <Text style={{fontFamily:'hilti-roman',fontSize:12,color:'#dd2127',marginLeft:40,marginTop:15.5}}>Important to Remember</Text>
 
                                 <View >
                                     {
@@ -117,7 +117,7 @@ class MyStay extends Component {
                                             <View style={{marginBottom:15}}>
                                                 {
                                                     details.ImportantToRemember.map((data,index)=>(
-                                                        <View style={{ height:40, marginTop:10,marginLeft:40,flexDirection:'row'}} key={index}>
+                                                        <View style={{ height:40, marginTop:10,marginLeft:40,flexDirection:'row',marginRight:35}} key={index}>
                                                             <Icon
                                                                 name="circle"
                                                                 style={{color:'#dd2127'}}
