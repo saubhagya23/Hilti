@@ -51,14 +51,14 @@ export default class DosDonts extends Component {
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman'}}>
                                             Check your ticket before hand and in case of any discrepancy, please send your concern through the App under
                                         </Text>
-                                        <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                            " I need assistance"
+                                        <Text style={{marginLeft:5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                            {' '}"I need assistance"
                                         </Text>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman'}}>
-                                            Travel Related Query or write at
+                                            {' '}Travel Related Query or write at
                                         </Text>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'blue'}}>
-                                            Teamannualkickoff.in@hilti.com
+                                            {' '}Teamannualkickoff.in@hilti.com
                                         </Text>
                                     </Text>
                                 </View>
