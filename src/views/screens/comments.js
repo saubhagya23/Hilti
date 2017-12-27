@@ -44,7 +44,7 @@ class Comments extends Component {
 
 
     componentDidMount() {
-         socket = openSocket('http://40.70.8.97:8080', {
+         socket = openSocket('http://40.70.8.97:9000', {
             path: '/socket.io-client'
         });
 

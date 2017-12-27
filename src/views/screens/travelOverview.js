@@ -24,7 +24,7 @@ class travelOverview extends Component {
     }
 
     downloadFile = () => {
-        WebBrowser.openBrowserAsync('http://40.70.8.97:8080/api/documents/download/Travel_Overview.xlsx')
+        WebBrowser.openBrowserAsync('http://40.70.8.97:9000/api/documents/download/Travel_Overview.xlsx')
             .then((resp) => {
                 console.log("Finished", resp);
             })
