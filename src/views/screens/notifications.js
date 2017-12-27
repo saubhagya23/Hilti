@@ -37,9 +37,16 @@ class Notifications extends Component {
                      {    
                         this.state.notificationRecieved ?
                              <ScrollView contentContainerStyle={{ justifyContent:'center',alignItems:'center'}}>
-                                 {notifArray.map((notification,index) => 
-                                 <Notification key = {index} notification={notification}/>
-                                 )}
+                                 {
+                                     notifArray.length == 0 ?
+                                         <View style={{marginTop:20, flex:1, justifyContent:'center', alignItems:'center'}}>
+                                             <Text style={{color:'red'}}> No Notifications to show.</Text>
+                                         </View>
+                                         :
+                                         notifArray.map((notification,index) =>
+                                             <Notification key = {index} notification={notification}/>
+                                         )
+                                 }
                              </ScrollView>
                              :<ActivityIndicator color='red' size='large' style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 80}}/>
                      }
