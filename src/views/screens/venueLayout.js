@@ -48,8 +48,8 @@ class VenueLayout extends Component{
                 {this.state.fontLoaded ?
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
-                        <ImageZoom style={{justifyContent:'flex-start'}} cropWidth={Dimensions.get('window').width}
-                                   cropHeight={Dimensions.get('window').height}
+                        <ImageZoom  cropWidth={Dimensions.get('window').width}
+                                   cropHeight={Dimensions.get('window').height-80}
                                    imageWidth={Dimensions.get('window').width}
                                    imageHeight={231}
                                    centerOn={{x:0, y:0, scale:1,duration:2}}
