@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Platform } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
@@ -54,7 +54,7 @@ class HomeScreen extends Component {
        return(
             <View style={styles.container}>
                 <Modal isVisible={this.state.isModalVisible} backdropColor={'#ffffff'} onBackdropPress={() => {this.setState({isModalVisible:false})}} animationIn={'fadeIn'} animationOut={'fadeOut'}>
-                    <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}}>
+                    <View style={{ flex: 1 , justifyContent:'center',alignItems:'center',paddingBottom:15}} pointerEvents={'box-none'}>
                         <View style={{backgroundColor:"#ffffff",height:350,width:280,borderWidth:2,borderColor:'#dd2127',borderRadius:5}}>
                             <View style={{flexDirection:'row',justifyContent:'center',margin:15}}>
                                 <Text style={{fontSize:16,fontWeight:'bold'}}>Profile</Text>
@@ -210,7 +210,15 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'#f5f3ee'
+        backgroundColor:'#f5f3ee',
+        ...Platform.select({
+            ios: {
+                marginTop: 18,
+            },
+            android: {
+                marginTop:0,
+            },
+        }),
     },
     text: {
         textAlign: 'center'

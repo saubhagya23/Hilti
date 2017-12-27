@@ -119,6 +119,7 @@ class Notification extends Component {
                                                     fontFamily:'hilti-roman',
                                                     fontSize:10,
                                                     color:'#000000',
+                                                    backgroundColor:'transparent',
                                                     width: width/2,
                                                     marginVertical:10}}>
                                                     {this.props.notification.body}

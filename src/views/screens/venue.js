@@ -64,7 +64,7 @@ class Venue extends Component {
                                 source={require('../../assets/images/venueMainImg/banner_img_mdpi.jpg')}
                             />
 
-                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127', backgroundColor:'transparent'}}>
                                 LEELA AMBIENCE, YAMUNA SPORTS COMPLEX, EAST DELHI
                             </Text>
                         </View>
