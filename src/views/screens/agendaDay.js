@@ -15,7 +15,8 @@ class AgendaDay extends Component{
         super();
 
         this.state = {
-            fontLoaded:false
+            fontLoaded:false,
+            flagMargin:0
         }
     }
 
@@ -49,6 +50,7 @@ class AgendaDay extends Component{
     }
 
     render(){
+        console.log('agenda-------------->>>>',this.props.agendaList);
         let date = this.props.navigation.state.params.day
         let day;
         if(date === '8 Jan 18'){
@@ -60,6 +62,9 @@ class AgendaDay extends Component{
         else{
             day = 'Day 3'
         }
+
+        let flagMarginTop=0;
+
         let empAgenda = {
                 header: {
                     Date: null,
@@ -72,6 +77,11 @@ class AgendaDay extends Component{
 
         if(this.props.agendaList && Object.keys(this.props.agendaList).length){
             empAgenda = this.props.agendaList;
+            if(empAgenda.header){
+                if((!empAgenda.header.ParticipantsGroups || !empAgenda.header.ParticipantsGroup) && !empAgenda.header.DressCode && (!empAgenda.header.GroupCoordinator || !empAgenda.header.Groupcoordinator)){
+                    flagMarginTop=20;
+                }
+            }
         }
         let currentDateStr = date.split(' ');
         let currentDate = currentDateStr[0];
@@ -110,21 +120,21 @@ class AgendaDay extends Component{
                                  </View>
 
                                  <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
-                                     {(empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup)?
+                                     {((empAgenda.header && empAgenda.header.ParticipantsGroups)||(empAgenda.header && empAgenda.header.ParticipantsGroup))?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
                                          </Text>:
                                          null
                                      }
 
-                                     {empAgenda.header.DressCode?
+                                     {(empAgenda.header && empAgenda.header.DressCode)?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Dress Code: {empAgenda.header.DressCode||'Data not available'}
                                          </Text>:
                                          null
                                      }
 
-                                     {(empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator)?
+                                     {((empAgenda.header && empAgenda.header.GroupCoordinator)||(empAgenda.header && empAgenda.header.Groupcoordinator))?
                                          <Text style={{fontSize:12,fontFamily:'hilti-bold',color:'#7c294e',paddingBottom:7}}>
                                              Group Coordinator: {empAgenda.header.GroupCoordinator||empAgenda.header.Groupcoordinator||'Data not available'}
                                          </Text>:
@@ -133,7 +143,7 @@ class AgendaDay extends Component{
 
                                  </View>
 
-                                 {empAgenda.body.map((empAgenda)=>{
+                                 {empAgenda.body && empAgenda.body.map((empAgenda)=>{
                                      if(empAgenda.Venue){
                                          venueCount++;
                                      }
@@ -142,11 +152,12 @@ class AgendaDay extends Component{
                                      }
                                  })}
 
+
                                  {(empAgenda.body && empAgenda.body.length)?
                                      ((empAgenda.body[0].AgendaItem || empAgenda.body[0].Agendaitem)?
                                              (
                                                  (presenterCount>0)?
-                                                     <View style={{marginBottom:10}}>
+                                                     <View style={{marginBottom:10,marginTop:flagMarginTop}}>
                                                          <View style={{backgroundColor:'#ffffff',flexDirection:'row',marginLeft:5,marginRight:5,marginTop:10}}>
                                                              <Text style={{flex:3.95,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Agenda</Text>
                                                              <Text style={{flex:2.5,padding:5,borderWidth:1,borderColor:'lightgrey',fontFamily:'hilti-bold',fontSize:12}}>Presenter</Text>

@@ -211,7 +211,7 @@ class MyArrivals extends Component {
                                 }}>
                                     <View style={{flex:1}}>
                                         <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#000000',opacity:0.8}}>Bus/Cab Departure Time</Text>
-                                        <Text style={{width:100,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>2:00 hr</Text>
+                                        <Text style={{fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.BusCabDeparture||'N/A'}</Text>
                                         <Text style={{marginTop:10.5,fontSize:9,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>
                                             (The time is indicative and may change as per the arrival schedule of flight)
                                         </Text>

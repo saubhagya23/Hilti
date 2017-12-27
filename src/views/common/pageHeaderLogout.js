@@ -62,7 +62,7 @@ class PageHeaderLogout extends Component {
                                     </TouchableOpacity>
 
 
-                                    <TouchableOpacity style={{marginTop:19,marginRight:50,width:55}} onPress={()=>{
+                                    <TouchableOpacity style={{marginTop:19,marginRight:50}} onPress={()=>{
                                         asyncRemove('token');
                                         asyncGet('token');
                                         asyncRemove('userDetail');
