@@ -3,6 +3,7 @@
     "sdkVersion": "22.0.0",
     "androidStatusBar": {
       "backgroundColor": "#CCCCCC"
-    }
+    },
+    "orientation": "portrait"
   }
 }

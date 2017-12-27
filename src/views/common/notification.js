@@ -146,7 +146,7 @@ class Notification extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: width-20,
+        width: width-40,
         flexShrink:1,
         backgroundColor: "#fff",
         borderRadius:1,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     },
     horizontalLine: {
         height: 2,
-        width: width-20,
+        width: width-60,
         backgroundColor: '#d6d6d6' ,
         paddingHorizontal: 10,
     },
