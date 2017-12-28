@@ -134,7 +134,15 @@ class Comments extends Component {
     };
 
     render(){
-        let user = JSON.parse(this.props.userDetail);
+        let user = {};
+        if(this.props.userDetail){
+            user = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            user = JSON.parse(this.props.userDetail)
+        }
+        // let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
         return(
             <View style={styles.container}>

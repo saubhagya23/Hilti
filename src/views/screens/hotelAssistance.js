@@ -12,7 +12,7 @@ class hotelAssistance extends Component {
                         'Wrong check-out date',
                         'Need change in check-in date as my flight is changed',
                         'Need change in my check-out date as my flight is changed',
-                        'Release room booking as I am not travelling'
+                        'Release room booking as I am not travelling',
                         ],
                     }
         return ( 

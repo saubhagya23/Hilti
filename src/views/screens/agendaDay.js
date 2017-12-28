@@ -6,7 +6,7 @@ import BackTravel from './backTravel'
 import { Font } from 'expo'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAgendaData } from '../../actions/apiData';
+import { getAgendaData,postEvent } from '../../actions/apiData';
 
 const month=["Jan","Feb","March","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -16,7 +16,7 @@ class AgendaDay extends Component{
 
         this.state = {
             fontLoaded:false,
-            flagMargin:0
+            detailsLoaded:false
         }
     }
 
@@ -32,26 +32,50 @@ class AgendaDay extends Component{
 
     componentDidMount(){
         const { getAgendaData } = this.props;
-        let detail = JSON.parse(this.props.userDetail);
+        let detail = {};
+        if(this.props.userDetail){
+            detail = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            detail = JSON.parse(this.props.userDetail)
+        }
+        let empLoginInfo = {
+            email: detail.EmailId,
+            password: detail.Code
+        };
+        console.log('request for fetching user details....');
+        const {postEvent} = this.props;
+        postEvent({payload: empLoginInfo});
+        console.log('changed details',this.props.userDetail);
         let date = this.props.navigation.state.params.day;
         let grpName;
         if(date === '8 Jan 18'){
             grpName = detail.Jan08GroupA;
             getAgendaData({param:grpName,day:date});
+            this.setState({
+                detailsLoaded:true
+            })
         }
         else if(date === '9 Jan 18'){
             grpName = detail.Jan09GroupA;
             getAgendaData({param:grpName,day:date});
+            this.setState({
+                detailsLoaded:true
+            })
         }
         else{
             grpName = detail.Jan10GroupA;
             getAgendaData({param:grpName,day:date});
+            this.setState({
+                detailsLoaded:true
+            })
         }
     }
 
     render(){
         console.log('agenda-------------->>>>',this.props.agendaList);
-        let date = this.props.navigation.state.params.day
+        let date = this.props.navigation.state.params.day;
         let day;
         if(date === '8 Jan 18'){
             day = 'Day 1'
@@ -75,7 +99,7 @@ class AgendaDay extends Component{
                 body: []
             };
 
-        if(this.props.agendaList && Object.keys(this.props.agendaList).length){
+        if(this.state.detailsLoaded && this.props.agendaList && Object.keys(this.props.agendaList).length){
             empAgenda = this.props.agendaList;
             if(empAgenda.header){
                 if((!empAgenda.header.ParticipantsGroups || !empAgenda.header.ParticipantsGroup) && !empAgenda.header.DressCode && (!empAgenda.header.GroupCoordinator || !empAgenda.header.Groupcoordinator)){
@@ -95,7 +119,7 @@ class AgendaDay extends Component{
                         <View style={{flex:1}}>
                             <PageHeaderNotif props={this.props} parentPage={day} navigation={this.props.navigation}/>
                              <ScrollView>
-                                 <View style={{height:179.5, zIndex:1}}>
+                                 <View style={{height:179.5}}>
                                      <Image
                                          style={{flex:1, width:null, height:null}}
                                          source={require('../../assets/images/agendaMainImg/agendaMainImg_mdpi.jpg')}
@@ -113,7 +137,7 @@ class AgendaDay extends Component{
                                              fontFamily:'hilti-roman'}}>
                                          HILTI INDIA KICK OFF 2018</Text>
 
-                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:20,justifyContent:'center',alignItems:'center',zIndex:10}}>
+                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                          <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentDate}</Text>
                                          <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentMonth}</Text>
                                      </View>
@@ -299,7 +323,8 @@ function mapDispatchToProps(dispatch){
     return {
         dispatch,
         ...bindActionCreators({
-                getAgendaData
+                getAgendaData,
+                postEvent
             },
             dispatch
         ),

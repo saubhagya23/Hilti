@@ -12,6 +12,7 @@ class travelAssistance extends Component {
                         'My flight is cancelled',
                         'Need to cancel my Flight as not joining the Kick off',
                         'Need to Change my flight (only emergency cases)',
+                        'Any other Queries (Pickup, Drop, Agenda etc.)'
                         ],
                     }
         return (
