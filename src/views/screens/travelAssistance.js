@@ -6,22 +6,23 @@ import AssistanceContainer from '../common/assistanceContainer';
 class travelAssistance extends Component {
     render() {
         const data = {title:'Travel Related Query',
-                    desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
-                    select:[
-                        'My flight time date is changed',
-                        'My flight is cancelled',
-                        'Need to cancel my Flight as not joining the Kick off',
-                        'Need to Change my flight (only emergency cases)',
-                        ],
-                    }
+            desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
+            select:[
+                'My flight time date is changed',
+                'My flight is cancelled',
+                'Need to cancel my Flight as not joining the Kick off',
+                'Need to Change my flight (only emergency cases)',
+                'Any other queries'
+            ],
+        }
         return (
             <View style={styles.container}>
-            <View style={{flex:1}}>
-                <PageHeaderNotif props={this.props} parentPage={data.title} navigation={this.props.navigation}/>
-                <ScrollView>
-                    <AssistanceContainer assistanceData={data} />
-                </ScrollView>
-            </View>
+                <View style={{flex:1}}>
+                    <PageHeaderNotif props={this.props} parentPage={data.title} navigation={this.props.navigation}/>
+                    <ScrollView>
+                        <AssistanceContainer assistanceData={data} />
+                    </ScrollView>
+                </View>
             </View>
         )
     }

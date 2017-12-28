@@ -10,9 +10,10 @@ import {
     View,
     FlatList,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Keyboard,
+    Platform
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { Font } from 'expo'
 import { getComments, postComment } from '../../actions/apiData';
@@ -28,7 +29,9 @@ class Comments extends Component {
             typing: '',
             errText:'',
             isConnected: false,
-            commentsList:[]
+            commentsList:[],
+            isKeyboardOn :false,
+            keyboardHeight:0
         }
     }
 
@@ -39,12 +42,37 @@ class Comments extends Component {
         });
         this.setState({
             fontLoaded:true
-        })
+        });
+        if(Platform.OS === 'ios') {
+            this.keyboardWillShowListener = Keyboard.addListener('keyboardWillShow', this._keyboardWillShow);
+            this.keyboardWillHideListener = Keyboard.addListener('keyboardWillHide', this._keyboardWillHide);
+        }
     }
 
+    componentWillUnmount () {
+        if(Platform.OS === 'ios') {
+            this.keyboardWillShowListener.remove();
+            this.keyboardWillHideListener.remove();
+        }
+    }
+
+    _keyboardWillShow = (e) =>  {
+        console.log(JSON.stringify(e,null, '\t'));
+        this.setState({
+            isKeyboardOn:true,
+            keyboardHeight: e.endCoordinates.height
+        });
+    }
+
+    _keyboardWillHide = (e) => {
+        this.setState({
+            isKeyboardOn:false,
+            keyboardHeight:0
+        });
+    }
 
     componentDidMount() {
-         socket = openSocket('http://13.68.114.98:9000', {
+        socket = openSocket('http://40.70.8.97:9000', {
             path: '/socket.io-client'
         });
 
@@ -78,9 +106,9 @@ class Comments extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-     this.setState({
-         commentsList:nextProps.commentList
-     })
+        this.setState({
+            commentsList:nextProps.commentList
+        })
     }
 
     sendMessage = async () => {
@@ -106,12 +134,20 @@ class Comments extends Component {
     };
 
     render(){
-        let user = JSON.parse(this.props.userDetail);
+        let user = {};
+        if(this.props.userDetail){
+            user = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            user = JSON.parse(this.props.userDetail)
+        }
+        // let user = JSON.parse(this.props.userDetail);
         let code = user.Code;
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
-                    <View style={{flex:1}}>
+                    <View style={{flex:1, ...Platform.select({ios:{marginBottom:this.state.isKeyboardOn? this.state.keyboardHeight:0 }, android:{marginBottom:0}})}}>
                         <PageHeaderNotif props={this.props} parentPage={`COMMENTS`} navigation={this.props.navigation} disconnectSocket={this.disconnectSocket}/>
                         <FlatList
                             style={{marginBottom:80}}
@@ -122,32 +158,32 @@ class Comments extends Component {
                                 <View style={styles.row}>
                                     {
                                         code === item.code ?
-                                        <View style={styles.rowTextRight}>
-                                            <View style={styles.messageContainer}>
-                                                <Text style={styles.messageSender}>{item.comment}</Text>
-                                                <Text style={styles.timeNotif}>{moment(item.timestamp).fromNow()}</Text>
-                                            </View>
-                                        </View>:
-                                        <View style={styles.rowTextLeft}>
-                                            <View style={styles.messageContainer}>
-                                                <Text style={styles.message}>{item.comment}</Text>
-                                                <View style={{flexDirection:'row', marginTop:8}}>
-                                                    <Text style={styles.sender}>{item.name}</Text>
-                                                    <Icon
-                                                        style={{marginLeft:5,marginTop:6}}
-                                                        name='circle'
-                                                        size={5}
-                                                    />
-                                                    <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(item.timestamp).fromNow()}</Text>
+                                            <View style={styles.rowTextRight}>
+                                                <View style={styles.messageContainer}>
+                                                    <Text style={styles.messageSender}>{item.comment}</Text>
+                                                    <Text style={styles.timeNotif}>{moment(item.timestamp).fromNow()}</Text>
+                                                </View>
+                                            </View>:
+                                            <View style={styles.rowTextLeft}>
+                                                <View style={styles.messageContainer}>
+                                                    <Text style={styles.message}>{item.comment}</Text>
+                                                    <View style={{flexDirection:'row', marginTop:8}}>
+                                                        <Text style={styles.sender}>{item.name}</Text>
+                                                        <Icon
+                                                            style={{marginLeft:5,marginTop:6}}
+                                                            name='circle'
+                                                            size={5}
+                                                        />
+                                                        <Text style={{alignSelf:'flex-end', fontSize:10,marginLeft:5}}>{moment(item.timestamp).fromNow()}</Text>
+                                                    </View>
                                                 </View>
                                             </View>
-                                        </View>
-                                }
+                                    }
                                 </View>
                             }
                             keyExtractor={item => item.timestamp}
                         />
-                        <KeyboardAwareScrollView keyboardShouldPersistTaps='always' style={{paddingBottom:20,bottom:0,position:'absolute'}}>
+                        <View style={{paddingBottom:20  ,bottom:0,position:'absolute'}}>
                             <View style={{flexDirection:'row'}}>
                                 <TextInput
                                     value={this.state.typing}
@@ -161,7 +197,7 @@ class Comments extends Component {
                                     <Text style={styles.send}>Send</Text>
                                 </TouchableOpacity>
                             </View>
-                        </KeyboardAwareScrollView>
+                        </View>
                         {
                             this.state.errText?
                                 <Text>{this.state.errText}</Text>:null
@@ -191,7 +227,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#EBE7ED',
     },
     timeNotif:{
-      alignSelf:'flex-end',
+        alignSelf:'flex-end',
         fontSize:10,
         marginTop:8
     },

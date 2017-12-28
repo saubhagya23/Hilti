@@ -14,10 +14,10 @@ class assistanceContainer extends Component {
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
             if(this.props.assistanceData.title === "Hotel Related Query"){
-                urlSub = url + `?subject= HQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                urlSub = url + `?subject= HQ - ${this.props.userDetail.Name||JSON.parse( this.props.userDetail).Name} (${this.props.userDetail.Code||JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
                 Notifbody = 'HQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }else{
-                urlSub = url + `?subject= TQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                urlSub = url + `?subject= TQ - ${this.props.userDetail.Name||JSON.parse( this.props.userDetail).Name} (${this.props.userDetail.Code||JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
                 Notifbody = 'TQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }
             Linking.canOpenURL(urlSub).then(supported => {
@@ -72,14 +72,14 @@ class assistanceContainer extends Component {
         const CheckBoxes = this.props.assistanceData.select.map((item,i)=><Checkbox check={this.state.checked[i]?true:false} selecteHandler={this.selectedItems} content={item} key={i} idx={i}/>)
         return (
             this.state.fontLoaded?
-            <View style={styles.Container}>
+                <View style={styles.Container}>
                     <View style={styles.queryContainer} >
-                        <Text 
+                        <Text
                             style={{
-                                fontSize:22, 
+                                fontSize:22,
                                 fontFamily:'hilti-roman'
-                                }}>
-                                {this.props.assistanceData.title}</Text>
+                            }}>
+                            {this.props.assistanceData.title}</Text>
                     </View>
                     <View style={{flex:1}}>
                         {CheckBoxes}
@@ -90,11 +90,11 @@ class assistanceContainer extends Component {
                             </View>
                         </TouchableHighlight>
                     </View>
-                {
-                    this.state.err ?
-                        <Text style={{color:'#dd2127',alignSelf:'center',marginTop:15}}>{this.state.errText}</Text>:null
-                }
-            </View>:null
+                    {
+                        this.state.err ?
+                            <Text style={{color:'#dd2127',alignSelf:'center',marginTop:15}}>{this.state.errText}</Text>:null
+                    }
+                </View>:null
         )
     }
 }
@@ -112,10 +112,10 @@ const styles = StyleSheet.create({
     },
     checkboxText: {
         flex: 1,
-        fontSize:14, 
+        fontSize:14,
         fontFamily:'hilti-roman',
         flexWrap: 'wrap',
-    },  
+    },
     button:{
         height:41,
         width:194.5,

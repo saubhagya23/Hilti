@@ -7,7 +7,7 @@ import { Font } from 'expo'
 import RadioButton from 'radio-button-react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAgendaData } from '../../actions/apiData';
+import { getAgendaData,postEvent } from '../../actions/apiData';
 
 class PreKickOff extends Component{
     constructor(){
@@ -15,7 +15,8 @@ class PreKickOff extends Component{
 
         this.state = {
             fontLoaded:false,
-            selectedDate:'6 Jan 18'
+            selectedDate:'6 Jan 18',
+            detailsLoaded:false
         }
     }
 
@@ -32,9 +33,29 @@ class PreKickOff extends Component{
     componentDidMount() {
         //get api call for 6 Jan.
         const { getAgendaData } = this.props;
-        let detail = JSON.parse(this.props.userDetail);
+        let detail = {};
+        if(this.props.userDetail){
+            console.log('got user 1');
+            detail = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            console.log('got user 1*');
+            detail = JSON.parse(this.props.userDetail)
+        }
+        let empLoginInfo = {
+            email: detail.EmailId,
+            password: detail.Code
+        };
+        // let detail = JSON.parse(this.props.userDetail);
+        const {postEvent} = this.props;
+        postEvent({payload: empLoginInfo});
+        console.log('changed details',this.props.userDetail);
         let grpName = detail.Jan06GroupA;
         getAgendaData({param:grpName,day:'6 Jan 18'});
+        this.setState({
+            detailsLoaded:true
+        })
     }
 
     handleOnPress = (value) => {
@@ -45,14 +66,30 @@ class PreKickOff extends Component{
             if(this.state.selectedDate === '6 Jan 18'){
                 // 6 jan api call
                 const { getAgendaData } = this.props;
-                let detail = JSON.parse(this.props.userDetail);
+                let detail = {};
+                if(this.props.userDetail){
+                    detail = this.props.userDetail;
+                }
+
+                if(typeof this.props.userDetail === "string"){
+                    detail = JSON.parse(this.props.userDetail)
+                }
+                // let detail = JSON.parse(this.props.userDetail);
                 let groupName = detail.Jan06GroupA;
                 getAgendaData({param:groupName,day:'6 Jan 18'});
             }
             else{
                 // 7 Jan api call
                 const { getAgendaData } = this.props;
-                let detail = JSON.parse(this.props.userDetail);
+                let detail = {};
+                if(this.props.userDetail){
+                    detail = this.props.userDetail;
+                }
+
+                if(typeof this.props.userDetail === "string"){
+                    detail = JSON.parse(this.props.userDetail)
+                }
+                // let detail = JSON.parse(this.props.userDetail);
                 let groupName = detail.Jan07GroupA;
                 getAgendaData({param:groupName,day:'7 Jan 18'});
             }
@@ -95,6 +132,7 @@ class PreKickOff extends Component{
                                             width:133.5,
                                             fontSize:14,
                                             color:'#dd2127',
+                                            backgroundColor:'transparent',
                                             fontFamily:'hilti-roman'}}>
                                         HILTI INDIA KICK OFF 2018</Text>
 
@@ -311,7 +349,8 @@ function mapDispatchToProps(dispatch){
     return {
         dispatch,
         ...bindActionCreators({
-                getAgendaData
+                getAgendaData,
+                postEvent
             },
             dispatch
         ),

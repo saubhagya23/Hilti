@@ -48,96 +48,96 @@ class EmergencyContactNo extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='EMERGENCY CONTACT NO.' navigation={this.props.navigation}/>
 
-                            {
-                                !display ?
+                        {
+                            !display ?
 
-                                    <ImageBackground
-                                        style={{height:183}}
-                                        source={imgSrc}
-                                    >
+                                <ImageBackground
+                                    style={{height:183}}
+                                    source={imgSrc}
+                                >
                                     <Text style={{position:'absolute',marginTop:40,marginLeft:20,width:240.5,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
                                         Emergency contacts will be available after 1 Jan, therefore, please write in to Annual kick off Email ID
                                     </Text>
-                                    </ImageBackground>
+                                </ImageBackground>
 
-                                    :
+                                :
 
-                                    <View style={{marginTop:20,marginLeft:20}}>
-                                        <Text style={{color:'#000000',fontSize:13,fontFamily:'hilti-roman',marginTop:4}}>
-                                            If you need any urgent help, you may reach to the following team members
-                                            and we would be happy to assist.
-                                        </Text>
+                                <View style={{marginTop:20,marginLeft:20}}>
+                                    <Text style={{color:'#000000',fontSize:13,fontFamily:'hilti-roman',marginTop:4}}>
+                                        If you need any urgent help, you may reach to the following team members
+                                        and we would be happy to assist.
+                                    </Text>
 
-                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:12}}>
-                                            For Ticket (Train/Flight) Related Query :
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Gurpreet Singh | TravelDesk
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: + 918285148204 | E: travel.desk@hilti.com
-                                        </Text>
+                                    <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:12}}>
+                                        For Ticket (Train/Flight) Related Query :
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Gurpreet Singh | TravelDesk
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: + 918285148204 | E: travel.desk@hilti.com
+                                    </Text>
 
-                                        <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
+                                    <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
 
-                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
-                                            For Airport/Railway Station/ Delhi/NCR Shuttles :
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Akash Singh Tomar | Sr. Executive - Administration
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +919582381609 | E: Akash.Tomar@hilti.com
-                                        </Text>
+                                    <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
+                                        For Airport/Railway Station/ Delhi/NCR Shuttles :
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Akash Singh Tomar | Sr. Executive - Administration
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +919582381609 | E: Akash.Tomar@hilti.com
+                                    </Text>
 
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Dinesh Prasad | Local Process Expert - Finance
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +919711989254 | E: Dinesh.Prasad@hilti.com
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Dinesh Prasad |  Manager-Administration
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +919711989254 | E: Dinesh.Prasad@hilti.com
 
-                                        </Text>
+                                    </Text>
 
-                                        <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
+                                    <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
 
-                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
-                                            For App Related Query :
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Pramod-Kumar Singh | Manager IT
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +919958893301 | E: Pramod Kumar.Singh@hilti.com
-                                        </Text>
+                                    <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
+                                        For App Related Query :
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Pramod-Kumar Singh | Manager IT
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +919958893301 | E: Pramod Kumar.Singh@hilti.com
+                                    </Text>
 
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Amol Oberoi | Head– Digital Marketing
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +917290075839 | E: Amol.Oberoi@hilti.com
-                                        </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Amol Oberoi | Head– Digital Marketing
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +917290075839 | E: Amol.Oberoi@hilti.com
+                                    </Text>
 
-                                        <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
+                                    <View style={{height:0.5,backgroundColor:'#000000',marginTop:5}}/>
 
-                                        <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
-                                            For Any Other Emergency :
-                                        </Text>
+                                    <Text style={{color:'#dd2127',fontSize:11,fontFamily:'hilti-roman',marginTop:5}}>
+                                        For Any Other Emergency :
+                                    </Text>
 
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Kamal Khattar | Local Process Expert - Finance
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +911244139917 | E: Kamal.Khattar@hilti.com
-                                        </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Kamal Khattar | Local Process Expert - Finance
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +918377980753 | E: Kamal.Khattar@hilti.com
+                                    </Text>
 
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                            Loveleen Arora | Kick off Project Lead
-                                        </Text>
-                                        <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
-                                            M: +919811902669 | E: loveleen.arora@hilti.com
-                                        </Text>
-                                    </View>
-                            }
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Loveleen Arora | Kick off Project Lead
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +919811902669 | E: loveleen.arora@hilti.com
+                                    </Text>
+                                </View>
+                        }
 
 
                     </View>:null
