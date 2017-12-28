@@ -34,10 +34,10 @@ class Venue extends Component {
 
     findViaGMap = () => {
         if(Platform.OS === 'android'){
-            var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, Yamuna Sports Complex, East Delhi,label=L';
+            var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, East Delhi,label=L';
         }
         else if(Platform.OS === 'ios'){
-            var url = 'http://maps.apple.com/?ll=28.6621,77.3021';
+            var url = 'http://maps.apple.com/?ll=28.6621,77.3021&q=Leela Ambience, Yamuna Sports Complex, East Delhi';
         }
         
         this.openExternalApp(url);
