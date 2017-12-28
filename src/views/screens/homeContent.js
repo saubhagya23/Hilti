@@ -48,6 +48,7 @@ class HomeContent extends Component {
                 downloadProgress: 2,
                 shouldPlay: true
             })
+            await this.videoRef.playAsync();
         }else {
             // console.log('video api called');
             const {getVideo} = this.props;
@@ -89,7 +90,10 @@ class HomeContent extends Component {
       }
       _handlePlayback = playbackStatus => {
         if(playbackStatus.didJustFinish) {
-            this.setState({showVideo: false})
+            //reset video to starting position.
+            this.videoRef.setStatusAsync({ shouldPlay: false, positionMillis: 0 }).then(()=>{
+                this.setState({showVideo: false});
+            })
         }
       }
 
@@ -100,13 +104,11 @@ class HomeContent extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                        {
-                            this.state.showVideo ?
-                                <View style={{flex:1}}>
+                                <View style={{flex:1, display:this.state.showVideo?'flex':'none'}}>
                                     {
                                         this.state.downloadProgress >= 1 ? (
                                             <Expo.Video
-                                                ref={this.props._handleVideoRef}
+                                                ref={(video) => { this.videoRef = video; this.props._handleVideoRef(video); }}
                                                 source={{uri:`${this.state.url}`}}
                                                 rate={1.0}
                                                 volume={1.0}
@@ -125,8 +127,7 @@ class HomeContent extends Component {
                                             
                                     }
                                 </View>
-                                :
-                                <TouchableOpacity onPress={this.playVideo} style={{flex:1}}>
+                                <TouchableOpacity onPress={this.playVideo} style={{flex:1, display:!this.state.showVideo?'flex':'none'}}>
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
                                     resizeMode={'cover'}
@@ -153,7 +154,6 @@ class HomeContent extends Component {
                                     </View>
                                 </ImageBackground>
                                 </TouchableOpacity>
-                        }
                     </View>:null
                 }
             </View>
