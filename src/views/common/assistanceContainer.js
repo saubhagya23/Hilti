@@ -14,10 +14,10 @@ class assistanceContainer extends Component {
         let selectedItem = this.props.assistanceData.select[Object.keys(this.state.checked)[0]];
         if(selectedItem) {
             if(this.props.assistanceData.title === "Hotel Related Query"){
-                urlSub = url + `?subject= HQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                urlSub = url + `?subject= HQ - ${this.props.userDetail.Name||JSON.parse( this.props.userDetail).Name} (${this.props.userDetail.Code||JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
                 Notifbody = 'HQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }else{
-                urlSub = url + `?subject= TQ - ${JSON.parse( this.props.userDetail).Name} (${JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
+                urlSub = url + `?subject= TQ - ${this.props.userDetail.Name||JSON.parse( this.props.userDetail).Name} (${this.props.userDetail.Code||JSON.parse( this.props.userDetail).Code})- ${selectedItem} `;
                 Notifbody = 'TQ - '+selectedItem+' -'+JSON.parse( this.props.userDetail).Name+' ('+JSON.parse( this.props.userDetail).Code+')'
             }
             Linking.canOpenURL(urlSub).then(supported => {

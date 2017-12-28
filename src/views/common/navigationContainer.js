@@ -89,7 +89,7 @@ class NavigationContainer extends Component {
                                                 </TouchableOpacity>
 
                                         }
-                                        <View style={{width:335,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
+                                        <View style={{marginRight:12,height:0.5,marginLeft:12,backgroundColor:'#000000',opacity:0.2}}/>
 
                                     </View>
                                 )
