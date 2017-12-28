@@ -13,7 +13,6 @@ class hotelAssistance extends Component {
                         'Need change in check-in date as my flight is changed',
                         'Need change in my check-out date as my flight is changed',
                         'Release room booking as I am not travelling',
-                        'Any other Queries (Pickup, Drop, Agenda etc.)'
                         ],
                     }
         return ( 
