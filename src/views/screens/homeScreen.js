@@ -210,15 +210,15 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'#f5f3ee',
-        ...Platform.select({
-            ios: {
-                marginTop: 18,
-            },
-            android: {
-                marginTop:0,
-            },
-        }),
+        backgroundColor:'#f5f3ee'
+        // ...Platform.select({
+        //     ios: {
+        //         marginTop: 0//18,
+        //     },
+        //     android: {
+        //         marginTop:0,
+        //     },
+        // }),
     },
     text: {
         textAlign: 'center'
