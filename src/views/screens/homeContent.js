@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text, ImageBackground,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground,TouchableOpacity,Platform } from 'react-native';
 import { Font } from 'expo'
 import Expo from 'expo'
 import { FileSystem } from 'expo'
@@ -113,7 +113,7 @@ class HomeContent extends Component {
                                                 rate={1.0}
                                                 volume={1.0}
                                                 muted={false}
-                                                resizeMode="stretch"
+                                                resizeMode={Platform.OS === 'ios'?"contain":"stretch"}
                                                 shouldPlay={this.state.shouldPlay}
                                                 isLooping={false}
                                                 useNativeControls={true}
