@@ -29,7 +29,14 @@ class MyStay extends Component {
 
     componentDidMount(){
         const { getStay } = this.props;
-        let detail = JSON.parse(this.props.userDetail);
+        let detail = {};
+        if(this.props.userDetail){
+            detail = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            detail = JSON.parse(this.props.userDetail)
+        }
         getStay({param:detail.Code});
     }
 

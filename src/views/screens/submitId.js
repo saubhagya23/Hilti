@@ -42,7 +42,14 @@ class SubmitId extends Component {
     }
 
     componentDidMount(){
-        let detail = JSON.parse(this.props.userDetail);
+        let detail = {};
+        if(this.props.userDetail){
+            detail = this.props.userDetail;
+        }
+
+        if(typeof this.props.userDetail === "string"){
+            detail = JSON.parse(this.props.userDetail)
+        }
         const { getdownloadIdProofEvent } = this.props;
         getdownloadIdProofEvent({param:detail.Code});
     }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, ScrollView, Image ,FlatList} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image ,FlatList, Platform} from 'react-native';
 import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
@@ -144,7 +144,7 @@ class AgendaDay extends Component{
 
                                  </View>
 
-                                 <View style={{backgroundColor:'#ffffff',paddingLeft:100}}>
+                                 <View style={{backgroundColor:'#ffffff',paddingLeft:100,zIndex:(Platform.OS === 'ios'? -1 : 0)}}>
                                      {((empAgenda.header && empAgenda.header.ParticipantsGroups)||(empAgenda.header && empAgenda.header.ParticipantsGroup))?
                                          <Text style={{marginTop:7,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
                                              Participants Groups: {empAgenda.header.ParticipantsGroups||empAgenda.header.ParticipantsGroup||'Data not available'}
