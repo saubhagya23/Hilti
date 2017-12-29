@@ -95,24 +95,27 @@ class Venue extends Component {
                             From Delhi Railway Station: 8 kms/ 20-30 min
                         </Text>
 
-                        <TouchableHighlight style={{marginLeft:87,marginTop:33.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.findViaGMap()}}>
-                            <View style={{flexDirection:'row'}}>
-                                <Icon
-                                    style={{color:'#dd2127'}}
-                                    name='location-on'
-                                    size={15}
-                                />
-                                <Text style={{marginLeft:7.5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                    FIND ON GOOGLE MAP
-                                </Text>
-                            </View>
-                        </TouchableHighlight>
+                        <View style={{alignItems:'center'}}>
+                            <TouchableHighlight style={{marginTop:33.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.findViaGMap()}}>
+                                <View style={{flexDirection:'row'}}>
+                                    <Icon
+                                        style={{color:'#dd2127'}}
+                                        name='location-on'
+                                        size={15}
+                                    />
+                                    <Text style={{marginLeft:7.5,fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                        FIND ON GOOGLE MAP
+                                    </Text>
+                                </View>
+                            </TouchableHighlight>
 
-                        <TouchableHighlight style={{marginLeft:87,marginTop:25.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.props.navigation.navigate('VenueLayout')}}>
-                            <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                VIEW VENUE LAYOUT
-                            </Text>
-                        </TouchableHighlight>
+                            <TouchableHighlight style={{marginTop:25.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.props.navigation.navigate('VenueLayout')}}>
+                                <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'#dd2127'}}>
+                                    VIEW VENUE LAYOUT
+                                </Text>
+                            </TouchableHighlight>
+                        </View>
+
                     </View>:null
                 }
             </View>
