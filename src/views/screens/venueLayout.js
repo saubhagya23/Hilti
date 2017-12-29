@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Image, Linking, Dimensions, Platform } from 'react-native';
 import Icon  from 'react-native-vector-icons/EvilIcons'
 import PageHeaderNotif from '../common/pageHeaderNotif'
 import BackTravel from './backTravel'
@@ -49,7 +49,7 @@ class VenueLayout extends Component{
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage='VENUE LAYOUT' navigation={this.props.navigation}/>
                         <ImageZoom cropWidth={Dimensions.get('window').width}
-                                   cropHeight={Dimensions.get('window').height}
+                                   cropHeight={Platform.OS === 'ios'?Dimensions.get('window').height-104:Dimensions.get('window').height-80}
                                    imageWidth={Dimensions.get('window').width}
                                    imageHeight={231}
                                    centerOn={{x:0, y:0, scale:1,duration:2}}
