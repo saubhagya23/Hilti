@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, ScrollView , Platform} from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon  from 'react-native-vector-icons/FontAwesome'
@@ -74,14 +74,14 @@ class MyStay extends Component {
 
                                 <DetailContainer leftHeading={'Check in Date'} rightHeading={'Check out Date'} leftData={details.Checkin||'N/A'} rightData={details.Checkout||'N/A'} extraLeft={details.CheckinTime||'N/A'} extraRight={details.CheckoutTime||'N/A'}/>
 
-                                <View style={{paddingLeft:40,paddingBottom:10}}>
+                                <View style={{paddingLeft:40,paddingBottom:10,alignItems:'flex-start',justifyContent:'center'}}>
                                     <View style={{flexDirection:'row'}}>
                                         <Text style={{width:110,fontFamily:'hilti-roman',fontSize:10,opacity:0.8,color:'#000000'}}>Check in Time</Text>
-                                        <Text style={{marginLeft:40,width:110,fontFamily:'hilti-roman',fontSize:10,opacity:0.8,color:'#000000'}}>Check out Time</Text>
+                                        <Text style={{marginLeft:(Platform.OS==='ios'?70:40),width:110,fontFamily:'hilti-roman',fontSize:10,opacity:0.8,color:'#000000'}}>Check out Time</Text>
                                     </View>
                                     <View style={{flexDirection:'row'}}>
                                         <Text style={{width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CheckinTime}</Text>
-                                        <Text style={{marginLeft:40,width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CheckoutTime}</Text>
+                                        <Text style={{marginLeft:(Platform.OS==='ios'?70:40),width:110,fontFamily:'hilti-bold',fontSize:12,color:'#000000'}}>{details.CheckoutTime}</Text>
                                     </View>
                                 </View>
 
