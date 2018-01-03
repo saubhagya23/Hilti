@@ -9,6 +9,7 @@ export default class App extends Component {
         return (
             <View style={{flex:1}}>
                 <View style={{...Platform.select({ios:{height:24}, android:{height:0}})}}>
+                    <StatusBar barStyle={'dark-content'} hidden={Platform.OS !== 'ios'}/>
                     {/*{Platform.OS === 'ios' && <StatusBar barStyle="default" />}*/}
                     {/*{Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}*/}
                 </View>
