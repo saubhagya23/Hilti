@@ -89,8 +89,8 @@ class DressCodeDay extends Component {
                                             <Text style={{marginLeft:20,marginTop:20,fontFamily:'hilti-roman',fontSize:18,color:'#d2051e', backgroundColor:'transparent'}}>Delhi</Text>
                                             <Text style={{marginLeft:20,marginTop:3,fontFamily:'hilti-roman',fontSize:12,color:'#000000', backgroundColor:'transparent'}}>{currDate}</Text>
                                         </View>
-                                        <View style={{flex:2.5}}>
-                                            <Text style={{marginTop:15,fontSize:40,fontFamily:'hilti-roman',color:'#000000', backgroundColor:'transparent'}}>7-22</Text>
+                                        <View style={{flex:3}}>
+                                            <Text style={{marginTop:15,fontSize:38, paddingLeft:10, fontFamily:'hilti-roman',color:'#000000', backgroundColor:'transparent'}}>7-22</Text>
                                         </View>
                                         <View style={{flex:5.5}}>
                                             <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000', backgroundColor:'transparent'}}>&deg; C</Text>
