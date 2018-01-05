@@ -1,6 +1,6 @@
 let API = {
     ENDPOINT: {
-        BASE: 'http://40.70.8.97:9000',
+        BASE: 'http://hilti.tothenew.net:8080',
         AUTH: {
             LOGIN: {url: '/api/user-details/me', method: 'GET'},
             AUTH_LOGIN: {url: '/auth/local', method: 'POST'}
