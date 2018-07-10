@@ -34,10 +34,10 @@ class Venue extends Component {
 
     findViaGMap = () => {
         if(Platform.OS === 'android'){
-            var url = 'geo:' + '28.6621,77.3021'+'?q=Leela Ambience, Yamuna Sports Complex, East Delhi,label=L';
+            var url = 'geo:' + '28.5582,77.0629'+'?q=Vivanta, By Taj, Dwarka, label=L';
         }
         else if(Platform.OS === 'ios'){
-            var url = 'http://maps.apple.com/?ll=28.6621,77.3021';
+            var url = 'http://maps.apple.com/?ll=28.5582,77.0629&q=Vivanta, By Taj, Dwarka';
         }
         
         this.openExternalApp(url);
@@ -64,17 +64,17 @@ class Venue extends Component {
                                 source={require('../../assets/images/venueMainImg/banner_img_mdpi.jpg')}
                             />
 
-                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127'}}>
-                                LEELA AMBIENCE, YAMUNA SPORTS COMPLEX, EAST DELHI
+                            <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127', backgroundColor:'transparent'}}>
+                                Vivanta By Taj, Dwarka
                             </Text>
                         </View>
 
                         <Text style={{marginLeft:18.5,marginTop:14,width:235,fontSize:12,fontFamily:'hilti-bold',color:'#7c294e'}}>
-                            CBD Maharaj Surajmal Road, Near Yamuna Sports Complex, Delhi 110 032
+                            Sector 21 Metro Station, Dwarka, New Delhi 110075
                         </Text>
 
 
-                        <View style={{flexDirection:'row'}}>
+                        {/* <View style={{flexDirection:'row'}}>
                             <Text style={{marginLeft:18.5,marginTop:12,fontSize:12,fontFamily:'hilti-bold',color:'blue'}}>
                                 T: </Text>
                             <TouchableOpacity style={{marginTop:12,justifyContent:'center',alignItems:'center'}}>
@@ -84,14 +84,14 @@ class Venue extends Component {
                                     011 71721234
                                 </Text>
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
 
                         <Text style={{marginLeft:18.5,marginTop:15,fontSize:10,fontFamily:'hilti-bold',color:'#000000'}}>
-                            From Airport: 25 kms/ 1 hr to 1.5 hrs
+                            From Airport: 20 to 30 mins
                         </Text>
 
                         <Text style={{marginLeft:18.5,marginTop:8.5,fontSize:10,fontFamily:'hilti-bold',color:'#000000'}}>
-                            From Delhi Railway Station: 8 kms/ 20-30 min
+                            From Delhi Railway Station: 1 hour
                         </Text>
 
                         <TouchableHighlight style={{marginLeft:87,marginTop:33.5,height:28.5,width:194.5,borderWidth:1,borderColor:'#dd2127',alignItems:'center',justifyContent:'center'}} onPress= { () => {this.findViaGMap()}}>

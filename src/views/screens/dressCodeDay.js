@@ -29,7 +29,7 @@ class DressCodeDay extends Component {
         let currDate = '';
         let day = this.props.navigation.state.params.day;
         if(day === 'DAY 1' ){
-            currDate = '08 Jan';
+            currDate = '19 Jul';
             dressCodeData = [
                 {
                     imgUrl:require('../../assets/images/dressImg1/dressImg1_mdpi.jpg'),
@@ -49,12 +49,12 @@ class DressCodeDay extends Component {
             ]
         }
         else if(day === 'DAY 2'){
-            currDate = '09 Jan';
+            currDate = '20 Jul';
             dressCodeData = [
                 {
                     imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.jpg'),
-                    title:'WAVE 1',
-                    subTitle:'Hilti Red T-shirt + Safety Shoes'
+                    title:'WAVE 2',
+                    subTitle:'Red Shirt or T-Shirt with Jeans & Safety Shoes'
                 },
                 {
                     imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
@@ -64,7 +64,7 @@ class DressCodeDay extends Component {
             ]
         }
         else{
-            currDate = '10 Jan';
+            currDate = '21 Jul';
             dressCodeData = [
                 {
                     imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
@@ -89,8 +89,8 @@ class DressCodeDay extends Component {
                                             <Text style={{marginLeft:20,marginTop:20,fontFamily:'hilti-roman',fontSize:18,color:'#d2051e'}}>Delhi</Text>
                                             <Text style={{marginLeft:20,marginTop:3,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>{currDate}</Text>
                                         </View>
-                                        <View style={{flex:2.5}}>
-                                            <Text style={{marginTop:15,fontSize:40,fontFamily:'hilti-roman',color:'#000000'}}>7-22</Text>
+                                        <View style={{flex:3, flexDirection: 'row', justifyContent: 'space-around'}}>
+                                            <Text style={{marginTop:25,fontSize:30, paddingLeft:10, fontFamily:'hilti-roman',color:'#000000', backgroundColor:'transparent'}}>28-35</Text>
                                         </View>
                                         <View style={{flex:5.5}}>
                                             <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000'}}>&deg; C</Text>
@@ -98,9 +98,9 @@ class DressCodeDay extends Component {
                                         </View>
                                     </View>
 
-                                    <Text style={{marginLeft:19,marginTop:12,fontFamily:'hilti-roman',fontSize:14,color:'#7c294e'}}>
+                                    {/* <Text style={{marginLeft:19,marginTop:12,fontFamily:'hilti-roman',fontSize:14,color:'#7c294e', backgroundColor:'transparent'}}>
                                         Carry warm clothes
-                                    </Text>
+                                    </Text> */}
                                 </ImageBackground>
                             </View>
 

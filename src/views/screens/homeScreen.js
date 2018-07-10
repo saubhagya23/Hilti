@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Platform, Dimensions } from 'react-native';
 import PageHeader from '../common/pageHeader'
 import VideoComp from './homeContent'
 import HomeNavContainer from '../common/HomeNavContainer'
@@ -43,6 +43,7 @@ class HomeScreen extends Component {
     };
 
     render(){
+        const { width } = Dimensions.get('window');
         let user;
         if(this.props.userDetail){
             user = this.props.userDetail;
@@ -154,15 +155,13 @@ class HomeScreen extends Component {
                         />
 
                         {/*experience corner nav container*/}
-                        <HomeNavContainer
+                        {/* <HomeNavContainer
                             navigationPage='ExperienceCorner'
                             imgSrc={require('../../assets/images/exp-corner/experience_corner_mdpi.png')}
                             titleText='EXPERIENCE CORNER'
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}
-                        />
-                    </View>
-                    <View style={{height:136.5,marginLeft:7,marginRight:7,backgroundColor:'#f5f3ee',flexDirection:'row'}}>
+                        /> */}
                         {/*organisational information nav container*/}
                         <HomeNavContainer
                             navigationPage='OrgInfoNavigation'
@@ -171,35 +170,45 @@ class HomeScreen extends Component {
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}
                         />
-
-                        {/*assistance nav container*/}
-                        <HomeNavContainer
-                            navigationPage='AssistanceNavigation'
-                            imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
-                            titleText='NEED ASSISTANCE'
+                    </View>
+                    <View style={{height:136.5,marginLeft:4,marginRight:4,backgroundColor:'#f5f3ee',flexDirection:'row', justifyContent: 'center'}}>
+                        {/*organisational information nav container*/}
+                        {/* <HomeNavContainer
+                            navigationPage='OrgInfoNavigation'
+                            imgSrc={require('../../assets/images/org_info/org_info_mdpi.png')}
+                            titleText='ORG. INFORMATION'
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}
-                        />
+                        /> */}
+                        <View style={{ width: ((width/3) * 2), flexDirection: 'row' }}>
+                            {/*assistance nav container*/}
+                            <HomeNavContainer
+                                navigationPage='AssistanceNavigation'
+                                imgSrc={require('../../assets/images/assistance/assistance_mdpi.png')}
+                                titleText='NEED ASSISTANCE'
+                                homeNavProps={this.props}
+                                pauseVideo={this.pauseVideo}
+                            />
 
-                        {/*post comment nav container*/}
-                        {
-                            user && user.role === "user"?
-                                <HomeNavContainer
-                                    navigationPage='Comments'
-                                    imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
-                                    titleText='POST YOUR COMMENTS'
-                                    homeNavProps={this.props}
-                                    pauseVideo={this.pauseVideo}
-                                />:
-                                <HomeNavContainer
-                                    navigationPage='AdminComment'
-                                    imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
-                                    titleText='POST YOUR COMMENTS'
-                                    homeNavProps={this.props}
-                                    pauseVideo={this.pauseVideo}
-                                />
-                        }
-
+                            {/*post comment nav container*/}
+                            {
+                                user && user.role === "user"?
+                                    <HomeNavContainer
+                                        navigationPage='Comments'
+                                        imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
+                                        titleText='POST YOUR COMMENTS'
+                                        homeNavProps={this.props}
+                                        pauseVideo={this.pauseVideo}
+                                    />:
+                                    <HomeNavContainer
+                                        navigationPage='AdminComment'
+                                        imgSrc={require('../../assets/images/post_comments/post_comments_mdpi.png')}
+                                        titleText='POST YOUR COMMENTS'
+                                        homeNavProps={this.props}
+                                        pauseVideo={this.pauseVideo}
+                                    />
+                            }
+                        </View>
                     </View>
                 </ScrollView>
             </View>

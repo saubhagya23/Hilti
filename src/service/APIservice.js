@@ -34,6 +34,8 @@ async function requestAPI(url, options = {},dispatch) {
         }
 
     }
+    console.log('url: ', url);
+    console.log('req Body: ', reqBody);
     return fetch(url, reqBody)
     .then(function(resp){
         if(resp.status===401){
