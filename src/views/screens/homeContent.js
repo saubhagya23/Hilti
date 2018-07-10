@@ -104,7 +104,7 @@ class HomeContent extends Component {
             <View style={styles.container}>
                 {this.state.fontLoaded?
                     <View style={{flex:1}}>
-                                <View style={{flex:1, display:this.state.showVideo?'flex':'none'}}>
+                                {/* <View style={{flex:1, display:this.state.showVideo?'flex':'none'}}>
                                     {
                                         this.state.downloadProgress >= 1 ? (
                                             <Expo.Video
@@ -126,21 +126,21 @@ class HomeContent extends Component {
                                             </View>
                                             
                                     }
-                                </View>
-                                <TouchableOpacity onPress={this.playVideo} style={{flex:1, display:!this.state.showVideo?'flex':'none'}}>
+                                </View> */}
+                                <View style={{flex:1, display:!this.state.showVideo?'flex':'none'}}>
                                 <ImageBackground
                                     style={{flex:1, width: null, height: null}}
                                     resizeMode={'cover'}
-                                    source={require('../../assets/images/homeVideoImg/homeVideoImg_mdpi.jpg')}
+                                    source={require('../../assets/images/expCornerMainImg/exp_corner_mdpi.png')}
                                 >
                                     <Text style={{position:'absolute',width:141.5, marginTop:32,marginLeft:19,color:'#dd2127',fontSize:14,fontFamily:'hilti-roman', backgroundColor:'transparent'}}>
-                                        WELCOME MESSAGE BY GM
+                                        GET READY FOR WAVE 2
                                     </Text>
                                     <Text style={{position:'absolute',width:141.5, marginTop:75,marginLeft:18.5,color:'#7c294e',fontSize:10,letterSpacing:0.05,fontFamily:'hilti-bold', backgroundColor:'transparent'}}>
-                                        Kick off 2018
+                                        Jul 2018
                                     </Text>
 
-                                    <View style={{position:'absolute',marginTop:110.5,marginLeft:19,flexDirection:'row', backgroundColor:'transparent'}} >
+                                    {/* <View style={{position:'absolute',marginTop:110.5,marginLeft:19,flexDirection:'row', backgroundColor:'transparent'}} >
                                         <Text style={{fontSize:9, fontFamily:'hilti-bold'}}>
                                             Watch Video
                                         </Text>
@@ -151,9 +151,9 @@ class HomeContent extends Component {
                                                 size={10}
                                             />
                                         </View>
-                                    </View>
+                                    </View> */}
                                 </ImageBackground>
-                                </TouchableOpacity>
+                                </View>
                     </View>:null
                 }
             </View>

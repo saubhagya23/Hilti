@@ -15,7 +15,7 @@ class PreKickOff extends Component{
 
         this.state = {
             fontLoaded:false,
-            selectedDate:'6 Jan 18',
+            selectedDate:'17 Jul 18',
             detailsLoaded:false
         }
     }
@@ -31,7 +31,7 @@ class PreKickOff extends Component{
     }
 
     componentDidMount() {
-        //get api call for 6 Jan.
+        //get api call for 17 Jul.
         const { getAgendaData } = this.props;
         let detail = {};
         if(this.props.userDetail){
@@ -51,8 +51,8 @@ class PreKickOff extends Component{
         const {postEvent} = this.props;
         postEvent({payload: empLoginInfo});
         console.log('changed details',this.props.userDetail);
-        let grpName = detail.Jan06GroupA;
-        getAgendaData({param:grpName,day:'6 Jan 18'});
+        let grpName = detail.Jul17GroupA;
+        getAgendaData({param:grpName,day:'17 Jul 18'});
         this.setState({
             detailsLoaded:true
         })
@@ -63,8 +63,8 @@ class PreKickOff extends Component{
             selectedDate: value
         },()=> {
             //if Jan 6 selected then api call for Jan 6 else Jan 7.
-            if(this.state.selectedDate === '6 Jan 18'){
-                // 6 jan api call
+            if(this.state.selectedDate === '17 Jul 18'){
+                // 17 Jul api call
                 const { getAgendaData } = this.props;
                 let detail = {};
                 if(this.props.userDetail){
@@ -75,11 +75,11 @@ class PreKickOff extends Component{
                     detail = JSON.parse(this.props.userDetail)
                 }
                 // let detail = JSON.parse(this.props.userDetail);
-                let groupName = detail.Jan06GroupA;
-                getAgendaData({param:groupName,day:'6 Jan 18'});
+                let groupName = detail.Jul17GroupA;
+                getAgendaData({param:groupName,day:'17 Jul 18'});
             }
             else{
-                // 7 Jan api call
+                // 18 Jul api call
                 const { getAgendaData } = this.props;
                 let detail = {};
                 if(this.props.userDetail){
@@ -90,8 +90,8 @@ class PreKickOff extends Component{
                     detail = JSON.parse(this.props.userDetail)
                 }
                 // let detail = JSON.parse(this.props.userDetail);
-                let groupName = detail.Jan07GroupA;
-                getAgendaData({param:groupName,day:'7 Jan 18'});
+                let groupName = detail.Jul18GroupA;
+                getAgendaData({param:groupName,day:'18 Jul 18'});
             }
         })
     }
@@ -116,7 +116,7 @@ class PreKickOff extends Component{
                 {
                     this.state.fontLoaded?
                         <View style={{flex:1}}>
-                            <PageHeaderNotif props={this.props} parentPage='Pre Kick-Off' navigation={this.props.navigation}/>
+                            <PageHeaderNotif props={this.props} parentPage='Train The Trainer' navigation={this.props.navigation}/>
                             <ScrollView>
                                 <View style={{height:289.5}}>
                                     <Image
@@ -137,8 +137,8 @@ class PreKickOff extends Component{
                                         HILTI INDIA KICK OFF 2018</Text>
 
                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:165.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
-                                        <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>6-7</Text>
-                                        <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jan</Text>
+                                        <Text style={{flex:1.5,fontSize:25,fontFamily:'hilti-roman',color:'#ffffff'}}>17-18</Text>
+                                        <Text style={{flex:1,fontSize:15,fontFamily:'hilti-roman',color:'#ffffff'}}>Jul</Text>
                                     </View>
 
                                     <View style={{height:90,backgroundColor:'#ffffff'}}>
@@ -168,26 +168,26 @@ class PreKickOff extends Component{
                                             <TouchableOpacity style={{paddingRight:10,paddingTop:10,paddingBottom:10,marginRight:5,marginTop:5,marginBottom:5}}>
                                                 <RadioButton
                                                     currentValue={this.state.selectedDate}
-                                                    value={'6 Jan 18'}
+                                                    value={'17 Jul 18'}
                                                     outerCircleSize={15}
                                                     innerCircleSize={7.5}
                                                     innerCircleColor={'#dd2127'}
                                                     onPress={this.handleOnPress.bind(this)}
                                                 >
-                                                    <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>6 Jan</Text>
+                                                    <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>17 Jul</Text>
                                                 </RadioButton>
                                             </TouchableOpacity>
 
                                             <TouchableOpacity style={{padding:10,margin:5}}>
                                                 <RadioButton
                                                     currentValue={this.state.selectedDate}
-                                                    value={'7 Jan 18'}
+                                                    value={'18 Jul 18'}
                                                     outerCircleSize={15}
                                                     innerCircleSize={7.5}
                                                     innerCircleColor={'#dd2127'}
                                                     onPress={this.handleOnPress.bind(this)}
                                                 >
-                                                    <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>7 Jan</Text>
+                                                    <Text style={{marginLeft:4,fontSize:14,color:'#dd2127',fontFamily:'hilti-bold'}}>18 Jul</Text>
                                                 </RadioButton>
                                             </TouchableOpacity>
                                         </View>

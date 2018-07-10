@@ -50,22 +50,22 @@ class AgendaDay extends Component{
         console.log('changed details',this.props.userDetail);
         let date = this.props.navigation.state.params.day;
         let grpName;
-        if(date === '8 Jan 18'){
-            grpName = detail.Jan08GroupA;
+        if(date === '19 Jul 18'){
+            grpName = detail.Jul19GroupA;
             getAgendaData({param:grpName,day:date});
             this.setState({
                 detailsLoaded:true
             })
         }
-        else if(date === '9 Jan 18'){
-            grpName = detail.Jan09GroupA;
+        else if(date === '20 Jul 18'){
+            grpName = detail.Jul20GroupA;
             getAgendaData({param:grpName,day:date});
             this.setState({
                 detailsLoaded:true
             })
         }
         else{
-            grpName = detail.Jan10GroupA;
+            grpName = detail.Jul21GroupA;
             getAgendaData({param:grpName,day:date});
             this.setState({
                 detailsLoaded:true
@@ -77,10 +77,10 @@ class AgendaDay extends Component{
         console.log('agenda-------------->>>>',this.props.agendaList);
         let date = this.props.navigation.state.params.day;
         let day;
-        if(date === '8 Jan 18'){
+        if(date === '19 Jul 18'){
             day = 'Day 1'
         }
-        else if(date === '9 Jan 18'){
+        else if(date === '20 Jul 18'){
             day = 'Day 2'
         }
         else{
@@ -135,7 +135,7 @@ class AgendaDay extends Component{
                                              color:'#dd2127',
                                              backgroundColor:'transparent',
                                              fontFamily:'hilti-roman'}}>
-                                         HILTI INDIA KICK OFF 2018</Text>
+                                         WAVE 2</Text>
 
                                      <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:130.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                          <Text style={{flex:2,fontSize:38.5,fontFamily:'hilti-roman',color:'#ffffff'}}>{currentDate}</Text>
