@@ -72,9 +72,9 @@ class Profile extends Component {
 
                                 <View style={{flexDirection:"row",marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
-                                    <Text style={{marginLeft:10}}>Group Name (Jan 09)</Text>
+                                    <Text style={{marginLeft:10}}>Group Name (Jul 19)</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:22}}>{detail.Jan09GroupA}</Text>
+                                <Text style={{color:'grey',marginLeft:22}}>{detail.Jul19GroupA}</Text>
 
                             </View>
 
