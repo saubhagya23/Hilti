@@ -41,11 +41,10 @@ export default class DosDonts extends Component {
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:30}}>
                                             Check-in for outstationed team members will be done as per their Check-in Time.
-                                            Delhi/NCR Team members will have check-ins starting from 1100 hrs onwards.
+                                            Stay for Delhi/NCR Team members is not included and they have to report as per the agenda.
                                         </Text>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:5,marginRight:30}}>
-                                            All the team members are suggested to come wearing Hilti Red Shirt as we want you to enjoy the experience
-                                            Zone in the hotel.
+                                            All the team members are suggested to come wearing Hilti Red Shirt & T-Shirt as the checkin might be late.
                                         </Text>
 
                                         <View style={{flexDirection:'row'}}>
@@ -85,7 +84,7 @@ export default class DosDonts extends Component {
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginRight:40,marginTop:18,paddingBottom:20}}>
-                                            No changes are possible now, be it travel or stay and the reloction will be effective post Kick off 2018
+                                            No changes are possible now, be it travel or stay and the reloction will be effective post Wave 2 2018
                                             (as shared by HR/your respective Team Leader/EMT)
                                         </Text>
 
@@ -130,7 +129,7 @@ export default class DosDonts extends Component {
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:30,paddingBottom:20}}>
-                                            Since, the venue for the Kick off 2018 is NCR/Gurgaon, therefore, please plan to come on your own.
+                                            Since, the venue for the Wave 2 2018 is NCR/Gurgaon, therefore, please plan to come on your own.
                                             You may pool car with the Hilti TMs who have got Hilti Cars. The list has already been shared. For any further
                                             enquiry, please contact your respective EMT.
                                         </Text>
@@ -142,7 +141,7 @@ export default class DosDonts extends Component {
                                                 size={10}
                                             />
                                             <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10,marginRight:60}}>
-                                                How do find my meeting room for meeting on 10 Jan &amp; 11 Jan, 2018?
+                                                How do find my meeting room for meetings during Wave 2?
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,paddingBottom:20}}>
@@ -156,7 +155,7 @@ export default class DosDonts extends Component {
                                                 size={10}
                                             />
                                             <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10,marginRight:60}}>
-                                                I donot have a smart phone, how do i see Kick off 2018 details?
+                                                I do not have a smart phone, how do i see Wave 2 2018 details?
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,paddingBottom:20}}>
@@ -170,7 +169,7 @@ export default class DosDonts extends Component {
                                                 size={10}
                                             />
                                             <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10,marginRight:60}}>
-                                                I do not know my Employee Code as it is needed to log-in for the Kick off 2018 App, whom to contact?
+                                                I do not know my Employee Code as it is needed to log-in for the App, whom to contact?
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,paddingBottom:20}}>
@@ -188,8 +187,8 @@ export default class DosDonts extends Component {
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>
-                                            It will help us provide you express check-in and save the hassle of queuing for long and conseuently
-                                            come on time for the Kick off. Please do not email the ID cards as we will not consider this.
+                                            It will help us provide you express check-in and save the hassle of queuing for long and consequently
+                                            come on time for the Wave 2. Please do not email the ID cards as we will not consider this.
                                         </Text>
 
                                         <View style={{flexDirection:'row'}}>
@@ -219,7 +218,7 @@ export default class DosDonts extends Component {
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>
                                             Please click on "Need assistance" segment in the App and it will reach to the relevant team member for
                                             necessary action and we will come back to you with the solution or TMs who dont have smart phone, please
-                                            send us email on Teamannualkickoff.in@hilti.com and we shall get back to to as soon as possible.
+                                            send us email on HiltiIndiaEvents@hilti.com and we shall get back to to as soon as possible.
                                         </Text>
 
                                         <View style={{flexDirection:'row'}}>
@@ -233,8 +232,8 @@ export default class DosDonts extends Component {
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>
-                                            Please send the information through Kick off 2018 App or on the email id
-                                            Teamannualkickoff.in@hilti.com latest by 30 Dec.
+                                            Please send the information through the App or on the email id
+                                            HiltiIndiaEvents@hilti.com latest by 30 Dec.
                                         </Text>
 
                                         <View style={{flexDirection:'row'}}>
@@ -248,7 +247,7 @@ export default class DosDonts extends Component {
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>
-                                            Please send email to the Teamannualkickoff.in@hilti.com or call the Emergency Contact in IT. We
+                                            Please send email to the HiltiIndiaEvents@hilti.com or call the Emergency Contact in IT. We
                                             encourage you to send the email or connect over the skype rather than call so that Kick off Project Team could
                                             attend more queries efficiently. We also promise you that you will get response within 4 hours of sending the
                                             email.
