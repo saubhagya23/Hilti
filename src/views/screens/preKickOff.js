@@ -134,7 +134,7 @@ class PreKickOff extends Component{
                                             color:'#dd2127',
                                             backgroundColor:'transparent',
                                             fontFamily:'hilti-roman'}}>
-                                        HILTI INDIA KICK OFF 2018</Text>
+                                        WAVE 2</Text>
 
                                     <View style={{position:'absolute',height:70,width:70,backgroundColor:'#dd2127',top:165.5,left:15,justifyContent:'center',alignItems:'center',zIndex:1}}>
                                         <Text style={{flex:1.5,fontSize:25,fontFamily:'hilti-roman',color:'#ffffff'}}>17-18</Text>

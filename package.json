@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@expo/videoplayer": "^0.1.13",
+    "babel-preset-expo": "^4.0.0",
     "expo": "^22.0.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
@@ -44,6 +45,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "socket.io": "^2.0.4",
-    "socket.io-client": "^2.0.4"
+    "socket.io-client": "^2.0.4",
+    "wordwrap": "^1.0.0"
   }
 }

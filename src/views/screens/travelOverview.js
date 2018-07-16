@@ -24,7 +24,7 @@ class travelOverview extends Component {
     }
 
     downloadFile = () => {
-        WebBrowser.openBrowserAsync('http://40.70.8.97:8080/api/documents/download/Stay_Overview.xlsx')
+        WebBrowser.openBrowserAsync('http://hilti.tothenew.net:8080/api/documents/download/Travel_Overview.xlsx')
             .then((resp) => {
                 console.log("Finished", resp);
             })
@@ -57,7 +57,7 @@ class travelOverview extends Component {
                             <Text style={{marginTop:35,fontSize:22,fontFamily:'hilti-bold',color:'#000000'}}>
                                 TRAVEL OVERVIEW
                             </Text>
-                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 5 Jan, 2018</Text>
+                            <Text style={{marginTop:14,fontSize:12,fontFamily:'hilti-roman',color:'#000000',opacity:0.8}}>Complete Excel will be available only after 15 Jul, 2018</Text>
                         </View>
                     </View>:null
                 }

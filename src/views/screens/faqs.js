@@ -27,7 +27,7 @@ export default class DosDonts extends Component {
                     <View style={{flex:1}}>
                         <PageHeaderNotif props={this.props} parentPage={`FAQs`} navigation={this.props.navigation}/>
                         <View style={{backgroundColor:'#f5f3ee'}}>
-                            <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>FAQ HILTI INDIA - KICK OFF 2018</Text>
+                            <Text style={{fontFamily:'hilti-roman',fontSize:10,color:'#dd2127',marginTop:16.5,marginLeft:19}}>FAQ WAVE 2</Text>
                             <View style={{backgroundColor:'#ffffff',marginTop:16}}>
                                 <ScrollView contentContainerStyle={{paddingBottom:140}}>
                                     <View style={{flex:1,justifyContent:'center', alignItems:'flex-start'}}>
@@ -228,7 +228,7 @@ export default class DosDonts extends Component {
                                                 size={10}
                                             />
                                             <Text style={{color:'#000000',fontFamily:'hilti-bold',fontSize:12,marginTop:21.5,marginLeft:10,marginRight:60}}>
-                                                My team member is not going to attend Kick off 2018 and I have come to know just now, whom to inform?
+                                                My team member is not going to attend Wave 2 and I have come to know just now, whom to inform?
                                             </Text>
                                         </View>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',marginLeft:29.5,marginTop:18,marginRight:40,paddingBottom:20}}>

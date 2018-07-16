@@ -32,19 +32,9 @@ class DressCodeDay extends Component {
             currDate = '19 Jul';
             dressCodeData = [
                 {
-                    imgUrl:require('../../assets/images/dressImg1/dressImg1_mdpi.jpg'),
-                    title:'KICK OFF 2018',
-                    subTitle:'Hilti Red Shirt with Dark Trouser + Coat/Jacket'
-                },
-                {
-                    imgUrl:require('../../assets/images/dressImg2/dressImg2_mdpi.jpg'),
-                    title:'SERVICE AWARD​ NIGHT',
-                    subTitle:'Smart Casuals : Be yourself',
-                },
-                {
-                    imgUrl:require('../../assets/images/dressImg3/dressImg3_mdpi.jpg'),
-                    title:'SPECIAL DRESS CODE FOR SERVICE AWARDEES​',
-                    subTitle:'Formals : Indian or Western - (Saree/Kurta Pajama or Shirt + Trouser/Skirt) with Blazer(optional)',
+                    imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.jpg'),
+                    title:'WAVE 2',
+                    subTitle:'Red Shirt or T-Shirt with Jeans & Safety Shoes'
                 }
             ]
         }
@@ -55,22 +45,17 @@ class DressCodeDay extends Component {
                     imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.jpg'),
                     title:'WAVE 2',
                     subTitle:'Red Shirt or T-Shirt with Jeans & Safety Shoes'
-                },
-                {
-                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
-                    title:'TEAM MEETING​',
-                    subTitle:'Smart Casuals',
-                },
+                }
             ]
         }
         else{
             currDate = '21 Jul';
             dressCodeData = [
                 {
-                    imgUrl:require('../../assets/images/dressImg5/dressImg5_mdpi.jpg'),
-                    title:'TEAM MEETING​',
-                    subTitle:'Smart Casuals',
-                },
+                    imgUrl:require('../../assets/images/dressImg4/dressImg4_mdpi.jpg'),
+                    title:'WAVE 2',
+                    subTitle:'Red Shirt or T-Shirt with Jeans & Safety Shoes'
+                }
             ]
         }
         return(
@@ -94,7 +79,6 @@ class DressCodeDay extends Component {
                                         </View>
                                         <View style={{flex:5.5}}>
                                             <Text style={{marginTop:26,fontFamily:'hilti-roman',fontSize:13,color:'#000000'}}>&deg; C</Text>
-                                            <Text style={{marginTop:1.5,marginLeft:8.5,fontFamily:'hilti-roman',fontSize:12,color:'#000000'}}>Cold</Text>
                                         </View>
                                     </View>
 

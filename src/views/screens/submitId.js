@@ -384,7 +384,7 @@ class SubmitId extends Component {
                                     EXPRESS CHECK-IN
                                 </Text>
                                 <Text style={{marginTop:11,marginLeft:20.5,marginRight:56,fontSize:9,color:'#000000',opacity:0.8,fontFamily:'hilti-bold'}}>
-                                    Please submit your Govt. issued ID latest by 31 Dec, 2017 for hotel check-in.
+                                    Please submit your Govt. issued ID latest by 15 Jul, 2018 for hotel check-in.
                                 </Text>
 
 

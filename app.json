@@ -1,8 +1,25 @@
+
 {
-  "expo": {
-    "sdkVersion": "22.0.0",
-    "androidStatusBar": {
-      "backgroundColor": "#CCCCCC"
+    "expo": {
+      "sdkVersion": "22.0.0",
+      "androidStatusBar": {
+        "backgroundColor": "#CCCCCC"
+      },
+      "name": "Hilti-Kickoff",
+      "icon": "./src/assets/images/logo/iosLogo.png",
+      "version": "2.5.1",
+      "slug": "hilti-kickoff",
+      "notification": {
+        "icon": "./src/assets/images/logo/iosLogo.png",
+        "color": "#000000"
+      },
+      "ios": {
+        "bundleIdentifier": "com.hilti.hilti"
+      },
+      "android": {
+        "package": "com.hilti.ko2018",
+        "versionCode":9
+      },
+      "orientation": "portrait"
     }
   }
-}

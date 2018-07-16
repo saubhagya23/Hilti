@@ -68,7 +68,7 @@ class assistanceContainer extends Component {
     }
 
     render() {
-        const mailId = 'TeamAnnualKickOff.IN@hilti.com';
+        const mailId = 'HiltiIndiaEvents@hilti.com';
         const CheckBoxes = this.props.assistanceData.select.map((item,i)=><Checkbox check={this.state.checked[i]?true:false} selecteHandler={this.selectedItems} content={item} key={i} idx={i}/>)
         return (
             this.state.fontLoaded?

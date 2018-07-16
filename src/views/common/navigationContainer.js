@@ -33,7 +33,7 @@ class NavigationContainer extends Component {
     }
 
     render(){
-        const mailId = 'TeamAnnualKickOff.IN@hilti.com';
+        const mailId = 'HiltiIndiaEvents@hilti.com';
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded?
@@ -54,7 +54,7 @@ class NavigationContainer extends Component {
                                                         height: 64.5,
 
                                                     }}
-                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject= Kick off 2018 - ${link.name} - ${JSON.parse( this.props.userDetail).Name}`)}>
+                                                    onPress={()=>this.sendMail(`mailto:${mailId}?subject= Wave -2 - ${link.name} - ${JSON.parse( this.props.userDetail).Name}`)}>
                                                     <Text style={{color:'#dd2127',
                                                         fontSize:16,
                                                         height:20.5,

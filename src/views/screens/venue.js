@@ -61,7 +61,7 @@ class Venue extends Component {
                         <View style={{height:184.5}}>
                             <Image
                                 style={{flex:1,position:'relative'}}
-                                source={require('../../assets/images/venueMainImg/banner_img_mdpi.jpg')}
+                                source={require('../../assets/images/venueMainImg/banner_img_mdpi.png')}
                             />
 
                             <Text style={{position:'absolute',marginLeft:19,marginTop:32,width:155,fontSize:14,fontFamily:'hilti-roman',color:'#dd2127', backgroundColor:'transparent'}}>

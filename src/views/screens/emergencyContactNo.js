@@ -91,7 +91,7 @@ class EmergencyContactNo extends Component {
                                     </Text>
 
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
-                                        Dinesh Prasad |  Manager-Administration
+                                        Dinesh Prasad |  Local Process Expert - Finance
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
                                         M: +919711989254 | E: Dinesh.Prasad@hilti.com
@@ -128,6 +128,13 @@ class EmergencyContactNo extends Component {
                                     </Text>
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
                                         M: +918377980753 | E: Kamal.Khattar@hilti.com
+                                    </Text>
+
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>
+                                        Remya Sadananda | Assistant Manager - Events
+                                    </Text>
+                                    <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-roman',marginTop:4}}>
+                                        M: +919818881267 | E: Remya.Sadanandan@hilti.com
                                     </Text>
 
                                     <Text style={{color:'#000000',fontSize:11,fontFamily:'hilti-bold',marginTop:4}}>

@@ -91,9 +91,9 @@ class HomeScreen extends Component {
 
                                 <View style={{flexDirection:"row",marginLeft:13,marginTop:10}}>
                                     <Icon style={{marginTop:4}} name="id-card"/>
-                                    <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name (Jul 19)</Text>
+                                    <Text style={{marginLeft:9,fontWeight:'bold'}}>Group Name</Text>
                                 </View>
-                                <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.Jul19GroupA}</Text>
+                                <Text style={{color:'grey',marginLeft:35,fontWeight:'bold'}}>{user.SegmentGroup}</Text>
                             </View>
                         </View>
                     </View>
@@ -120,7 +120,7 @@ class HomeScreen extends Component {
                         {/*venue nav container*/}
                         <HomeNavContainer
                             navigationPage='Venue'
-                            imgSrc={require('../../assets/images/venue/venue_mdpi.png')}
+                            imgSrc={require('../../assets/images/venue/venue_mdpi.jpg')}
                             titleText='VENUE'
                             homeNavProps={this.props}
                             pauseVideo={this.pauseVideo}

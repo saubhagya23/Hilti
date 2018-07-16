@@ -58,7 +58,7 @@ export default class DosDonts extends Component {
                                             {' '}Travel Related Query or write at
                                         </Text>
                                         <Text style={{fontSize:12,fontFamily:'hilti-roman',color:'blue'}}>
-                                            {' '}Teamannualkickoff.in@hilti.com
+                                            {' '}HiltiIndiaEvents@hilti.com
                                         </Text>
                                     </Text>
                                 </View>
